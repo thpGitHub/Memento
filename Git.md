@@ -19,6 +19,10 @@
 ````shell script
      git add nomFichier1 nomFichier2 // ajoute deux fichiers...
  ````
+> #### Pour ignorer les modifications dans le workspace (annulation avant de faire un add)
+````shell script
+    git checkout -- NomDuFichier
+````
 > #### commit
 ````shell script
     git commit -m"Add a file"
