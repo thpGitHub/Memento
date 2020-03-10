@@ -30,3 +30,25 @@ operator this
 > La valeur de this dépendra de la façon dont la fonction a été appelée.
 
 ##### Valeur de this avec un appel simple
+````javascript
+A VOIR !!!!!!!! diff ici entre var et let !!!
+
+   var a = 12;
+    function func() {    
+      return this.a;     
+    }
+    let b = func();
+    console.log(func()); // output : 12
+    console.log(a);
+
+
+
+    let a = 12;   
+    function func() { 
+      return this.a;    
+    }
+    let b = func();
+    console.log(func()); // output : undefined !!!!!!!
+    console.log(a);
+
+````
