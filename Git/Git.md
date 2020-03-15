@@ -42,8 +42,16 @@
 ````
 > git fetch va récupérer toutes les données des commits effectués sur la branche courante qui n'existent pas encore dans votre version en local.
 > Ces données seront stockées dans le répertoire de travail local mais ne seront pas fusionnées avec votre branche locale.
-> Si vous souhaitez fusionner ces données pour que votre branche soit à jour, vous devez utiliser ensuite la commande git merge.
+> Si vous souhaitez fusionner ces données pour que votre branche soit à jour, vous devez utiliser ensuite la commande git merge.   
+> git pull regroupe les commandes git fetch suivie de git merge.
 ````shell script
     git pull
 ````
-> git pull regroupe les commandes git fetch suivie de git merge.
+>  ! [rejected]        master -> master (non-fast-forward)   
+> hint: Updates were rejected because the tip of your current branch is behind   
+  hint: its remote counterpart. Integrate the remote changes (e.g.   
+  hint: 'git pull ...') before pushing again.   
+````shell script
+    git pull <remote> <branch>
+    git pull origine master
+````
