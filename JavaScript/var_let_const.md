@@ -3,16 +3,11 @@
 
 |              | Portée    | Réaffectation  | Mutable |
 | :----------: | ------    |-----           |:-----                                 |
-| var          | fonction  | oui            | oui                                   |
-| let          | bloc      | oui            | oui                                   |      
-| const        | bloc      | non            | oui (pour les tableaux et les objets) |
-
-L'instruction let permet de déclarer une variable dont la portée est celle du bloc courant;
-
-voir pour var (portée dans une fonction)
-a voir aussi le hoisting
-
-> Au niveau le plus haut (la portée globale), let crée une variable globale alors que var ajoute une propriété à l'objet global :
+| **var**          | fonction  | oui            | oui                                   |
+| **let**          | bloc      | oui            | oui                                   |      
+| **const**        | bloc      | non            | oui (pour les tableaux et les objets) |     
+   
+> Au niveau le plus haut (la portée globale), ``let`` crée une variable globale alors que ``var`` ajoute une propriété à l'objet global :
 
 ````javascript
     var x = 'global';
@@ -25,7 +20,7 @@ a voir aussi le hoisting
 ---
 ``var``
 ---
-> Les variables déclarées avec var ont une portée de fonction cad qu'une variable déclarée dans une fonction sera accéssible à tout ce qui se trouve dans cette dernière mais pas depuis l'extérieur.
+> Les variables déclarées avec ``var`` ont une portée de fonction cad qu'une variable déclarée dans une fonction sera accéssible à tout ce qui se trouve dans cette dernière mais pas depuis l'extérieur.
 ````javascript
     function myFunction() {
         var myVar = "Nick";
@@ -48,7 +43,7 @@ a voir aussi le hoisting
 ---
 ``let``
 ---
-> Les variables déclarées avec let , ne sont pas accessible avant leur 
+> Les variables déclarées avec ``let`` 
 - ont une portée de bloc
 - ne sont pas accessible avant leur affectation
 - ne peuvent pas être redélarées dans le même bloc (TDZ : Zone Morte Temporelle)
@@ -73,7 +68,7 @@ a voir aussi le hoisting
         let toto; // SyntaxError
     }
 ````
-> Il est possible d'obtenir des erreurs au sein de l'instruction Instructions/switch. En effet, il y a un seul bloc implicite pour cette instruction.
+> Il est possible d'obtenir des erreurs au sein de l'instruction Instructions/``switch``. En effet, il y a un seul bloc implicite pour cette instruction.
 
 ````javascript
     switch (x) {
@@ -103,10 +98,38 @@ a voir aussi le hoisting
     }
 ````
 ---
-``let``
+``const``
 ---
-
-
+Les variables déclarées avec ``const`` sont comme les variables ``let``, la différence et qu'elles ne peuvent pas être réaffectées.
+- ont une portée de bloc
+- ne sont pas accessible avant leur affectation
+- ne peuvent pas être redélarées dans le même bloc (TDZ : Zone Morte Temporelle)
+- ne peut pas être réaffecté 
+- les tableaux et les objets peuvent être mutés (mofifiés)
+````javascript
+    const myVar = "Nick";
+    myVar = "John" // raises an error, reassignment is not allowed
+````
+````javascript
+    const myVar = "Nick";
+    const myVar = "John" // raises an error, re-declaration is not allowed
+````
+> Les objets peuvent être mutés
+````javascript
+    const person = {
+        name: 'Nick'
+    };
+    person.name = 'John' // this will work ! person variable is not completely reassigned, but mutated
+    console.log(person.name) // "John"
+    person = "Sandra" // raises an error, because reassignment is not allowed with const declared variables
+````
+> Les tableaux peuvent être mutés 
+````javascript
+    const person = [];
+    person.push('John'); // this will work ! person variable is not completely reassigned, but mutated
+    console.log(person[0]) // "John"
+    person = ["Nick"] // raises an error, because reassignment is not allowed with const declared variables
+````
 
 
 ---
