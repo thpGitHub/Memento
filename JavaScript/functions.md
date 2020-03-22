@@ -10,7 +10,7 @@ Dans le cas d’une fonction déclarée de manière classique, toute la fonction
 La fonction fléchée est un sucre syntaxique (sugar syntax) pour créer une fonction expression anonyme.
  **Elle ne possède pas ses propres valeurs pour this, arguments, super, ou new.target.**    
 
-
+> Les fonctions (à l'exception des fonctions fléchées) ont deux pseudo-paramètres: this et arguments.
 ## function expression
 
 ```javascript
@@ -50,9 +50,43 @@ Déclaration et appel : une fonction déclarée peut être appellée avant sa d�
 ```
 
 ## arrow function
+Les fonctions flèchées sont un sucre syntaxique (sugar syntax) pour créer des expressions de fonction
+
 
 ```javascript
     let message = () => {
         alert('Im me');
     }
 ```
+> Un des bénéfices des fonctions fléchées est que this est bindé au contexte dans lequel la fonction est définie, et non au this de la fonction elle-même
+> Une fonction flèchée ne crée pas de nouveau this elle le récupère de son environement.
+
+Avant les fonctions flèchées ont devait utiliser l'astuce that = this ou self = this.
+````javascript
+    function myFunc() {
+        this.myVar = 0;
+        var that = this; // that = this trick
+        setTimeout(
+            function() { // A new *this* is created in this function scope
+                that.myVar++;
+                console.log(that.myVar) // 1
+                
+                console.log(this.myVar) // undefined -- see function declaration above
+            },
+            0
+        );
+    }
+````
+Avec les fonctions flèchées
+````javascript
+    function myFunc() {
+        this.myVar = 0;
+        setTimeout(
+            () => { // this taken from surrounding, meaning myFunc here
+                this.myVar++;
+                console.log(this.myVar) // 1
+            },
+            0
+        );
+    }
+````

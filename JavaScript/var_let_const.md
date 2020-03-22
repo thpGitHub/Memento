@@ -81,7 +81,7 @@
           break;
     }
 ````
-> si on ajoute une instruction de bloc dans la clause case, cela créera une nouvelle portée et empêchera l'erreur :
+> si on ajoute une instruction de bloc dans la clause ``case``, cela créera une nouvelle portée et empêchera l'erreur :
 
 ````javascript
     let x = 1;
@@ -100,7 +100,7 @@
 ---
 ``const``
 ---
-Les variables déclarées avec ``const`` sont comme les variables ``let``, la différence et qu'elles ne peuvent pas être réaffectées.
+Les variables déclarées avec ``const`` sont comme les variables ``let``, la différence est qu'elles ne peuvent pas être réaffectées.
 - ont une portée de bloc
 - ne sont pas accessible avant leur affectation
 - ne peuvent pas être redélarées dans le même bloc (TDZ : Zone Morte Temporelle)
