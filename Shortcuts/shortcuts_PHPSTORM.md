@@ -1,10 +1,9 @@
 
 
-Markdown | Les | Pretty
---- | --- | ---
-*Still* | `renders` | **nicely**
-*Still* | `renders` | **nicely**
-*Still* | `renders` | **nicely**
-*Still* | `renders` | **nicely**
-*Still* | `renders` | **nicely**
-1 | 2 | 3
+Shortcuts        | Descriptions | 
+---              | ---          | 
+``CTRL``+``TAB`` | Parcourir les différents fichiers ouverts |
+``CTRL``+``F`` | ouvre le panneau de recherche |
+``CTRL``+``R`` | Faire après un ``CTRL``+``F`` afin de remplacer la recherche  |
+ |  |
+ |  |
