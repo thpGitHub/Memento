@@ -1,6 +1,6 @@
- # JavaScript
+ # L'objet en JavaScript
 
-> est conçu autour d'un paradigme simple, basé sur les objets (clé: valeur).
+> JavaScript est conçu autour d'un paradigme simple, basé sur les objets (clé: valeur).
  
 #### Les objets et les propriétés
 > Une propriété est une variable attachée à un objet. 
@@ -11,7 +11,7 @@
 
     monObjet.nom = 'Toto';
     // ou
-    monObjet['prenom'] = 'Albert'; // comme pour un tableau associatif
+    monObjet['prenom'] = 'Albert'; // comme pour un tableau associatif en PHP
 
     monObjet.age = 25;
     monObjet.adresse; // undefined
@@ -26,9 +26,9 @@
    - ``Object.keys(o)`` qui permet de renvoyer un tableau contenant les noms (clés ou keys) des propriétés propres (celles qui ne sont pas héritées via la chaîne de prototypes) d'un objet o pour les propriétés énumérables.
    - ``Object.getOwnPropertyNames(o)`` qui permet de renvoyer un tableau contenant les noms des propriétés propres (énumérables ou non) d'un objet o.   
     
-#### Un objet peut être crée de différentes manières :
+#### Un objet peut être créé de différentes manières :
    - avec une fonction constructeur
-   - avec des initialisateurs d'objets :
+   - avec des initialisateurs d'objets (les objets créés seront uniques!) :
         - objet literal
         - new Object()
         - Object.create() 
@@ -49,7 +49,7 @@ function Personne(nom) {
         };
     }
 ```
->Par convention : Les fonctions de type constructeur commencent généralement par une majuscule
+>Par convention : Les fonctions de type constructeur commencent généralement par une Majuscule
 ```javascript
 let personne1 = new Personne('Bob'),  //l'objet personne1 est une instance de Personne
     personne2 = new Personne('Sarah');
@@ -78,51 +78,72 @@ function Personne(prenom, nom, age, genre, interets) {
 
 let personne1 = new Personne('Bob', 'Smith', 32, 'homme', ['musique', 'ski']);
 ```
- 
+ > *ATTENTION*  on ne peut pas ajouter directement une nouvelle propriété à une fonction constructeur existante:   
+````javascript
+    Personne.nationalite = 'FR'; // You cannot add a new property to a constructor function.
+````
+> il faut utiliser le prototype de la propriété
+````javascript
+    Personne.prototype.nationalite = 'FR';
+    // ainsi toutes les instances de Personne hériteront via le prototype d'une nouvelle propriété.
+````
  ##### Créer un objet literal
  ````javascript
-    let obj = { propriete_1:   valeur_1,   // propriete_# peut être un identifiant
+    let obj = { propriete_1:   valeur_1,   // la propriete peut être un identifiant
                  2:             valeur_2,   // ou un nombre
                  // ...,
                  "propriete n": valeur_n }; // ou une chaîne
 ````
- 
+ ````javascript
+    let person = {
+        firstName: "John",
+        lastName: "Doe",
+        age: 50,
+        eyeColor: "blue"
+    };
+````
  
  
  ##### Utiliser le constructeur ``Object()``
- 
- ##### Utiliser une fonction constructeur personnalisée
- 
- ##### Utiliser la méthode ``create()``
- 
- 
- 
- 
- 
- # Le Constructeur
+ > La création d'un objet literal et d'un objet via le constructeur Object font exactement la même chose.   
+````javascript
+    let person = new Object();
+    person.firstName = "John";
+    person.lastName = "Doe";
+    person.age = 50;
+    person.eyeColor = "blue";
+    
+    // ou
 
-##### 2eme technique : Le constructeur Object()
-```javascript
-var personne1 = new Object();
-
-personne1.nom = 'Chris';
-personne1['age'] = 38;
-personne1.salutation = function() {
-  alert('Bonjour ! Je m\'appelle ' + this.nom + '.');
-};
-```
-```javascript
-var personne1 = new Object({
-  nom: 'Chris',
-  age: 38,
-  salutation: function() {
-    alert('Bonjour ! Je m\'appelle ' + this.nom + '.');
-  }
+    let person = new Object({
+        firstName: "John",
+        lastName: "Doe",
+        age: 50,
+        eyeColor: "blue"
 });
-```
-##### 3eme technique : méthode create()
+````
+ ##### Utiliser la méthode ``create()``
+ > Cette méthode peut s'avérer très utile car elle permet de choisir le prototype pour l'objet qu'on souhaite créer, sans avoir à définir un constructeur.
+````javascript
+    // Propriétés pour animal et encapsulation des méthodes
+    let Animal = {
+      type: "Invertébrés",        // Valeur par défaut  value of properties
+      afficherType : function() {  // Une méthode pour afficher le type Animal
+        console.log(this.type);
+      }
+    }
+    
+    // On crée un nouveau type d'animal, animal1 
+    let animal1 = Object.create(Animal);
+    animal1.afficherType(); // affichera Invertébrés
+    
+    // On crée un type d'animal "Poissons"
+    let poisson = Object.create(Animal);
+    poisson.type = "Poisson";
+    poisson.afficherType(); // affichera Poissons
+````
 ```javascript
-var personne2 = Object.create(personne1);
+let personne2 = Object.create(personne1);
 ```
 >personne2 a été créée à partir de personne1 — et elle possède les mêmes propriétés. 
 ````javascript
@@ -142,3 +163,7 @@ me.printIntroduction();
 // expected output: "My name is Matthew. Am I human? true"
 
 ````
+#### prototype Héritage
+
+
+#### getters et setters
