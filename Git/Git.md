@@ -1,17 +1,17 @@
 # Git
-> #### Initialisation du dépot local
+> ### Initialisation du dépot local
 ````shell script
     git init
 ````
-> #### Lier le dépôt local au dépôt distant (github)
+> ### Lier le dépôt local au dépôt distant (github)
 ```shell script
     git remote add origin https://github.com/thpGitHub/NonDossier.git
 ```
-> #### Pour ignorer les modifications dans le workspace (annulation avant de faire un add)
+> ### Pour ignorer les modifications dans le workspace (annulation avant de faire un add)
 ````shell script
     git checkout -- NomDuFichier
 ````
-> #### Ajouter les modifications local
+> ### Ajouter les modifications local
 ````shell script
     git add . // ajoute tous les fichiers présents
 ````
@@ -23,19 +23,19 @@
 ````shell script
     git add nomFichier1 nomFichier2 // ajoute deux fichiers...
  ````
-> #### Pour ignorer les modifications après un add et remettre le fichier dans le workspace
+> ### Pour ignorer les modifications après un add et remettre le fichier dans le workspace
 ````shell script
     git reset HEAD NomDuFichier
 ````
-> #### commit
+> ### commit
 ````shell script
     git commit -m"Add a file"
 ````
-> #### On pousse tous les commits vers le dépôt distant
+> ### On pousse tous les commits vers le dépôt distant
 ````shell script
     git push origin master
 ````
-> #### git pull ou git fetch ?
+> ### git pull ou git fetch ?
 > Les deux commandes mettent à jour un répertoire de travail local avec les données d'un repository distant
 ````shell script
     git fetch
@@ -55,3 +55,17 @@
     git pull <remote> <branch>
     git pull origine master
 ````
+
+> ### Cloner un dépot existant (vide ou non)
+
+````shell script
+    git clone <repo-url>
+     // exemple : 
+    git clone https://github.com/thpGitHub/Memento.git
+````
+>   git clone regroupe plusieurs commandes :
+> - Elle crée un nouveau dossier,
+> - puis va à l’intérieur de celui-ci et lance git init pour en faire un dépôt Git vide,
+> - puis ajoute un serveur distant (git remote add) à l’URL que vous lui avez passée (appelé par défaut origin),
+> - puis lance git fetch à partir de ce dépôt distant et
+> - ensuite extrait le dernier commit dans votre répertoire de travail avec git checkout.
