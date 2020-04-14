@@ -1,6 +1,15 @@
 Node.js
 -
-https://www.w3.org/History/19921103-hypertext/hypertext/WWW/TheProject.html
+> Node est le runtime (environnement d'exécution, un runtime ne permet que l'exécution d'un programme. il peut être vu comme une machine virtuelle) qui permet d'écrire toutes nos tâches côté serveur, en JavaScript.
+> Node ajoute également des fonctionnalités que le JavaScript du navigateur standard ne possède pas,
+> comme par exemple l'accès au système de fichiers local.
+
+initialiser un projet node 
+````shell script
+    npm init
+````
+il y  a des options par defaults à valider ou à modifier, ses options seront enregistrées dans un fichier ``package.json``:
+On peut modifier par exemple l'option : ``entry point: (index.js)`` qui a par default le fichier index.js
 
 ### lancement dans un terminal d'un fichier :
 ````shell script
