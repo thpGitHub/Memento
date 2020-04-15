@@ -9,7 +9,18 @@ initialiser un projet node
     npm init
 ````
 il y  a des options par defaults à valider ou à modifier, ses options seront enregistrées dans un fichier ``package.json``:
-On peut modifier par exemple l'option : ``entry point: (index.js)`` qui a par default le fichier index.js
+On peut modifier par exemple l'option : ``entry point: (index.js)`` qui a par default est le fichier index.js
+
+### Démarrer un serveur basique :
+````javascript
+    const http = require('http');
+    
+    const server = http.createServer((req, res) => {
+        res.end('Voilà la réponse du serveur !');
+    });
+    
+    server.listen(process.env.PORT || 3000);
+````
 
 ### lancement dans un terminal d'un fichier :
 ````shell script
