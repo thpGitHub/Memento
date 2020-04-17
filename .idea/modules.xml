@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../Angular/.idea/Angular.iml" filepath="$PROJECT_DIR$/../Angular/.idea/Angular.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Memento.iml" filepath="$PROJECT_DIR$/.idea/Memento.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../express_js/.idea/express_js.iml" filepath="$PROJECT_DIR$/../express_js/.idea/express_js.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../mongoDB/.idea/mongoDB.iml" filepath="$PROJECT_DIR$/../mongoDB/.idea/mongoDB.iml" />
     </modules>
   </component>
 </project>
