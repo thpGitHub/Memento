@@ -6,11 +6,19 @@ Node.js
 
 initialiser un projet node 
 ````shell script
-    npm init
+    $ npm init
 ````
 il y  a des options par defaults à valider ou à modifier, ses options seront enregistrées dans un fichier ``package.json``:
-On peut modifier par exemple l'option : ``entry point: (index.js)`` qui a par default est le fichier index.js
+On peut modifier par exemple l'option : ``entry point: (index.js)`` qui a par default est le fichier ``index.js``
 
+Pour ne par arrêter et redemarer node server après chaque modification on peut instatller ``nodemon``
+````shell script
+    $ npm i -g nodemon
+````
+Pour lancer le serveur :
+````shell script
+    $ nodemon nomDuFichier.js
+````
 ### Démarrer un serveur basique :
 ````javascript
     const http = require('http');
@@ -24,7 +32,7 @@ On peut modifier par exemple l'option : ``entry point: (index.js)`` qui a par de
 
 ### lancement dans un terminal d'un fichier :
 ````shell script
-    node nomDuFichier.js
+    $ node nomDuFichier.js
 ````
 
 
