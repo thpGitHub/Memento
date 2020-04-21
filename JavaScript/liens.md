@@ -12,8 +12,9 @@ bootstrap :
 - https://startbootstrap.com/   
 - https://hackerthemes.com/bootstrap-cheatsheet/
 
-Emoticones :
+Emoticones  / icones :
 - https://emojiterra.com/fr/
+- https://www.flaticon.com/
 
 freeCodeCamp :  
 - https://www.freecodecamp.org/news/best-javascript-tutorial/
@@ -29,7 +30,12 @@ node :
 - https://www.heroku.com/
 
 pug :   
-- https://pugjs.org/api/getting-started.html
+- https://pugjs.org/api/getting-started.html   
+//convertisseur MTML to pug :   
+- https://html-to-pug.com/
+
+React :
+- https://blogreact.com/
 
 Regex :
 - https://regex101.com/   

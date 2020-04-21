@@ -14,3 +14,4 @@ MongoDB
 >avec la base de données. mongo fournit également un environnement JavaScript
 > entièrement fonctionnel à utiliser avec un MongoDB.
 
+> mongodb+srv://thp_adm:<password>@cluster0-q8dcp.mongodb.net/test?retryWrites=true&w=majority

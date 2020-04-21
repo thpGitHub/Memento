@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21085bed-9cdd-4d1b-b3f7-ef794e60db81" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Memento.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Memento.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaScript/Node_js.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Node_js.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaScript/Express_js.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Express_js.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaScript/Mongo_DB.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Mongo_DB.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaScript/liens.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/liens.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,6 +21,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="Pug File" />
       </list>
     </option>
   </component>
@@ -35,13 +36,20 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mongoDB" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../express_js/Exercices_ExpressJS/Exercices/2-Fichiers_statiques/stock/img_stock" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\thier\OneDrive\Documents\express_js\Exercices_ExpressJS\Exercices\2-Fichiers_statiques\stock\img_stock" />
+      <recent name="C:\Users\thier\OneDrive\Documents\express_js\Exercices_ExpressJS\Exercices\2 - Fichiers statiques\stock" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -60,7 +68,14 @@
       <workItem from="1587025081377" duration="7409000" />
       <workItem from="1587064093196" duration="1324000" />
       <workItem from="1587110625298" duration="2066000" />
-      <workItem from="1587114340369" duration="17544000" />
+      <workItem from="1587114340369" duration="19649000" />
+      <workItem from="1587202969961" duration="2111000" />
+      <workItem from="1587222351094" duration="9461000" />
+      <workItem from="1587288589974" duration="17537000" />
+      <workItem from="1587364990444" duration="7735000" />
+      <workItem from="1587415340114" duration="9594000" />
+      <workItem from="1587460645704" duration="9109000" />
+      <workItem from="1587500183015" duration="6330000" />
     </task>
     <servers />
   </component>
@@ -72,9 +87,9 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1587046290330" />
-    <state x="151" y="116" key="com.intellij.ide.util.TipDialog" timestamp="1587114342125">
+    <state x="399" y="167" key="com.intellij.ide.util.TipDialog" timestamp="1587500182758">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="151" y="116" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1587114342125" />
+    <state x="399" y="167" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1587500182758" />
   </component>
 </project>
