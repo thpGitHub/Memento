@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21085bed-9cdd-4d1b-b3f7-ef794e60db81" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/Memento.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Memento.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaScript/Express_js.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Express_js.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaScript/Mongo_DB.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Mongo_DB.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaScript/liens.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/liens.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +21,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
         <option value="Pug File" />
       </list>
     </option>
@@ -40,15 +42,23 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../express_js/Exercices_ExpressJS/Exercices/2-Fichiers_statiques/stock/img_stock" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ACS_IFOCOP/acs_2couches/public" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\thier\OneDrive\Documents\express_js\Exercices_ExpressJS\Exercices\5-Erreurs_et_Session\views" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\thier\OneDrive\Documents\ACS_IFOCOP\acs_2couches\public" />
+      <recent name="C:\Users\thier\OneDrive\Documents\ACS_IFOCOP\theme_bootstrap\startbootstrap-bare-gh-pages" />
+      <recent name="C:\Users\thier\OneDrive\Documents\express_js\Exercices_ExpressJS\Exercices\4-Traitement_des_donnees\views" />
+      <recent name="C:\Users\thier\OneDrive\Documents\express_js\Exercices_ExpressJS\Exercices\3-Templates\views" />
       <recent name="C:\Users\thier\OneDrive\Documents\express_js\Exercices_ExpressJS\Exercices\2-Fichiers_statiques\stock\img_stock" />
-      <recent name="C:\Users\thier\OneDrive\Documents\express_js\Exercices_ExpressJS\Exercices\2 - Fichiers statiques\stock" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -76,6 +86,13 @@
       <workItem from="1587415340114" duration="9594000" />
       <workItem from="1587460645704" duration="9109000" />
       <workItem from="1587500183015" duration="6330000" />
+      <workItem from="1587543090255" duration="22198000" />
+      <workItem from="1587625553514" duration="2237000" />
+      <workItem from="1587657377884" duration="3100000" />
+      <workItem from="1587714912145" duration="6921000" />
+      <workItem from="1587751333636" duration="8112000" />
+      <workItem from="1587799970173" duration="566000" />
+      <workItem from="1587800552525" duration="29426000" />
     </task>
     <servers />
   </component>
@@ -83,13 +100,25 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="421" y="96" key="FileChooserDialogImpl" timestamp="1587046290330">
+    <state x="192" y="0" key="CommitChangelistDialog2" timestamp="1587851460555">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="421" y="96" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1587046290330" />
-    <state x="399" y="167" key="com.intellij.ide.util.TipDialog" timestamp="1587500182758">
+    <state x="192" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1587851460555" />
+    <state x="121" y="103" key="FileChooserDialogImpl" timestamp="1587718952027">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="399" y="167" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1587500182758" />
+    <state x="121" y="103" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1587718952027" />
+    <state x="29" y="0" key="SettingsEditor" timestamp="1587800536379">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="29" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1587800536379" />
+    <state x="399" y="167" key="com.intellij.ide.util.TipDialog" timestamp="1587800554869">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="399" y="167" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1587800554869" />
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1587573426750">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="303" y="1" width="672" height="678" key="search.everywhere.popup/0.0.1280.680@0.0.1280.680" timestamp="1587573426750" />
   </component>
 </project>

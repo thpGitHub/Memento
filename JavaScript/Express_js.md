@@ -5,7 +5,7 @@ Pour ajouter Express dans le dossier de votre projet :
 ```shell script
    $ npm i express
 ```
-> cette commande va créér un dossier ``node_modules`` un fichier ``package-lock.json`` et enregistrer ``express`` en tant que dépendance dans le fichier ``package.json``
+> cette commande va créér un dossier ``node_modules`` un fichier ``package-lock.json`` et enregistrer ``express`` en tant que dépendance dans le fichier ``package.json`` (``package.json`` a été créé par ``$ npm init``)
 
 ````json
 {
@@ -68,7 +68,7 @@ Par convention l'objet ``app`` désigne une application ``express`` et possède 
 
 > Un package utile quand on veut gérer des demandes POST est : ``body-parser``
 ````shell script
-    $ npm install body-parser
+    $ npm i body-parser
 ````
 Analysez les corps des requêtes entrantes dans un middleware avant vos gestionnaires,
  disponibles sous la req.bodypropriété.
@@ -118,7 +118,10 @@ Analysez les corps des requêtes entrantes dans un middleware avant vos gestionn
     $ npm i pug
 ````
 ````javascript
-    // utiliser le module pug
+    /* utiliser le module pug
+       mettre 'pug' permet de dire que les fichiers sont des .pug 
+       (on ne sera pas obligé de mettre l'extension du fichier avec la méthode render()
+    */
     app.set('view engine', 'pug');
     // les fichiers statics ``pug`` se trouverons dans le dossier : /views
     app.set('views', './views');
@@ -136,8 +139,98 @@ Analysez les corps des requêtes entrantes dans un middleware avant vos gestionn
       res.render('index', { title: 'Hey', message: 'Hello there!'});
     });
 ````
+### Les erreurs
+````javascript
+    app.use((req, res) => {
+        res.status(404).render('error404');
+    });
+````
+````javascript
+    app.use((req, res, next) => {
+        switch (res.statusCode) {
+            case 503:
+                res.render('503');
+                break;
+            default:
+                res.status(404).render('404');
+        }
+    });
+````
+### Les sessions
+````shell script
+    $ npm i express-session
+````
+````javascript
+    const session = require (' express-session'); 
 
+    app.use(session({
+        secret: 'my secret text',
+        resave: true,
+        saveUninitialized: true,
+        cookie: {}
+    }));
 
+    app.get('/', (req,res) => {
+        req.session.toto = 'ehhhh';
+        console.log(req.session);
+        res.render('accueil', {title: `Page d'accueil`} );
+    });
+    /*
+    Session {
+         cookie: { path: '/', _expires: null, originalMaxAge: null, httpOnly: true },
+         toto: 'ehhhh'
+     }
+    */
+````
+````javascript
+    // supprimer une session
+    app.get('/supprimerSession', (req, res) => {
+       req.session.destroy((err) => {
+           res.render('supprimerSession', {title: 'session supprimée'});
+       });
+    });
+````
+
+> Les données de session sont stockées côté serveur.   
+> Depuis la version 1.5.0, le cookie-parser n'a plus besoin d'être utilisé pour que ce module fonctionne.
+
+### include 
+### extends  
+
+### Récupérer les données dans l'URL (get)
+> L'objet `req` a deux propriétées pour récupérer les données passées dans l'URL 
+- ``params``   
+````javascript
+    // pour l'URL : http://www.monsite.com/infos/truc/machin
+    app.get('/infos/:un/:deux', (req,res) => {
+      console.log(req.params.un); //affiche truc 
+      console.log(req.params.deux); //affiche machin
+    });
+````   
+
+- ``query`` 
+````javascript
+    // pour l'URL : http://www.monsite.com/question?r=chose&t=bidule
+    app.get('/question', (req,res) => {
+        console.log(req.query.r); //affiche chose
+        console.log(req.query.t); //affiche bidule
+    });
+````
+
+### Récupérer les données d'une requête post
+>Afin de pouvoir récupérer les informations du corp de la requête POST il faut instatller le package : ``body_parser``
+````shell script
+    $ npm i body-parser
+````
+````javascript
+    const bodyParser = require('body-parser');
+
+    app.use(bodyParser.urlencoded({ extended: false }));
+
+    app.post('/traitement', (req, res) => {
+        res.render('resultat',{datas:req.body}); 
+    });
+````
 ### Mongoose
 > Mongoose est un package qui facilite les interactions avec notre base de données MongoDB grâce à des fonctions extrêmement utiles.
 ````shell script
