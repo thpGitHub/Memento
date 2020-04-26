@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21085bed-9cdd-4d1b-b3f7-ef794e60db81" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Memento.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Memento.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaScript/Express_js.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Express_js.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaScript/Mongo_DB.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Mongo_DB.md" afterDir="false" />
@@ -92,7 +90,8 @@
       <workItem from="1587714912145" duration="6921000" />
       <workItem from="1587751333636" duration="8112000" />
       <workItem from="1587799970173" duration="566000" />
-      <workItem from="1587800552525" duration="29426000" />
+      <workItem from="1587800552525" duration="29967000" />
+      <workItem from="1587896179676" duration="12646000" />
     </task>
     <servers />
   </component>
@@ -112,10 +111,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="29" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1587800536379" />
-    <state x="399" y="167" key="com.intellij.ide.util.TipDialog" timestamp="1587800554869">
+    <state x="399" y="167" key="com.intellij.ide.util.TipDialog" timestamp="1587896199174">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="399" y="167" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1587800554869" />
+    <state x="399" y="167" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1587896199174" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1587573426750">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

@@ -14,3 +14,10 @@ MongoDB
 >avec la base de données. mongo fournit également un environnement JavaScript
 > entièrement fonctionnel à utiliser avec un MongoDB.
 
+````shell script
+    $ show dbs // Affiche la listes des BDDs
+    $ use nomBDD // Choisir une BDD
+    $ db // Affiche la BDD dans laquel on se trouve
+    $ show collections
+    
+````

@@ -231,11 +231,59 @@ Analysez les corps des requêtes entrantes dans un middleware avant vos gestionn
         res.render('resultat',{datas:req.body}); 
     });
 ````
+### Se connecter à une base de donnée MongoDB avec le module : ``mongodb``
+https://expressjs.com/en/guide/database-integration.html#mongodb
+https://www.npmjs.com/package/mongodb
+// choir le driver de notre mongoDB :   
+http://mongodb.github.io/node-mongodb-native/ 
+http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
+
+````shell script
+    $ npm i mongodb
+````
+````javascript
+    const MongoClient = require('mongodb').MongoClient;
+    
+    app.get('/', (req,res) => {
+        MongoClient.connect(url,{useNewUrlParser:true, useUnifiedTopology:true}, (err, client) => {
+            if (err) {
+                return console.log('err');
+            }
+            const db = client.db(dbName);
+            const myCollection = db.collection('piscines');
+            myCollection.find({}).toArray((err, docs) => {
+                client.close();
+                console.log(docs);
+                res.render('accueil', {title: 'Accueil', datas: docs});
+            });
+        });
+    });
+
+// p= datas[0].zipCode
+````
+````jade
+    // accueil.pug
+    doctype html
+    html
+        head
+            title= title
+        body
+            h1 Bienvenue sur la page d'accueil Exo 16          
+        section
+            ul
+                each piscines in datas
+                    li #{piscines.name} #{piscines.zipCode}
+
+// p= datas[0].zipCode
+````
+
 ### Mongoose
 > Mongoose est un package qui facilite les interactions avec notre base de données MongoDB grâce à des fonctions extrêmement utiles.
 ````shell script
     $ npm i mongoose
 ````
+
+
 ````javascript
     const mongoose = require('mongoose');
 
