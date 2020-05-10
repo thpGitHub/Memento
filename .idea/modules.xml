@@ -3,10 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/../ACS_IFOCOP/.idea/ACS_IFOCOP.iml" filepath="$PROJECT_DIR$/../ACS_IFOCOP/.idea/ACS_IFOCOP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../AJAX/.idea/AJAX.iml" filepath="$PROJECT_DIR$/../AJAX/.idea/AJAX.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Angular/.idea/Angular.iml" filepath="$PROJECT_DIR$/../Angular/.idea/Angular.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../ES6__Exercices/.idea/ES6__Exercices.iml" filepath="$PROJECT_DIR$/../ES6__Exercices/.idea/ES6__Exercices.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Memento.iml" filepath="$PROJECT_DIR$/.idea/Memento.iml" />
       <module fileurl="file://$PROJECT_DIR$/../express_js/.idea/express_js.iml" filepath="$PROJECT_DIR$/../express_js/.idea/express_js.iml" />
       <module fileurl="file://$PROJECT_DIR$/../mongoDB/.idea/mongoDB.iml" filepath="$PROJECT_DIR$/../mongoDB/.idea/mongoDB.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../typeScript/.idea/typeScript.iml" filepath="$PROJECT_DIR$/../typeScript/.idea/typeScript.iml" />
     </modules>
   </component>
 </project>

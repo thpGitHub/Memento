@@ -19,6 +19,11 @@ Pour lancer le serveur :
 ````shell script
     $ nodemon nomDuFichier.js
 ````
+Nous pouvons éxécuter du code JavaScript dans votre terminal (``ctrl c`` pour sortir) :
+````shell script
+    $ node
+    > console.log('coucou');
+````
 ### Démarrer un serveur basique :
 ````javascript
     const http = require('http');

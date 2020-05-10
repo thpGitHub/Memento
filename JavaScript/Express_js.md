@@ -5,7 +5,9 @@ Pour ajouter Express dans le dossier de votre projet :
 ```shell script
    $ npm i express
 ```
-> cette commande va créér un dossier ``node_modules`` un fichier ``package-lock.json`` et enregistrer ``express`` en tant que dépendance dans le fichier ``package.json`` (``package.json`` a été créé par ``$ npm init``)
+> cette commande va créér un dossier ``node_modules`` un fichier ``package-lock.json`` et enregistrer ``express``
+> en tant que dépendance dans le fichier ``package.json`` (``package.json`` a été créé par ``$ npm init``).
+> Attention il faut avant d'installer express faire un ``$ npm init``.
 
 ````json
 {
@@ -106,6 +108,7 @@ Analysez les corps des requêtes entrantes dans un middleware avant vos gestionn
     app.get('/', (req, res) => {
         res.sendFile('accueil.html', { root: 'pages' }); 
         // envoie le fichier accueil.html qui se trouve dans le dossier racine page
+        // res.sendFile(__dirname + '/exercice1_index.html');
     });
 ````
 

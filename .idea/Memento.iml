@@ -8,5 +8,8 @@
     <orderEntry type="module" module-name="express_js" />
     <orderEntry type="module" module-name="mongoDB" />
     <orderEntry type="module" module-name="ACS_IFOCOP" />
+    <orderEntry type="module" module-name="ES6__Exercices" />
+    <orderEntry type="module" module-name="typeScript" />
+    <orderEntry type="module" module-name="AJAX" />
   </component>
 </module>

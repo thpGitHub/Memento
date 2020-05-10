@@ -2,9 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21085bed-9cdd-4d1b-b3f7-ef794e60db81" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Memento.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Memento.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaScript/AJAX.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/AJAX.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaScript/Express_js.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Express_js.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaScript/Mongo_DB.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Mongo_DB.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaScript/Node_js.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Node_js.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaScript/liens.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/liens.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaScript/primitives_JavaScript.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/primitives_JavaScript.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,13 +22,17 @@
       <executable />
     </execution>
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Memento" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
-        <option value="JavaScript File" />
-        <option value="CSS File" />
+        <option value="TypeScript File" />
         <option value="Pug File" />
+        <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -40,23 +50,28 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ACS_IFOCOP/acs_2couches/public" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../AJAX/AJAX_Vanilla/meteo" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="ts.external.directory.path" value="C:\Users\thier\OneDrive\Documents\Angular\tuto_openClassR_Node_Express_Mongo\frontend\go-fullstack-fr-frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\thier\OneDrive\Documents\express_js\Exercices_ExpressJS\Exercices\5-Erreurs_et_Session\views" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Angular\IFOCOP\demo-app\src\assets\images" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Angular\IFOCOP\demo-app\src\assets" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Angular\IFOCOP\demo-app\src\app\exercices\1-expressions" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Angular\IFOCOP" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Angular\IFOCOP\demo-app" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\thier\OneDrive\Documents\ACS_IFOCOP\acs_2couches\public" />
-      <recent name="C:\Users\thier\OneDrive\Documents\ACS_IFOCOP\theme_bootstrap\startbootstrap-bare-gh-pages" />
-      <recent name="C:\Users\thier\OneDrive\Documents\express_js\Exercices_ExpressJS\Exercices\4-Traitement_des_donnees\views" />
-      <recent name="C:\Users\thier\OneDrive\Documents\express_js\Exercices_ExpressJS\Exercices\3-Templates\views" />
-      <recent name="C:\Users\thier\OneDrive\Documents\express_js\Exercices_ExpressJS\Exercices\2-Fichiers_statiques\stock\img_stock" />
+      <recent name="C:\Users\thier\OneDrive\Documents\AJAX\AJAX_Vanilla\meteo" />
+      <recent name="C:\Users\thier\OneDrive\Documents\AJAX\Exercices" />
+      <recent name="C:\Users\thier\OneDrive\Documents\AJAX\Exercices\views" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Angular\IFOCOP\demo-app\src" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Angular\IFOCOP\demo-app\src\app\exercices\2-proprietes-evenements\exercice-b1" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -91,30 +106,71 @@
       <workItem from="1587751333636" duration="8112000" />
       <workItem from="1587799970173" duration="566000" />
       <workItem from="1587800552525" duration="29967000" />
-      <workItem from="1587896179676" duration="12646000" />
+      <workItem from="1587896179676" duration="12730000" />
+      <workItem from="1587982066400" duration="6364000" />
+      <workItem from="1588016483519" duration="10991000" />
+      <workItem from="1588029786452" duration="2095000" />
+      <workItem from="1588076975371" duration="22442000" />
+      <workItem from="1588148010065" duration="13669000" />
+      <workItem from="1588187100991" duration="2367000" />
+      <workItem from="1588189489833" duration="1884000" />
+      <workItem from="1588191393532" duration="2248000" />
+      <workItem from="1588231899040" duration="3252000" />
+      <workItem from="1588269407612" duration="4655000" />
+      <workItem from="1588336316828" duration="22562000" />
+      <workItem from="1588423932231" duration="1247000" />
+      <workItem from="1588442119222" duration="7786000" />
+      <workItem from="1588509435772" duration="6245000" />
+      <workItem from="1588539618239" duration="3313000" />
+      <workItem from="1588601621993" duration="17975000" />
+      <workItem from="1588662677238" duration="21152000" />
+      <workItem from="1588748909009" duration="3161000" />
+      <workItem from="1588835486440" duration="5392000" />
+      <workItem from="1588957444473" duration="8251000" />
+      <workItem from="1589016006057" duration="10367000" />
+      <workItem from="1589048743732" duration="4112000" />
+      <workItem from="1589102916039" duration="11354000" />
+      <workItem from="1589139486160" duration="6423000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/../typeScript/TypeScript__Exercices/TypeScript__Exercices/exercice-01.js" />
+        <option value="$PROJECT_DIR$/../typeScript/TypeScript__Exercices/TypeScript__Exercices/exercice-02.js" />
+        <option value="$PROJECT_DIR$/../typeScript/TypeScript__Exercices/TypeScript__Exercices/exercice-03.js" />
+        <option value="$PROJECT_DIR$/../typeScript/TypeScript__Exercices/TypeScript__Exercices/exercice-04.js" />
+        <option value="$PROJECT_DIR$/../typeScript/TypeScript__Exercices/TypeScript__Exercices/exercice-05.js" />
+      </list>
+    </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1588367458428">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="371" y="88" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1280.680@0.0.1280.680" timestamp="1588367458428" />
     <state x="192" y="0" key="CommitChangelistDialog2" timestamp="1587851460555">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="192" y="0" key="CommitChangelistDialog2/0.0.1280.680@0.0.1280.680" timestamp="1587851460555" />
-    <state x="121" y="103" key="FileChooserDialogImpl" timestamp="1587718952027">
+    <state x="369" y="79" key="FileChooserDialogImpl" timestamp="1588855681745">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="121" y="103" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1587718952027" />
-    <state x="29" y="0" key="SettingsEditor" timestamp="1587800536379">
+    <state x="369" y="79" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1588855681745" />
+    <state x="29" y="0" width="1125" height="680" key="SettingsEditor" timestamp="1588191372135">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="29" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1587800536379" />
-    <state x="399" y="167" key="com.intellij.ide.util.TipDialog" timestamp="1587896199174">
+    <state x="29" y="0" width="1125" height="680" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1588191372135" />
+    <state width="566" height="445" key="SwitcherDM" timestamp="1588714415411">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="399" y="167" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1587896199174" />
+    <state width="566" height="445" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1588714415411" />
+    <state x="399" y="167" key="com.intellij.ide.util.TipDialog" timestamp="1589139488852">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="399" y="167" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1589139488852" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1587573426750">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
