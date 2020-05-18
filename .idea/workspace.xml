@@ -4,7 +4,6 @@
     <list default="true" id="21085bed-9cdd-4d1b-b3f7-ef794e60db81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaScript/Express_js.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Express_js.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaScript/Mongo_DB.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Mongo_DB.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,9 +22,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
-        <option value="CSS File" />
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
         <option value="Pug File" />
       </list>
     </option>
@@ -137,7 +136,7 @@
       <workItem from="1589633385629" duration="3555000" />
       <workItem from="1589742511185" duration="8275000" />
       <workItem from="1589788847522" duration="6506000" />
-      <workItem from="1589807426477" duration="14133000" />
+      <workItem from="1589807426477" duration="19438000" />
     </task>
     <servers />
   </component>

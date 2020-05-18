@@ -7,7 +7,7 @@ Pour ajouter Express dans le dossier de votre projet :
 ```
 > cette commande va créér un dossier ``node_modules`` un fichier ``package-lock.json`` et enregistrer ``express``
 > en tant que dépendance dans le fichier ``package.json`` (``package.json`` a été créé par ``$ npm init``).
-> Attention il faut avant d'installer express faire un ``$ npm init``.
+> ***``Attention``*** il faut avant d'installer express faire un ``$ npm init``.
 
 ````json
 {
@@ -213,8 +213,18 @@ Analysez les corps des requêtes entrantes dans un middleware avant vos gestionn
 ---
 
 ### includes 
-> Le dossier ``includes`` contenu dans un dossier ``views`` contiendra nos templates comme par exemple : :
- - head.pug
+> Le dossier ``includes`` contenu dans un dossier ``views`` contiendra nos templates comme par exemple :
+
+- accueil.pug
+````jade
+    include includes/head
+    include includes/header
+    section
+        h2 Page d'accueil
+    include includes/footer
+````
+
+- head.pug
 ````jade
     doctype html
     head
@@ -244,6 +254,8 @@ Analysez les corps des requêtes entrantes dans un middleware avant vos gestionn
 ````jade
     // ici code du footer ;)
 ````
+
+
 ---
 
 ### extends  
@@ -297,7 +309,9 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
     $ npm i mongodb
 ````
 ````javascript
-    const MongoClient = require('mongodb').MongoClient;
+    const MongoClient = require('mongodb').MongoClient,
+          url         = 'mongodb://localhost:27017/',
+          dbName      = 'paris';
     
     app.get('/', (req,res) => {
         MongoClient.connect(url,{useNewUrlParser:true, useUnifiedTopology:true}, (err, client) => {
