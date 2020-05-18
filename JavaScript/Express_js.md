@@ -18,14 +18,15 @@ Pour ajouter Express dans le dossier de votre projet :
 ````
 Par convention l'objet ``app`` désigne une application ``express`` et possède de nombreuses méthodes   
 ````javascript
-    const express = require('express')
-    const app = express()
+    const express = require('express');
+    const app = express();
+// ou const app = require('express') ();
     // app.get(path, callback [, callback ...])
     // requête GET vers le chemin demandé
     app.get('/', function (req, res) {
-      res.send('hello world')
+      res.send('hello world');
     })
-    app.listen(3000)
+    app.listen(3000);
 ````
 
 ````javascript
@@ -45,8 +46,8 @@ Par convention l'objet ``app`` désigne une application ``express`` et possède 
     const app = express()
     
     app.use(function (req, res, next) {
-      console.log('Time:', Date.now())
-      next()
+      console.log('Time:', Date.now());
+      next();
     });
 ````
 ### Erreurs de CORS 
@@ -297,3 +298,28 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
       .catch(() => console.log('Connexion à MongoDB échouée !'));
 ````
 > L'un des avantages que nous avons à utiliser Mongoose pour gérer notre base de données MongoDB est que nous pouvons implémenter des schémas de données stricts
+
+### Exemple d'une structure d'application Express 
+````text
+    .
+    ├── app.js
+    ├── bin
+    │   └── www
+    ├── package.json
+    ├── public
+    │   ├── images
+    │   ├── javascripts
+    │   └── stylesheets
+    │       └── style.css
+    ├── routes
+    │   ├── index.js
+    │   └── users.js
+    └── views
+        ├── error.pug
+        ├── index.pug
+        └── layout.pug
+
+
+
+
+````
