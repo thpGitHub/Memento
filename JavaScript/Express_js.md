@@ -39,6 +39,8 @@ Par convention l'objet ``app`` désigne une application ``express`` et possède 
 - ``.get()`` ne traitera que les requêtes de type GET.
 - ``.post()`` ne traitera que les requêtes de type POST.
 
+---
+
 ### Les fonctions middleware
 >Les fonctions middleware sont des fonctions qui ont accès à l' objet requête ``req``,
 > à l' objet réponse ``res`` et à la fonction middleware ``next()``.
@@ -50,6 +52,8 @@ Par convention l'objet ``app`` désigne une application ``express`` et possède 
       next();
     });
 ````
+---
+
 ### Erreurs de CORS 
 > Cross Origin Resource Sharing est un système de sécurité qui, par défaut
 > bloque les appels HTTP effectués entre des serveurs différents.
@@ -66,6 +70,8 @@ Par convention l'objet ``app`` désigne une application ``express`` et possède 
        next();
     });
 ````
+
+---
 
 ### Les routes POST
 
@@ -85,6 +91,9 @@ Analysez les corps des requêtes entrantes dans un middleware avant vos gestionn
     });
 
 ````
+
+---
+
 ### Les fichiers statics
 > Les fichiers statiques sont les images, les fichiers CSS et les fichiers JavaScript...   
 
@@ -112,8 +121,7 @@ Analysez les corps des requêtes entrantes dans un middleware avant vos gestionn
         // res.sendFile(__dirname + '/exercice1_index.html');
     });
 ````
-
-
+---
 
 ### Templates
 > Le moteur de template le plus utilisé avec express js est ``pug``
@@ -143,6 +151,8 @@ Analysez les corps des requêtes entrantes dans un middleware avant vos gestionn
       res.render('index', { title: 'Hey', message: 'Hello there!'});
     });
 ````
+---
+
 ### Les erreurs
 ````javascript
     app.use((req, res) => {
@@ -160,6 +170,8 @@ Analysez les corps des requêtes entrantes dans un middleware avant vos gestionn
         }
     });
 ````
+---
+
 ### Les sessions
 ````shell script
     $ npm i express-session
@@ -198,8 +210,45 @@ Analysez les corps des requêtes entrantes dans un middleware avant vos gestionn
 > Les données de session sont stockées côté serveur.   
 > Depuis la version 1.5.0, le cookie-parser n'a plus besoin d'être utilisé pour que ce module fonctionne.
 
-### include 
+---
+
+### includes 
+> Le dossier ``includes`` contenu dans un dossier ``views`` contiendra nos templates comme par exemple : :
+ - head.pug
+````jade
+    doctype html
+    head
+        title= title
+        link(rel="stylesheet", href="/src/style.css")
+````
+
+- hearder.pug
+````jade
+    body
+        header
+            h1= title
+            nav
+                ul
+                    li
+                        a(href="/") Accueil
+                    li
+                        a(href="/admin") Administration
+                    if session && session.identifiant
+                        li
+                            a(href="/admin/quitter") Se déconnecter
+            if message
+                p#message= message
+````
+
+- footer.pug
+````jade
+    // ici code du footer ;)
+````
+---
+
 ### extends  
+
+---
 
 ### Récupérer les données dans l'URL (get)
 > L'objet `req` a deux propriétées pour récupérer les données passées dans l'URL 
@@ -235,6 +284,8 @@ Analysez les corps des requêtes entrantes dans un middleware avant vos gestionn
         res.render('resultat',{datas:req.body}); 
     });
 ````
+---
+
 ### Se connecter à une base de donnée MongoDB avec le module : ``mongodb``
 https://expressjs.com/en/guide/database-integration.html#mongodb
 https://www.npmjs.com/package/mongodb
@@ -298,6 +349,8 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
       .catch(() => console.log('Connexion à MongoDB échouée !'));
 ````
 > L'un des avantages que nous avons à utiliser Mongoose pour gérer notre base de données MongoDB est que nous pouvons implémenter des schémas de données stricts
+
+---
 
 ### Exemple d'une structure d'application Express 
 ````text
