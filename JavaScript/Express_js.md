@@ -92,6 +92,16 @@ Analysez les corps des requêtes entrantes dans un middleware avant vos gestionn
 
 ````
 
+> Voici un petit exemple de redirection qui fonctionne avec tous les types de route 
+> ``res.render()``
+````javascript
+if (!identifiant || !mdp) {
+        res.redirect('/admin');
+        return; // return arrête immédiatement la route et la suite du code n'est pas exécuté !!!!!!!
+    }
+
+````
+
 ---
 
 ### Les fichiers statics
@@ -146,6 +156,7 @@ Analysez les corps des requêtes entrantes dans un middleware avant vos gestionn
       body
         h1= message
 ````
+
 ````javascript
     app.get('/', function (req, res) {
       res.render('index', { title: 'Hey', message: 'Hello there!'});
@@ -190,8 +201,11 @@ Analysez les corps des requêtes entrantes dans un middleware avant vos gestionn
         req.session.toto = 'ehhhh';
         console.log(req.session);
         res.render('accueil', {title: `Page d'accueil`} );
+        // passer la session à la page :
+        // res.render('accueil',{title: 'Accueil du site',session:req.session});
     });
     /*
+    console.log(req.session): = 
     Session {
          cookie: { path: '/', _expires: null, originalMaxAge: null, httpOnly: true },
          toto: 'ehhhh'

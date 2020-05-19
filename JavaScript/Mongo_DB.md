@@ -54,3 +54,10 @@ MongoDB
 
     
 ````
+
+---
+- ``db.collection.find``
+````shell script
+db.collection.find( { field1: <value>, field2: <value> ... } )
+````
+
