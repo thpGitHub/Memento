@@ -360,6 +360,51 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
 // p= datas[0].zipCode
 ````
 
+### Se connecter à une base de donnée MongoDB avec le module : ``mongodb`` et avec un fichier js externe 
+- fichier : db.js :
+````javascript
+    const MongoClient = require('mongodb').MongoClient,
+          url         = 'mongodb://localhost:27017/',
+          dbName      = 'blog';
+    
+    exports.connectDB = (cb) => {
+        MongoClient.connect(url,{ useNewUrlParser:true, useUnifiedTopology:true }, (err, client) => {
+            if (err) {
+                return console.log('err');
+            }
+            const theDB = client.db(dbName);
+            cb(theDB, client);
+        });
+    };
+````
+- fichier : index.js
+````javascript
+    const execDB = require('./db');
+    // ici exemple avec une route post :
+    app.post('/admin/verification', (req, res) => {
+       // ...
+       // ...
+    
+        execDB.connectDB((theDB, client) => {
+                const myCollection = theDB.collection('utilisateurs');
+                myCollection.find({ identifiant: identifiant, mdp: mdp }).toArray((err, docs) => {
+                    client.close();
+
+                   // ici un exemple simple de test du résultat de la requête : 
+                  /*  if (docs.length) {
+                        res.render('confirmation', { title: 'Page de confirmation', message: 'cool' });
+                    }
+                    else {
+                        res.render('admin', { title: 'Page admin', message: 'pas cool', session: req.session });
+                    }*/
+                });
+            }
+        )  
+    });
+````
+
+
+ 
 ### Mongoose
 > Mongoose est un package qui facilite les interactions avec notre base de données MongoDB grâce à des fonctions extrêmement utiles.
 ````shell script
