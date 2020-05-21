@@ -4,7 +4,6 @@
     <list default="true" id="21085bed-9cdd-4d1b-b3f7-ef794e60db81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaScript/Express_js.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Express_js.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaScript/liens.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/liens.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +140,9 @@
       <workItem from="1589879915807" duration="5558000" />
       <workItem from="1589903911785" duration="13283000" />
       <workItem from="1589971533246" duration="9912000" />
-      <workItem from="1589999269938" duration="7671000" />
+      <workItem from="1589999269938" duration="8532000" />
+      <workItem from="1590071030595" duration="3000" />
+      <workItem from="1590076730855" duration="8515000" />
     </task>
     <servers />
   </component>
@@ -182,10 +183,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="566" height="445" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1589577338151" />
-    <state x="399" y="167" key="com.intellij.ide.util.TipDialog" timestamp="1589999281563">
+    <state x="399" y="167" key="com.intellij.ide.util.TipDialog" timestamp="1590076822052">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="399" y="167" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1589999281563" />
+    <state x="399" y="167" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1590076822052" />
     <state x="297" y="151" key="run.anything.popup" timestamp="1589977374086">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

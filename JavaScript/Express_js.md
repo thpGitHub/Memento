@@ -402,7 +402,55 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
         )  
     });
 ````
+### Amélioration du code 
+- fichier : db.js
+````javascript
+    const MongoClient = require('mongodb').MongoClient,
+        url         = 'mongodb://localhost:27017/',
+        dbName      = 'blog_Ifocop';
+    
+    const connectDB = (cb) => {
+        MongoClient.connect(url,{ useNewUrlParser:true, useUnifiedTopology:true }, (err, client) => {
+            if (err) {
+                return console.log('err');
+            }
+            const theDB = client.db(dbName);
+            cb(theDB, client);
+        });
+    }
+    exports.find = (settings) => {
+        connectDB((theDB, client) => {
+            const myCollection = theDB.collection(settings.theCollection);
+            myCollection.find(settings.filter).toArray((err, data) => {
+                client.close();
+                settings.done(data);
+            });
+        });
+    };
+````
 
+- fichier : index.js :
+````javascript
+    const execDB = require('./db');
+        // ici exemple avec une route post :
+        app.post('/admin/verification', (req, res) => {
+           // ...
+           // ...
+        
+            execDB.find({
+                    theCollection: 'utilisateurs',
+                    filter: { identifiant: identifiant, mdp: mdp },
+                    done: (data) => {
+                        if (data.length) {
+                            res.render('confirmation', { title: 'Page de confirmation TESSST', message: 'eheheheeheh' });
+                        }
+                        else {
+                            res.render('admin', { title: 'Page admin TESSSST', message: 'ohhhhhhh', session: req.session });
+                        }
+                    }
+            });
+        });
+````
 
  
 ### Mongoose
