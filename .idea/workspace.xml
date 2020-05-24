@@ -24,8 +24,8 @@
         <option value="TypeScript File" />
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="Pug File" />
         <option value="JavaScript File" />
+        <option value="Pug File" />
       </list>
     </option>
   </component>
@@ -48,23 +48,23 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="watcher.settings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Users\thier\OneDrive\Documents\Angular\tuto_openClassR_Node_Express_Mongo\frontend\go-fullstack-fr-frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\thier\OneDrive\Documents\AJAX\Exercices\exercice2" />
-      <recent name="C:\Users\thier\OneDrive\Documents\AJAX\Exercices\public" />
-      <recent name="C:\Users\thier\OneDrive\Documents\Angular\IFOCOP\demo-app\src\assets\images" />
-      <recent name="C:\Users\thier\OneDrive\Documents\Angular\IFOCOP\demo-app\src\assets" />
-      <recent name="C:\Users\thier\OneDrive\Documents\Angular\IFOCOP\demo-app\src\app\exercices\1-expressions" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\thier\OneDrive\Documents\express_js\Exercices_ExpressJS\Exercices\7 - BLOG" />
       <recent name="C:\Users\thier\OneDrive\Documents\Javascript\Batlle_Dev\JavaScript\Hello_Work_Mars_2020\cartes" />
       <recent name="C:\Users\thier\OneDrive\Documents\AJAX" />
       <recent name="C:\Users\thier\OneDrive\Documents\AJAX\AJAX_Vanilla\meteo" />
       <recent name="C:\Users\thier\OneDrive\Documents\AJAX\Exercices" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\thier\OneDrive\Documents\AJAX\Exercices\exercice2" />
+      <recent name="C:\Users\thier\OneDrive\Documents\AJAX\Exercices\public" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Angular\IFOCOP\demo-app\src\assets\images" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Angular\IFOCOP\demo-app\src\assets" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Angular\IFOCOP\demo-app\src\app\exercices\1-expressions" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -142,7 +142,10 @@
       <workItem from="1589971533246" duration="9912000" />
       <workItem from="1589999269938" duration="8532000" />
       <workItem from="1590071030595" duration="3000" />
-      <workItem from="1590076730855" duration="8515000" />
+      <workItem from="1590076730855" duration="11574000" />
+      <workItem from="1590161212624" duration="15895000" />
+      <workItem from="1590228233488" duration="6958000" />
+      <workItem from="1590275990946" duration="887000" />
     </task>
     <servers />
   </component>
@@ -175,22 +178,22 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="369" y="79" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1589744988873" />
-    <state x="29" y="0" width="1125" height="680" key="SettingsEditor" timestamp="1589824800575">
+    <state x="29" y="0" width="1125" height="680" key="SettingsEditor" timestamp="1590278543407">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="29" y="0" width="1125" height="680" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1589824800575" />
+    <state x="29" y="0" width="1125" height="680" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1590278543407" />
     <state width="566" height="445" key="SwitcherDM" timestamp="1589577338151">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="566" height="445" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1589577338151" />
-    <state x="399" y="167" key="com.intellij.ide.util.TipDialog" timestamp="1590076822052">
+    <state x="399" y="167" key="com.intellij.ide.util.TipDialog" timestamp="1590276223515">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="399" y="167" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1590076822052" />
-    <state x="297" y="151" key="run.anything.popup" timestamp="1589977374086">
+    <state x="399" y="167" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1590276223515" />
+    <state x="297" y="151" key="run.anything.popup" timestamp="1590167296351">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1589977374086" />
+    <state x="297" y="151" key="run.anything.popup/0.0.1280.680@0.0.1280.680" timestamp="1590167296351" />
     <state x="303" y="1" width="672" height="678" key="search.everywhere.popup" timestamp="1587573426750">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

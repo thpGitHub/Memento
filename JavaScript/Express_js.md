@@ -452,7 +452,37 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
         });
 ````
 
- 
+### ObjectId
+> Pour pouvoir utiliser l' ``_id`` d'une base mongoDb il faut utiliser l'objet ``OjectId`` : 
+- fichier db.js : 
+
+````javascript
+    const ObjectId = require('mongodb').ObjectId;
+
+    // on peut créer une methode a exporter pour utiliser l'objet :
+    exports.getObjectId = (idText) => {
+        return new ObjectId(idText);
+    };
+````
+- fichier index.js : 
+
+````javascript
+    const execDB = require('./db');
+
+    app.get('/admin/article_modifier', (req, res) => {
+        //console.log(req.query);
+        const theId = execDB.getObjectId(req.query.id);
+        execDB.find({
+            theCollection: 'articles',
+            filter: { _id: theId },
+            done: (data) => {
+                console.log(data);
+                res.send('ok' ) ;
+            }
+        });
+    });
+````
+ ---
 ### Mongoose
 > Mongoose est un package qui facilite les interactions avec notre base de données MongoDB grâce à des fonctions extrêmement utiles.
 ````shell script
