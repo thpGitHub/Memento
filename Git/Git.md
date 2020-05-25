@@ -60,7 +60,7 @@
 
 ````shell script
     git clone <repo-url>
-     // exemple : 
+     # exemple : 
     git clone https://github.com/thpGitHub/Memento.git
 ````
 >   git clone regroupe plusieurs commandes :
@@ -69,3 +69,28 @@
 > - puis ajoute un serveur distant (git remote add) à l’URL que vous lui avez passée (appelé par défaut origin),
 > - puis lance git fetch à partir de ce dépôt distant et
 > - ensuite extrait le dernier commit dans votre répertoire de travail avec git checkout.
+ ---
+ 
+ ### Savoir si un dépot local est lié a un dépot distant
+ ````shell script
+    git remote
+    git remote -v # affichera plus d\'informations sur le dépot distant
+````
+---
+
+### Création d'un fichier ``.gitignore``
+> Pour demander à git de ne pas suivre certain type de fichiers, il faut créer un fichier ``.gitignore à la racine du projet``
+>***Attention*** les fichiers déjà suivis par git ne pourront pas être ignorés 
+````shell script
+    # ignore le fichier ou le dossier temp
+    temp 
+    # ignore le dossier /test/temp
+    /test/temp
+    # ignore tous les fichiers mp3
+    *.mp3
+    #ignore tous fichiers commençant par test sauf testfinal
+    test* 
+    !testfinal
+    # on peut aussi ignorer le .gitignore ;)
+    .gitignore
+````
