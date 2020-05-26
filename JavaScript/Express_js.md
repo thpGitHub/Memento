@@ -73,7 +73,7 @@ Par convention l'objet ``app`` désigne une application ``express`` et possède 
 
 ---
 
-### Les routes POST
+### Les routes POST (***attention*** voir plus bas pour modifier ``Récupérer les données d'une requête post``)
 
 > Un package utile quand on veut gérer des demandes POST est : ``body-parser``
 ````shell script
@@ -418,12 +418,23 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
             cb(theDB, client);
         });
     }
+
     exports.find = (settings) => {
         connectDB((theDB, client) => {
             const myCollection = theDB.collection(settings.theCollection);
             myCollection.find(settings.filter).toArray((err, data) => {
                 client.close();
                 settings.done(data);
+            });
+        });
+    };
+
+    exports.insert = (settings) => {
+        connectDB((theDB, client) => {
+            const myCollection = theDB.collection(settings.theCollection);
+            myCollection.insert(settings.values,(err) => {
+                client.close();
+                settings.done();
             });
         });
     };
@@ -449,6 +460,23 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
                         }
                     }
             });
+        });
+        // une autre route pour insérer des données
+        app.post('/admin/ajouter_article', (req, res) => {
+        
+            if (req.body.titre) {
+                execDB.insert({
+                    theCollection: 'articles',
+                    values: { titre: req.body.titre, contenu: req.body.contenu , auteur: session.utilisateur, date: Date.now() },
+                    done: () => {
+                        res.render('admin', { title: 'Page admin', message: 'article inséré', session: req.session });
+                    }
+                });
+            } else {
+                res.redirect('/admin/ajouter_article');
+                console.log('redirection ok');
+            }
+        
         });
 ````
 

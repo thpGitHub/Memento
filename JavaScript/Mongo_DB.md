@@ -8,7 +8,7 @@ MongoDB
 
 
 ````shell script
-    // lancer dans le répertoire ou se trouve `mongo.exe`
+    # lancer dans le répertoire ou se trouve mongo.exe
     $ mongo
 ````
 >mongo est une interface shell JavaScript interactive pour MongoDB,
@@ -18,10 +18,10 @@ MongoDB
 > entièrement fonctionnel à utiliser avec un MongoDB.
 
 ````shell script
-    > show dbs // Affiche la listes des BDDs
-    > use nomBDD // Choisir une BDD
-    > db // Affiche la BDD dans laquel on se trouve
-    > show collections // Affiche les collections de la BDD  
+    > show dbs # Affiche la listes des BDDs
+    > use nomBDD # Choisir une BDD
+    > db # Affiche la BDD dans laquel on se trouve
+    > show collections # Affiche les collections de la BDD  
 ````
 ---
 #### Création d'une BDD
