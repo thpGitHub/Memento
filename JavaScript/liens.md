@@ -3,7 +3,7 @@ animations :
 ---
 API REST :
 - https://pokeapi.co/
-- https://jsonplaceholder.typicode.com/
+- https://jsonplaceholder.typicode.com/ // pour générer du contenu fictif
 - https://swapi.dev/
 ---
 babel :    

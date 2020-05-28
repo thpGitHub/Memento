@@ -4,10 +4,9 @@
     <list default="true" id="21085bed-9cdd-4d1b-b3f7-ef794e60db81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaScript/Express_js.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Express_js.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaScript/Mongo_DB.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Mongo_DB.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaScript/liens.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/liens.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/views/index.pug" beforeDir="false" afterPath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/views/index.pug" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +47,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -57,19 +56,19 @@
     <property name="ts.external.directory.path" value="C:\Users\thier\OneDrive\Documents\Angular\tuto_openClassR_Node_Express_Mongo\frontend\go-fullstack-fr-frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\thier\OneDrive\Documents\express_js\Exercices_ExpressJS\Exercices\7 - BLOG" />
-      <recent name="C:\Users\thier\OneDrive\Documents\Javascript\Batlle_Dev\JavaScript\Hello_Work_Mars_2020\cartes" />
-      <recent name="C:\Users\thier\OneDrive\Documents\AJAX" />
-      <recent name="C:\Users\thier\OneDrive\Documents\AJAX\AJAX_Vanilla\meteo" />
-      <recent name="C:\Users\thier\OneDrive\Documents\AJAX\Exercices" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer\questions_for_a_developer\public\images" />
       <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer" />
       <recent name="C:\Users\thier\OneDrive\Documents\AJAX\Exercices\exercice2" />
       <recent name="C:\Users\thier\OneDrive\Documents\AJAX\Exercices\public" />
       <recent name="C:\Users\thier\OneDrive\Documents\Angular\IFOCOP\demo-app\src\assets\images" />
-      <recent name="C:\Users\thier\OneDrive\Documents\Angular\IFOCOP\demo-app\src\assets" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer\questions_for_a_developer" />
+      <recent name="C:\Users\thier\OneDrive\Documents\express_js\Exercices_ExpressJS\Exercices\7 - BLOG" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Javascript\Batlle_Dev\JavaScript\Hello_Work_Mars_2020\cartes" />
+      <recent name="C:\Users\thier\OneDrive\Documents\AJAX" />
+      <recent name="C:\Users\thier\OneDrive\Documents\AJAX\AJAX_Vanilla\meteo" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -154,6 +153,10 @@
       <workItem from="1590416289195" duration="6727000" />
       <workItem from="1590432817195" duration="8975000" />
       <workItem from="1590483270048" duration="6025000" />
+      <workItem from="1590505264369" duration="16310000" />
+      <workItem from="1590589917486" duration="6766000" />
+      <workItem from="1590653370722" duration="1896000" />
+      <workItem from="1590698217920" duration="8657000" />
     </task>
     <servers />
   </component>
@@ -194,10 +197,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="566" height="445" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1590438956109" />
-    <state x="399" y="167" key="com.intellij.ide.util.TipDialog" timestamp="1590505284219">
+    <state x="399" y="167" key="com.intellij.ide.util.TipDialog" timestamp="1590698225867">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="399" y="167" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1590505284219" />
+    <state x="399" y="167" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1590698225867" />
     <state x="297" y="151" key="run.anything.popup" timestamp="1590167296351">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
