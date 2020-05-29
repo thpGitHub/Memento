@@ -1,5 +1,9 @@
 AJAX (Asynchronous JavaScript And XML)
 -
+
+en markdown: lien : [lien afficher](#nomAncre)   
+titre: 
+
 > Asynchrone signifie que l'application Web peut envoyer et recevoir des données du serveur Web sans actualiser la page.
 
 > AJAX utilise un objet ``XMLHttpRequest`` intégré au navigateur pour demander des données à un serveur Web.
@@ -28,6 +32,7 @@ Propriétés de l'objet XMLHttpRequest:
    
 ``status`` est une propriété de l'objet XMLHttpRequest qui retourne le numéro d'état d'une requête
 - 200: "OK"
+- 304: "Not Modified" (redirection implicite vers une ressource mise en cache)
 - 403: "Interdit"
 - 404: "Introuvable"   
 
@@ -71,5 +76,44 @@ Pour envoyer une demande à un serveur Web, nous utilisons les méthodes ``open(
     request.send();
 ````
 
+### Envoyer des données dans l'url :
+````javascript
+    request.open('get', url+`?pseudo=${ e.target.value }`);
+    request.send();
+    // autre exemple :
+    request.open("GET", "demo_get2.asp?fname=Henry&lname=Ford");
+    request.send();
+````
+---
+
+### Requête POST:
 Notez que si vous voulez envoyer des données avec la méthode POST, vous aurez peut-être à changer le type MIME de la requête. Par exemple, utilisez ce qui suit avant d’appeler send() pour envoyer des données de formulaire en tant que chaîne de requête :
 httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+````javascript
+    request.open('post', url);
+    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    request.send(`pseudo=${ e.target.value }`);
+````
+Exemple dans du code JS :
+````javascript
+    const eltPseudo = document.querySelector('#pseudo')
+            .addEventListener('keyup', (e) => {
+                const request = new XMLHttpRequest();
+                const url     = '/test';// route pour le serveur express
+    
+                // request.open('get', url+`?pseudo=${ e.target.value }`);
+                // request.send();
+                request.open('post', url);
+                request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                request.send(`pseudo=${ e.target.value }`);
+    
+                request.onload = function () {
+                    console.log('la reponse = ', request.response);
+                    if (request.response === 'ok le pseudo existe dans la bdd') {
+                        document.querySelector('#pseudo_keep').innerHTML = `Attention le pseudo ${ e.target.value } est déja pris !`
+                    }
+                }
+            })
+````
+##Titre <a id="nomAncre"></a>

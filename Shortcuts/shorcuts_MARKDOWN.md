@@ -42,6 +42,10 @@ ceci est très **important**
 Lien : []suivi de l'URL
  le [Site du Zéro](http://www.siteduzero.com) pour tout apprendre à partir de Zéro !
 
+Lien interne sur une ancre :   
+lien : [lien afficher](#nomAncre)   
+titre: ##Titre <a id="nomAncre"></a>
+
 Image : ![]
 ![Zozor](http://uploads.siteduzero.com/files/420001_421000/420263.png)
 
@@ -57,3 +61,4 @@ code :
 
 code dans phrase :
 ta ta ta ta `console.log` ti ta tu ....
+
