@@ -1,8 +1,14 @@
 AJAX (Asynchronous JavaScript And XML)
 -
 
-en markdown: lien : [lien afficher](#nomAncre)   
-titre: 
+- [Requête GET](#reqGet)   
+- [Requête POST](#reqPost)   
+- [AJAX avec jQuery](#jquery) 
+- [AJAX avec Axios](#axios) 
+- [AJAX avec RXJS](#rxjs) 
+- [AJAX avec Fetch](#fetch) 
+
+
 
 > Asynchrone signifie que l'application Web peut envoyer et recevoir des données du serveur Web sans actualiser la page.
 
@@ -54,7 +60,7 @@ Pour envoyer une demande à un serveur Web, nous utilisons les méthodes ``open(
         xhttp.send();
     }
 ````
-> Ici on envoie une requête mais nous ne traitons pas la réponse reçue : 
+> Ici on envoie une requête mais nous ne traitons pas la réponse reçue <a id="reqGet"></a>: 
 ````javascript
     const request = new XMLHttpRequest();
     request.open("GET","https://www.prevision-meteo.ch/services/json/vaucresson");
@@ -86,7 +92,7 @@ Pour envoyer une demande à un serveur Web, nous utilisons les méthodes ``open(
 ````
 ---
 
-### Requête POST:
+### Requête POST <a id="reqPost"></a> :
 Notez que si vous voulez envoyer des données avec la méthode POST, vous aurez peut-être à changer le type MIME de la requête. Par exemple, utilisez ce qui suit avant d’appeler send() pour envoyer des données de formulaire en tant que chaîne de requête :
 httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
@@ -116,4 +122,7 @@ Exemple dans du code JS :
                 }
             })
 ````
-##Titre <a id="nomAncre"></a>
+---
+### AJAX avec jQuery <a id="jquery"></a> :
+
+### AJAX avec Axios <a id="axios"></a> :
