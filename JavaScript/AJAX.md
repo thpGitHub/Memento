@@ -127,10 +127,83 @@ Exemple dans du code JS :
 > Callback Hell
 ---
 ### AJAX avec Axios <a id="axios"></a>  :
-> Fourni des promesses (la promesse renvoie une seule valeur)
+> Fourni des promesses (la promesse renvoie une seule valeur).
+> Axios est une bibliothèque JavaScript fonctionnant comme un client HTTP.   
+
+***A voir plus tard*** function generator js   ``function*``
+
+````shell script
+    $ npm i axios
+````
+````javascript
+    axios({  url: 'https://dog.ceo/api/breeds/list/all',
+             method: 'get',
+             data: {   
+                 foo: 'bar' 
+             }
+    })
+````
+On peut utiliser : 
+- ``axios.get()``
+- ``axios.post()``
+
+### Requête GET : 
+````javascript
+    const axios = require('axios');
+    
+    // Make a request for a user with a given ID
+    axios.get('/user?ID=12345')
+      .then(function (response) {
+        // handle success
+        console.log(response);
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });
+    
+    // Optionally the request above could also be done as
+    axios.get('/user', {
+        params: {
+          ID: 12345
+        }
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .then(function () {
+        // always executed
+      });  
+
+````
+
+### Requete POST
+````javascript
+    axios.post('/user', {
+        firstName: 'Fred',
+        lastName: 'Flintstone'
+      })
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+````
+
 ---
 ### AJAX avec RXJS <a id="rxjs"></a> :
 > Fourni des observables (un observable renvoie plusieurs valeurs)
+
+````shell script
+    $ npm i rxjs
+````
 ---
 ### AJAX avec Fetch <a id="fetch"></a> :
 > Disponible dans tous les navigateurs modernes
