@@ -124,5 +124,13 @@ Exemple dans du code JS :
 ````
 ---
 ### AJAX avec jQuery <a id="jquery"></a> :
-
-### AJAX avec Axios <a id="axios"></a> :
+> Callback Hell
+---
+### AJAX avec Axios <a id="axios"></a>  :
+> Fourni des promesses (la promesse renvoie une seule valeur)
+---
+### AJAX avec RXJS <a id="rxjs"></a> :
+> Fourni des observables (un observable renvoie plusieurs valeurs)
+---
+### AJAX avec Fetch <a id="fetch"></a> :
+> Disponible dans tous les navigateurs modernes
