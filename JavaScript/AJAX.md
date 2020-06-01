@@ -66,7 +66,7 @@ Pour envoyer une demande à un serveur Web, nous utilisons les méthodes ``open(
     request.open("GET","https://www.prevision-meteo.ch/services/json/vaucresson");
     request.send();
 ````
-
+> Avec le traitement de la réponse :
 ````javascript
     const request = new XMLHttpRequest();
     

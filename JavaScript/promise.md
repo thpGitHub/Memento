@@ -1,6 +1,7 @@
-# Les promesses en JavaScript ( promises )
+Les promesses en JavaScript ( promises )
+-
 
-> JavaScript a un thread unique, ce qui signifie que deux script ne peuvent pas s'exécuter en même temps, 
+> JavaScript a un thread unique, ce qui signifie que deux scripts ne peuvent pas s'exécuter en même temps, 
 > ils doivent s'exécuter l'un derrière l'autre.   
 > Une promesse est un objet qui représente la résolution ou l'échec d'une opération asynchrone.
 
