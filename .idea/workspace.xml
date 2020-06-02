@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="21085bed-9cdd-4d1b-b3f7-ef794e60db81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaScript/liens.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/liens.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaScript/webpack.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/webpack.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -164,7 +165,8 @@
       <workItem from="1591046372149" duration="50000" />
       <workItem from="1591046441233" duration="1836000" />
       <workItem from="1591056978170" duration="55000" />
-      <workItem from="1591086095341" duration="5572000" />
+      <workItem from="1591086095341" duration="6319000" />
+      <workItem from="1591107955776" duration="3548000" />
     </task>
     <servers />
   </component>
@@ -221,10 +223,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="566" height="445" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1590438956109" />
-    <state x="149" y="175" key="com.intellij.ide.util.TipDialog" timestamp="1591086540007">
+    <state x="149" y="175" key="com.intellij.ide.util.TipDialog" timestamp="1591107959753">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="149" y="175" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1591086540007" />
+    <state x="149" y="175" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1591107959753" />
     <state x="297" y="151" key="run.anything.popup" timestamp="1590167296351">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
