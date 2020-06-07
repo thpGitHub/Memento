@@ -17,6 +17,9 @@ bootstrap :
 - https://startbootstrap.com/   
 - https://hackerthemes.com/bootstrap-cheatsheet/
 ---
+Can I Use :
+- https://caniuse.com/
+---
 Emoticones  / icones :
 - https://emojiterra.com/fr/
 - https://www.flaticon.com/
@@ -56,6 +59,9 @@ Regex :
 - https://regex101.com/   
 // il y a des librairies de regex (notamment pour les emails)
 ---
+Rxjs : 
+- https://rxjs-dev.firebaseapp.com/
+---
 Sass :  
 //   
 - https://www.sassmeister.com/
@@ -78,6 +84,8 @@ divers :
 
 - https://www.urcdkeys.com/ // code promo : DD20
 
+// Amazing Transparent Login Form Just By Using HTML & CSS
+- https://www.youtube.com/watch?v=ooc6f1w6Mzg
 
 
 

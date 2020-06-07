@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="21085bed-9cdd-4d1b-b3f7-ef794e60db81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaScript/AJAX.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/AJAX.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaScript/Web_Sockets.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Web_Sockets.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaScript/liens.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/liens.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaScript/webpack.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/webpack.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,19 +55,19 @@
     <property name="ts.external.directory.path" value="C:\Users\thier\OneDrive\Documents\Angular\tuto_openClassR_Node_Express_Mongo\frontend\go-fullstack-fr-frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer\questions_for_a_developer\public\images" />
-      <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer" />
-      <recent name="C:\Users\thier\OneDrive\Documents\AJAX\Exercices\exercice2" />
-      <recent name="C:\Users\thier\OneDrive\Documents\AJAX\Exercices\public" />
-      <recent name="C:\Users\thier\OneDrive\Documents\Angular\IFOCOP\demo-app\src\assets\images" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer\questions_for_a_developer" />
       <recent name="C:\Users\thier\OneDrive\Documents\express_js\Exercices_ExpressJS\Exercices\7 - BLOG" />
       <recent name="C:\Users\thier\OneDrive\Documents\Javascript\Batlle_Dev\JavaScript\Hello_Work_Mars_2020\cartes" />
       <recent name="C:\Users\thier\OneDrive\Documents\AJAX" />
       <recent name="C:\Users\thier\OneDrive\Documents\AJAX\AJAX_Vanilla\meteo" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer\questions_for_a_developer\public\images" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer" />
+      <recent name="C:\Users\thier\OneDrive\Documents\AJAX\Exercices\exercice2" />
+      <recent name="C:\Users\thier\OneDrive\Documents\AJAX\Exercices\public" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Angular\IFOCOP\demo-app\src\assets\images" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -166,7 +167,11 @@
       <workItem from="1591046441233" duration="1836000" />
       <workItem from="1591056978170" duration="55000" />
       <workItem from="1591086095341" duration="6319000" />
-      <workItem from="1591107955776" duration="3548000" />
+      <workItem from="1591107955776" duration="3593000" />
+      <workItem from="1591122147536" duration="1796000" />
+      <workItem from="1591189171250" duration="6363000" />
+      <workItem from="1591267085325" duration="2106000" />
+      <workItem from="1591350095504" duration="2828000" />
     </task>
     <servers />
   </component>
@@ -223,10 +228,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="566" height="445" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1590438956109" />
-    <state x="149" y="175" key="com.intellij.ide.util.TipDialog" timestamp="1591107959753">
+    <state x="172" y="153" key="com.intellij.ide.util.TipDialog" timestamp="1591535871529">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="149" y="175" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1591107959753" />
+    <state x="172" y="153" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1591535871529" />
     <state x="297" y="151" key="run.anything.popup" timestamp="1590167296351">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

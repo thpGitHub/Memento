@@ -204,6 +204,59 @@ On peut utiliser :
 ````shell script
     $ npm i rxjs
 ````
+````javascript
+    // import de la methode ajax() de rxjs
+    import { ajax } from "rxjs/ajax";
+
+    const observable = ajax({
+       url: "https://pokeapi.co/api/v2/pokemon",
+       method: "get", 
+    });
+    // la méthode ``subscribe()`` déclenche la requête,
+    // il y a 3 méthodes : ``next()`` ``error()`` ``complete()``
+    observable.subscribe({
+        next() {
+        // appelée à chaque fois qu'une nouvelle valeur est émise
+        },
+        error() {
+        // appelée quand une erreur se produit
+        },
+        complete() {
+        // appelée quand l'observable a fini d'émettre des valeurs
+        }
+    });
+````
+Avec un exemple :
+````javascript
+    import { ajax } from "rxjs/ajax";
+    
+    const observable = ajax({
+       url: "https://pokeapi.co/api/v2/pokemon",
+       method: "get",
+    });
+    
+    const ul = document.querySelector('ul');
+    
+    observable.subscribe({
+        next(response) {
+            const result = response.response.results;
+    
+            for (let pok of result) {
+                let li = document.createElement('li');
+                li.innerHTML = pok.name;
+                ul.appendChild(li);
+            }
+        },
+        error(error) {
+            console.log('error', error);
+        },
+        complete() {
+            console.log('complete')
+        }
+    });
+
+````
+
 ---
 ### AJAX avec Fetch <a id="fetch"></a> :
 > Disponible dans tous les navigateurs modernes
