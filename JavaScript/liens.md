@@ -20,6 +20,9 @@ bootstrap :
 Can I Use :
 - https://caniuse.com/
 ---
+Color css :
+- https://flatuicolors.com/
+---
 Emoticones  / icones :
 - https://emojiterra.com/fr/
 - https://www.flaticon.com/
@@ -34,6 +37,9 @@ freeCodeCamp :
 leaflet :
 - https://leafletjs.com/
 - https://leaflet-extras.github.io/leaflet-providers/preview/
+---
+Images :
+- https://pixabay.com/fr/   
 ---
 les déconfinés de l'IT
 - https://lesdeconfinesit.wordpress.com/
