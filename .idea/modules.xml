@@ -10,6 +10,8 @@
       <module fileurl="file://$PROJECT_DIR$/../Javascript/.idea/Javascript.iml" filepath="$PROJECT_DIR$/../Javascript/.idea/Javascript.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/Memento.iml" filepath="$PROJECT_DIR$/.idea/Memento.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/.idea/Projet_Back_Questions_for_a_developer.iml" filepath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/.idea/Projet_Back_Questions_for_a_developer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Question_pour_un_developpeur/.idea/Question_pour_un_developpeur.iml" filepath="$PROJECT_DIR$/../Question_pour_un_developpeur/.idea/Question_pour_un_developpeur.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Questions_pour_un_developpeur/.idea/Questions_pour_un_developpeur.iml" filepath="$PROJECT_DIR$/../Questions_pour_un_developpeur/.idea/Questions_pour_un_developpeur.iml" />
       <module fileurl="file://$PROJECT_DIR$/../Web_Sockets/.idea/Web_Sockets.iml" filepath="$PROJECT_DIR$/../Web_Sockets/.idea/Web_Sockets.iml" />
       <module fileurl="file://$PROJECT_DIR$/../express_js/.idea/express_js.iml" filepath="$PROJECT_DIR$/../express_js/.idea/express_js.iml" />
       <module fileurl="file://$PROJECT_DIR$/../mongoDB/.idea/mongoDB.iml" filepath="$PROJECT_DIR$/../mongoDB/.idea/mongoDB.iml" />

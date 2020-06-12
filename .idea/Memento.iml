@@ -18,5 +18,7 @@
     <orderEntry type="module" module-name="projet_back" />
     <orderEntry type="module" module-name="Projet_Back_Questions_for_a_developer" />
     <orderEntry type="module" module-name="Javascript" />
+    <orderEntry type="module" module-name="Question_pour_un_developpeur" />
+    <orderEntry type="module" module-name="Questions_pour_un_developpeur" />
   </component>
 </module>
