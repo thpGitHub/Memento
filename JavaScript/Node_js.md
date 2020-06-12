@@ -9,7 +9,7 @@ initialiser un projet node
     $ npm init
 ````
 il y  a des options par defaults à valider ou à modifier, ses options seront enregistrées dans un fichier ``package.json``:
-On peut modifier par exemple l'option : ``entry point: (index.js)`` qui a par default est le fichier ``index.js``
+On peut modifier par exemple l'option : ``entry point: (app.js)`` qui a par default est le fichier ``app.js``
 
 Pour ne par arrêter et redemarer node server après chaque modification on peut instatller ``nodemon``
 ````shell script

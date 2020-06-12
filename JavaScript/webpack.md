@@ -18,7 +18,7 @@ Création d'un fichier de configuration : ``webpack.config.js``
 
 ````javascript
     module.exports =  {
-        entry: './src/index.js',
+        entry: './src/app.js',
         mode: 'development', //Pour le passage en production il y a 'production'
         output: {
             filename: 'bundle.js',

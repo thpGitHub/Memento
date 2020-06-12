@@ -122,6 +122,37 @@ Exemple dans du code JS :
                 }
             })
 ````
+la partie serveur express :
+````javascript
+    app.post('/test', (req, res) => {
+        console.log(req.body);
+    
+        MongoClient.connect(url,{useNewUrlParser:true, useUnifiedTopology:true}, (err, client) => {
+            if (err) {
+                return console.log('err');
+            }
+    
+            const db = client.db(dbName);
+            const myCollection = db.collection('login');
+            myCollection.find({ pseudo: req.body.pseudo }).toArray((err, docs) => {
+                client.close();
+                console.log(docs);
+                //res.render('accueil', {title: 'Accueil', datas: docs});
+                if (docs.length) {
+                    res.send('ok le pseudo existe dans la bdd');
+                    //res.render('game_arena');
+                }else {
+                    //res.render('index', { message: 'Pseudo ou Mot de passe incorrect' });
+                    res.send('ko le pseudo n existe PAS dans la bdd');
+                }
+            });
+        });
+        //console.log(req.query.autrenom);
+        //res.render('test');
+        //res.send('ok');
+    });
+````
+
 ---
 ### AJAX avec jQuery <a id="jquery"></a> :
 > Callback Hell

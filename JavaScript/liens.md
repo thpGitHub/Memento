@@ -30,6 +30,9 @@ Emoticones  / icones :
 Flex Box :
 - https://flexboxfroggy.com/#fr
 ---
+Font :
+- https://www.1001fonts.com/
+---
 freeCodeCamp :  
 - https://www.freecodecamp.org/news/best-javascript-tutorial/
 - https://www.freecodecamp.org/news/learn-these-javascript-fundamentals-and-become-a-better-developer-2a031a0dc9cf/

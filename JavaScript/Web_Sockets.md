@@ -23,7 +23,7 @@ Le client effectue donc 2 types de connexion :
 
 -   Une connexion "temps réel" pour ouvrir un tunnel via les WebSockets grâce à socket.io
 
-``index.js``
+``app.js``
 ````javascript
     const app  = require('express') (),
           port = 65000,
@@ -99,7 +99,7 @@ Depuis ``ìndex.js``
 
 > 3/ Emettre des event depuis le serveur vers les utilisateurs :
 Pour envoyer un événement à tout le monde : ``io.emit()``.
-Depuis ``index.js``
+Depuis ``app.js``
 ````javascript
     io.on('connection', (socket) => {
           socket.on('chat message', (msg) => {

@@ -9,6 +9,7 @@ Pour ajouter Express dans le dossier de votre projet :
 > en tant que dépendance dans le fichier ``package.json`` (``package.json`` a été créé par ``$ npm init``).
 > ***``Attention``*** il faut avant d'installer express faire un ``$ npm init``.
 
+
 ````json
 {
     "dependencies": {
@@ -377,7 +378,7 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
         });
     };
 ````
-- fichier : index.js
+- fichier : app.js
 ````javascript
     const execDB = require('./db');
     // ici exemple avec une route post :
@@ -440,7 +441,7 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
     };
 ````
 
-- fichier : index.js :
+- fichier : app.js :
 ````javascript
     const execDB = require('./db');
         // ici exemple avec une route post :
@@ -492,7 +493,7 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
         return new ObjectId(idText);
     };
 ````
-- fichier index.js : 
+- fichier app.js : 
 
 ````javascript
     const execDB = require('./db');
@@ -544,7 +545,7 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
     │   └── stylesheets
     │       └── style.css
     ├── routes
-    │   ├── index.js
+    │   ├── app.js
     │   └── users.js
     └── views
         ├── error.pug
