@@ -84,8 +84,9 @@ Analysez les corps des requêtes entrantes dans un middleware avant vos gestionn
  disponibles sous la req.bodypropriété.
  ````javascript
     const bodyParser = require('body-parser');
+    app.use(body_parser.urlencoded({ extended: false }));
     //....
-    app.use(bodyParser.json());
+    //app.use(bodyParser.json());
     
     app.post('/', (req, res, next) => {
        console.log(req.body);
@@ -244,7 +245,7 @@ if (!identifiant || !mdp) {
     doctype html
     head
         title= title
-        link(rel="stylesheet", href="/src/style.css")
+        link(rel="stylesheet", href="/src/style_index.css")
 ````
 
 - hearder.pug

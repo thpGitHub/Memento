@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21085bed-9cdd-4d1b-b3f7-ef794e60db81" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/Memento.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Memento.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaScript/AJAX.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/AJAX.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaScript/Express_js.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Express_js.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaScript/Node_js.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Node_js.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaScript/Web_Sockets.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Web_Sockets.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaScript/liens.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/liens.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaScript/webpack.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/webpack.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/verify.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/verify.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,15 +25,15 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
-        <option value="Pug File" />
         <option value="HTML File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
+        <option value="Pug File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../Questions_pour_un_developpeur" />
   </component>
   <component name="ProjectId" id="1YfovrqwTjtvKx64C87zg4HZcyi" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -63,10 +59,10 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\views" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur" />
       <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer\questions_for_a_developer_V2\sandBox" />
       <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer\questions_for_a_developer\public\images" />
       <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer" />
-      <recent name="C:\Users\thier\OneDrive\Documents\AJAX\Exercices\exercice2" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\public\stylesheets" />
@@ -187,7 +183,9 @@
       <workItem from="1591892149972" duration="4761000" />
       <workItem from="1591897870303" duration="9264000" />
       <workItem from="1591955902712" duration="8643000" />
-      <workItem from="1591967130407" duration="16565000" />
+      <workItem from="1591967130407" duration="16931000" />
+      <workItem from="1592074641684" duration="9066000" />
+      <workItem from="1592139591507" duration="27406000" />
     </task>
     <servers />
   </component>
@@ -252,10 +250,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="566" height="445" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1591974093523" />
-    <state x="172" y="153" key="com.intellij.ide.util.TipDialog" timestamp="1591967141373">
+    <state x="172" y="153" key="com.intellij.ide.util.TipDialog" timestamp="1592139594191">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="172" y="153" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1591967141373" />
+    <state x="172" y="153" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1592139594191" />
     <state x="297" y="151" key="run.anything.popup" timestamp="1590167296351">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

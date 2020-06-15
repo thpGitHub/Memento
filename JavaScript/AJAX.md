@@ -100,6 +100,8 @@ httpRequest.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'
     request.open('post', url);
     request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
     request.send(`pseudo=${ e.target.value }`);
+    // envoyer plusieurs valeurs :
+    // request.send("fname=Henry&lname=Ford");
 ````
 Exemple dans du code JS :
 ````javascript
