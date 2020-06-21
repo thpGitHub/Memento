@@ -99,7 +99,7 @@ Depuis ``ìndex.js``
 
 > 3/ Emettre des event depuis le serveur vers les utilisateurs :
 Pour envoyer un événement à tout le monde : ``io.emit()``.
-Depuis ``app.js``
+Depuis ``index.js``
 ````javascript
     io.on('connection', (socket) => {
           socket.on('chat message', (msg) => {
@@ -126,4 +126,69 @@ Depuis le ``index.html``
                 document.querySelector('#messages').appendChild(li);
             });
         </script>
+````
+> Autre exemple :
+fichier : ``client.pug``
+
+````jade
+    doctype html
+    head
+        title Exemple
+    #container.col
+    script(src='/socket.io/socket.io.js')
+    script.
+        window.addEventListener('DOMContentLoaded', () => {
+            let socket = io();
+            socket.on('div', function(datas) {
+                let divElement = document.getElementById(datas.id);
+                if (!divElement) {
+                    divElement = document.createElement('div');
+                    divElement.id = datas.id;
+                    document.body.appendChild(divElement);
+                }
+                divElement.style.top = datas.top;
+                divElement.style.left = datas.left;
+                divElement.style.width = datas.width;
+                divElement.style.height = datas.height;
+                divElement.style.position = datas.position;
+                divElement.style.backgroundColor = datas.backgroundColor;
+            });
+        });
+````
+
+> dans le fichier ``index.js``
+````javascript
+    const express = require('express');
+    const app = express();
+    const http = require('http').createServer(app);
+    const port = 65000;
+    const io = require('socket.io')(http);
+    const uuid = require('uuid');
+    const randomColor = require('randomcolor');
+    
+    app.set('view engine', 'pug');
+    
+    app.get('/', (req, res) => {
+       res.render('client');
+    });
+    
+    http.listen(port, () => {
+        const date = new Date();
+        console.log(`${ date.getHours() }H${ date.getMinutes() } on port : ${ port }`);
+    });
+    
+    io.on('connection', (socket) => {
+        console.log('a user connected');
+        const datas = {
+            id: uuid.v4(),
+            top: '0px',
+            left: '0px',
+            width: '150px',
+            height: '150px',
+            position: 'absolute',
+            backgroundColor: randomColor()
+        };
+        console.log(datas);
+        io.emit('div', datas)
+    });
 ````

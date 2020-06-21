@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="21085bed-9cdd-4d1b-b3f7-ef794e60db81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaScript/AJAX.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/AJAX.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaScript/Express_js.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Express_js.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaScript/Web_Sockets.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Web_Sockets.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaScript/liens.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/liens.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/verify.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/verify.js" afterDir="false" />
     </list>
@@ -25,15 +24,15 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="TypeScript File" />
+        <option value="CSS File" />
         <option value="HTML File" />
         <option value="JavaScript File" />
-        <option value="CSS File" />
         <option value="Pug File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../Questions_pour_un_developpeur" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1YfovrqwTjtvKx64C87zg4HZcyi" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -57,19 +56,19 @@
     <property name="ts.external.directory.path" value="C:\Users\thier\OneDrive\Documents\Angular\tuto_openClassR_Node_Express_Mongo\frontend\go-fullstack-fr-frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\views" />
-      <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur" />
-      <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer\questions_for_a_developer_V2\sandBox" />
-      <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer\questions_for_a_developer\public\images" />
-      <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\public\stylesheets" />
       <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\views" />
       <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\public\images" />
       <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\public" />
       <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer\questions_for_a_developer_V2" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\views" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer\questions_for_a_developer_V2\sandBox" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer\questions_for_a_developer\public\images" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -185,7 +184,16 @@
       <workItem from="1591955902712" duration="8643000" />
       <workItem from="1591967130407" duration="16931000" />
       <workItem from="1592074641684" duration="9066000" />
-      <workItem from="1592139591507" duration="27406000" />
+      <workItem from="1592139591507" duration="27513000" />
+      <workItem from="1592211041056" duration="14973000" />
+      <workItem from="1592249683533" duration="4833000" />
+      <workItem from="1592314424643" duration="8303000" />
+      <workItem from="1592401166182" duration="14238000" />
+      <workItem from="1592577659924" duration="2685000" />
+      <workItem from="1592597246655" duration="601000" />
+      <workItem from="1592643204375" duration="10771000" />
+      <workItem from="1592747139978" duration="999000" />
+      <workItem from="1592770630224" duration="739000" />
     </task>
     <servers />
   </component>
@@ -250,10 +258,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="566" height="445" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1591974093523" />
-    <state x="172" y="153" key="com.intellij.ide.util.TipDialog" timestamp="1592139594191">
+    <state x="177" y="154" key="com.intellij.ide.util.TipDialog" timestamp="1592770751599">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
-    <state x="172" y="153" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1592139594191" />
+    <state x="177" y="154" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1592770751599" />
     <state x="297" y="151" key="run.anything.popup" timestamp="1590167296351">
       <screen x="0" y="0" width="1280" height="680" />
     </state>

@@ -41,6 +41,9 @@ leaflet :
 - https://leafletjs.com/
 - https://leaflet-extras.github.io/leaflet-providers/preview/
 ---
+Livres :
+- https://exploringjs.com/deep-js/toc.html
+---
 Images :
 - https://pixabay.com/fr/   
 ---
@@ -74,6 +77,11 @@ Rxjs :
 Sass :  
 //   
 - https://www.sassmeister.com/
+---
+Socket.io :
+docs :
+- https://socket.io/
+- https://github.com/socketio/engine.io
 ---
 Sprites :
 - https://ya-webdesign.com/explore/sprite-animation-png/
