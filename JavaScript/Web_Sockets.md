@@ -32,7 +32,7 @@ Le client effectue donc 2 types de connexion :
     
     app.get('/', (req, res) => {
         console.log(__dirname);
-       res.sendFile(__dirname + '/index.html');
+        res.sendFile(__dirname + '/index.html');
     });
     // event de type connection
     io.on('connection', (socket) => {
@@ -53,9 +53,10 @@ Le client effectue donc 2 types de connexion :
         <title>get started Chat</title>
     </head>
     <body>
-       
+        <!--récupération du fichier socket.io.js-->
         <script src="/socket.io/socket.io.js"></script>
         <script>
+            //connection au serveur
             let socket = io();
         </script>
     </body>
@@ -65,10 +66,10 @@ Le client effectue donc 2 types de connexion :
 event sur les sockets : ```disconnect```
 ````javascript
     io.on('connection', (socket) => {
-      console.log('a user connected');
-      socket.on('disconnect', () => {
-        console.log('user disconnected');
-      });
+        console.log('a user connected');
+        socket.on('disconnect', () => {
+            console.log('user disconnected');
+        });
     });
 ````
 
@@ -91,8 +92,8 @@ Depuis le fichier ``index.html``
 Depuis ``ìndex.js``
 ````javascript
     io.on('connection', (socket) => {
-      socket.on('chat message', (msg) => {
-        console.log('message: ' + msg);
+        socket.on('chat message', (msg) => {
+            console.log('message: ' + msg);
       });
     });
 ````
@@ -103,8 +104,8 @@ Depuis ``index.js``
 ````javascript
     io.on('connection', (socket) => {
           socket.on('chat message', (msg) => {
-          console.log('message: ' + msg);
-          io.emit ( 'chat message' , msg); 
+            console.log('message: ' + msg);
+            io.emit ( 'chat message' , msg); 
           });
         });
 ````
@@ -191,4 +192,14 @@ fichier : ``client.pug``
         console.log(datas);
         io.emit('div', datas)
     });
+````
+
+Créer une variable de session :
+---
+
+> il y a 1 objet socket en mémoire sur le serveur pour chaque client.
+````javascript
+    io.on('connection', (socket) => {
+            socket.session = req.body.pseudo;
+        });
 ````
