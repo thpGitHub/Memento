@@ -197,9 +197,21 @@ fichier : ``client.pug``
 Créer une variable de session :
 ---
 
-> il y a 1 objet socket en mémoire sur le serveur pour chaque client.
+> il y a 1 objet ``socket`` en mémoire sur le serveur pour chaque client.
 ````javascript
     io.on('connection', (socket) => {
             socket.session = req.body.pseudo;
         });
 ````
+
+ATTENTION :
+---
+ ````javascript
+    io.on('connection', (socket) => {
+        // enverra à TOUS les sockets connectés
+         io.emit ( 'pseudos des gamers' , tab_gamer_connect);
+    
+        // enverra seulement au socket en question 
+        socket.emit('pseudo du gamer', socket.session);
+    });
+ ````

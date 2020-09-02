@@ -19,7 +19,7 @@ AJAX (Asynchronous JavaScript And XML)
 
 >  Les applications AJAX peuvent utiliser XML pour transporter des données, mais il est tout aussi courant de transporter des données en texte brut ou en texte JSON.   
 
-Créez un objet XMLHttpRequest:
+Créez une instance de l'objet XMLHttpRequest:
 ````javascript
     let xhttp = new XMLHttpRequest();
 ````
