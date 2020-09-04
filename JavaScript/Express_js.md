@@ -1,5 +1,6 @@
 Express JS
 -
+> Express.js est un framework minimaliste pour node.js.
 
 Pour ajouter Express dans le dossier de votre projet :
 ```shell script
@@ -21,13 +22,21 @@ Par convention l'objet ``app`` désigne une application ``express`` et possède 
 ````javascript
     const express = require('express');
     const app = express();
-// ou const app = require('express') ();
+    // const port = process.env.PORT || 8000;
+
+    // ou const app = require('express') ();
     // app.get(path, callback [, callback ...])
     // requête GET vers le chemin demandé
     app.get('/', function (req, res) {
       res.send('hello world');
     })
     app.listen(3000);
+/*
+    http.listen(port, () => {
+        const date = new Date();
+        console.log(`${ date.getHours() }H${ date.getMinutes() } on port : ${ port }`);
+    });
+*/
 ````
 
 ````javascript
@@ -70,6 +79,30 @@ Par convention l'objet ``app`` désigne une application ``express`` et possède 
         // Permet de passer au middleware suivant 
        next();
     });
+````
+
+autre solution : Installer le package ``cors``
+````shell script
+    $ npm i cors
+````
+usage simple :
+> ici Faire appel à ce package sans lui passer d’arguments permet d’autoriser tous les accès à votre ressource.
+
+````javascript
+    var express = require('express')
+    var cors = require('cors')
+    var app = express()
+     
+    app.use(cors())
+     
+    app.get('/products/:id', function (req, res, next) {
+      res.json({msg: 'This is CORS-enabled for all origins!'})
+    })
+     
+    app.listen(80, function () {
+      console.log('CORS-enabled web server listening on port 80')
+    })
+
 ````
 
 ---
@@ -532,7 +565,28 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
 > L'un des avantages que nous avons à utiliser Mongoose pour gérer notre base de données MongoDB est que nous pouvons implémenter des schémas de données stricts
 
 ---
+### Création d'un fichier ``router.js``
 
+- fichier ``app.js``
+````javascript
+    const router = require('./router');
+
+    app.use(router); // Requests processing will be defined in the file router
+````
+- fichier ``router.js``
+````javascript
+    const express = require("express");
+    const router = express.Router();
+    
+    module.exports = router;
+
+    router.get("/", (req, res) => {
+           res.json("Hello world!!");
+       });
+````
+// http://www.cril.univ-artois.fr/~boussemart/express/chapter01.html
+
+---
 ### Exemple d'une structure d'application Express 
 ````text
     .

@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="21085bed-9cdd-4d1b-b3f7-ef794e60db81" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaScript/AJAX.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/AJAX.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaScript/Web_Sockets.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Web_Sockets.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaScript/Express_js.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/Express_js.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaScript/liens.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/liens.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/verify.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/verify.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/package-lock.json" afterDir="false" />
@@ -41,7 +41,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../Questions_pour_un_developpeur" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1YfovrqwTjtvKx64C87zg4HZcyi" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -231,7 +231,10 @@
       <workItem from="1598879577545" duration="5096000" />
       <workItem from="1598963862082" duration="8281000" />
       <workItem from="1599039803863" duration="728000" />
-      <workItem from="1599056125693" duration="1542000" />
+      <workItem from="1599056125693" duration="6254000" />
+      <workItem from="1599123648183" duration="5853000" />
+      <workItem from="1599208640906" duration="3638000" />
+      <workItem from="1599230812896" duration="3863000" />
     </task>
     <servers />
   </component>
@@ -296,10 +299,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="566" height="445" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1591974093523" />
-    <state x="196" y="172" key="com.intellij.ide.util.TipDialog" timestamp="1599056250554">
+    <state x="196" y="172" key="com.intellij.ide.util.TipDialog" timestamp="1599230923551">
       <screen x="0" y="0" width="1418" height="759" />
     </state>
     <state x="177" y="154" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1593958981856" />
-    <state x="196" y="172" key="com.intellij.ide.util.TipDialog/0.0.1418.759@0.0.1418.759" timestamp="1599056250554" />
+    <state x="196" y="172" key="com.intellij.ide.util.TipDialog/0.0.1418.759@0.0.1418.759" timestamp="1599230923551" />
   </component>
 </project>
