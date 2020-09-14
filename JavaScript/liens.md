@@ -5,6 +5,7 @@ API REST :
 - https://pokeapi.co/
 - https://jsonplaceholder.typicode.com/ // pour générer du contenu fictif
 - https://swapi.dev/
+- www.navitia.io  // datas sur les transports
 ---
 babel :    
 - https://babeljs.io/  
