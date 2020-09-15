@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21085bed-9cdd-4d1b-b3f7-ef794e60db81" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaScript/form.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/form.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/verify.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/verify.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/package-lock.json" afterDir="false" />
@@ -38,7 +40,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../Questions_pour_un_developpeur" />
   </component>
   <component name="ProjectId" id="1YfovrqwTjtvKx64C87zg4HZcyi" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -240,6 +242,7 @@
       <workItem from="1599941539163" duration="1828000" />
       <workItem from="1600018580560" duration="6706000" />
       <workItem from="1600071001941" duration="766000" />
+      <workItem from="1600161248304" duration="2910000" />
     </task>
     <servers />
   </component>

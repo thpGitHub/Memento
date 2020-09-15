@@ -63,3 +63,10 @@
         </script>
 
 ````
+
+- La méthode  HTMLFormElement.submit()  soumet un ``<form>`` donné.
+
+````javascript
+    document.forms["myform"].submit();
+````
+> La propriété ``forms`` de ``document`` retourne une collection (HTMLCollection) des éléments ``<form>`` présent dans le document actuel
