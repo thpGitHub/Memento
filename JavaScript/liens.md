@@ -24,6 +24,9 @@ Can I Use :
 Color css :
 - https://flatuicolors.com/
 ---
+css :
+- https://cssvalues.com/  // Entre une proprieté css pour connaitre tous les paramètres associés
+---
 Emoticones  / icones :
 - https://emojiterra.com/fr/
 - https://www.flaticon.com/
@@ -44,6 +47,7 @@ leaflet :
 ---
 Livres :
 - https://exploringjs.com/deep-js/toc.html
+- JavaScript: The Definitive Guide: Master the World's Most-Used Programming
 ---
 Images :
 - https://pixabay.com/fr/   
