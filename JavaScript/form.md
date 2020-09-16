@@ -70,3 +70,22 @@
     document.forms["myform"].submit();
 ````
 > La propriété ``forms`` de ``document`` retourne une collection (HTMLCollection) des éléments ``<form>`` présent dans le document actuel
+
+### ATTENTION à l'erreur suivante : 
+> ``Uncaught TypeError: document.querySelector(...).submit is not a function at XMLHttpRequest.request.onload`` 
+
+Pour résoudre ce problème il faut modifier le name du bouton ou de l'input:
+
+````html
+
+    <input type="submit"   name="submit" value="Login">
+
+    <!-- en -->
+
+    <input type="submit"   name="btn_submit" value="Login">
+
+````
+
+Pourquoi cette erreur : car lorsque l'on name le bouton ou l'input en submit on remplace la fonction submit() du formulaire.
+Cela peut aussi se produire avec un id="submit".
+

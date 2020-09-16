@@ -242,7 +242,8 @@
       <workItem from="1599941539163" duration="1828000" />
       <workItem from="1600018580560" duration="6706000" />
       <workItem from="1600071001941" duration="766000" />
-      <workItem from="1600161248304" duration="2910000" />
+      <workItem from="1600161248304" duration="2920000" />
+      <workItem from="1600244013466" duration="3948000" />
     </task>
     <servers />
   </component>
@@ -283,10 +284,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="566" height="445" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1591974093523" />
-    <state x="459" y="139" key="com.intellij.ide.util.TipDialog" timestamp="1600161252848">
+    <state x="459" y="139" key="com.intellij.ide.util.TipDialog" timestamp="1600244015426">
       <screen x="0" y="0" width="1418" height="759" />
     </state>
     <state x="177" y="154" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1593958981856" />
-    <state x="459" y="139" key="com.intellij.ide.util.TipDialog/0.0.1418.759@0.0.1418.759" timestamp="1600161252848" />
+    <state x="459" y="139" key="com.intellij.ide.util.TipDialog/0.0.1418.759@0.0.1418.759" timestamp="1600244015426" />
   </component>
 </project>
