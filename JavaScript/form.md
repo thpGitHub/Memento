@@ -74,7 +74,7 @@
 ### ATTENTION à l'erreur suivante : 
 > ``Uncaught TypeError: document.querySelector(...).submit is not a function at XMLHttpRequest.request.onload`` 
 
-Pour résoudre ce problème il faut modifier le name du bouton ou de l'input:
+Pour résoudre ce problème il faut modifier le name du button ou de l'input:
 
 ````html
 
@@ -86,6 +86,6 @@ Pour résoudre ce problème il faut modifier le name du bouton ou de l'input:
 
 ````
 
-Pourquoi cette erreur : car lorsque l'on name le bouton ou l'input en submit on remplace la fonction submit() du formulaire.
+Pourquoi cette erreur : car lorsque l'on name le button ou l'input en submit on remplace la fonction submit() du formulaire.
 Cela peut aussi se produire avec un id="submit".
 
