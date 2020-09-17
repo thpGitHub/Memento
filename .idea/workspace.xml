@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21085bed-9cdd-4d1b-b3f7-ef794e60db81" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/JavaScript/form.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/form.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/verify.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/verify.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/javascript/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/javascript/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/javascript/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/javascript/registration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/stylesheets/style_game.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/stylesheets/style_game.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/views/game.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/views/game.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/views/game.pug" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/views/game_with_AJAX_request.pug" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/views/login.pug" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/views/login.pug" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +33,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../Questions_pour_un_developpeur" />
   </component>
   <component name="ProjectId" id="1YfovrqwTjtvKx64C87zg4HZcyi" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -64,19 +57,19 @@
     <property name="ts.external.directory.path" value="C:\Users\thier\OneDrive\Documents\Angular\tuto_openClassR_Node_Express_Mongo\frontend\go-fullstack-fr-frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\views" />
-      <recent name="C:\Users\thier\OneDrive\Documents\Web_Sockets\sandBox_Questions_pour_un_developpeur" />
-      <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\public\stylesheets" />
-      <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\public\images" />
-      <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\public" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\views" />
       <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur" />
       <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer\questions_for_a_developer_V2\sandBox" />
       <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer\questions_for_a_developer\public\images" />
       <recent name="C:\Users\thier\OneDrive\Documents\Projet_Back_Questions_for_a_developer" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\views" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Web_Sockets\sandBox_Questions_pour_un_developpeur" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\public\stylesheets" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\public\images" />
+      <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\public" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -243,7 +236,9 @@
       <workItem from="1600018580560" duration="6706000" />
       <workItem from="1600071001941" duration="766000" />
       <workItem from="1600161248304" duration="2920000" />
-      <workItem from="1600244013466" duration="10658000" />
+      <workItem from="1600244013466" duration="10701000" />
+      <workItem from="1600292922569" duration="2521000" />
+      <workItem from="1600330027238" duration="2163000" />
     </task>
     <servers />
   </component>
@@ -284,10 +279,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state width="566" height="445" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1591974093523" />
-    <state x="459" y="139" key="com.intellij.ide.util.TipDialog" timestamp="1600244015426">
+    <state x="459" y="139" key="com.intellij.ide.util.TipDialog" timestamp="1600330040341">
       <screen x="0" y="0" width="1418" height="759" />
     </state>
     <state x="177" y="154" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1593958981856" />
-    <state x="459" y="139" key="com.intellij.ide.util.TipDialog/0.0.1418.759@0.0.1418.759" timestamp="1600244015426" />
+    <state x="459" y="139" key="com.intellij.ide.util.TipDialog/0.0.1418.759@0.0.1418.759" timestamp="1600330040341" />
   </component>
 </project>

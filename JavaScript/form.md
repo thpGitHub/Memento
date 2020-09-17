@@ -5,7 +5,6 @@
 ### Il existe différente techniques pour envoyer un formulaire :
 
 - Attribut type="submit"
-
 ````html
     <form action="/login.pug" method="post">
     
@@ -19,8 +18,6 @@
 > alors que l'élément button permet d'utiliser n'importe quel contenu HTML, autorisant ainsi des textes de bouton plus complexes et créatif.
          
 - Attribut type="button" et onclick
-
-
 ````html
     <form id="myForm" action="/login.pug" method="post">
         
@@ -37,7 +34,6 @@
 ````
 
 - Attribut onSubmit
-
 > Si la méthode checkMyForm() return false le formulaire ne sera pas envoyé !
 ````html
     <form action="/login.pug" method="post" onSubmit="return checkMyForm()">
@@ -61,21 +57,27 @@
     //                    return !!toto;               
     //    }      
         </script>
-
 ````
 
-- La méthode  HTMLFormElement.submit()  soumet un ``<form>`` donné.
-
+- La méthode  ``HTMLFormElement.submit()``  soumet un ``<form>`` donné.
 ````javascript
     document.forms["myform"].submit();
 ````
 > La propriété ``forms`` de ``document`` retourne une collection (HTMLCollection) des éléments ``<form>`` présent dans le document actuel
+````javascript
+    document.querySelector('form').submit();
+````
+
+- La méthode  ``HTMLFormElement.reset()``  restaure les valeurs par défaut des éléments du formulaire. 
+````javascript
+    document.querySelector('form').reset();
+````
+
 
 ### ATTENTION à l'erreur suivante : 
-> ``Uncaught TypeError: document.querySelector(...).submit is not a function at XMLHttpRequest.request.onload`` 
+>``Uncaught TypeError: document.querySelector(...).submit is not a function at XMLHttpRequest.request.onload`` 
 
 Pour résoudre ce problème il faut modifier le name du button ou de l'input:
-
 ````html
 
     <input type="submit"   name="submit" value="Login">
