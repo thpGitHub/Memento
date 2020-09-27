@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21085bed-9cdd-4d1b-b3f7-ef794e60db81" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/thier.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaScript/npm.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/npm.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/verify.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/verify.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/javascript/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/javascript/game.js" afterDir="false" />
@@ -264,7 +261,7 @@
       <workItem from="1600855677672" duration="11176000" />
       <workItem from="1601026745241" duration="13140000" />
       <workItem from="1601139378270" duration="9077000" />
-      <workItem from="1601196116869" duration="5631000" />
+      <workItem from="1601196116869" duration="6286000" />
     </task>
     <servers />
   </component>
