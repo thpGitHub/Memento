@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21085bed-9cdd-4d1b-b3f7-ef794e60db81" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/thier.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/JavaScript/form.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/form.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaScript/npm.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/npm.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/verify.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/verify.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/javascript/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/javascript/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/javascript/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/javascript/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/stylesheets/style_login.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/stylesheets/style_login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/stylesheets/style_registration.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/stylesheets/style_registration.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/views/login.pug" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/views/login.pug" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +39,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../Questions_pour_un_developpeur" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1YfovrqwTjtvKx64C87zg4HZcyi" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -53,7 +59,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="settings.webpack" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Users\thier\OneDrive\Documents\Angular\tuto_openClassR_Node_Express_Mongo\frontend\go-fullstack-fr-frontend\node_modules\typescript\lib" />
   </component>
   <component name="RecentsManager">
@@ -71,6 +77,16 @@
       <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\public\images" />
       <recent name="C:\Users\thier\OneDrive\Documents\Questions_pour_un_developpeur\public" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="app.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/../Questions_pour_un_developpeur/app.js" working-dir="$PROJECT_DIR$/../Questions_pour_un_developpeur">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Node.js.app.js" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -238,7 +254,17 @@
       <workItem from="1600161248304" duration="2920000" />
       <workItem from="1600244013466" duration="10701000" />
       <workItem from="1600292922569" duration="2521000" />
-      <workItem from="1600330027238" duration="2163000" />
+      <workItem from="1600330027238" duration="2811000" />
+      <workItem from="1600361645537" duration="7924000" />
+      <workItem from="1600439687309" duration="8680000" />
+      <workItem from="1600542250902" duration="3957000" />
+      <workItem from="1600676444245" duration="2216000" />
+      <workItem from="1600696746456" duration="8661000" />
+      <workItem from="1600787763654" duration="8270000" />
+      <workItem from="1600855677672" duration="11176000" />
+      <workItem from="1601026745241" duration="13140000" />
+      <workItem from="1601139378270" duration="9077000" />
+      <workItem from="1601196116869" duration="5631000" />
     </task>
     <servers />
   </component>
@@ -255,34 +281,98 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
-    <state x="233" y="0" key="#Inspections" timestamp="1591976483598">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="233" y="0" key="#Inspections/0.0.1280.680@0.0.1280.680" timestamp="1591976483598" />
-    <state x="233" y="0" key="#Intentions" timestamp="1591736376621">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="233" y="0" key="#Intentions/0.0.1280.680@0.0.1280.680" timestamp="1591736376621" />
-    <state x="288" y="144" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1591971314332">
-      <screen x="0" y="0" width="1280" height="680" />
-    </state>
-    <state x="288" y="144" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.680@0.0.1280.680" timestamp="1591971314332" />
     <state x="211" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1592855565371">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="211" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.680@0.0.1280.680" timestamp="1592855565371" />
-    <state x="369" y="79" key="FileChooserDialogImpl" timestamp="1591968778994">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="295" y="87" key="#xdebugger.evaluate" timestamp="1601141418334">
+      <screen x="0" y="0" width="1418" height="759" />
     </state>
-    <state x="369" y="79" key="FileChooserDialogImpl/0.0.1280.680@0.0.1280.680" timestamp="1591968778994" />
-    <state width="566" height="445" key="SwitcherDM" timestamp="1591974093523">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="295" y="87" key="#xdebugger.evaluate/0.0.1418.759@0.0.1418.759" timestamp="1601141418334" />
+    <state width="1070" height="466" key="DebuggerActiveHint" timestamp="1601062655259">
+      <screen x="0" y="0" width="1418" height="759" />
     </state>
-    <state width="566" height="445" key="SwitcherDM/0.0.1280.680@0.0.1280.680" timestamp="1591974093523" />
-    <state x="459" y="139" key="com.intellij.ide.util.TipDialog" timestamp="1600330040341">
+    <state width="1070" height="466" key="DebuggerActiveHint/0.0.1418.759@0.0.1418.759" timestamp="1601062655259" />
+    <state width="1022" height="284" key="GridCell.Tab.0.bottom" timestamp="1601155491692">
+      <screen x="0" y="0" width="1418" height="759" />
+    </state>
+    <state width="1022" height="284" key="GridCell.Tab.0.bottom/0.0.1418.759@0.0.1418.759" timestamp="1601155491692" />
+    <state width="1022" height="284" key="GridCell.Tab.0.center" timestamp="1601155491691">
+      <screen x="0" y="0" width="1418" height="759" />
+    </state>
+    <state width="1022" height="284" key="GridCell.Tab.0.center/0.0.1418.759@0.0.1418.759" timestamp="1601155491691" />
+    <state width="1022" height="284" key="GridCell.Tab.0.left" timestamp="1601155491690">
+      <screen x="0" y="0" width="1418" height="759" />
+    </state>
+    <state width="1022" height="284" key="GridCell.Tab.0.left/0.0.1418.759@0.0.1418.759" timestamp="1601155491690" />
+    <state width="1022" height="284" key="GridCell.Tab.0.right" timestamp="1601155491691">
+      <screen x="0" y="0" width="1418" height="759" />
+    </state>
+    <state width="1022" height="284" key="GridCell.Tab.0.right/0.0.1418.759@0.0.1418.759" timestamp="1601155491691" />
+    <state width="1022" height="284" key="GridCell.Tab.1.bottom" timestamp="1601155491692">
+      <screen x="0" y="0" width="1418" height="759" />
+    </state>
+    <state width="1022" height="284" key="GridCell.Tab.1.bottom/0.0.1418.759@0.0.1418.759" timestamp="1601155491692" />
+    <state width="1022" height="284" key="GridCell.Tab.1.center" timestamp="1601155491692">
+      <screen x="0" y="0" width="1418" height="759" />
+    </state>
+    <state width="1022" height="284" key="GridCell.Tab.1.center/0.0.1418.759@0.0.1418.759" timestamp="1601155491692" />
+    <state width="1022" height="284" key="GridCell.Tab.1.left" timestamp="1601155491692">
+      <screen x="0" y="0" width="1418" height="759" />
+    </state>
+    <state width="1022" height="284" key="GridCell.Tab.1.left/0.0.1418.759@0.0.1418.759" timestamp="1601155491692" />
+    <state width="1022" height="284" key="GridCell.Tab.1.right" timestamp="1601155491692">
+      <screen x="0" y="0" width="1418" height="759" />
+    </state>
+    <state width="1022" height="284" key="GridCell.Tab.1.right/0.0.1418.759@0.0.1418.759" timestamp="1601155491692" />
+    <state width="1022" height="284" key="GridCell.Tab.2.bottom" timestamp="1601155491692">
+      <screen x="0" y="0" width="1418" height="759" />
+    </state>
+    <state width="1022" height="284" key="GridCell.Tab.2.bottom/0.0.1418.759@0.0.1418.759" timestamp="1601155491692" />
+    <state width="1022" height="284" key="GridCell.Tab.2.center" timestamp="1601155491692">
+      <screen x="0" y="0" width="1418" height="759" />
+    </state>
+    <state width="1022" height="284" key="GridCell.Tab.2.center/0.0.1418.759@0.0.1418.759" timestamp="1601155491692" />
+    <state width="1022" height="284" key="GridCell.Tab.2.left" timestamp="1601155491692">
+      <screen x="0" y="0" width="1418" height="759" />
+    </state>
+    <state width="1022" height="284" key="GridCell.Tab.2.left/0.0.1418.759@0.0.1418.759" timestamp="1601155491692" />
+    <state width="1022" height="284" key="GridCell.Tab.2.right" timestamp="1601155491692">
+      <screen x="0" y="0" width="1418" height="759" />
+    </state>
+    <state width="1022" height="284" key="GridCell.Tab.2.right/0.0.1418.759@0.0.1418.759" timestamp="1601155491692" />
+    <state width="1022" height="284" key="GridCell.Tab.3.bottom" timestamp="1601155491693">
+      <screen x="0" y="0" width="1418" height="759" />
+    </state>
+    <state width="1022" height="284" key="GridCell.Tab.3.bottom/0.0.1418.759@0.0.1418.759" timestamp="1601155491693" />
+    <state width="1022" height="284" key="GridCell.Tab.3.center" timestamp="1601155491692">
+      <screen x="0" y="0" width="1418" height="759" />
+    </state>
+    <state width="1022" height="284" key="GridCell.Tab.3.center/0.0.1418.759@0.0.1418.759" timestamp="1601155491692" />
+    <state width="1022" height="284" key="GridCell.Tab.3.left" timestamp="1601155491692">
+      <screen x="0" y="0" width="1418" height="759" />
+    </state>
+    <state width="1022" height="284" key="GridCell.Tab.3.left/0.0.1418.759@0.0.1418.759" timestamp="1601155491692" />
+    <state width="1022" height="284" key="GridCell.Tab.3.right" timestamp="1601155491692">
+      <screen x="0" y="0" width="1418" height="759" />
+    </state>
+    <state width="1022" height="284" key="GridCell.Tab.3.right/0.0.1418.759@0.0.1418.759" timestamp="1601155491692" />
+    <state x="78" y="42" width="1264" height="707" key="SettingsEditor" timestamp="1601028715341">
+      <screen x="0" y="0" width="1418" height="759" />
+    </state>
+    <state x="78" y="42" width="1264" height="707" key="SettingsEditor/0.0.1418.759@0.0.1418.759" timestamp="1601028715341" />
+    <state x="465" y="138" key="com.intellij.ide.util.TipDialog" timestamp="1601196153380">
       <screen x="0" y="0" width="1418" height="759" />
     </state>
     <state x="177" y="154" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1593958981856" />
-    <state x="459" y="139" key="com.intellij.ide.util.TipDialog/0.0.1418.759@0.0.1418.759" timestamp="1600330040341" />
+    <state x="465" y="138" key="com.intellij.ide.util.TipDialog/0.0.1418.759@0.0.1418.759" timestamp="1601196153380" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="NodeJSConfigurationType">
+        <watch expression="params_game.counter_of_questions" language="JavaScript" />
+        <watch expression="params_game.all_questions" language="JavaScript" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
