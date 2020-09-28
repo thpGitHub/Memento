@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="21085bed-9cdd-4d1b-b3f7-ef794e60db81" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaScript/liens.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/liens.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaScript/npm.md" beforeDir="false" afterPath="$PROJECT_DIR$/JavaScript/npm.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/verify.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Projet_Back_Questions_for_a_developer/questions_for_a_developer/verify.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/javascript/game.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/javascript/game.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/javascript/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/javascript/login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/stylesheets/style_login.css" beforeDir="false" afterPath="$PROJECT_DIR$/../Questions_pour_un_developpeur/public/stylesheets/style_login.css" afterDir="false" />
@@ -36,7 +41,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../Questions_pour_un_developpeur" />
   </component>
   <component name="ProjectId" id="1YfovrqwTjtvKx64C87zg4HZcyi" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -261,7 +266,8 @@
       <workItem from="1600855677672" duration="11176000" />
       <workItem from="1601026745241" duration="13140000" />
       <workItem from="1601139378270" duration="9077000" />
-      <workItem from="1601196116869" duration="6286000" />
+      <workItem from="1601196116869" duration="7766000" />
+      <workItem from="1601298237142" duration="9905000" />
     </task>
     <servers />
   </component>
@@ -278,6 +284,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="184" y="186" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1601308992442">
+      <screen x="0" y="0" width="1418" height="759" />
+    </state>
+    <state x="184" y="186" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1418.759@0.0.1418.759" timestamp="1601308992442" />
     <state x="211" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1592855565371">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -358,11 +368,11 @@
       <screen x="0" y="0" width="1418" height="759" />
     </state>
     <state x="78" y="42" width="1264" height="707" key="SettingsEditor/0.0.1418.759@0.0.1418.759" timestamp="1601028715341" />
-    <state x="465" y="138" key="com.intellij.ide.util.TipDialog" timestamp="1601196153380">
+    <state x="465" y="138" key="com.intellij.ide.util.TipDialog" timestamp="1601298330028">
       <screen x="0" y="0" width="1418" height="759" />
     </state>
     <state x="177" y="154" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1593958981856" />
-    <state x="465" y="138" key="com.intellij.ide.util.TipDialog/0.0.1418.759@0.0.1418.759" timestamp="1601196153380" />
+    <state x="465" y="138" key="com.intellij.ide.util.TipDialog/0.0.1418.759@0.0.1418.759" timestamp="1601298330028" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

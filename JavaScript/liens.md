@@ -41,6 +41,9 @@ freeCodeCamp :
 - https://www.freecodecamp.org/news/best-javascript-tutorial/
 - https://www.freecodecamp.org/news/learn-these-javascript-fundamentals-and-become-a-better-developer-2a031a0dc9cf/
 ---
+HTML :
+- https://jatinrao.dev/12-html-tags-you-dont-know?utm_campaign=sebastien_lorber_newsletter&utm_medium=email&utm_source=Revue%20newsletter
+---
 leaflet :
 - https://leafletjs.com/
 - https://leaflet-extras.github.io/leaflet-providers/preview/
@@ -113,6 +116,10 @@ divers :
 
 // tuto sympas simple et rapide sur express react et heroku
 - http://www.cril.univ-artois.fr/~boussemart/home/enseignement.html
+
+// générateur de mentions légals :
+- https://www.generer-mentions-legales.com/generateur-mentions-legales.html
+
 
 
 
