@@ -71,10 +71,15 @@
 > - ensuite extrait le dernier commit dans votre répertoire de travail avec git checkout.
  ---
  
- ### Savoir si un dépot local est lié a un dépot distant
+ ### Travailler avec des dépots distans
+ https://git-scm.com/book/fr/v2/Les-bases-de-Git-Travailler-avec-des-d%C3%A9p%C3%B4ts-distants
  ````shell script
-    git remote
-    git remote -v # affichera plus d\'informations sur le dépot distant
+    git remote # affichera le nom cours du/des dépot/s distant/s
+    git remote -v # affichera url du/des dépot/s distant/s
+    git remote add [nomcourt] [url] # ajouter un nouveau dépôt distant Git
+    git remote show origin # visualiser plus d’informations à propos d’un dépôt distant particulier (ici origin)
+    git remote rename origin toto # renomera le nom du dépot distatnt origin en toto
+    git remote rm toto # retirera le dépot distant
 ````
 ---
 
