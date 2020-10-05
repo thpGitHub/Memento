@@ -1,4 +1,10 @@
 # Git
+> ### Vérifier nos paramètres
+````shell script
+  git config --list
+  git config user.name
+  git help config    
+````
 > ### Initialisation du dépot local
 ````shell script
     git init
@@ -14,6 +20,7 @@
 > ### Ajouter les modifications local
 ````shell script
     git add . // ajoute tous les fichiers présents
+    git add *.md
 ````
 
 ````shell script
@@ -96,7 +103,7 @@ https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Branches-et-fusions%C2%A0%3
     git branch # affichera la liste de toutes les branches (* devant une branche: c'est que le pointeur HEAD se situe sur cette branche)
     git branch -v # affichera la liste des derniers commits sur chaque branche
     git branch --merged # affichera quelles branches ont déjà été fusionnées dans votre branche courante (*)
-    git branch --no-merged # affichera les branches qui ne sont pas fusionnées (merge))
+    git branch --no-merged # affichera les branches qui ne sont pas fusionnées (merge)
    
 ````
 fusionner des branches
@@ -114,7 +121,8 @@ fusionner des branches
 
 ### Création d'un fichier ``.gitignore``
 > Pour demander à git de ne pas suivre certain type de fichiers, il faut créer un fichier ``.gitignore à la racine du projet``
->***Attention*** les fichiers déjà suivis par git ne pourront pas être ignorés 
+>***Attention*** les fichiers déjà suivis par git ne pourront pas être ignorés
+templates pour ``.gitignore`` : https://github.com/github/gitignore :)
 ````shell script
     # ignore le fichier ou le dossier temp
     temp 
