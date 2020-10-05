@@ -13,10 +13,7 @@
 ```shell script
     git remote add origin https://github.com/thpGitHub/NonDossier.git
 ```
-> ### Pour ignorer les modifications dans le workspace (annulation avant de faire un add)
-````shell script
-    git checkout -- NomDuFichier
-````
+
 > ### Ajouter les modifications local
 ````shell script
     git add . // ajoute tous les fichiers présents
@@ -30,6 +27,12 @@
 ````shell script
     git add nomFichier1 nomFichier2 // ajoute deux fichiers...
  ````
+
+> ### Pour ignorer les modifications dans le workspace (annulation avant de faire un add)
+````shell script
+    git checkout -- NomDuFichier
+````
+
 > ### Pour ignorer les modifications après un add et remettre le fichier dans le workspace
 ````shell script
     git reset HEAD NomDuFichier
@@ -81,12 +84,17 @@
 > - puis lance git fetch à partir de ce dépôt distant et
 > - ensuite extrait le dernier commit dans votre répertoire de travail avec git checkout.
  
+ > ### git status et git diff
  ````shell script
     git status
     git diff # affichera plus de détail qu'un git status sur les fichier pas encore indexé. On peut voir les différence des fichiers
     git diff --staged #compare les différence des fichiers indexés
     git difftool # visualiser les différences avec un outil graphique ou externe
 ````
+
+> ### Effacer des fichiers
+
+
  ---
  
  ### Travailler avec des dépots distants
