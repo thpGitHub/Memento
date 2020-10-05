@@ -83,6 +83,7 @@
 ````
 ---
 ### Les branches
+https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Branches-et-fusions%C2%A0%3A-les-bases
 ````shell script
     git branch testing # création de la branche testing
     git checkout testing # basculer sur la branche testing (potition du pointeur HEAD sur testing)
@@ -90,9 +91,23 @@
     # propre (si il reste des commits à faire par ex.). Mais on peut contourner ceci par le remisage et l’amendement de commit ;)
       git branch -b testing # raccourci pour créér une branche et se potionner dessus
     git log --oneline --decorate
-    git log --oneline --decorate --graph --all 
-    # va afficher l’historique de vos commits, affichant les endroits où sont positionnés vos pointeurs de branche ainsi que la manière dont votre historique a divergé.
-    
+    git log --oneline --decorate --graph --all # va afficher l’historique de vos commits, affichant les endroits où sont 
+    # positionnés vos pointeurs de branche ainsi que la manière dont votre historique a divergé.
+    git branch # affichera la liste de toutes les branches (* devant une branche: c'est que le pointeur HEAD se situe sur cette branche)
+    git branch -v # affichera la liste des derniers commits sur chaque branche
+    git branch --merged # affichera quelles branches ont déjà été fusionnées dans votre branche courante (*)
+    git branch --no-merged # affichera les branches qui ne sont pas fusionnées (merge))
+   
+````
+fusionner des branches
+````shell script
+    git checkout master # on se potionne sur la branche master
+    git merge correctif # on fusionne la branche correctif dans la branche master
+    # si la mention fast-forward lors du merge apparait c'est qu'il y avait un seul commit d'écart entre la branche master
+    # et la branche correctif. GIT va simplement déplacer le pointer master au niveau de correctif.
+    git branch -d correctif # suppression de la branche correctif qui ne sert plus à rien car elle a été fusionnée (merge)
+    # Attention si on essai de supprimer une branche qui n'a pas été fusionnée (merge) => error: The branch 'correctif' is not fully merged.
+    git branch -D correctif # forcer la suppression de la branche correctif
 ````
 
 ---
