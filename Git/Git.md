@@ -93,9 +93,17 @@
 ````
 
 > ### Effacer/supprimer des fichiers
+supprimer
 ````shell script
     rm nomFichier # supprimera le fichier (de git et notre ordi !!) avant l'index (avant un add)
     git rm -f nomFichier # supprimera le fichier après l'index (après un add) -f pour forcer la suppression !!
+````
+effacer
+````shell script
+    #pour effacer un fichier  il faut l'indexé (apres un add)
+    git add nomFichier
+    git rm --cached nomFichier #  cela va annuler le suivi de version du fichier tout en le conservant sur l'ordi
+    git commit -m "cached file"
 ````
 
  ---
