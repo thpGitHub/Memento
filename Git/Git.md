@@ -93,6 +93,7 @@
 ````
 
 > ### Effacer/supprimer des fichiers
+
 supprimer
 ````shell script
     rm nomFichier # supprimera le fichier (de git et notre ordi !!) avant l'index (avant un add)
@@ -103,7 +104,11 @@ effacer
     #pour effacer un fichier  il faut l'indexé (apres un add)
     git add nomFichier
     git rm --cached nomFichier #  cela va annuler le suivi de version du fichier tout en le conservant sur l'ordi
-    git commit -m "cached file"
+````
+
+> ### Renomer un fichier
+````shell script
+    git mv nom1 nom2
 ````
 
  ---
@@ -145,6 +150,23 @@ fusionner des branches
     git branch -d correctif # suppression de la branche correctif qui ne sert plus à rien car elle a été fusionnée (merge)
     # Attention si on essai de supprimer une branche qui n'a pas été fusionnée (merge) => error: The branch 'correctif' is not fully merged.
     git branch -D correctif # forcer la suppression de la branche correctif
+````
+
+---
+### Visualiser l'historique des validations
+````shell script
+    git log # affiche la liste des commits
+    git log -p -2 # -p montre les différences et -2 limite a 2
+    git log --stat # visualiser des statistiques résumées pour chaque commit
+    git log --pretty=oneline #  affiche chaque commit sur une seule ligne
+    git log --oneline --decorate --graph --all # ajoute un joli graphe en caractères ASCII pour décrire l’historique des branches et fusions 
+    git log --pretty=format:"%h %s" --graph
+````
+---
+
+### Annuler des actions
+````shell script
+
 ````
 
 ---
