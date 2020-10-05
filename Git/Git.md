@@ -71,7 +71,7 @@
 > - ensuite extrait le dernier commit dans votre répertoire de travail avec git checkout.
  ---
  
- ### Travailler avec des dépots distans
+ ### Travailler avec des dépots distants
  https://git-scm.com/book/fr/v2/Les-bases-de-Git-Travailler-avec-des-d%C3%A9p%C3%B4ts-distants
  ````shell script
     git remote # affichera le nom cours du/des dépot/s distant/s
@@ -81,6 +81,20 @@
     git remote rename origin toto # renomera le nom du dépot distatnt origin en toto
     git remote rm toto # retirera le dépot distant
 ````
+---
+### Les branches
+````shell script
+    git branch testing # création de la branche testing
+    git checkout testing # basculer sur la branche testing (potition du pointeur HEAD sur testing)
+    # Attention : Git ne vous laissera pas changer de branche si la branche sur laquelle vous êtes n'est pas
+    # propre (si il reste des commits à faire par ex.). Mais on peut contourner ceci par le remisage et l’amendement de commit ;)
+      git branch -b testing # raccourci pour créér une branche et se potionner dessus
+    git log --oneline --decorate
+    git log --oneline --decorate --graph --all 
+    # va afficher l’historique de vos commits, affichant les endroits où sont positionnés vos pointeurs de branche ainsi que la manière dont votre historique a divergé.
+    
+````
+
 ---
 
 ### Création d'un fichier ``.gitignore``
