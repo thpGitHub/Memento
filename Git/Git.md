@@ -36,7 +36,10 @@
 ````
 > ### commit
 ````shell script
-    git commit -m"Add a file"
+    git commit # va ouvrir un editeur afin de saisir un commentaire
+    git commit -v # ajoute le résultat d'un git diff comme commentaire
+    git commit -m "Add a file" # ajouter un commentaire en ligne de commande
+    git commit -a -m "update file" # permet de passer l'étape de mise à l'index (-a => git add)
 ````
 > ### On pousse tous les commits vers le dépôt distant
 ````shell script
@@ -69,6 +72,7 @@
     git clone <repo-url>
      # exemple : 
     git clone https://github.com/thpGitHub/Memento.git
+    git clone https://github.com/thpGitHub/Memento.git changerNomRepertoire
 ````
 >   git clone regroupe plusieurs commandes :
 > - Elle crée un nouveau dossier,
@@ -76,6 +80,13 @@
 > - puis ajoute un serveur distant (git remote add) à l’URL que vous lui avez passée (appelé par défaut origin),
 > - puis lance git fetch à partir de ce dépôt distant et
 > - ensuite extrait le dernier commit dans votre répertoire de travail avec git checkout.
+ 
+ ````shell script
+    git status
+    git diff # affichera plus de détail qu'un git status sur les fichier pas encore indexé. On peut voir les différence des fichiers
+    git diff --staged #compare les différence des fichiers indexés
+    git difftool # visualiser les différences avec un outil graphique ou externe
+````
  ---
  
  ### Travailler avec des dépots distants
