@@ -92,8 +92,11 @@
     git difftool # visualiser les différences avec un outil graphique ou externe
 ````
 
-> ### Effacer des fichiers
-
+> ### Effacer/supprimer des fichiers
+````shell script
+    rm nomFichier # supprimera le fichier (de git et notre ordi !!) avant l'index (avant un add)
+    git rm -f nomFichier # supprimera le fichier après l'index (après un add) -f pour forcer la suppression !!
+````
 
  ---
  
