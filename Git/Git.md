@@ -28,15 +28,6 @@
     git add nomFichier1 nomFichier2 # ajoute deux fichiers...
  ````
 
-> ### Pour ignorer les modifications dans le workspace (annulation avant de faire un add)
-````shell script
-    git checkout -- NomDuFichier
-````
-
-> ### Pour ignorer les modifications après un add et remettre le fichier dans le workspace
-````shell script
-    git reset HEAD NomDuFichier
-````
 > ### commit
 ````shell script
     git commit # va ouvrir un editeur afin de saisir un commentaire
@@ -166,7 +157,12 @@ fusionner des branches
 
 ### Annuler des actions
 ````shell script
+    git commit -m 'validation initiale' # on fait un commit puis on s'apperçois d'un oublie
+    git add fichier_oublie # on rajoute a l'index le fichier oublié
+    git commit --amend # puis on commit
 
+    git reset HEAD fichier # désindexera le fichier
+    git checkout -- fichier # annulera toutes les modifications faites dans le fichier. Attention : les modifications seront perdues !
 ````
 
 ---
