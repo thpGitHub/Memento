@@ -16,16 +16,16 @@
 
 > ### Ajouter les modifications local
 ````shell script
-    git add . // ajoute tous les fichiers présents
+    git add . # ajoute tous les fichiers présents
     git add *.md
 ````
 
 ````shell script
-    git add nomFichier // ajoute un fichier   
+    git add nomFichier # ajoute un fichier   
  ````
  
 ````shell script
-    git add nomFichier1 nomFichier2 // ajoute deux fichiers...
+    git add nomFichier1 nomFichier2 # ajoute deux fichiers...
  ````
 
 > ### Pour ignorer les modifications dans le workspace (annulation avant de faire un add)
@@ -175,16 +175,11 @@ fusionner des branches
 > Pour demander à git de ne pas suivre certain type de fichiers, il faut créer un fichier ``.gitignore à la racine du projet``
 >***Attention*** les fichiers déjà suivis par git ne pourront pas être ignorés
 templates pour ``.gitignore`` : https://github.com/github/gitignore :)
-````shell script
-    # ignore le fichier ou le dossier temp
-    temp 
-    # ignore le dossier /test/temp
-    /test/temp
-    # ignore tous les fichiers mp3
-    *.mp3
-    #ignore tous fichiers commençant par test sauf testfinal
-    test* 
-    !testfinal
-    # on peut aussi ignorer le .gitignore ;)
-    .gitignore
+````gitignore
+    temp # ignore le fichier ou le dossier temp
+    /test/temp # ignore le dossier /test/temp
+    *.mp3 # ignore tous les fichiers mp3
+    test* #ignore tous fichiers commençant par test
+    !testfinal #ignore tous fichiers commençant par test sauf testfinal
+    .gitignore # on peut aussi ignorer le .gitignore ;)
 ````
