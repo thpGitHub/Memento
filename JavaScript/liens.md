@@ -41,6 +41,11 @@ freeCodeCamp :
 - https://www.freecodecamp.org/news/best-javascript-tutorial/
 - https://www.freecodecamp.org/news/learn-these-javascript-fundamentals-and-become-a-better-developer-2a031a0dc9cf/
 ---
+GIT :
+- https://git-scm.com/
+- https://makina-corpus.com/blog/metier/2014/un-workflow-git-efficace-pour-les-projets-a-moyen-long-terme
+- https://perso.liris.cnrs.fr/pierre-antoine.champin/enseignement/intro-git/
+---
 HTML :
 - https://jatinrao.dev/12-html-tags-you-dont-know?utm_campaign=sebastien_lorber_newsletter&utm_medium=email&utm_source=Revue%20newsletter
 ---
