@@ -113,6 +113,10 @@ effacer
     git remote show origin # visualiser plus d’informations à propos d’un dépôt distant particulier (ici origin)
     git remote rename origin toto # renomera le nom du dépot distatnt origin en toto
     git remote rm toto # retirera le dépot distant
+
+    git fetch nameDepot # récupère toutes les données que l'on ne possède pas dans notre dépôt local mais sous
+    # sa propre branche, elle ne les fusionne pas automatiquement avec nos travaux ni ne modifie notre copie de travail.
+    # On doit volontairement fusionner les modifications distantes dans notre travail lorsque nous le souhaitons.
 ````
 ---
 ### Les branches
