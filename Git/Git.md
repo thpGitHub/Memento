@@ -146,6 +146,7 @@ fusionner des branches
     git log --pretty=oneline #  affiche chaque commit sur une seule ligne
     git log --oneline --decorate --graph --all # ajoute un joli graphe en caractères ASCII pour décrire l’historique des branches et fusions 
     git log --pretty=format:"%h %s" --graph
+    git reflog # affiche l'historique des commits
 ````
 ---
 
