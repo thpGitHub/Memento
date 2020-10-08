@@ -39,31 +39,11 @@
 ````shell script
     git push origin master
 ````
-> ### git pull ou git fetch ?
-> Les deux commandes mettent à jour un répertoire de travail local avec les données d'un repository distant
-````shell script
-    git fetch
-````
-> git fetch va récupérer toutes les données des commits effectués sur la branche courante qui n'existent pas encore dans votre version en local.
-> Ces données seront stockées dans le répertoire de travail local mais ne seront pas fusionnées avec votre branche locale.
-> Si vous souhaitez fusionner ces données pour que votre branche soit à jour, vous devez utiliser ensuite la commande git merge.   
-> git pull regroupe les commandes git fetch suivie de git merge.
-````shell script
-    git pull
-````
->  ! [rejected]        master -> master (non-fast-forward)   
-> hint: Updates were rejected because the tip of your current branch is behind   
-  hint: its remote counterpart. Integrate the remote changes (e.g.   
-  hint: 'git pull ...') before pushing again.   
-````shell script
-    git pull <remote> <branch>
-    git pull origine master
-````
 
 > ### Cloner un dépot existant (vide ou non)
 
 ````shell script
-    git clone <repo-url>
+    git clone [repo-url]
      # exemple : 
     git clone https://github.com/thpGitHub/Memento.git
     git clone https://github.com/thpGitHub/Memento.git changerNomRepertoire
@@ -109,14 +89,24 @@ effacer
  ````shell script
     git remote # affichera le nom cours du/des dépot/s distant/s
     git remote -v # affichera url du/des dépot/s distant/s
-    git remote add [nomcourt] [url] # ajouter un nouveau dépôt distant Git
+    git remote add [remote-name] [repo-url] # ajouter un nouveau dépôt distant Git
     git remote show origin # visualiser plus d’informations à propos d’un dépôt distant particulier (ici origin)
     git remote rename origin toto # renomera le nom du dépot distatnt origin en toto
     git remote rm toto # retirera le dépot distant
 
-    git fetch nameDepot # récupère toutes les données que l'on ne possède pas dans notre dépôt local mais sous
+    git fetch [remote-name] # récupère toutes les données que l'on ne possède pas dans notre dépôt local mais sous
     # sa propre branche, elle ne les fusionne pas automatiquement avec nos travaux ni ne modifie notre copie de travail.
     # On doit volontairement fusionner les modifications distantes dans notre travail lorsque nous le souhaitons.
+    # Si vous souhaitez fusionner ces données pour que votre branche soit à jour, vous devez utiliser ensuite la commande git merge.
+
+    git pull [remote-name] [branch]
+    git pull origine master #  récupère et fusionne automatiquement une branche distante (ici master) dans notre branche locale.
+    # git pull regroupe les commandes git fetch suivie de git merge. 
+
+    git remote show [remote-name]
+    git remote rename [remote-name] [new_remote_name] #renomer un nom de dépot distant
+
+    git remote rm [remote-name] # retirer un dépot distant
 ````
 ---
 ### Les branches
