@@ -107,6 +107,9 @@ effacer
     git remote rename [remote-name] [new_remote_name] #renomer un nom de dépot distant
 
     git remote rm [remote-name] # retirer un dépot distant
+
+    git revert HEAD^ # annulera de dernier commit sur le dépot distant public en créant un nouveau commit
+    # ATTENTION : Git revert peut écraser nos fichiers dans notre répertoire de travail, il faudra commiter nos modifications ou de les remiser
 ````
 ---
 ### Les branches
@@ -154,19 +157,43 @@ fusionner des branches
 ````shell script
     git commit -m 'validation initiale' # on fait un commit puis on s'apperçois d'un oublie
     git add fichier_oublie # on rajoute a l'index le fichier oublié
-    git commit --amend # puis on commit
+    git commit --amend # puis on commit. ammend modifie le dernier commit
+
+    git commit --amend -m "nouveau message de commit" # modifie le message du dernier commit
 
     git reset HEAD fichier # désindexera le fichier
+
+    git reset --hard HEAD^ # supprime de la branche courante le dernier commit. Le Head^ indique que c'est bien le dernier commit que nous voulons supprimer.
+    # ATTENTION : si on veux récupérer le commit supprimer il faut avant récupérer son hash (git log)
+    git branch -b testing # nous pouvons créér une nouvelle branche afin de récupérer le dernier commit supprimé
+    git reset --hard [sha_commit] # seul les 8 premier caractère du hash du commit sont nécessaire.    
+
     git checkout -- fichier # annulera toutes les modifications faites dans le fichier. Attention : les modifications seront perdues !
+
+    git stash # placera en remise le ou les fichiers présents dans l'index et l'enlèvera de la branche courante
+    git stash list # liste des remises avec leur identifiant
+    git branch -b testing # nous pouvons créér une nouvelle branche pour y ajouter notre remise
+    git stash apply [identifiant-remise] # stash@{0}.....
+
+
+````
+
+### Générer une clé SSH pour l'authentification
+````shell script
+    ssh-keygen -t rsa -b 4096 -C "example@example.com" # commande à exécuter dans le terminal
+    # ensuite aller dans le dossier .ssh dans C:\Users\VotreNomD'Utilisateur\
+    # dans ce dossier il y a deux fichiers id_rsa.txt est votre clé privée alors que la clé id_rsa.pub est votre clé publique.
+    # il reste a enregistrer cette clé dans les settings de notre compte github
 ````
 
 ---
 
 ### Création d'un fichier ``.gitignore``
-> Pour demander à git de ne pas suivre certain type de fichiers, il faut créer un fichier ``.gitignore à la racine du projet``
+> Pour demander à git de ne pas suivre certain type de fichiers, il faut créer un fichier ``.gitignore`` à la racine du projet
 >***Attention*** les fichiers déjà suivis par git ne pourront pas être ignorés
 templates pour ``.gitignore`` : https://github.com/github/gitignore :)
-````gitignore
+
+````shell script
     temp # ignore le fichier ou le dossier temp
     /test/temp # ignore le dossier /test/temp
     *.mp3 # ignore tous les fichiers mp3
@@ -174,3 +201,4 @@ templates pour ``.gitignore`` : https://github.com/github/gitignore :)
     !testfinal #ignore tous fichiers commençant par test sauf testfinal
     .gitignore # on peut aussi ignorer le .gitignore ;)
 ````
+
