@@ -133,12 +133,17 @@ https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Branches-et-fusions%C2%A0%3
 fusionner des branches
 ````shell script
     git checkout master # on se potionne sur la branche master
-    git merge correctif # on fusionne la branche correctif dans la branche master
+    git merge correctif # on fusionne la branche correctif dans la branche master (création d'un commit de merge)
     # si la mention fast-forward lors du merge apparait c'est qu'il y avait un seul commit d'écart entre la branche master
     # et la branche correctif. GIT va simplement déplacer le pointer master au niveau de correctif.
     git branch -d correctif # suppression de la branche correctif qui ne sert plus à rien car elle a été fusionnée (merge)
     # Attention si on essai de supprimer une branche qui n'a pas été fusionnée (merge) => error: The branch 'correctif' is not fully merged.
     git branch -D correctif # forcer la suppression de la branche correctif
+````
+rebaser des branches
+> Ne rebasez jamais des commits qui ont déjà été poussés sur un dépôt public.
+````shell script
+
 ````
 
 ---
