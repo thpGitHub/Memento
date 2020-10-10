@@ -109,7 +109,8 @@ effacer
     git remote rm [remote-name] # retirer un dépot distant
 
     git revert HEAD^ # annulera de dernier commit sur le dépot distant public en créant un nouveau commit
-    # ATTENTION : Git revert peut écraser nos fichiers dans notre répertoire de travail, il faudra commiter nos modifications ou de les remiser
+    # ATTENTION : Git revert peut écraser nos fichiers dans notre répertoire de travail, il faudra commiter nos modifications ou de les remiser.
+    # git reset  pour faire la même chose, mais sur une branche privée. 
 ````
 ---
 ### Les branches
@@ -149,7 +150,13 @@ fusionner des branches
     git log --pretty=oneline #  affiche chaque commit sur une seule ligne
     git log --oneline --decorate --graph --all # ajoute un joli graphe en caractères ASCII pour décrire l’historique des branches et fusions 
     git log --pretty=format:"%h %s" --graph
-    git reflog # affiche l'historique des commits
+    git reflog # affiche l'historique des commits ainsi que toutes les autres actions faites en local
+
+    git checkout 93eaf21 # se potitionnner sur un commit
+
+    git blame monFichier.js # va afficher pour chaque ligne modifiée, son ID, l'auteur, l'horodatage, le numéro de la ligne et le contenu de la ligne
+
+    git cherry-pick d356940 de966d4 # va dupliquer les commits d356940 de966d4 dans notre branche
 ````
 ---
 
@@ -158,6 +165,7 @@ fusionner des branches
     git commit -m 'validation initiale' # on fait un commit puis on s'apperçois d'un oublie
     git add fichier_oublie # on rajoute a l'index le fichier oublié
     git commit --amend # puis on commit. ammend modifie le dernier commit
+    git commit --amend --no-edit # permet de modifier le commit sans changer le message
 
     git commit --amend -m "nouveau message de commit" # modifie le message du dernier commit
 
@@ -174,6 +182,15 @@ fusionner des branches
     git stash list # liste des remises avec leur identifiant
     git branch -b testing # nous pouvons créér une nouvelle branche pour y ajouter notre remise
     git stash apply [identifiant-remise] # stash@{0}.....
+
+    git reset # Si rien n'est spécifié après git reset, par défaut il exécutera un git reset --mixed HEAD~
+    git reset --soft # permet juste de se placer sur un commit spécifique afin de voir le code à un instant donné ou créer une branche
+    # partant d'un ancien commit. Il ne supprime aucun fichier, aucun commit, et ne crée pas de HEAD détaché.
+    git reset --mixed # revenir juste après votre dernier commit ou le commit spécifié, sans supprimer vos modifications en cours.
+    # Il va créer un HEAD détaché.
+    # Il permet aussi, dans le cas de fichiers indexés mais pas encore commités, de désindexer les fichiers.    
+    git reset [Commit-Cible] --hard # revenir au commit cible en supprimant DEFINITIVEMENT tous les commits suivants
+
 
 
 ````
@@ -201,4 +218,8 @@ templates pour ``.gitignore`` : https://github.com/github/gitignore :)
     !testfinal #ignore tous fichiers commençant par test sauf testfinal
     .gitignore # on peut aussi ignorer le .gitignore ;)
 ````
+
+### Définitions :
+
+ - HEAD :  est une référence sur notre position actuelle dans notre répertoire de travail Git. 
 
