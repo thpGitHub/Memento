@@ -103,14 +103,13 @@ effacer
     git pull origine master #  récupère et fusionne automatiquement une branche distante (ici master) dans notre branche locale.
     # git pull regroupe les commandes git fetch suivie de git merge. 
 
-    git remote show [remote-name]
-    git remote rename [remote-name] [new_remote_name] #renomer un nom de dépot distant
-
-    git remote rm [remote-name] # retirer un dépot distant
-
     git revert HEAD^ # annulera de dernier commit sur le dépot distant public en créant un nouveau commit
     # ATTENTION : Git revert peut écraser nos fichiers dans notre répertoire de travail, il faudra commiter nos modifications ou de les remiser.
-    # git reset  pour faire la même chose, mais sur une branche privée. 
+    # git reset  pour faire la même chose, mais sur une branche privée.
+
+    git push origin master # push la branche master du dépot local vers le dépot distant origin
+    git push origin --all # push toutes les branches locales sur le dépot distant origin
+    git push origin --tags # push tous nos tags locaux vers le dépôt distant.
 ````
 ---
 ### Les branches
