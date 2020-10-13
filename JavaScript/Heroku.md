@@ -25,3 +25,15 @@ Puis :
 ````shell script
     git push heroku master
 ````
+
+création d'un fichier ``Procfile`` sans extension et contenant
+````text
+    web: node app.js
+````
+puis :
+````shell script
+    git add .
+    git commit -m "Procfile"
+    git push heroku master
+
+````
