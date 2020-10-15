@@ -128,6 +128,8 @@ divers :
 // excludesfile
 - https://prograide.com/pregunta/18142/avec-git-comment-puis-je-ignorer-un-fichier-dans-une-branche-mais-le-faire-valider-dans-une-autre-branche
 - https://stackoverflow.com/questions/7630638/git-config-excludesfile-for-just-a-branch
+- https://stackoverflow.com/questions/332528/is-it-possible-to-exclude-specific-commits-when-doing-a-git-merge/3970442#3970442
+- http://web.archive.org/web/20120323173730/http://progit.org/book/ch7-2.html#merge_strategies
 
 
 

@@ -228,5 +228,22 @@ templates pour ``.gitignore`` : https://github.com/github/gitignore :)
 
 ### Définitions :
 
- - HEAD :  est une référence sur notre position actuelle dans notre répertoire de travail Git. 
+ - HEAD :  est une référence sur notre position actuelle dans notre répertoire de travail Git.
+ 
+ - A VOIR: gitattributes :
+ 
+ > Fusionner les stratégies
+ > Vous pouvez également utiliser les attributs Git pour indiquer à Git d'utiliser différentes stratégies de fusion pour des fichiers spécifiques de votre projet. Une option très utile est de dire à Git de ne pas essayer de fusionner des fichiers spécifiques quand ils ont des conflits, mais plutôt d'utiliser votre côté de la fusion par rapport à quelqu'un d'autre.
+ > 
+ > Cela est utile si une branche de votre projet a divergé ou est spécialisée, mais que vous souhaitez pouvoir fusionner les modifications à partir de celle-ci et que vous souhaitez ignorer certains fichiers. Supposons que vous ayez un fichier de paramètres de base de données appelé database.xml qui est différent dans deux branches, et que vous souhaitez fusionner dans votre autre branche sans gâcher le fichier de base de données. Vous pouvez configurer un attribut comme celui-ci:
+ > 
+ > database.xml merge=ours
+ > Si vous fusionnez dans l'autre branche, au lieu d'avoir des conflits de fusion avec le fichier database.xml, vous voyez quelque chose comme ceci:
+ > 
+ > $ git merge topic
+ > Auto-merging database.xml
+ > Merge made by recursive.
+ > Dans ce cas, database.xml reste à la version que vous aviez à l'origine.
+ > 
+ > prev | prochain 
 
