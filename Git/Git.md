@@ -222,6 +222,9 @@ templates pour ``.gitignore`` : https://github.com/github/gitignore :)
     !testfinal #ignore tous fichiers commençant par test sauf testfinal
     .gitignore # on peut aussi ignorer le .gitignore ;)
 ````
+````shell script
+    git rm --cached FILENAME # ignorer un fichier déjà archivé
+````
 
 ### Définitions :
 

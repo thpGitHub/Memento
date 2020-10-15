@@ -125,6 +125,11 @@ divers :
 // générateur de mentions légals :
 - https://www.generer-mentions-legales.com/generateur-mentions-legales.html
 
+// excludesfile
+- https://prograide.com/pregunta/18142/avec-git-comment-puis-je-ignorer-un-fichier-dans-une-branche-mais-le-faire-valider-dans-une-autre-branche
+- https://stackoverflow.com/questions/7630638/git-config-excludesfile-for-just-a-branch
+
+
 
 
 
