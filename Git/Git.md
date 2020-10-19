@@ -100,7 +100,7 @@ effacer
     # Si vous souhaitez fusionner ces données pour que votre branche soit à jour, vous devez utiliser ensuite la commande git merge.
 
     git pull [remote-name] [branch]
-    git pull origine master #  récupère et fusionne automatiquement une branche distante (ici master) dans notre branche locale.
+    git pull origin master #  récupère et fusionne automatiquement une branche distante (ici master) dans notre branche locale.
     # git pull regroupe les commandes git fetch suivie de git merge. 
 
     git revert HEAD^ # annulera de dernier commit sur le dépot distant public en créant un nouveau commit
@@ -210,9 +210,8 @@ rebaser des branches
 ---
 
 ### Création d'un fichier ``.gitignore``
-> Pour demander à git de ne pas suivre certain type de fichiers, il faut créer un fichier ``.gitignore`` à la racine du projet
->***Attention*** les fichiers déjà suivis par git ne pourront pas être ignorés
-templates pour ``.gitignore`` : https://github.com/github/gitignore :)
+> Pour demander à git de ne pas suivre certain type de fichiers, il faut créer un fichier ``.gitignore`` à la racine du projet.
+> Templates pour ``.gitignore`` : https://github.com/github/gitignore :)
 
 ````shell script
     temp # ignore le fichier ou le dossier temp
@@ -226,24 +225,34 @@ templates pour ``.gitignore`` : https://github.com/github/gitignore :)
     git rm --cached FILENAME # ignorer un fichier déjà archivé
 ````
 
+### Création d'un fichier ``.gitattributes``
+> On peut dans un fichier ``.gitattributes`` gérer les ``merge`` :
+ > Vous pouvez utiliser les attributs Git pour indiquer à Git d'utiliser différentes stratégies de fusion pour des fichiers spécifiques de votre projet. Une option très utile est de dire à Git de ne pas essayer de fusionner des fichiers spécifiques quand ils ont des conflits, mais plutôt d'utiliser votre côté de la fusion par rapport à quelqu'un d'autre.
+ > 
+ > Cela est utile si une branche de votre projet a divergé ou est spécialisée, mais que vous souhaitez pouvoir fusionner les modifications à partir de celle-ci et que vous souhaitez ignorer certains fichiers. Supposons que vous ayez un fichier de paramètres de base de données appelé database.xml qui est différent dans deux branches, et que vous souhaitez fusionner dans votre autre branche sans gâcher le fichier de base de données. Vous pouvez configurer un attribut comme celui-ci:
+ > 
+ ````gitignore
+    database.xml merge=ours
+````
+
+Et puis définissez une ours stratégie de fusion factice avec:
+````shell script
+    git config --global merge.ours.driver true
+````  
+  
+ > Si vous fusionnez dans l'autre branche, au lieu d'avoir des conflits de fusion avec le fichier database.xml, vous voyez quelque chose comme ceci:
+ ````shell script
+    $ git merge topic
+      # Auto-merging database.xml
+      # Merge made by recursive.
+      # Dans ce cas, database.xml reste à la version que vous aviez à l'origine.
+````
+
+
+templates pour ``.gitattributes`` : https://gitattributes.io/ ou https://github.com/alexkaratarakis/gitattributes
+
 ### Définitions :
 
  - HEAD :  est une référence sur notre position actuelle dans notre répertoire de travail Git.
  
- - A VOIR: gitattributes :
- 
- > Fusionner les stratégies
- > Vous pouvez également utiliser les attributs Git pour indiquer à Git d'utiliser différentes stratégies de fusion pour des fichiers spécifiques de votre projet. Une option très utile est de dire à Git de ne pas essayer de fusionner des fichiers spécifiques quand ils ont des conflits, mais plutôt d'utiliser votre côté de la fusion par rapport à quelqu'un d'autre.
- > 
- > Cela est utile si une branche de votre projet a divergé ou est spécialisée, mais que vous souhaitez pouvoir fusionner les modifications à partir de celle-ci et que vous souhaitez ignorer certains fichiers. Supposons que vous ayez un fichier de paramètres de base de données appelé database.xml qui est différent dans deux branches, et que vous souhaitez fusionner dans votre autre branche sans gâcher le fichier de base de données. Vous pouvez configurer un attribut comme celui-ci:
- > 
- > database.xml merge=ours
- > Si vous fusionnez dans l'autre branche, au lieu d'avoir des conflits de fusion avec le fichier database.xml, vous voyez quelque chose comme ceci:
- > 
- > $ git merge topic
- > Auto-merging database.xml
- > Merge made by recursive.
- > Dans ce cas, database.xml reste à la version que vous aviez à l'origine.
- > 
- > prev | prochain 
 
