@@ -1,4 +1,17 @@
 # Git
+
+> git possède 3 états en local :
+
+Zone 1 : Working directory | Zone 2 : Staging Area | Zone 3 : .git directory
+--- | --- | ---
+*Untracted or not staged* | *Index* | *Local Repository*
+`git add` | `git commit` | `git push`
+
+
+
+
+
+
 > ### Vérifier nos paramètres
 ````shell script
   git config --list
@@ -226,11 +239,11 @@ rebaser des branches
 ````
 
 ### Création d'un fichier ``.gitattributes``
-> On peut dans un fichier ``.gitattributes`` gérer les ``merge`` :
- > Vous pouvez utiliser les attributs Git pour indiquer à Git d'utiliser différentes stratégies de fusion pour des fichiers spécifiques de votre projet. Une option très utile est de dire à Git de ne pas essayer de fusionner des fichiers spécifiques quand ils ont des conflits, mais plutôt d'utiliser votre côté de la fusion par rapport à quelqu'un d'autre.
- > 
- > Cela est utile si une branche de votre projet a divergé ou est spécialisée, mais que vous souhaitez pouvoir fusionner les modifications à partir de celle-ci et que vous souhaitez ignorer certains fichiers. Supposons que vous ayez un fichier de paramètres de base de données appelé database.xml qui est différent dans deux branches, et que vous souhaitez fusionner dans votre autre branche sans gâcher le fichier de base de données. Vous pouvez configurer un attribut comme celui-ci:
- > 
+> On peut dans un fichier ``.gitattributes`` (à la racine du projet) gérer les ``merge`` :
+ >> Vous pouvez utiliser les attributs Git pour indiquer à Git d'utiliser différentes stratégies de fusion pour des fichiers spécifiques de votre projet. Une option très utile est de dire à Git de ne pas essayer de fusionner des fichiers spécifiques quand ils ont des conflits, mais plutôt d'utiliser votre côté de la fusion par rapport à quelqu'un d'autre.
+ >> 
+ >> Cela est utile si une branche de votre projet a divergé ou est spécialisée, mais que vous souhaitez pouvoir fusionner les modifications à partir de celle-ci et que vous souhaitez ignorer certains fichiers. Supposons que vous ayez un fichier de paramètres de base de données appelé database.xml qui est différent dans deux branches, et que vous souhaitez fusionner dans votre autre branche sans gâcher le fichier de base de données. Vous pouvez configurer un attribut comme celui-ci:
+ >> 
  ````gitignore
     database.xml merge=ours
 ````
