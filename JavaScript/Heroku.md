@@ -21,11 +21,12 @@ Puis :
 > déployer du code depuis une autre branche n'a aucun effet !
 ````shell script
     git push heroku master
+    # Lorsque Heroku reçoit le code source, il récupere toutes les dépendances dans package.json.
 ````
 
 - création d'un fichier ``Procfile`` sans extension et contenant
-````text
-    web: node app.js
+````shell script
+    web: node app.js # commande qui doit être exécutée pour démarrer notre application.
 ````
 puis :
 ````shell script
@@ -63,8 +64,15 @@ puis :
       }
     }
 ````
+- s'assurer qu'une instance de notre application est en cours d'exécution : 
+````shell script
+    heroku ps:scale web=1
+````
+
 ---
 
 ````shell script
-  heroku apps:info # informations sur l'application notament la taille de l'app.
+    heroku open # raccourci pour ouvrir l'application
+    heroku apps:info # informations sur l'application notament la taille de l'app.
+    heroku logs --tail # affiche les logs
 ````

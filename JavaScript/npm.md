@@ -1,10 +1,15 @@
 npm
-  -
+-
+````shell script
+    $ npm install # By default, npm install will install all
+    # modules listed as dependencies in package.json.
+````
+---
   - Désinstaller un package
   ````shell script
       $ npm uninstall <package_name>
       $ npm uninstall --save <package_name>
-      // si le package a été installé en tant que ``devDependency``
+      # si le package a été installé en tant que ``devDependency``
       $ npm uninstall --save-dev <package_name>
   ````
   > Pour vérifier si le package a bien été désinstallé il faut check le dossier ``node_modules``
@@ -14,7 +19,7 @@ npm
   > ce module charge les variables d'environnement à partir d'un fichier ``.env`` 
    A voir : https://github.com/motdotla/dotenv
   ````shell script
-      npm i dotenv
+      $ npm i dotenv
   ````
   > Création d'un fichier ``.env``
   ````shell script
