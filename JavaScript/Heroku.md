@@ -63,3 +63,8 @@ puis :
       }
     }
 ````
+---
+
+````shell script
+  heroku apps:info # informations sur l'application notament la taille de l'app.
+````

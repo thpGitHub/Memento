@@ -1,23 +1,21 @@
 # Git
 
-> git possède 3 états en local :
+git possède 3 états en local :
 
 Zone 1 : Working directory | Zone 2 : Staging Area | Zone 3 : .git directory
 --- | --- | ---
 *Untracted or not staged* | *Index* | *Local Repository*
 `git add` | `git commit` | `git push`
 
+---
 
-
-
-
-
-> ### Vérifier nos paramètres
+### Vérifier nos paramètres
 ````shell script
   git config --list
   git config user.name
   git help config    
 ````
+---
 > ### Initialisation du dépot local
 ````shell script
     git init
