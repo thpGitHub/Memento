@@ -1,5 +1,8 @@
 Heroku
 -
+Toutes les applications Heroku s'exécutent dans des conteneurs Linux légers appelés dynos qui exécutent la commande spécifiée dans le fichier Procfile.
+Par défaut, notre application est déployée sur un dyno gratuit. Les dynos gratuits se mettront en veille après une demi-heure d’inactivité.
+---
 
 - Il faut commencer par installer Command Line Interface (CLI) d'Heroku.
 Puis :
@@ -67,12 +70,14 @@ puis :
 - s'assurer qu'une instance de notre application est en cours d'exécution : 
 ````shell script
     heroku ps:scale web=1
+    heroku ps # affichera le nombre de dinos en cours d'exécution
 ````
 
 ---
 
 ````shell script
     heroku open # raccourci pour ouvrir l'application
-    heroku apps:info # informations sur l'application notament la taille de l'app.
+    heroku local web # démarrer l'application localement
+    heroku apps:info # informations sur l'application notament la taille de l'app
     heroku logs --tail # affiche les logs
 ````

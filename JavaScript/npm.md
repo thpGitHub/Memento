@@ -1,9 +1,19 @@
 npm
 -
 ````shell script
+    $ npm init
+    $ npm init --yes
+````
+
+````shell script
     $ npm install # By default, npm install will install all
     # modules listed as dependencies in package.json.
 ````
+> ``package-lock.json`` est un fichier qui est généré lorsque vous apportez des modifications dans le fichier ``package.json``
+> ou dans l'architecture du dossier ``node_modules``. Ce fichier stocke la structure exacte de votre arborescence de dépendances à chaque installation.
+> Ce fichier a été conçu spécifiquement pour les projets collaboratifs, il est donc important de bien le commiter. Cela permet de gérer le fait 
+> que le dossier ``node_modules`` ne soit pas dans les sources commitées, car Node.js est capable de réinstaller les dépendances de 
+> votre projet à partir de ce fichier.
 ---
   - Désinstaller un package
   ````shell script
