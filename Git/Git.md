@@ -102,7 +102,10 @@ effacer
     git remote -v # affichera url du/des dépot/s distant/s
     git remote add [remote-name] [repo-url] # ajouter un nouveau dépôt distant Git
     git remote show origin # visualiser plus d’informations à propos d’un dépôt distant particulier (ici origin)
-    git remote rename origin toto # renomera le nom du dépot distatnt origin en toto
+    # une info intérresante se trouve à la dernière ligne :
+    #  master pushes to master (fast-forwardable)  ici fast-forwardable signifie qu'il y a des commits qui n'ont pas été push
+    #  master pushes to master (up to date)  ici up to date signifie que la branch master du dépot local et la branch master du dépot distant sont à jour
+    git remote rename origin toto # renomera le nom du dépot distant origin en toto
     git remote rm toto # retirera le dépot distant
 
     git fetch [remote-name] # récupère toutes les données que l'on ne possède pas dans notre dépôt local mais sous
@@ -231,6 +234,7 @@ rebaser des branches
     test* #ignore tous fichiers commençant par test
     !testfinal #ignore tous fichiers commençant par test sauf testfinal
     .gitignore # on peut aussi ignorer le .gitignore ;)
+    # commentaire
 ````
 ````shell script
     git rm --cached FILENAME # ignorer un fichier déjà archivé
