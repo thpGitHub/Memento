@@ -1,5 +1,6 @@
 Heroku
 -
+
 Toutes les applications Heroku s'exécutent dans des conteneurs Linux légers appelés dynos qui exécutent la commande spécifiée dans le fichier Procfile.
 Par défaut, notre application est déployée sur un dyno gratuit. Les dynos gratuits se mettront en veille après une demi-heure d’inactivité.
 ---
@@ -63,7 +64,7 @@ puis :
 ````json
     {
       "scripts": {
-        "start": "node app.js"vim
+        "start": "node app.js"
       }
     }
 ````
