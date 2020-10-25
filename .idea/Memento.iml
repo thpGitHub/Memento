@@ -20,5 +20,6 @@
     <orderEntry type="module" module-name="Javascript" />
     <orderEntry type="module" module-name="Question_pour_un_developpeur" />
     <orderEntry type="module" module-name="Questions_pour_un_developpeur" />
+    <orderEntry type="module" module-name="Heroku" />
   </component>
 </module>
