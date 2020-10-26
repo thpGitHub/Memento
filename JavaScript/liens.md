@@ -42,6 +42,7 @@ freeCodeCamp :
 - https://www.freecodecamp.org/news/learn-these-javascript-fundamentals-and-become-a-better-developer-2a031a0dc9cf/
 ---
 GIT :
+- https://onlywei.github.io/explain-git-with-d3/#fetch
 - https://git-scm.com/
 - https://makina-corpus.com/blog/metier/2014/un-workflow-git-efficace-pour-les-projets-a-moyen-long-terme
 - https://perso.liris.cnrs.fr/pierre-antoine.champin/enseignement/intro-git/
