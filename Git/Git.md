@@ -104,7 +104,7 @@ effacer
     git remote show origin # visualiser plus d’informations à propos d’un dépôt distant particulier (ici origin)
     # une info intérresante se trouve à la dernière ligne :
       # (fast-forwardable) ici fast-forwardable signifie qu'il y a des commits qui n'ont pas été push
-      # (up to date) ici up to date signifie que la branch master du dépot local et la branch master du dépot distant sont à jour
+      # (up to date) ici up to date signifie que la branch du dépot local et la branch du dépot distant sont à jour
       # (local out of date) ici local out of date signifie que le dépot distant a changé par rapport au local
     git remote rename origin toto # renomera le nom du dépot distant origin en toto
     git remote rm toto # retirera le dépot distant
@@ -245,8 +245,11 @@ rebaser des branches
 ````
 ````shell script
     git rm --cached FILENAME # ignorer un fichier déjà archivé
+    git status --ignored # affichera la liste des fichiers ignorés
 ````
+A appronfondir ``.git/info/exclude``
 
+---
 ### Création d'un fichier ``.gitattributes``
 > On peut dans un fichier ``.gitattributes`` (à la racine du projet) gérer les ``merge`` :
  >> Vous pouvez utiliser les attributs Git pour indiquer à Git d'utiliser différentes stratégies de fusion pour des fichiers spécifiques de votre projet. Une option très utile est de dire à Git de ne pas essayer de fusionner des fichiers spécifiques quand ils ont des ***conflits***, mais plutôt d'utiliser votre côté de la fusion par rapport à quelqu'un d'autre.
