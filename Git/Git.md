@@ -141,6 +141,10 @@ https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Branches-et-fusions%C2%A0%3
     git branch -v # affichera la liste des derniers commits sur chaque branche
     git branch --merged # affichera quelles branches ont déjà été fusionnées dans votre branche courante (*)
     git branch --no-merged # affichera les branches qui ne sont pas fusionnées (merge)
+    git diff branch1..branch2 # affichera la différence entre les deux branches
+    git log branch1..branch2 # compare les commits entre deux branches
+    git log branch1...branch2 # compare les commits entre deux branches depuis leur ancêtre commun
+    git diff branch1..branch2 -- [file] # compare un fichier spécifique
    
 ````
 fusionner des branches
