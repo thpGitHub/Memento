@@ -132,6 +132,8 @@ divers :
 - https://stackoverflow.com/questions/332528/is-it-possible-to-exclude-specific-commits-when-doing-a-git-merge/3970442#3970442
 - http://web.archive.org/web/20120323173730/http://progit.org/book/ch7-2.html#merge_strategies
 
+// cours fr web, git ....
+- https://www.pierre-giraud.com/
 
 
 
