@@ -32,11 +32,11 @@ Zone 1 : Working directory | Zone 2 : Staging Area | Zone 3 : .git directory
 ````
 
 ````shell script
-    git add nomFichier # ajoute un fichier   
+    git add [nomFichier] # ajoute un fichier   
  ````
  
 ````shell script
-    git add nomFichier1 nomFichier2 # ajoute deux fichiers...
+    git add [nomFichier1] [nomFichier2] # ajoute deux fichiers...
  ````
 
 > ### commit
@@ -78,19 +78,19 @@ Zone 1 : Working directory | Zone 2 : Staging Area | Zone 3 : .git directory
 
 supprimer
 ````shell script
-    rm nomFichier # supprimera le fichier (de git et notre ordi !!) avant l'index (avant un add)
-    git rm -f nomFichier # supprimera le fichier après l'index (après un add) -f pour forcer la suppression !!
+    rm [nomFichier] # supprimera le fichier (de git et notre ordi !!) avant l'index (avant un add)
+    git rm -f [nomFichier] # supprimera le fichier après l'index (après un add) -f pour forcer la suppression !!
 ````
 effacer
 ````shell script
     #pour effacer un fichier  il faut l'indexé (apres un add)
-    git add nomFichier
-    git rm --cached nomFichier #  cela va annuler le suivi de version du fichier tout en le conservant sur l'ordi
+    git add [nomFichier]
+    git rm --cached [nomFichier] #  cela va annuler le suivi de version du fichier tout en le conservant sur l'ordi
 ````
 
 > ### Renomer un fichier
 ````shell script
-    git mv nom1 nom2
+    git mv [nom1] [nom2]
 ````
 
  ---
