@@ -103,8 +103,9 @@ effacer
     git remote add [remote-name] [repo-url] # ajouter un nouveau dépôt distant Git
     git remote show origin # visualiser plus d’informations à propos d’un dépôt distant particulier (ici origin)
     # une info intérresante se trouve à la dernière ligne :
-    #  master pushes to master (fast-forwardable)  ici fast-forwardable signifie qu'il y a des commits qui n'ont pas été push
-    #  master pushes to master (up to date)  ici up to date signifie que la branch master du dépot local et la branch master du dépot distant sont à jour
+      # (fast-forwardable) ici fast-forwardable signifie qu'il y a des commits qui n'ont pas été push
+      # (up to date) ici up to date signifie que la branch master du dépot local et la branch master du dépot distant sont à jour
+      # (local out of date) ici local out of date signifie que le dépot distant a changé par rapport au local
     git remote rename origin toto # renomera le nom du dépot distant origin en toto
     git remote rm toto # retirera le dépot distant
 
@@ -112,6 +113,8 @@ effacer
     # sa propre branche, elle ne les fusionne pas automatiquement avec nos travaux ni ne modifie notre copie de travail.
     # On doit volontairement fusionner les modifications distantes dans notre travail lorsque nous le souhaitons.
     # Si vous souhaitez fusionner ces données pour que votre branche soit à jour, vous devez utiliser ensuite la commande git merge.
+    # Si rien n'est récupéré, rien n'est affiché dans le terminal
+    git fetch -v [remote-name] # affichera plus de détails     
 
     git pull [remote-name] [branch]
     git pull origin master #  récupère et fusionne automatiquement une branche distante (ici master) dans notre branche locale.
