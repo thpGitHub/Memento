@@ -18,7 +18,7 @@ Zone 1 : Working directory | Zone 2 : Staging Area | Zone 3 : .git directory
 ---
 > ### Initialisation du dépot local
 ````shell script
-    git init
+    git init # Git crée un répertoire .git qui contient tout ce que Git a besoin pour fonctionner
 ````
 > ### Lier le dépôt local au dépôt distant (github)
 ```shell script
