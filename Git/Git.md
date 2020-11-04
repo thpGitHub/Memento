@@ -69,8 +69,8 @@ Zone 1 : Working directory | Zone 2 : Staging Area | Zone 3 : .git directory
  > ### git status et git diff
  ````shell script
     git status
-    git diff # affichera plus de détail qu'un git status sur les fichier pas encore indexé. On peut voir les différence des fichiers
-    git diff --staged #compare les différence des fichiers indexés
+    git diff # affichera plus de détail qu'un git status sur les fichiers non indexés. On peut voir les différences des fichiers
+    git diff --staged # compare les différences des fichiers indexés
     git difftool # visualiser les différences avec un outil graphique ou externe
 ````
 
@@ -78,17 +78,17 @@ Zone 1 : Working directory | Zone 2 : Staging Area | Zone 3 : .git directory
 
 supprimer
 ````shell script
-    rm [nomFichier] # supprimera le fichier (de git et notre ordi !!) avant l'index (avant un add)
+    rm [nomFichier] # supprimera le fichier (de git et de notre ordi !!) avant l'index (avant un add)
     git rm -f [nomFichier] # supprimera le fichier après l'index (après un add) -f pour forcer la suppression !!
 ````
 effacer
 ````shell script
-    #pour effacer un fichier  il faut l'indexé (apres un add)
+    #pour effacer un fichier  il faut l'indexer (apres un add)
     git add [nomFichier]
     git rm --cached [nomFichier] #  cela va annuler le suivi de version du fichier tout en le conservant sur l'ordi
 ````
 
-> ### Renomer un fichier
+> ### Renommer un fichier
 ````shell script
     git mv [nom1] [nom2]
 ````
@@ -99,18 +99,18 @@ effacer
  https://git-scm.com/book/fr/v2/Les-bases-de-Git-Travailler-avec-des-d%C3%A9p%C3%B4ts-distants
  ````shell script
     git remote # affichera le nom cours du/des dépot/s distant/s
-    git remote -v # affichera url du/des dépot/s distant/s
+    git remote -v # affichera l'url du/des dépot/s distant/s
     git remote add [remote-name] [repo-url] # ajouter un nouveau dépôt distant Git
     git remote show origin # visualiser plus d’informations à propos d’un dépôt distant particulier (ici origin)
-    # une info intérresante se trouve à la dernière ligne :
+    # une info intéressante se trouve à la dernière ligne :
       # (fast-forwardable) ici fast-forwardable signifie qu'il y a des commits qui n'ont pas été push
       # (up to date) ici up to date signifie que la branch du dépot local et la branch du dépot distant sont à jour
       # (local out of date) ici local out of date signifie que le dépot distant a changé par rapport au local
-    git remote rename origin toto # renomera le nom du dépot distant origin en toto
+    git remote rename origin toto # renommera le nom du dépot distant origin en toto
     git remote rm toto # retirera le dépot distant
 
     git fetch [remote-name] # récupère toutes les données que l'on ne possède pas dans notre dépôt local mais sous
-    # sa propre branche, elle ne les fusionne pas automatiquement avec nos travaux ni ne modifie notre copie de travail.
+    # sa propre branche, ne fusionne pas automatiquement avec nos travaux ni ne modifie notre copie de travail.
     # On doit volontairement fusionner les modifications distantes dans notre travail lorsque nous le souhaitons.
     # Si vous souhaitez fusionner ces données pour que votre branche soit à jour, vous devez utiliser ensuite la commande git merge.
     # Si rien n'est récupéré, rien n'est affiché dans le terminal
@@ -170,7 +170,7 @@ rebaser des branches
 ### Visualiser l'historique des validations
 ````shell script
     git log # affiche la liste des commits
-    git log -p -2 # -p montre les différences et -2 limite a 2
+    git log -p -2 # -p montre les différences et -2 limite à 2
     git log --stat # visualiser des statistiques résumées pour chaque commit
     git log --pretty=oneline #  affiche chaque commit sur une seule ligne
     git log --oneline --decorate --graph --all # ajoute un joli graphe en caractères ASCII pour décrire l’historique des branches et fusions 
@@ -240,7 +240,7 @@ rebaser des branches
     *.mp3 # ignore tous les fichiers mp3
     test* #ignore tous fichiers commençant par test
     !testfinal #ignore tous fichiers commençant par test sauf testfinal
-    .gitignore # on peut aussi ignorer le .gitignore ;)
+    .gitignore # on peut aussi ignorer le .gitignore ;), mais il est préférable de ne pas l'ignorer et de le push sur le dépot distant
     # commentaire
 ````
 ````shell script
@@ -254,7 +254,7 @@ A appronfondir ``.git/info/exclude``
 > On peut dans un fichier ``.gitattributes`` (à la racine du projet) gérer les ``merge`` :
  >> Vous pouvez utiliser les attributs Git pour indiquer à Git d'utiliser différentes stratégies de fusion pour des fichiers spécifiques de votre projet. Une option très utile est de dire à Git de ne pas essayer de fusionner des fichiers spécifiques quand ils ont des ***conflits***, mais plutôt d'utiliser votre côté de la fusion par rapport à quelqu'un d'autre.
  >> 
- >> Cela est utile si une branche de votre projet a divergé ou est spécialisée, mais que vous souhaitez pouvoir fusionner les modifications à partir de celle-ci et que vous souhaitez ignorer certains fichiers. Supposons que vous ayez un fichier de paramètres de base de données appelé database.xml qui est différent dans deux branches, et que vous souhaitez fusionner dans votre autre branche sans gâcher le fichier de base de données. Vous pouvez configurer un attribut comme celui-ci:
+ >> Cela est utile si une branche de votre projet a divergé ou est spécialisée, mais que vous souhaitez pouvoir fusionner les modifications à partir de celle-ci et que vous souhaitez ignorer certains fichiers. Supposons que vous ayez un fichier de paramètres de base de données appelé database.xml qui est différent dans deux branches, et que vous souhaitez fusionner dans votre autre branche sans gâcher le fichier de base de données. Vous pouvez configurer un attribut dans le fichier .gitattributes comme celui-ci:
  >> 
  ````gitignore
     database.xml merge=ours
@@ -272,10 +272,11 @@ Et puis définissez une ours stratégie de fusion factice avec:
       # Merge made by recursive.
       # Dans ce cas, database.xml reste à la version que vous aviez à l'origine.
 ````
-***ATTENTION*** : s'il n'y a pas de conflit entre les fichiers le fichier sera mergé dans la branche (ex.: si le fichier de la branche est vide il n'y aura pas de conflit!)
+***ATTENTION*** : s'il n'y a pas de conflit entre les fichiers, le fichier sera mergé dans la branche (ex.: si le fichier de la branche est vide il n'y aura pas de conflit!)
 
 templates pour ``.gitattributes`` : https://gitattributes.io/ ou https://github.com/alexkaratarakis/gitattributes
 
+---
 ### Définitions :
 
  - HEAD :  est une référence sur notre position actuelle dans notre répertoire de travail Git.
