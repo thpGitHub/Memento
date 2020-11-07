@@ -58,6 +58,10 @@ puis :
         const date = new Date();
         console.log(`${ date.getHours() }H${ date.getMinutes() } on port : ${ port }`);
     });
+
+    // on peut faire aussi directement :
+    const PORT = process.env.PORT || 8000;
+
 ````
 
 - il faut rajouter un script ``start`` dans le ``package.json``

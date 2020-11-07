@@ -13,7 +13,11 @@ Zone 1 : Working directory | Zone 2 : Staging Area | Zone 3 : .git directory
 ````shell script
   git config --list
   git config user.name
-  git help config    
+  git help config 
+
+  # après avoir installé git sur notre machine :
+  git config --global user.name "Votre nom ou pseudo"
+  git config --global user.email "Votre@email.com"   
 ````
 ---
 > ### Initialisation du dépot local
@@ -71,6 +75,7 @@ Zone 1 : Working directory | Zone 2 : Staging Area | Zone 3 : .git directory
     git status
     git diff # affichera plus de détail qu'un git status sur les fichiers non indexés. On peut voir les différences des fichiers
     git diff --staged # compare les différences des fichiers indexés
+    git diff --cached # même commande que git diff --staged
     git difftool # visualiser les différences avec un outil graphique ou externe
 ````
 
@@ -282,3 +287,10 @@ templates pour ``.gitattributes`` : https://gitattributes.io/ ou https://github.
  - HEAD :  est une référence sur notre position actuelle dans notre répertoire de travail Git.
  
 
+````text
+    DB_HOST_LOCAL=
+    DB_HOST_ATLAS=
+    DB_USER=
+    DB_PASS=
+    DB_NAME=
+````
