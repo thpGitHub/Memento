@@ -61,7 +61,6 @@ puis :
 
     // on peut faire aussi directement :
     const PORT = process.env.PORT || 8000;
-
 ````
 
 - il faut rajouter un script ``start`` dans le ``package.json``
@@ -72,6 +71,14 @@ puis :
       }
     }
 ````
+
+- il faut rajouter un ``engines`` dans le ``package.json`` avec notre version de node
+````json
+    "engines": {
+      "node": "12.16.1"
+    }
+````
+
 - s'assurer qu'une instance de notre application est en cours d'exécution : 
 ````shell script
     heroku ps:scale web=1

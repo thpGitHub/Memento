@@ -49,6 +49,7 @@ Zone 1 : Working directory | Zone 2 : Staging Area | Zone 3 : .git directory
     git commit -v # ajoute le résultat d'un git diff comme commentaire
     git commit -m "Add a file" # ajouter un commentaire en ligne de commande
     git commit -a -m "update file" # permet de passer l'étape de mise à l'index (-a => git add)
+    git commit -am "update file" # raccourci de la commande au dessus
 ````
 > ### On pousse tous les commits vers le dépôt distant
 ````shell script
