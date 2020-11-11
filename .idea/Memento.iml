@@ -21,5 +21,6 @@
     <orderEntry type="module" module-name="Question_pour_un_developpeur" />
     <orderEntry type="module" module-name="Questions_pour_un_developpeur" />
     <orderEntry type="module" module-name="Heroku" />
+    <orderEntry type="module" module-name="js-examples" />
   </component>
 </module>

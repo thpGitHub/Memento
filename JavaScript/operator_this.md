@@ -1,6 +1,6 @@
-operator this
+operator ``this``
 ===
-> La valeur de this représente le contexte dans lequel le code courant est exécuté.
+> La valeur de this représente le contexte dans lequel le code courant est exécuté, this permet de faire référence à l'objet courant.
 > Dans la plupart des cas, la valeur de this sera déterminée à partir de la façon dont une fonction est appelée.
 
 - Dans le contexte global
