@@ -1,5 +1,7 @@
 Les modules JavaScript
 -
+https://v8.dev/features/modules#mjs
+
 Un module est un un fichier JavaScript qui va exporter du code placé dans un fichier séparé.
 
 On va ensuite pouvoir choisir quels éléments du module vont être exportés ``export``, afin de les importer :

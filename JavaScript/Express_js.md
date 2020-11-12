@@ -49,6 +49,28 @@ Par convention l'objet ``app`` désigne une application ``express`` et possède 
 - ``.get()`` ne traitera que les requêtes de type GET.
 - ``.post()`` ne traitera que les requêtes de type POST.
 
+Deux façon de créer un serveur HTTP :
+````javascript
+    // 1: création d'un serveur HTTP par express
+    const express = require('express');
+    const app = express();
+    
+    //...
+    
+    app.listen(3000);
+
+    // 2: création d'un seveur HTTP manuellement
+    // cette méthode est pratique pour exécuter socket.io dans la même instance de serveur HTTP
+    const express = require('express');
+    const http = require('http'); 
+    const app = express();
+    const server = http.createServer(app);
+    
+    //...
+    
+    server.listen(3000);
+````
+
 ---
 
 ### Les fonctions middleware
@@ -148,6 +170,7 @@ if (!identifiant || !mdp) {
 > la fonction ``express.static`` est a utiliser dans une fonction ``middleware``
 ````javascript
     app.use('/static', express.static('public'));
+    app.use('/js', express.static(__dirname + '/public/javascript'));
 ````
 
 ````javascript
