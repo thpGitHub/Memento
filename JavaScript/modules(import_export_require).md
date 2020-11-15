@@ -19,3 +19,6 @@ dans d’autres modules ou dans d’autres scripts.
 
 - https://v8.dev/features/modules#mjs
 
+- https://www.digitalocean.com/community/tutorials/understanding-modules-and-import-and-export-statements-in-javascript
+
+
