@@ -1,8 +1,6 @@
 MongoDB
 -
-> Apres avoir installé mongoDB   
-> (attention pour l'instant je suis dans : C:\Program Files\MongoDB\Server\4.2\bin)
-
+> Après avoir installé mongoDB (attention pour l'instant je suis dans : C:\Program Files\MongoDB\Server\4.2\bin)
 > on peut commencer par vérifier les services windows qui sont sur notre machine
 > dans recherche taper simplement ``services`` et le service se nomme : ``mongoDB Server``
 
@@ -23,6 +21,10 @@ MongoDB
     > db # Affiche la BDD dans laquel on se trouve
     > show collections # Affiche les collections de la BDD  
 ````
+> Il est possible d'utiliser une interface graphique avec l'application : ``MongoDB Compass``
+> Il est aussi possible d'héberger sa base de données mongoDB sur le cloud : https://www.mongodb.com/cloud/atlas
+
+
 ---
 #### Création d'une BDD
 > La commande `create database` n'existe pas en mogonDB

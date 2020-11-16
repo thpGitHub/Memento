@@ -1,5 +1,6 @@
 Callback function
 -
+> Nous pouvons passer des fonctions en tant que paramètres à d'autres fonctions et les appeler à l'intérieur des fonctions externes.
 > En javascript les fonctions sont des objets et nous pouvons donc passer une fonction en paramètre d'une autre fonction
 ````javascript
     function print(callback) {  
