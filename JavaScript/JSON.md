@@ -11,3 +11,6 @@ JavaScript fournit un objet global JSON disposant des méthodes pour assurer la 
  renvoie l'objet JavaScript correspondant.
 - ``JSON.stringify()`` qui accepte un objet JavaScript  en paramètre et renvoie son équivalent sous
  la forme d'une chaîne de caractères JSON.
+ 
+ 
+> https://jsonplaceholder.typicode.com/ // fake JSON data 
