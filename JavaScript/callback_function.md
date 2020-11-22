@@ -45,3 +45,54 @@ ici la fonction ``print()`` prend une autre fonction comme paramètre et l'appel
     }, 3000);
 ````
 
+Exemple avec un appel simple AJAX et une fonction callback (success)
+````javascript
+    let get = (url, success) => {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (this.readyState === 4) {
+                success(xhr.responseText);
+            }
+        };
+        xhr.open('GET', url);
+        xhr.send();
+    };
+    
+    let getPost = () => {
+        get('https://jsonplaceholder.typicode.com/users', function(response){
+            let user = JSON.parse(response);
+            console.log(user[0].address.city);
+        });
+    };
+    
+    getPost();
+````
+Avec deux fonctions callback (success et error)
+````javascript
+    let get = (url, success, error) => {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                if (xhr.status === 200) {
+                    success(xhr.responseText);
+                }else {
+                    error(xhr)
+                }
+            }
+        };
+        xhr.open('GET', url);
+        xhr.send();
+    };
+    
+    let getPost = () => {
+        get('https://jsonplaceholder.typicode.com/users', function(response){
+            let user = JSON.parse(response);
+            console.log(user[0].address.city);
+        }, function (error) {
+            console.log(error);
+        });
+    };
+    
+    getPost();
+
+````

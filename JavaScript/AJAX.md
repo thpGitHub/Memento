@@ -52,6 +52,7 @@ Pour envoyer une demande à un serveur Web, nous utilisons les méthodes ``open(
         xhttp.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
              document.getElementById("foo").innerHTML = this.responseText;
+             //console.log(xhttp);
             }
         };
         // XMLHttpRequest.open(method, url, async, user, password)
