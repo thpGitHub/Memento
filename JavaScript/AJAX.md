@@ -34,7 +34,8 @@ Propriétés de l'objet XMLHttpRequest:
 - 3: traitement de la demande
 - 4: demande terminée et réponse prête   
 
-``onreadystatechange`` est une propriété de l'objet XMLHttpRequest qui définit une fonction à appeler lorsque la propriété readyState change.   
+``onreadystatechange`` est une propriété de l'objet XMLHttpRequest qui définit une fonction à appeler lorsque la propriété readyState change.
+``onreadystatechange``  contient le gestionnaire d'évènement appelé lorsque l'évènement readystatechange est déclenché.   
    
 ``status`` est une propriété de l'objet XMLHttpRequest qui retourne le numéro d'état d'une requête
 - 200: "OK"
