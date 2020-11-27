@@ -59,8 +59,8 @@ Exemple avec un appel simple AJAX et une fonction callback (success)
     };
     
     let getPost = () => {
-        get('https://jsonplaceholder.typicode.com/users', function(response){
-            let user = JSON.parse(response);
+        get('https://jsonplaceholder.typicode.com/users', function(success){
+            let user = JSON.parse(success);
             console.log(user[0].address.city);
         });
     };
@@ -85,8 +85,8 @@ Avec deux fonctions callback (success et error)
     };
     
     let getPost = () => {
-        get('https://jsonplaceholder.typicode.com/users', function(response){
-            let user = JSON.parse(response);
+        get('https://jsonplaceholder.typicode.com/users', function(success){
+            let user = JSON.parse(success);
             console.log(user[0].address.city);
         }, function (error) {
             console.log(error);
