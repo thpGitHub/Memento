@@ -3,20 +3,28 @@ Les promesses en JavaScript ( promises )
 
 > JavaScript a un thread unique, ce qui signifie que deux scripts ne peuvent pas s'exécuter en même temps, 
 > ils doivent s'exécuter l'un derrière l'autre.   
-> Une promesse est un objet qui représente la résolution ou l'échec d'une opération asynchrone.
+> Une promesse est un objet qui représente la résolution (resolve) ou l'échec (reject) d'une opération asynchrone.
 
 ````javascript
+    // Création d'une promesse : 
     const promise1 = new Promise(function (resolve, reject) {
-        resolve(44);    
-});
+        resolve(44);
+        reject('ko');  
+    });
 
-    promise1.then(function (valueOfResolveOfPromise1) {
-        console.log(valueOfResolveOfPromise1);    
-})
-// 44
+    // Capter l'état de la promesse :
+    promise1
+        .then(function (value_Resolve_Promise1) { // la methode .then fait référence à resolve
+            console.log(valueOfResolveOfPromise1); // output : 44
+        })
+        .catch(function(value_reject_promise1) { // la methode .catch fait référence à reject
+            console.error(value_reject_promise1);   // output : ko
+        })    
+
+
 ````
 Une promesse a trois états :
-- Pending (En attente) : c'est l'état iniatial
+- Pending (En attente) : c'est l'état initial
 - Fulfilled (accompli) : l'opération est terminée avec succès
 - Rejected             : l'opération a échouée
 
