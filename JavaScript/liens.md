@@ -2,6 +2,7 @@ animations :
 - https://alexandre-laurent.developpez.com/tutoriels/programmation-jeux/animations-2D/
 ---
 API REST :
+- https://github.com/public-apis/public-apis // liste d'API public
 - https://pokeapi.co/
 - https://jsonplaceholder.typicode.com/ // pour générer du contenu fictif
 - https://swapi.dev/
@@ -101,6 +102,9 @@ docs :
 Sprites :
 - https://ya-webdesign.com/explore/sprite-animation-png/
 - https://spritedatabase.net/
+---
+Test :
+- https://developers.google.com/speed/pagespeed/insights/?hl=fr // Améliorez la vitesse de chargement de nos pages
 ---
 webpack :  
 - https://putaindecode.io/articles/webpack/   
