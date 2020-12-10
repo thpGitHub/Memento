@@ -15,6 +15,14 @@ npm
 > que le dossier ``node_modules`` ne soit pas dans les sources commitées, car Node.js est capable de réinstaller les dépendances de 
 > votre projet à partir de ce fichier.
 ---
+  - Installer une version spécifique d'un package
+  ````shell script
+    $ npm install express@4.16.1
+    # avec un signe ^ ou un tilde ~ pour spécifier la dernière version mineure ou patch
+    $ npm install express@^4.16.1
+    $ npm install express@~4.16.1
+  ````
+---
   - Désinstaller un package
   ````shell script
       $ npm uninstall <package_name>
