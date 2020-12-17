@@ -111,3 +111,72 @@ ReactDom.render(
 </html>
 ````
 - lancer l'application ``$ npm start``
+
+---
+
+Il existe deux types de composant dans REACT: 
+
+Composant de fonction                       | Composant de classe
+--- | --- 
+*Stateless component*                       | *Statefull component*
+Plus performant                             |  Moins performant
+Plus concis                                 | Plus long à écrire
+Pas de gestion du state                     | Gestion du state
+Pas de gestion du cycle de vie du composant | Gestion du cycle de vie du composant
+
+- Les composants de fonctions
+````typescript
+  import React, { FunctionComponent } from 'react';
+  
+  const App: FunctionComponent = () => {
+    const name: String = 'React';
+    
+    return (
+     <h1>Hello, {name} !</h1>
+    )
+  }
+  
+  export default App;
+````
+
+
+- Les componsant de classe
+````typescript
+  import React from 'react';
+  
+  export default class App extends React.Component {
+    const name: String = 'React';
+    
+    render() {
+      return <h1>Hello, {name} !</h1>;
+    }
+  }
+````
+---
+
+Les Hooks :
+
+> Les Hooks permettent de rajouter un state à un component et se nomme ``useState``.
+Les Hooks sont des fonctions javaScript.
+````typescript
+  import React, { FunctionComponent, useState } from 'react';
+  
+const App: FunctionComponent = () => {
+ const [name, setName] = useState ('React');
+    
+ return (
+  <h1>Hello, {name} !</h1>
+ )
+}
+  
+export default App;
+
+/*
+const [name, setName] = useState ('React'); 
+===
+let nameStateVariable = useState('React');
+let name = nameStateVariable[0];
+let setName = nameStateVariable[1];
+*/
+
+````
