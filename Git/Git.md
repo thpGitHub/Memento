@@ -287,11 +287,3 @@ templates pour ``.gitattributes`` : https://gitattributes.io/ ou https://github.
 
  - HEAD :  est une référence sur notre position actuelle dans notre répertoire de travail Git.
  
-
-````text
-    DB_HOST_LOCAL=
-    DB_HOST_ATLAS=
-    DB_USER=
-    DB_PASS=
-    DB_NAME=
-````
