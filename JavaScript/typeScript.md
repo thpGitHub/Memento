@@ -3,8 +3,8 @@ TypeScript
 ````shell script
     $ npm i  -g typescript
     $ tsc nomFichier.tsc // cela va créer un fichier .js transpilé en ES5
-    $ tsc --watch nomFichier.tsc // surveillera le fichier .ts et mettra a jour le .js
-
+    $ tsc --watch nomFichier.tsc // surveillera le fichier .ts et mettra à jour le .js
+    $ tsc --version
 ````
 ### Le type Tuple
 ````typescript
