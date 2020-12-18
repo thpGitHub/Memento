@@ -156,13 +156,13 @@ Pas de gestion du cycle de vie du composant | Gestion du cycle de vie du composa
 
 Les Hooks :
 
-> Les Hooks permettent de rajouter un state à un component et se nomme ``useState``.
+> Les Hooks permettent de rajouter un ``state`` à un component et se nomme ``useState``.
 Les Hooks sont des fonctions javaScript.
 ````typescript
   import React, { FunctionComponent, useState } from 'react';
   
 const App: FunctionComponent = () => {
- const [name, setName] = useState ('React');
+ const [name, setName] = useState<string> ('React');
     
  return (
   <h1>Hello, {name} !</h1>
@@ -178,5 +178,19 @@ let nameStateVariable = useState('React');
 let name = nameStateVariable[0];
 let setName = nameStateVariable[1];
 */
-
 ````
+> Les hooks permettent de rajouter des méthodes de  ``cycle de vie`` pour les composants et se nomme ``useEffect``
+- ``componentDidMount() ``
+C'est la méthode appelée en premier lors de la création d'un composant lorsqu'il est inséré dans le DOM.
+Cela permet de mettre en place certaines instructions lors de l'initialisation du composant, comme la récupération de données depuis un serveur distant par exemple.
+On parle de ``montage`` du composant.
+
+- ``componentDidUpdate(prevProps, prevState)``
+Dès que les valeurs d'une propriété du composant sont modifiées, le composant est mis à jour.
+La méthode reçoit en paramètre deux objets représentant les ``props`` et le ``state`` avant la mise à jour.
+Cela permet de travailler sur le DOM une fois que le composant a été mis à jour.
+
+- ``componentWillUnmount()``
+C'est la dernière méthode de cycle de vie d'un composant, appelé juste avant que le composant soit détruit par React.
+Un composant est détruit lorsqu'il est retirer du DOM. Cette méthode permet de se désabonner de certaines dépendances du composant et ainsi éviter les problèmes de performance.
+Cette étape est appelé ``démontage``.
