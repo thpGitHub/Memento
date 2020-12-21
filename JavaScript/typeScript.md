@@ -1,11 +1,26 @@
 TypeScript
 -
+> Typescript a pour but d'améliorer et de sécuriser la production de code JavaScript. Il s'agit d'un sur-ensemble typé strict de JavaScript.
+> TypeScript est un vérificateur de type statique : il détecte les erreurs de code sans executer le programme.  
+> Le code TypeScript est transcompilé en JavaScript.
+
 ````shell script
     $ npm i  -g typescript
     $ tsc nomFichier.tsc // cela va créer un fichier .js transpilé en ES5
     $ tsc --watch nomFichier.tsc // surveillera le fichier .ts et mettra à jour le .js
     $ tsc --version
 ````
+
+### Type par inférence : 
+TypeScript utilisera la valeur comme type.
+````typescript
+  let helloWorld = "Hello World";
+//  correspond à :  let helloWorld: string
+
+````
+
+
+
 ### Le type Tuple
 ````typescript
     const addresse: [string, number] = ['rue de l\'espérance', 17];

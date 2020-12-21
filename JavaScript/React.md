@@ -154,7 +154,7 @@ Pas de gestion du cycle de vie du composant | Gestion du cycle de vie du composa
 ````
 ---
 
-Les Hooks :
+# Les Hooks :
 
 > Les Hooks permettent de rajouter un ``state`` à un component et se nomme ``useState``.
 Les Hooks sont des fonctions javaScript.
@@ -179,7 +179,8 @@ let name = nameStateVariable[0];
 let setName = nameStateVariable[1];
 */
 ````
-> Les hooks permettent de rajouter des méthodes de  ``cycle de vie`` pour les composants et se nomme ``useEffect``
+> Les hooks permettent de rajouter des méthodes de  ``cycle de vie`` pour les composants et se nomme ``useEffect`` :
+
 - ``componentDidMount() ``
 C'est la méthode appelée en premier lors de la création d'un composant lorsqu'il est inséré dans le DOM.
 Cela permet de mettre en place certaines instructions lors de l'initialisation du composant, comme la récupération de données depuis un serveur distant par exemple.
