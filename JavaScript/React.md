@@ -114,7 +114,7 @@ ReactDom.render(
 
 ---
 
-Il existe deux types de composant dans REACT: 
+# Il existe deux types de composant dans REACT: 
 
 Composant de fonction                       | Composant de classe
 --- | --- 
@@ -195,3 +195,9 @@ Cela permet de travailler sur le DOM une fois que le composant a été mis à jo
 C'est la dernière méthode de cycle de vie d'un composant, appelé juste avant que le composant soit détruit par React.
 Un composant est détruit lorsqu'il est retirer du DOM. Cette méthode permet de se désabonner de certaines dépendances du composant et ainsi éviter les problèmes de performance.
 Cette étape est appelé ``démontage``.
+
+
+### 3 règles à respecter avec les Hooks
+- On ne doit pas appeler les hooks à l'intérieur d'une boucle ou d'une condition. Il faut utiliser les hooks à la racine du composant fonction.
+- On appel les hooks uniquement depuis des composants de fonction ! Exception : on peut appeler un hook depuis un autre composant que l'on a créé (hooks personnalisé).
+- Quand on utilise la méthode du hook (ex. set name...) la valeur est remplacée complètement et non fusionnée !
