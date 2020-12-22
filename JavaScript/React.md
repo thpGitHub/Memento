@@ -196,8 +196,85 @@ C'est la dernière méthode de cycle de vie d'un composant, appelé juste avant 
 Un composant est détruit lorsqu'il est retirer du DOM. Cette méthode permet de se désabonner de certaines dépendances du composant et ainsi éviter les problèmes de performance.
 Cette étape est appelé ``démontage``.
 
+````typescript
+    import React, { FunctionComponent, useState, useEffect } from 'react';
+    import Pokemon from './models/pokemon';
+    import POKEMONS from './models/mock-pokemon';
+  
+    const App: FunctionComponent = () => {
+      const [pokemons, setPokemons] = useState<Pokemon[]> ([]);
+   
+      useEffect( () => {
+        setPokemons(POKEMONS);
+      }, []);
+
+    return (
+      <h2>Il y a  {pokemons.length} pokemons !</h2>
+    )
+    };
+  
+export default App;
+````
 
 ### 3 règles à respecter avec les Hooks
 - On ne doit pas appeler les hooks à l'intérieur d'une boucle ou d'une condition. Il faut utiliser les hooks à la racine du composant fonction.
 - On appel les hooks uniquement depuis des composants de fonction ! Exception : on peut appeler un hook depuis un autre composant que l'on a créé (hooks personnalisé).
 - Quand on utilise la méthode du hook (ex. set name...) la valeur est remplacée complètement et non fusionnée !
+
+# JSX et le DOM virtuel 
+
+- Gestionnaire d'événement REACT :
+````typescript
+import React, { FunctionComponent, useState, useEffect } from 'react';
+import Pokemon from './models/pokemon';
+import POKEMONS from './models/mock-pokemon';
+  
+const App: FunctionComponent = () => {
+     const [pokemons, setPokemons] = useState<Pokemon[]> ([]);
+   
+     useEffect( () => {
+          setPokemons(POKEMONS);
+     }, []);
+
+     // cette variable est un gestionnaire d'événement.
+     const showPokemonsCount = () => {
+          console.log(pokemons.length);
+     };
+
+     return (  // ici commence le JSX
+          <div>
+               <h1>Pokédex</h1>
+               // les évènements REACT sont en camel case par rapport aux évents JS.
+               <p onClick={showPokemonsCount}>Afficher le nombre de Pokémons</p>
+          </div>
+     )
+};
+  
+export default App;
+````
+- Gestionnaire d'événement natif JavaScript
+````typescript
+import React, { FunctionComponent, useState, useEffect } from 'react';
+import Pokemon from './models/pokemon';
+import POKEMONS from './models/mock-pokemon';
+  
+const App: FunctionComponent = () => {
+     const [pokemons, setPokemons] = useState<Pokemon[]> ([]);
+   
+     useEffect( () => {
+          setPokemons(POKEMONS);
+     }, []);
+
+     // cette variable est un gestionnaire d'événement.
+     const showPokemonsCount = () => {
+          console.log(pokemons.length);
+     };
+
+     return (  // ici commence le JSX
+          <div>
+               <h1>Pokédex</h1>
+               // les évènements REACT sont en camel case par rapport aux évents JS.
+               <p onClick={showPokemonsCount}>Afficher le nombre de Pokémons</p>
+          </div>
+     )
+};
