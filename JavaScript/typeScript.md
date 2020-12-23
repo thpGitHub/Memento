@@ -19,16 +19,16 @@ TypeScript utilisera la valeur comme type.
 
 ````
 
-
-
 ### Le type Tuple
+
 ````typescript
     const addresse: [string, number] = ['rue de l\'espérance', 17];
 ````
 
 >>TypeScript considère chaque fichier .ts soit :
- - comme un module
- - soit comme un script
+
+- comme un module
+- soit comme un script
 
 > Dans le cas d'un module, le code à l'intérieur du fichier est isolé du reste du code contenu dans les autres fichiers (rappelez-vous Webpack). Chaque module peut importer d'autres modules, appelées dépendances du modules, et aussi exporter des données pour les rendre visible par d'autres modules.
   

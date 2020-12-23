@@ -231,7 +231,7 @@ Cette étape est appelé ``démontage``.
 export default App;
 ````
 
-### 3 règles à respecter avec les Hooks
+## 3 règles à respecter avec les Hooks
 
 - On ne doit pas appeler les hooks à l'intérieur d'une boucle ou d'une condition. Il faut utiliser les hooks à la racine du composant fonction.
 - On appel les hooks uniquement depuis des composants de fonction ! Exception : on peut appeler un hook depuis un autre composant que l'on a créé (hooks personnalisé).
@@ -239,7 +239,7 @@ export default App;
 
 ---
 
-# JSX et le DOM virtuel 
+# JSX et le DOM virtuel
 
  Gestionnaire d'événement REACT :
 
@@ -311,4 +311,14 @@ const App: FunctionComponent = () => {
 };
   
 export default App;
+````
+
+## Les conditions dans JSX
+
+*ATTENTION* JSX comprend les ``expressions`` javascript mais ne comprend pas les ``instructions`` javascript
+
+Astuce ici avec l'operateur &&
+
+````typescript
+
 ````
