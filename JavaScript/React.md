@@ -1,9 +1,9 @@
-React
--
+# React
 
 Création d'une app React sans ``create react app`` ni de ``CDN``
 
 - création d'un fichier ``package.json`` à la racine du projet
+
 ````JSON
     {
   "name": "react-pokemons-app",
@@ -41,7 +41,9 @@ Création d'une app React sans ``create react app`` ni de ``CDN``
   }
 }
 ````
+
 - création d'un fichier ``tsconfig.json`` à la racine du projet. Fichier de configuration typescript
+
 ````JSON
 {
   "compilerOptions": {
@@ -70,9 +72,11 @@ Création d'une app React sans ``create react app`` ni de ``CDN``
   ]
 }
 ````
+
 - ``$ npm install`` pour installer toutes les dépendances du fichier ``package.json`` et va créer un dosiier ``node_modules``
 - création d'un fichier ``src`` avec un fichier ``App.tsx`` et ``index.tsx`` qui fera le lien entre ``App.tsx`` et ``index.html``
-````
+
+````typescript
 import React from 'react';
   
 const App: React.FC = () => {
@@ -85,7 +89,8 @@ const App: React.FC = () => {
   
 export default App;
 ````
-````
+
+````typescript
 import React from 'react';
 import ReactDom from 'react-dom';
 import App from './App';
@@ -95,7 +100,9 @@ ReactDom.render(
    document.querySelector('#root')
 );
 ````
+
 - création d'un dossier ``public`` avec un fichier ``index.
+
 ````HTML
 <!DOCTYPE html>
 <html lang="fr">
@@ -110,6 +117,7 @@ ReactDom.render(
   </body>
 </html>
 ````
+
 - lancer l'application ``$ npm start``
 
 ---
@@ -125,6 +133,7 @@ Pas de gestion du state                     | Gestion du state
 Pas de gestion du cycle de vie du composant | Gestion du cycle de vie du composant
 
 - Les composants de fonctions
+
 ````typescript
   import React, { FunctionComponent } from 'react';
   
@@ -141,6 +150,7 @@ Pas de gestion du cycle de vie du composant | Gestion du cycle de vie du composa
 
 
 - Les componsant de classe
+
 ````typescript
   import React from 'react';
   
@@ -152,12 +162,14 @@ Pas de gestion du cycle de vie du composant | Gestion du cycle de vie du composa
     }
   }
 ````
+
 ---
 
 # Les Hooks :
 
-> Les Hooks permettent de rajouter un ``state`` à un component et se nomme ``useState``.
+> Les Hooks permettent de rajouter un ``state`` à un composant de fonction et se nomme ``useState``.
 Les Hooks sont des fonctions javaScript.
+
 ````typescript
   import React, { FunctionComponent, useState } from 'react';
   
@@ -179,9 +191,12 @@ let name = nameStateVariable[0];
 let setName = nameStateVariable[1];
 */
 ````
-> Les hooks permettent de rajouter des méthodes de  ``cycle de vie`` pour les composants et se nomme ``useEffect`` :
 
-- ``componentDidMount() ``
+> Les hooks permettent de rajouter des méthodes de  ``cycle de vie`` à un composants de fonction et se nomme ``useEffect``.
+
+Il y a trois méthodes ``de cycle de vie`` dans React :
+
+- `` componentDidMount() ``
 C'est la méthode appelée en premier lors de la création d'un composant lorsqu'il est inséré dans le DOM.
 Cela permet de mettre en place certaines instructions lors de l'initialisation du composant, comme la récupération de données depuis un serveur distant par exemple.
 On parle de ``montage`` du composant.
@@ -217,14 +232,19 @@ export default App;
 ````
 
 ### 3 règles à respecter avec les Hooks
+
 - On ne doit pas appeler les hooks à l'intérieur d'une boucle ou d'une condition. Il faut utiliser les hooks à la racine du composant fonction.
 - On appel les hooks uniquement depuis des composants de fonction ! Exception : on peut appeler un hook depuis un autre composant que l'on a créé (hooks personnalisé).
 - Quand on utilise la méthode du hook (ex. set name...) la valeur est remplacée complètement et non fusionnée !
 
+---
+
 # JSX et le DOM virtuel 
 
-- Gestionnaire d'événement REACT :
+ Gestionnaire d'événement REACT :
+
 ````typescript
+
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import Pokemon from './models/pokemon';
 import POKEMONS from './models/mock-pokemon';
@@ -252,8 +272,9 @@ const App: FunctionComponent = () => {
   
 export default App;
 ````
-- Gestionnaire d'événement natif JavaScript
+
 ````typescript
+
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import Pokemon from './models/pokemon';
 import POKEMONS from './models/mock-pokemon';
@@ -278,3 +299,4 @@ const App: FunctionComponent = () => {
           </div>
      )
 };
+````
