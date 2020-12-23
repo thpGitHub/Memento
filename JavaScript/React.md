@@ -273,6 +273,8 @@ const App: FunctionComponent = () => {
 export default App;
 ````
 
+Récupérer l'évènement natif javaScript :
+
 ````typescript
 
 import React, { FunctionComponent, useState, useEffect } from 'react';
@@ -290,13 +292,23 @@ const App: FunctionComponent = () => {
      const showPokemonsCount = () => {
           console.log(pokemons.length);
      };
-
-     return (  // ici commence le JSX
+     const addPokemon = (name: string, e: any) => {
+          console.log(e);
+          if (e.nativeEvent.which === 1) {
+               console.log(`Le pokémon ${name} a été ajouté au pokédex, avec le click gauche`);
+          } else {
+               console.log(`Le pokémon ${name} a été ajouté au pokédex, avec le click droit`)
+          }
+     };
+     return (  
           <div>
                <h1>Pokédex</h1>
                // les évènements REACT sont en camel case par rapport aux évents JS.
                <p onClick={showPokemonsCount}>Afficher le nombre de Pokémons</p>
+               <button onClick={(e) => addPokemon('toto', e)}>Ajouter un Pokémon !</button>
           </div>
      )
 };
+  
+export default App;
 ````
