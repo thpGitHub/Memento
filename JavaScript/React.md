@@ -320,5 +320,56 @@ export default App;
 Astuce ici avec l'operateur &&
 
 ````typescript
-
+  return (
+    <div>
+      {age > 18 && // si la condition est true le paragraphe sera affiché grace à l'oppérateur &&
+        <p>Vous êtes majeur, donc vous pouvez voir ce contenu.</p>}
+    </div>
+  );
 ````
+
+Astuce ici avec l'operateur ternaire
+
+````typescript
+  return (
+    <p> {age > 18 ? (
+      Vous êtes majeur, donc vous pouvez voir ce contenu.
+    ) : (
+      Vous êtes mineur, il faut attendre.
+    )};
+  );
+`````
+
+## Afficher une liste de tableau avec la méthode native map() dans JSX
+
+````typescript
+  return (
+   <ul>
+    {pokemons.map((pokemon) => (
+      <li key={pokemon.name}>{pokemon.name}</li>
+    ))} 
+   </ul>
+  );
+`````
+
+````typescript
+  return (
+   <ul>
+    {pokemons.map((pokemon, index) => (
+      <li key={index}>{pokemon.name}</li>
+    ))} 
+   </ul>
+  );
+`````
+
+Avec le destructuring on peut récupérer juste le nom :
+
+````typescript
+  return (
+   <ul>
+    {pokemons.map(({name}) => (
+      <li key={name}>{name}</li>
+    ))} 
+   </ul>
+  );
+`````
