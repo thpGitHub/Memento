@@ -122,10 +122,10 @@ ReactDom.render(
 
 ---
 
-# Il existe deux types de composant dans REACT: 
+## Il existe deux types de composant dans REACT
 
 Composant de fonction                       | Composant de classe
---- | --- 
+--- | ---
 *Stateless component*                       | *Statefull component*
 Plus performant                             |  Moins performant
 Plus concis                                 | Plus long à écrire
@@ -148,7 +148,6 @@ Pas de gestion du cycle de vie du composant | Gestion du cycle de vie du composa
   export default App;
 ````
 
-
 - Les componsant de classe
 
 ````typescript
@@ -165,7 +164,7 @@ Pas de gestion du cycle de vie du composant | Gestion du cycle de vie du composa
 
 ---
 
-# Les Hooks :
+## Les Hooks
 
 > Les Hooks permettent de rajouter un ``state`` à un composant de fonction et se nomme ``useState``.
 Les Hooks sont des fonctions javaScript.
@@ -239,7 +238,7 @@ export default App;
 
 ---
 
-# JSX et le DOM virtuel
+## JSX et le DOM virtuel
 
  Gestionnaire d'événement REACT :
 
@@ -373,3 +372,8 @@ Avec le destructuring on peut récupérer juste le nom :
    </ul>
   );
 `````
+
+---
+
+## Les props
+
