@@ -69,7 +69,11 @@ les déconfinés de l'IT
 mongo :  
 // hébergement de la bdd mongo sur le cloud gratuitement
 - https://www.mongodb.com/cloud/atlas
-
+---
+Neumorphism
+- https://alexandra-guyot.graphics/2020/03/02/le-neumorphism-la-vraie-fausse-bonne-idee-de-2020/
+- https://uxplanet.org/neumorphism-in-user-interface-tutorial-c353698ac5c0
+- https://uxdesign.cc/neumorphism-in-user-interfaces-b47cef3bf3a6
 ---
 node :   
 // hébergeur gratuit supportant node
