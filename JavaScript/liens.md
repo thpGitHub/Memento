@@ -106,6 +106,10 @@ Sprites :
 Test :
 - https://developers.google.com/speed/pagespeed/insights/?hl=fr // Améliorez la vitesse de chargement de nos pages
 ---
+3D bibliothèque d'inclinaison 3D :
+- https://micku7zu.github.io/vanilla-tilt.js/
+- https://www.youtube.com/watch?v=W3pQXyjTKps
+---
 webpack :  
 - https://putaindecode.io/articles/webpack/   
 ---
