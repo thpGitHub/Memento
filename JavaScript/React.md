@@ -377,3 +377,4 @@ Avec le destructuring on peut récupérer juste le nom :
 
 ## Les props
 
+> Pour passer une prop à un composant il faut l'ajouter en paramètre de la fonction du composant
