@@ -73,7 +73,7 @@ Création d'une app React sans ``create react app`` ni de ``CDN``
 }
 ````
 
-- ``$ npm install`` pour installer toutes les dépendances du fichier ``package.json`` et va créer un dosiier ``node_modules``
+- ``$ npm install`` pour installer toutes les dépendances du fichier ``package.json`` et va créer un dossier ``node_modules``
 - création d'un fichier ``src`` avec un fichier ``App.tsx`` et ``index.tsx`` qui fera le lien entre ``App.tsx`` et ``index.html``
 
 ````typescript
