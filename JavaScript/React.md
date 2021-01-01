@@ -466,10 +466,7 @@ const App: FunctionComponent = () => {
                          <Route exact path="/pokemons" component={ PokemonList }/>
                          <Route exact path="/pokemon/:id" component={ PokemonDetail }/>
                     </Switch>
-
               </div>
-            
-
          </Router>
      )
 };
@@ -531,3 +528,42 @@ const PokemonCard: FunctionComponent<Props> = ({ pokemon, borderColor = '#009688
   
 export default PokemonCard;
 ````
+
+gérer les erreurs 404
+
+````typescript
+import React, { FunctionComponent } from 'react';
+import PokemonList from './pages/pokemon-list';
+import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
+import PokemonDetail from './pages/pokemon-detail';
+import PageNotFund from './pages/page_not_found';
+
+const App: FunctionComponent = () => {
+     
+     return (
+         <Router>
+              <div>
+                    { /*La barre de navigation commun a toutes les pages*/ }
+                    <nav>
+                         <div className="nav-wrapper teal">
+                              <Link to="/" className="brand-logo center">Pokédex</Link>
+                         </div>
+                    </nav>
+                    { /*Le système de gestion des routes de notre application*/ }
+                    <Switch>
+                         <Route exact path="/" component={ PokemonList }/>
+                         <Route exact path="/pokemons" component={ PokemonList }/>
+                         <Route exact path="/pokemon/:id" component={ PokemonDetail }/>
+                         <Route component={ PageNotFund }/>
+                    </Switch>
+              </div>
+         </Router>
+     )
+};
+
+export default App;
+````
+
+---
+
+## Les formulaires
