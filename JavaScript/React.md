@@ -378,3 +378,156 @@ Avec le destructuring on peut récupérer juste le nom :
 ## Les props
 
 > Pour passer une prop à un composant il faut l'ajouter en paramètre de la fonction du composant
+
+---
+
+## les propriétée calculée
+
+> Sont des fonctions dans un composent pour transformer des données avant l'affichage dans le DOM. Ici nous allons créér une fonction formatDate().
+
+````typescript
+import React, { FunctionComponent, useState } from 'react';
+import Pokemon from '../models/pokemon';
+import './pokemon-card.css';
+  
+type Props = {
+  pokemon: Pokemon,
+  borderColor?: string
+};
+  
+const PokemonCard: FunctionComponent<Props> = ({ pokemon, borderColor = '#009688' }) => {
+    
+  const [color, setColor] = useState<string>();
+
+  const showBorder = () => {
+      setColor(borderColor);
+  };  
+
+  const hideBorder = () => {
+      setColor('#f5f5f5'); // on remet la bordure en gris.s
+  };  
+
+  const formatDate = (date: Date): string => {
+      return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+  };
+
+  return (
+    <div className="col s6 m4" onMouseEnter={ showBorder } onMouseLeave={ hideBorder }>
+      <div className="card horizontal" style={{ borderColor: color }}>
+        <div className="card-image"> 
+          <img src={ pokemon.picture } alt={ pokemon.name }/>
+        </div>
+        <div className="card-stacked">
+          <div className="card-content">
+            <p>{ pokemon.name }</p>
+            <p><small>{ formatDate(pokemon.created) }</small></p>
+          </div>
+        </div>
+      </div> 
+    </div>
+  );
+}
+  
+export default PokemonCard;
+````
+
+---
+
+## Hook personnalisés
+
+> Fonction JavaScript dont le nom commence par ``use``, cette fonction peut être appelée par d'autres Hooks.
+
+---
+
+## Les routes
+
+> il faut installer la librairie ``react-router-dom`` pour ajouter la navigation au navigateur
+
+````typescript
+import React, { FunctionComponent } from 'react';
+import PokemonList from './pages/pokemon-list';
+import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
+import PokemonDetail from './pages/pokemon-detail';
+
+const App: FunctionComponent = () => {
+     
+     return (
+         <Router>
+              <div>
+                    { /*La barre de navigation commun a toutes les pages*/ }
+                    <nav>
+                         <div className="nav-wrapper teal">
+                              <Link to="/" className="brand-logo center">Pokédex</Link>
+                         </div>
+                    </nav>
+                    { /*Le système de gestion des routes de notre application*/ }
+                    <Switch>
+                         <Route exact path="/" component={ PokemonList }/>
+                         <Route exact path="/pokemons" component={ PokemonList }/>
+                         <Route exact path="/pokemon/:id" component={ PokemonDetail }/>
+                    </Switch>
+
+              </div>
+            
+
+         </Router>
+     )
+};
+
+export default App;
+````
+
+Utilisation du Hook ``useHistory`` pour faire les redirections. Il nous donne accès à l'objet représentant l'historique du navigateur. L'autre possibilité est d'utilser ``Link``
+
+````typescript
+import React, { FunctionComponent, useState } from 'react';
+import Pokemon from '../models/pokemon';
+import './pokemon-card.css';
+import formatDate from '../helpers/format-date';
+import formatType from '../helpers/format-type';
+import { useHistory } from 'react-router-dom';
+  
+type Props = {
+  pokemon: Pokemon,
+  borderColor?: string
+};
+  
+const PokemonCard: FunctionComponent<Props> = ({ pokemon, borderColor = '#009688' }) => {
+    
+  const [color, setColor] = useState<string>();
+  const history = useHistory();
+
+  const showBorder = () => {
+      setColor(borderColor);
+  };  
+
+  const hideBorder = () => {
+      setColor('#f5f5f5'); // on remet la bordure en gris.s
+  }; 
+  
+  const goToPokemon = (id: number) => {
+    history.push(`/pokemon/${id}`);
+  }
+
+  return (
+    <div className="col s6 m4" onClick={ () => goToPokemon(pokemon.id) } onMouseEnter={ showBorder } onMouseLeave={ hideBorder }>
+      <div className="card horizontal" style={{ borderColor: color }}>
+        <div className="card-image"> 
+          <img src={ pokemon.picture } alt={ pokemon.name }/>
+        </div>
+        <div className="card-stacked">
+          <div className="card-content">
+            <p>{ pokemon.name }</p>
+            <p><small>{ formatDate(pokemon.created) }</small></p>
+            { pokemon.types.map(type => (
+              <span key={ type } className={formatType(type)}>{ type }</span>
+            )) }
+          </div>
+        </div>
+      </div> 
+    </div>
+  );
+}
+  
+export default PokemonCard;
+````
