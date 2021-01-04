@@ -20,6 +20,9 @@ MongoDB
     > use nomBDD # Choisir une BDD
     > db # Affiche la BDD dans laquel on se trouve
     > show collections # Affiche les collections de la BDD  
+    > db.version() # Connaitre la version de mongo
+
+    $ mongo --version # Connaitre la version de mongo hors interface mongo
 ````
 > Il est possible d'utiliser une interface graphique avec l'application : ``MongoDB Compass``
 > Il est aussi possible d'héberger sa base de données mongoDB sur le cloud : https://www.mongodb.com/cloud/atlas
