@@ -77,3 +77,15 @@
 ````shell script
 db.collection.find( { field1: <value>, field2: <value> ... } )
 ````
+
+---
+
+## CRUD
+
+- Create
+
+- Read
+
+- UPDATE
+
+- DELETE
