@@ -7,6 +7,7 @@
 ````shell script
     # lancer dans le répertoire ou se trouve mongo.exe
     $ mongo
+    # On peut éviter de se déplacer dans le répertoire en modifiant la variable système PATH
 ````
 
 >mongo est une interface shell JavaScript interactive pour MongoDB,

@@ -1,5 +1,5 @@
-TypeScript
--
+# TypeScript
+
 > Typescript a pour but d'améliorer et de sécuriser la production de code JavaScript. Il s'agit d'un sur-ensemble typé strict de JavaScript.
 > TypeScript est un vérificateur de type statique : il détecte les erreurs de code sans executer le programme.  
 > Le code TypeScript est transcompilé en JavaScript.
@@ -11,15 +11,17 @@ TypeScript
     $ tsc --version
 ````
 
-### Type par inférence : 
+## Type par inférence
+
 TypeScript utilisera la valeur comme type.
+
 ````typescript
   let helloWorld = "Hello World";
 //  correspond à :  let helloWorld: string
 
 ````
 
-### Le type Tuple
+## Le type Tuple
 
 ````typescript
     const addresse: [string, number] = ['rue de l\'espérance', 17];
@@ -37,7 +39,35 @@ TypeScript utilisera la valeur comme type.
 > DONC, pour résoudre le problème, il suffit de dire à TypeScript que notre fichier .ts est un module.
   C'est accompli en ajoutant un :
   
-  Attention à voir pour l'export à la fin 
+  Attention à voir pour l'export à la fin
   export {};
   
-  à la fin du fichier  
+  à la fin du fichier
+
+---
+
+## Basic Types
+
+- Boolean
+
+- Number
+
+- String
+
+- Array
+
+- Tuple
+
+- Enum
+
+- Unknown
+
+- Any
+
+- Void
+
+- Null and Undefined
+
+- Never
+
+- Object
