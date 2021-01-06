@@ -85,13 +85,67 @@ x = [3, "hello"]; // error
 
 - Enum
 
+> Les Enum sont un moyen de donner des noms plus conviviaux à des ensembles de valeurs numériques.
+
+````typescript
+enum Color {
+  Red,
+  Green,
+  Blue,
+}
+let c: Color = Color.Green;
+console.log(c); // 1
+
+enum Color {
+  Red = 1,
+  Green,
+  Blue,
+}
+let c: Color = Color.Green;
+console.log(c); // 2
+
+enum Color {
+  Red = 1,
+  Green,
+  Blue,
+}
+let colorName: string = Color[2];
+console.log(colorName); // 'Green'
+````
+
 - Unknown
+
+> Si nous ne connaissons pas le type de la variables lorsque nous écrivons le code. Le type unknown indique au compilateur et aux futurs lecteurs que cette variable pourrait être n'importe quoi.
+
+````typescript
+let notSure: unknown = 4;
+notSure = "maybe a string instead";
+notSure = false;
+````
 
 - Any
 
+>désactive la vérification de type.
+
 - Void
 
+> void c'est un peu le contraire de any
+
+````typescript
+// le type de retour de la fonction ne retourne pas de valeur:
+
+function warnUser(): void {
+  console.log("This is my warning message");
+````
+
 - Null and Undefined
+
+> Par défaut nullet undefinedsont des sous-types de tous les autres types. Cela signifie que vous pouvez attribuer null et undefined à number par exemple.
+
+````typescript
+let u: undefined = undefined;
+let n: null = null;
+````
 
 - Never
 
