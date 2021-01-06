@@ -50,13 +50,38 @@ TypeScript utilisera la valeur comme type.
 
 - Boolean
 
+````typescript
+let isDone: boolean = false;
+````
+
 - Number
+
+````typescript
+let nb: number = 6;
+````
 
 - String
 
+````typescript
+let color: string = "red"; 
+color = 'blue';
+let fullName: string = `Spongebob`; // template strings
+````
+
 - Array
 
+````typescript
+let tab: number[] = [1, 2, 3];
+let tab: Array<number> = [1, 2, 3]; // generic array type
+````
+
 - Tuple
+
+````typescript
+let x: [string, number];
+x = ["hello", 3]; // ok
+x = [3, "hello"]; // error
+````
 
 - Enum
 
