@@ -151,4 +151,23 @@ let n: null = null;
 
 - Object
 
+---
+
 ## Interface
+
+---
+
+## Function
+
+````typescript
+// named function with return type number
+function add(x: number, y: number): number {
+  return x + y;
+}
+
+// anonymous function with return type number
+let myAdd = function (x: number, y: number): number {
+  return x + y;
+};
+
+````
