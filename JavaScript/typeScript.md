@@ -150,3 +150,5 @@ let n: null = null;
 - Never
 
 - Object
+
+## Interface
