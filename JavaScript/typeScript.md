@@ -11,23 +11,7 @@
     $ tsc --version
 ````
 
-## Type par inférence
-
-TypeScript utilisera la valeur comme type.
-
-````typescript
-  let helloWorld = "Hello World";
-//  correspond à :  let helloWorld: string
-
-````
-
-## Le type Tuple
-
-````typescript
-    const addresse: [string, number] = ['rue de l\'espérance', 17];
-````
-
->>TypeScript considère chaque fichier .ts soit :
+>TypeScript considère chaque fichier .ts soit :
 
 - comme un module
 - soit comme un script
@@ -43,6 +27,16 @@ TypeScript utilisera la valeur comme type.
   export {};
   
   à la fin du fichier
+
+## Type par inférence
+
+TypeScript utilisera la valeur comme type.
+
+````typescript
+  let helloWorld = "Hello World";
+//  correspond à :  let helloWorld: string
+
+````
 
 ---
 
