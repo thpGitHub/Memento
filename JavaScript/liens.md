@@ -27,6 +27,7 @@ Color css :
 - https://flatuicolors.com/
 ---
 css :
+- https://tympanus.net/codrops/css_reference/ //codrops site TRES interressant avec tuto sur les effects css et plus...
 - https://cssvalues.com/  // Entre une proprieté css pour connaitre tous les paramètres associés
 ---
 Emoticones  / icones :
@@ -148,6 +149,8 @@ divers :
 // cours fr web, git ....
 - https://www.pierre-giraud.com/
 
+// Données IGN libre et gratuites :)
+-https://www.numerama.com/tech/679565-ca-y-est-les-donnees-publiques-de-lign-sont-libres-et-gratuites.html
 
 
 
