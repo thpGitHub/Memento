@@ -80,12 +80,59 @@ db.collection.find( { field1: <value>, field2: <value> ... } )
 
 ---
 
+## Importer une BDD dans mongo
+
+- Dans un terminal
+
+````shell script
+        # Importer le contenu du fichier contact.json dans une base données users et dans une collection contacts
+        $ mongoimport --db users --collection contacts --file contacts.json
+        $ mongoimport --db users --collection contacts --file c:\Users\xxxx\Downloads\contacts.json
+        $ mongoimport --db users --collection contacts --file /Users/xxxx/Downloads/contacts.json
+
+        $ mongoimport -d users -c contacts < contacts.json
+````
+
+- Dans l'interface mongo
+
+````shell script
+        > load("C:/Program Files/MongoDB/Server/4.0/data/files/contact.js")
+````
+
+---
+
 ## CRUD
 
+> Il y a 3 façons d'insérer un document dans mongoDB
+>> Insérer un document avec `insert`
+>>> Insérer un document avec `update`
+>>>> Insérer un document avec `save`
+
 - Create
+
+````script shell
+# Syntaxe : db.collection.insert(document)
+> db.personne.insert({prenom:"thierry})
+> db.personne.insert({_id:4,prenom;"thierry",nom:"po"})
+
+# Syntaxe : db.collection.save(document)
+> db.personne.save({_id:4,prenom;"thierry",nom:"po"})
+# si _id 4 existe il le remplace sinon il se comporte comme un insert
+````
 
 - Read
 
 - UPDATE
+
+````script shell
+# Syntaxe : db.collection.update(CRITERIA, UPDATE_DATA, OPTION)
+# update remplace le premier document trouvé par un autre document
+> db.personne.update({prenom:"toto"},{nom:"titi})
+
+# Syntaxe : db.collection.update(CRITERIA,$ser{UPDATE_DATA}, Option)
+# update peut aussi changer (au lieu de remplacer un document par un autre) la valeur d'un(ou +ieurs) champ(s)
+> 
+
+````
 
 - DELETE
