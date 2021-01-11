@@ -571,7 +571,7 @@ export default App;
 On peut créér des formulaires de deux manières diférentes :
 
 Composant controlés         | Composant non controlés
-                        --- | ---
+--- | ---
 State                       | DOM
 Tous les formulaires        |  Seulement les petits formulaires
 Le plus utilisé             | Le moins utilisé
