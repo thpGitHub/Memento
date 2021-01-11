@@ -89,8 +89,11 @@ db.collection.find( { field1: <value>, field2: <value> ... } )
         $ mongoimport --db users --collection contacts --file contacts.json
         $ mongoimport --db users --collection contacts --file c:\Users\xxxx\Downloads\contacts.json
         $ mongoimport --db users --collection contacts --file /Users/xxxx/Downloads/contacts.json
+        $ mongoimport --host localhost:27017 --db biblio --collection publis < dblp.json
 
         $ mongoimport -d users -c contacts < contacts.json
+
+        $ mongoimport -d test -c movies --file movies.json --jsonArray
 ````
 
 - Dans l'interface mongo
@@ -136,3 +139,14 @@ db.collection.find( { field1: <value>, field2: <value> ... } )
 ````
 
 - DELETE
+
+---
+Les méthodes shell de mongoDB
+
+- https://docs.mongodb.com/manual/reference/method/
+
+````script shell
+    > db.movies.distinct("title");
+    > db.movies.distinct("title", {year:{$gt:2000} });
+    > db.movies.distinct("director.last_name", {title: "Gladiator"});
+````
