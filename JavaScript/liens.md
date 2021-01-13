@@ -34,6 +34,9 @@ Emoticones  / icones :
 - https://emojiterra.com/fr/
 - https://www.flaticon.com/
 ---
+ES6 :
+- http://es6-features.org/#Constants
+---
 Flex Box :
 - https://flexboxfroggy.com/#fr
 ---
