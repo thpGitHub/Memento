@@ -77,3 +77,36 @@ align-content: flex-start | flex-end | center | space-between | space-around | s
 ````
 
 ## order
+
+Cette propriété modifie l'ordre d'affichage des éléments. Par defaut l'ordre de tous les éléments est à 0
+
+````css
+.element_1 {
+    order: -1;
+}
+````
+
+## align-self
+
+Cette propriété permet de changer l'alignement d'un seul élément
+
+````css
+align-self: auto | flex-start | flex-end | center | baseline | stretch
+````
+
+## flex-grow
+
+Cette propriété définit le facteur de croissance d'un élément par rapport aux autres élémnts dans le conteneur. Un facteur est un nombre. La valeur par défaut est 0 et les nombres négatifs ne sont pas autorisés.
+
+````css
+flex-grow: 2
+/* l'élément grandira deux fois plus qu'un élément flex-grow: 1 il aura ddeux fois plus d'espace */
+````
+
+## flex-shrink
+
+Cette propriété définit le facteur de réduction d'un élément par rapport aux autres éléments dans le conteneur. Un facteur est un nombre. La valeur par défaut est 1.
+
+## flex-basis
+
+## flex
