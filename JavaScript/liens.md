@@ -56,6 +56,9 @@ GIT :
 HTML :
 - https://jatinrao.dev/12-html-tags-you-dont-know?utm_campaign=sebastien_lorber_newsletter&utm_medium=email&utm_source=Revue%20newsletter
 ---
+JS :
+- https://2020.stateofjs.com/fr-FR/
+---
 leaflet :
 - https://leafletjs.com/
 - https://leaflet-extras.github.io/leaflet-providers/preview/
