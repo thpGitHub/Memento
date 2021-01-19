@@ -52,6 +52,7 @@ GIT :
 - https://git-scm.com/
 - https://makina-corpus.com/blog/metier/2014/un-workflow-git-efficace-pour-les-projets-a-moyen-long-terme
 - https://perso.liris.cnrs.fr/pierre-antoine.champin/enseignement/intro-git/
+- https://learngitbranching.js.org/?locale=fr_FR // tuto interactif GIT
 ---
 HTML :
 - https://jatinrao.dev/12-html-tags-you-dont-know?utm_campaign=sebastien_lorber_newsletter&utm_medium=email&utm_source=Revue%20newsletter
