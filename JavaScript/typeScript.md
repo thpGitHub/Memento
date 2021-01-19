@@ -5,10 +5,10 @@
 > Le code TypeScript est transcompilé en JavaScript.
 
 ````shell script
-    $ npm i  -g typescript
-    $ tsc nomFichier.tsc // cela va créer un fichier .js transpilé en ES5
-    $ tsc --watch nomFichier.tsc // surveillera le fichier .ts et mettra à jour le .js
-    $ tsc --version
+    npm i  -g typescript
+    tsc nomFichier.tsc // cela va créer un fichier .js transpilé en ES5
+    tsc --watch nomFichier.tsc // surveillera le fichier .ts et mettra à jour le .js
+    tsc --version
 ````
 
 >TypeScript considère chaque fichier .ts soit :
