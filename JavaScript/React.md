@@ -137,7 +137,7 @@ Pas de gestion du cycle de vie du composant | Gestion du cycle de vie du composa
 ````typescript
   import React, { FunctionComponent } from 'react';
   
-  const App: FunctionComponent = () => {
+  const App: FunctionComponent = () => { // correspond : const App: React.FC = () => {
     const name: String = 'React';
     
     return (
