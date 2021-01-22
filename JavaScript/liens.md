@@ -62,6 +62,7 @@ HTML :
 ---
 JS :
 - https://2020.stateofjs.com/fr-FR/
+-https://risingstars.js.org/2020/en#section-all
 ---
 leaflet :
 - https://leafletjs.com/
