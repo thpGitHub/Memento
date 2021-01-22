@@ -74,7 +74,7 @@ Création d'une app React sans ``create react app`` ni de ``CDN``
 ````
 
 - ``$ npm install`` pour installer toutes les dépendances du fichier ``package.json`` et va créer un dossier ``node_modules``
-- création d'un fichier ``src`` avec un fichier ``App.tsx`` et ``index.tsx`` qui fera le lien entre ``App.tsx`` et ``index.html``
+- création d'un dossier ``src`` avec un fichier ``App.tsx`` et ``index.tsx`` qui fera le lien entre ``App.tsx`` et ``index.html``
 
 ````typescript
 import React from 'react';
@@ -193,7 +193,7 @@ let setName = nameStateVariable[1];
 
 > Les hooks permettent de rajouter des méthodes de  ``cycle de vie`` à un composants de fonction et se nomme ``useEffect``.
 
-Il y a trois méthodes ``de cycle de vie`` dans React :
+Il y a trois méthodes ``de cycle de vie`` d'un composant dans React :
 
 - `` componentDidMount() ``
 C'est la méthode appelée en premier lors de la création d'un composant lorsqu'il est inséré dans le DOM.
@@ -234,7 +234,7 @@ export default App;
 
 - On ne doit pas appeler les hooks à l'intérieur d'une boucle ou d'une condition. Il faut utiliser les hooks à la racine du composant fonction.
 - On appel les hooks uniquement depuis des composants de fonction ! Exception : on peut appeler un hook depuis un autre composant que l'on a créé (hooks personnalisé).
-- Quand on utilise la méthode du hook (ex. set name...) la valeur est remplacée complètement et non fusionnée !
+- Quand on utilise la méthode du hook (ex. setName...) la valeur du state est remplacée complètement et non fusionnée !
 
 ---
 
