@@ -242,6 +242,12 @@ export default App;
 
  Gestionnaire d'événement REACT :
 
+``onclick`` devient en react ``onClick``
+
+``mousseenter`` devient en react ``onMouseEnter``
+
+etc...
+
 ````typescript
 
 import React, { FunctionComponent, useState, useEffect } from 'react';
