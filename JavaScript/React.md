@@ -350,6 +350,7 @@ Astuce ici avec l'operateur ternaire
 ````typescript
   return (
    <ul>
+   // attention                V  ici () et non {}
     {pokemons.map((pokemon) => (
       <li key={pokemon.name}>{pokemon.name}</li>
     ))} 
