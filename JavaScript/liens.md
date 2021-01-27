@@ -32,6 +32,7 @@ Color Themes :
 css :
 - https://tympanus.net/codrops/css_reference/ //codrops site TRES interressant avec tuto sur les effects css et plus...
 - https://cssvalues.com/  // Entre une proprieté css pour connaitre tous les paramètres associés
+-https://cssgenerator.org/border-css-generator.html // générateur de css (shadow, border.....)
 ---
 Emoticones  / icones :
 - https://emojiterra.com/fr/
