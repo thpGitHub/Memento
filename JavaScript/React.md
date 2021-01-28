@@ -347,6 +347,8 @@ Astuce ici avec l'operateur ternaire
 
 ## Afficher une liste de tableau avec la méthode native map() dans JSX
 
+> Lorsqu’on affiche une liste dans du code JSX, il est important d’appliquer la propriété key, sous peine de lever une erreur.
+
 ````typescript
   return (
    <ul>
