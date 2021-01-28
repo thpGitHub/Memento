@@ -1,6 +1,9 @@
-animations : 
+# Liens
+
+animations :
 - https://alexandre-laurent.developpez.com/tutoriels/programmation-jeux/animations-2D/
 ---
+
 API REST :
 - https://github.com/public-apis/public-apis // liste d'API public
 - https://pokeapi.co/
@@ -9,7 +12,7 @@ API REST :
 - www.navitia.io  // datas sur les transports
 - https://jsonplaceholder.typicode.com/ // fake JSON data
 ---
-babel :    
+babel :
 - https://babeljs.io/  
 apres avant:   
 - https://babeljs.io/repl#?browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.9.0&externalPlugins=
@@ -99,6 +102,10 @@ pug :
 ---
 React :
 - https://blogreact.com/
+
+// Bonnes pratique dev React :
+- https://alexkondov.com/tao-of-react/
+- https://www.joshwcomeau.com/css/styled-components/
 ---
 Regex :
 - https://regex101.com/   
