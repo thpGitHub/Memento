@@ -386,7 +386,136 @@ Avec le destructuring on peut récupérer juste le nom :
 
 ## Les props
 
-> Pour passer une prop à un composant il faut l'ajouter en paramètre de la fonction du composant
+> Pour passer une props à un composant il faut l'ajouter en paramètre de la fonction du composant.
+> On passe des props depuis un composant parent
+
+````typescript
+return (
+  // Ici nous passons la props pokemon au composant PokemonCard
+  <PokemonCard pokemon={ pokemon } />
+);
+````
+
+````typescript
+
+interface Props  {
+    pokemon: Pokemon
+};
+
+// ici le composant PokemonCard n'acceptera une seul props de type Pokemon
+const PokemonCard: FunctionComponent<Props> = ({ pokemon }) => {
+
+    return (
+        
+      <div>
+        {/* <h1>Pokédex</h1> */}
+        <div>  
+            <div className="ff">
+               <div>
+                  <img src={ pokemon.picture } alt={ pokemon.name }/>
+               </div>
+               <div>
+                  <div>{ pokemon.name }</div>
+                  <div>{ pokemon.created.toString() }</div>
+               </div>
+            </div>            
+        </div>
+    </div>
+
+    );
+}
+
+export default PokemonCard;
+````
+
+Props par defaut grace à typeScript
+
+````typescript
+interface Props  {
+    pokemon: Pokemon,
+    borderColor?: string
+};
+
+const PokemonCard: FunctionComponent<Props> = ({ pokemon, borderColor = 'olive' }) => {
+
+    return (
+        
+      <div>
+        {/* <h1>Pokédex</h1> */}
+        <div>  
+            <div className="ff" style={{ borderColor: borderColor }}>
+               <div>
+                  <img src={ pokemon.picture } alt={ pokemon.name }/>
+               </div>
+               <div>
+                  <div>{ pokemon.name }</div>
+                  <div>{ pokemon.created.toString() }</div>
+               </div>
+            </div>            
+        </div>
+    </div>
+
+    );
+}
+
+export default PokemonCard;
+````
+
+````typescript
+return (
+  // Ici la props borderColor écrasera la valeur par defaut dans le composant PokemonCard
+  <PokemonCard pokemon={ pokemon } borderColor="tomato"/>
+);
+````
+
+exemple
+
+````typescript
+import  React, { FunctionComponent,useState, useEffect } from 'react';
+import Pokemon from '../models/pokemon';
+import './pokemon-card.css'
+
+interface Props  {
+    pokemon: Pokemon,
+    borderColor?: string
+};
+
+const PokemonCard: FunctionComponent<Props> = ({ pokemon, borderColor = 'olive' }) => {
+
+    const [color, setColor] = useState<string>();
+
+    const showBorder = () => {
+        setColor(borderColor);
+    }
+    const hideBorder = () => {
+        setColor("whitesmoke");
+    }
+
+    return (
+        
+      <div>
+        {/* <h1>Pokédex</h1> */}
+        <div>  
+            <div className="ff"
+                 style={{ borderColor: color }} 
+                 onMouseEnter={ showBorder } 
+                 onMouseLeave={ hideBorder }>
+               <div>
+                  <img src={ pokemon.picture } alt={ pokemon.name }/>
+               </div>
+               <div>
+                  <div>{ pokemon.name }</div>
+                  <div>{ pokemon.created.toString() }</div>
+               </div>
+            </div>            
+        </div>
+    </div>
+
+    );
+}
+
+export default PokemonCard;
+````
 
 ---
 
