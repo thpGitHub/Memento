@@ -77,7 +77,9 @@ Livres :
 - JavaScript: The Definitive Guide: Master the World's Most-Used Programming
 ---
 Images :
-- https://pixabay.com/fr/   
+- https://pixabay.com/fr/ 
+- https://unsplash.com/
+- https://www.pexels.com/fr-fr/  
 ---
 les déconfinés de l'IT
 - https://lesdeconfinesit.wordpress.com/
