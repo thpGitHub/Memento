@@ -586,7 +586,7 @@ export default PokemonCard;
 
 ## Les routes
 
-> il faut installer la librairie ``react-router-dom`` pour ajouter la navigation au navigateur
+> il faut installer la librairie ``react-router-dom`` pour ajouter la navigation dans le DOM du navigateur, car React ne possède pas de système de navigation par defaut.
 
 ````typescript
 import React, { FunctionComponent } from 'react';

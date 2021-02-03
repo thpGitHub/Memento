@@ -28,6 +28,7 @@ Can I Use :
 ---
 Color css :
 - https://flatuicolors.com/
+- https://fr.wikipedia.org/wiki/Couleur_du_Web
 ---
 Color Themes :
 - Sublime Material Theme - Dark
@@ -53,6 +54,7 @@ Font :
 freeCodeCamp :  
 - https://www.freecodecamp.org/news/best-javascript-tutorial/
 - https://www.freecodecamp.org/news/learn-these-javascript-fundamentals-and-become-a-better-developer-2a031a0dc9cf/
+- https://www.freecodecamp.org/news/async-await-in-javascript/
 ---
 GIT :
 - https://onlywei.github.io/explain-git-with-d3/#fetch
