@@ -248,6 +248,8 @@ export default App;
 
 etc...
 
+En CSS `border-color` devient `borderColor`
+
 ````typescript
 
 import React, { FunctionComponent, useState, useEffect } from 'react';
