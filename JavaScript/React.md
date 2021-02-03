@@ -248,7 +248,12 @@ export default App;
 
 etc...
 
-En CSS `border-color` devient `borderColor`
+En CSS `border-color` devient `borderColor`.
+L'attribut style en jsx doit être un objet JavaScript
+
+````typescript
+<h1 style={{color: "red"}}>Hello Style!</h1>
+````
 
 ````typescript
 
