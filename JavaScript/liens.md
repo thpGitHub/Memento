@@ -181,6 +181,7 @@ React :
 
 - <https://blogreact.com/>
 - <https://reactrouter.com/>
+- <https://learnreact.design/posts/what-is-react?utm_campaign=sebastien_lorber_newsletter&utm_medium=email&utm_source=Revue%20newsletter>
 
 // Bonnes pratique dev React :
 
