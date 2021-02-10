@@ -586,8 +586,8 @@ export default PokemonCard;
 
 ## Les routes
 
-> il faut installer la librairie ``react-router-dom`` pour ajouter la navigation dans le DOM du navigateur, car React ne possède pas de système de navigation par defaut.
-> route depuis App
+> il faut installer la librairie ``react-router-dom`` pour ajouter la navigation dans le DOM du navigateur, car React ne possède pas de système de navigation par defaut
+> Le Router depuis App :
 
 ````typescript
 import React, { FunctionComponent } from 'react';
@@ -657,7 +657,7 @@ const PokemonsDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
 
 ````
 
-Utilisation du Hook ``useHistory`` pour faire les redirections. Il nous donne accès à l'objet représentant l'historique du navigateur. L'autre possibilité est d'utilser ``Link``
+Utilisation du Hook ``useHistory`` pour faire les redirections. Il nous donne accès à l'objet représentant l'historique du navigateur. L'autre possibilité est d'utilser ``Link`` (useHistory et Link font la même chose à savoir rediriger, mais l'objet de useHistory offre plus de possiblilité en terme de méthode comme par exemple goback)
 
 ````typescript
 import React, { FunctionComponent, useState } from 'react';
@@ -716,35 +716,22 @@ gérer les erreurs 404
 
 ````typescript
 import React, { FunctionComponent } from 'react';
-import PokemonList from './pages/pokemon-list';
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
-import PokemonDetail from './pages/pokemon-detail';
-import PageNotFund from './pages/page_not_found';
-
-const App: FunctionComponent = () => {
-     
-     return (
-         <Router>
-              <div>
-                    { /*La barre de navigation commun a toutes les pages*/ }
-                    <nav>
-                         <div className="nav-wrapper teal">
-                              <Link to="/" className="brand-logo center">Pokédex</Link>
-                         </div>
-                    </nav>
-                    { /*Le système de gestion des routes de notre application*/ }
-                    <Switch>
-                         <Route exact path="/" component={ PokemonList }/>
-                         <Route exact path="/pokemons" component={ PokemonList }/>
-                         <Route exact path="/pokemon/:id" component={ PokemonDetail }/>
-                         <Route component={ PageNotFund }/>
-                    </Switch>
-              </div>
-         </Router>
-     )
-};
-
-export default App;
+import { Link } from 'react-router-dom';
+  
+const PageNotFound: FunctionComponent = () => {
+  
+  return (
+    <div className="center">
+      <img src="http://assets.pokemon.com/assets/cms2/img/pokedex/full/035.png" alt="Page non trouvée"/>
+      <h1>Hey, cette page n'existe pas !</h1> 
+      <Link to="/" className="waves-effect waves-teal btn-flat">
+        Retourner à l'accueil
+      </Link>
+    </div>
+  );
+}
+  
+export default PageNotFound;
 ````
 
 ---
