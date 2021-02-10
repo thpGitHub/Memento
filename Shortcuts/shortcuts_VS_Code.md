@@ -8,4 +8,6 @@ ctrl + shift # insert une ligne après
 
 alt + Flèche Haut ou Flèche Bas # Déplace la ligne vers le haut ou le bas
 alt + shift + fleche Haut ou bas # copier le ligne
+
+bgc tab # background-color
 ````

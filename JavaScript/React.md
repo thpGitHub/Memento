@@ -587,6 +587,7 @@ export default PokemonCard;
 ## Les routes
 
 > il faut installer la librairie ``react-router-dom`` pour ajouter la navigation dans le DOM du navigateur, car React ne possède pas de système de navigation par defaut.
+> route depuis App
 
 ````typescript
 import React, { FunctionComponent } from 'react';
@@ -617,6 +618,43 @@ const App: FunctionComponent = () => {
 };
 
 export default App;
+````
+
+> route dans le composant PokemonDetail
+
+````typescript
+import React, { FunctionComponent, useState, useEffect } from 'react';
+import { RouteComponentProps, Link } from 'react-router-dom';
+import Pokemon from '../models/pokemon';
+import POKEMONS from '../models/mock-pokemon';
+import formatDate from '../helpers/format-date';
+import formatType from '../helpers/format-type';
+
+interface Params { id: string };
+
+const PokemonsDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
+    const [pokemon, setPokemon] = useState<Pokemon | null>(null);
+
+    useEffect(() => {
+        POKEMONS.forEach(pokemon => {
+            if (match.params.id === pokemon.id.toString()) {
+                setPokemon(pokemon);
+            }
+        });
+        
+    }, [match.params.id]);
+
+    return (
+        <div>
+            { pokemon ? (
+                <h1>pok exist</h1>
+             ) : (
+                <h1>pok nexiste pas §</h1>)
+            }
+        </div>
+    );
+    }
+
 ````
 
 Utilisation du Hook ``useHistory`` pour faire les redirections. Il nous donne accès à l'objet représentant l'historique du navigateur. L'autre possibilité est d'utilser ``Link``
