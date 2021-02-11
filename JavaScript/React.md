@@ -611,6 +611,7 @@ const App: FunctionComponent = () => {
                          <Route exact path="/" component={ PokemonList }/>
                          <Route exact path="/pokemons" component={ PokemonList }/>
                          <Route exact path="/pokemon/:id" component={ PokemonDetail }/>
+                         <Route component={ PageNotFound }/>
                     </Switch>
               </div>
          </Router>
@@ -647,11 +648,33 @@ const PokemonsDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
     return (
         <div>
             { pokemon ? (
-                <h1>pok exist</h1>
+                <div className="container_wrapper"> 
+                <div className="wrapper">     
+                    <div id="aspicot">{ pokemon.name }</div>
+                    <div id="image"><img src={ pokemon.picture } alt=""/></div>
+                    <div id="name">Nom</div>
+                    <div id="name-pokemon">{ pokemon.name }</div>
+                    <div id="pdv">Point de vie</div>
+                    <div id="pdv-pokemon">{ pokemon.hp }</div>
+                    <div id="typeP">Types</div>
+                    <div id="type-pokemon">{ pokemon.types.map((type)=>(
+                        <span key={ type } style={{ backgroundColor: formatType(type), borderRadius: '20px', padding:'0.5em' }}>{ type }</span>
+                    )) }
+                    </div>
+                    <div id="date">Date de création</div>
+                    <div id="date-pokemon">{ formatDate(pokemon.created) }</div>
+                    <div id="retour">
+                        <Link to="/">Retour</Link>
+                    </div>
+                </div>
+            </div>
              ) : (
-                <h1>pok nexiste pas §</h1>)
+                <h1>Le pokémon demandé nexiste pas !</h1>)
+
             }
         </div>
+
+        
     );
     }
 
