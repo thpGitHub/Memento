@@ -34,6 +34,12 @@ bootstrap :
 
 ---
 
+bootstrap concurrent
+
+- <https://materializecss.com/>
+
+---
+
 Can I Use :
 
 - <https://caniuse.com/>
@@ -67,6 +73,8 @@ Emoticones  / icones :
 
 - <https://emojiterra.com/fr/>
 - <https://www.flaticon.com/>
+- <https://google.github.io/material-design-icons/#getting-icons> //icons google gratuits
+- <https://material.io/resources/icons/?style=baseline> // icons google gratuits
 
 ---
 
