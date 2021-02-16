@@ -769,3 +769,13 @@ State                       | DOM
 Tous les formulaires        |  Seulement les petits formulaires
 Le plus utilisé             | Le moins utilisé
 
+> Evènements des formulaires React avec le typage de typeScript :
+
+````typescript
+// Tous les événements des éléments de formulaire sont du type, où T est le type d'élément HTML
+React.ChangeEvent<T>
+
+React.ChangeEvent<HTMLInputElement>
+React.ChangeEvent<HTMLTextAreaElement>
+React.ChangeEvent<HTMLInputSelect>
+````
