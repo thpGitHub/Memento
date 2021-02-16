@@ -779,3 +779,14 @@ React.ChangeEvent<HTMLInputElement>
 React.ChangeEvent<HTMLTextAreaElement>
 React.ChangeEvent<HTMLInputSelect>
 ````
+
+````typescript
+const handlerInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const fieldName: string = e.target.name;
+      const fieldValue: string = e.target.value;
+      const newField: Field = { [fieldName]: { value: fieldValue }};
+
+      setForm({ ...form, ...newField }) // fusion de deux objets. Si des proprietées sont en double c'est celles de l'objet de droite qui sont gardées.
+    };
+
+````
