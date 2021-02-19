@@ -790,3 +790,20 @@ const handlerInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     };
 
 ````
+
+## Requêtes HTTP
+
+Nous pouvons simuler une API REST grace à la librairie json-server
+
+````typescript
+npm install -g json-server
+// puis création d'un fichier db.json
+// puis lancement du server json pour simuler l'API REST
+json-server --watch src/models/db.json --port=3001
+// nous pouvons pour nous faciliter la vie en rajoutant un script dans package.json
+"start:api": "json-server --watch src/models/db.json --port=3001",
+npm run start:api
+
+// !! avoir : pourquoi npm start et npm run start:api ?
+
+````

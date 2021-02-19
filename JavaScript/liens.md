@@ -14,6 +14,7 @@ API REST :
 - <https://swapi.dev/>
 - www.navitia.io  // datas sur les transports
 - <https://jsonplaceholder.typicode.com/> // fake JSON data
+- <https://www.npmjs.com/package/json-server> // simuler une API REST
 
 ---
 
