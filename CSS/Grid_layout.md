@@ -3,6 +3,24 @@
 ````css
 .wrapper {
     display: grid;
+
+    grid-template-columns: 200px 200px 200px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-columns: 500px 1fr 2fr;
+    grid-template-columns: 20px repeat(6, 1fr) 20px;
+    grid-template-columns: repeat(5, 1fr 2fr); /*une colonne de 1fr suivie d'une colonne de 2fr, ceci répété 5 fois.*/
+
+    grid-auto-rows: 200px;
+    grid-auto-rows: minmax(100px, auto); /*un min de 100px de haut et un max automatiquement en fonction de la hauteur du contenu*/
+
+}
+````
+
+````css
+.wrapper {
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 10px;
     
