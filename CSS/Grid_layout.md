@@ -38,6 +38,17 @@
     grid-gap: 10px;
     grid-auto-flow: column;
     grid-auto-columns: 300px 100px; /*1er colonne 300 2eme 100 3eme 300*/
+
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 3;
+
+    grid-column-gap: 10px;
+    grid-row-gap: 1em;
+    grid-gap: 20px;
+    gap /*Attention pas encore supporté par tous les navigateurs*/
+
 }
 
 ````
