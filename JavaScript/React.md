@@ -761,6 +761,10 @@ export default PageNotFound;
 
 ## Les formulaires
 
+````html
+ <label htmlFor="hp">Point de vie</label> <!-- for devient htmlFor en jsx -->
+````
+
 On peut créér des formulaires de deux manières diférentes :
 
 Composant controlés         | Composant non controlés
