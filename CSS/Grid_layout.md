@@ -44,14 +44,30 @@
     grid-row-start: 1;
     grid-row-end: 3;
 
-    grid-column-gap: 10px;
-    grid-row-gap: 1em;
-    grid-gap: 20px;
+    grid-column-start: 3;
+    grid-column-end: span 2; /*s'étend sur 2 colonnes depuis le start (3)*/
+    
+    grid-column-start: span 3; /*s'étend sur 3 colonnes depuis le end (6)*/
+    grid-column-end: 6; 
+
+    grid-column: 2/4; /*super propriété grid-column-start et grid-column-end*/
+    grid-row: 3/4;
+
+    grid-column-gap: 10px; /*espace de 10px entre les colonnes*/
+    grid-row-gap: 1em; /*espace de 1em entre les lignes*/
+    grid-gap: 20px; /*super propriété pour column-gap et row-gap*/
+    grid-gap: 10%;
+    grid-gap: 10px 20px;
     gap /*Attention pas encore supporté par tous les navigateurs*/
+
+    grid-area 1/2/4/6; /*super propriété  grid-row-start/grid-column-start/grid-row-end/grid-column-end*/
+
+    grid-template-columns: 20% 20% 20%;
+    grid-template-rows: 20% 20% 20%;
+    
 
 }
 
 ````
 
 >La grille commencera par placer les éléments pour lesquels on a défini une position. Puis les autres sont placés automatiquement dans les espaces restants.
-
