@@ -829,6 +829,14 @@ npm start
 
 - Un bundler JavaScript, comme Webpack : Un bundler combine tous vos fichiers sources JavaScript dans un seul fichier, qui peut ensuite être inclus dans une balise script dans une page HTML. Les applications React sont le plus souvent construites avec Webpack et Babel, et npm en tant que gestionnaire de packages.
 
+````shell script
+mkdir react-app
+cd react-app
+npm init
+
+npm install --save-dev webpack webpack-cli webpack-dev-server
+````
+
 ---
 
 Manière intéressante d'insérer du style css dans le jsx
