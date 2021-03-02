@@ -193,6 +193,8 @@ React :
 - <https://learnreact.design/posts/what-is-react?utm_campaign=sebastien_lorber_newsletter&utm_medium=email&utm_source=Revue%20newsletter>
 - <https://medium.com/javascript-in-plain-english/react-typescript-813b02ff3672> // React + typescript + form
 - <https://www.react.express/> // Documentation React moderne avec tuto complet (A voir !!! notament pour l'utilisation de react avec webpack et babel)
+- <https://www.reactnative.express/>
+- <https://github.com/facebook/create-react-app#getting-started> // documentation sur create-react-app
 
 // Bonnes pratique dev React :
 

@@ -811,3 +811,40 @@ npm run start:api
 // !! avoir : pourquoi npm start et npm run start:api ?
 
 ````
+
+---
+
+## Annexes
+
+Il existe deux façons courantes de configurer une nouvelle application React:
+
+- L'utilitaire CLI, create-react-app : Facebook fournit un utilitaire de ligne de commande appelé create-react-app qui configure automatiquement un nouveau projet. create-react-app utilise sous le capot par webpack et babel.
+
+````shell script
+npx create-react-app my-app
+cd my-app
+npm start
+# http://localhost:3000/
+````
+
+- Un bundler JavaScript, comme Webpack : Un bundler combine tous vos fichiers sources JavaScript dans un seul fichier, qui peut ensuite être inclus dans une balise script dans une page HTML. Les applications React sont le plus souvent construites avec Webpack et Babel, et npm en tant que gestionnaire de packages.
+
+---
+
+Manière intéressante d'insérer du style css dans le jsx
+
+````javascript
+import React from 'react'
+import ReactDOM from 'react-dom'
+
+function App() {
+  const style = {
+    padding: '40px',
+    textAlign: 'center',
+  }
+
+  return <div style={style}>Welcome to React!</div>
+}
+
+ReactDOM.render(<App />, document.querySelector('#app'))
+````
