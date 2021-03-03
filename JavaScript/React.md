@@ -253,6 +253,16 @@ L'attribut style en jsx doit être un objet JavaScript
 
 ````typescript
 <h1 style={{color: "red"}}>Hello Style!</h1>
+
+function App() {
+  const style = {
+    padding: '40px',
+    textAlign: 'center',
+  }
+
+  return <div style={style}>Welcome to React!</div>
+}
+
 ````
 
 ````typescript
@@ -835,6 +845,33 @@ cd react-app
 npm init
 
 npm install --save-dev webpack webpack-cli webpack-dev-server
+````
+
+Ajouter au fichier `package.json` les deux commandes dans la partie `scripts`. Le script `start` démarrera notre serveur de développement en passant la chaine "development" à notre fichier de configuration Webpack. Le script `build` enregistrera un seul fichier `.js`
+
+````json
+{
+  ...
+  "scripts": {
+    "start": "webpack-dev-server --env development",
+    "build": "webpack --env production"
+  },
+  ...
+}
+````
+
+Création du fichier `webpack.config.js`
+
+````javascript
+module.exports = env => {
+  return {
+    mode: env,
+    entry: './index.js',
+    output: {
+      filename: 'bundle.js',
+    },
+  }
+}
 ````
 
 ---

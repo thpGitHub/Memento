@@ -253,6 +253,7 @@ Test :
 webpack :
 
 - <https://putaindecode.io/articles/webpack/>
+- <https://webpack.js.org/>
 
 ---
 
