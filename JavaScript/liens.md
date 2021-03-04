@@ -254,7 +254,7 @@ webpack :
 
 - <https://putaindecode.io/articles/webpack/>
 - <https://webpack.js.org/>
-- <https://www.valentinog.com/blog/webpack/> // A voir prochainement TUTO très intéresssant sur webpack moderne en 2020.
+- <https://www.valentinog.com/blog/webpack/> // A voir prochainement TUTO très intéresssant sur webpack 5 moderne en 2020.
 
 ---
 

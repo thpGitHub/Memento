@@ -1,5 +1,7 @@
 # WEBPACK
 
+> `attention` voir plus bas une technique plus moderne d'utiliser webpack.
+
 Le principe de webpack est simple, on lui donne un ou plusieurs fichiers à l'entrée (entry) et on a un fichier en sortie (output).
 
 Le but de Webpack est de parcourir les fichiers, de trouver les relations entre les fichiers (import, export, require) et de fournir des solutions pour packager tous les fichiers qu’il trouve ensemble. Lorsqu’il identifie des fichiers JS, il sait les manipuler, les concaténer. S’il rencontre des éléments qui ne sont pas du JavaScript, alors il a besoin de loader pour savoir les interpréter.
@@ -181,6 +183,12 @@ npm run start-server
 ````
 
 "presets": ["@babel/preset-env", "@babel/preset-react"]
+
+---
+
+## technique plus moderne d'utiliser webpack
+
+````shell script
 
 ---
 
