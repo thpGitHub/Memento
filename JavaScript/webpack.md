@@ -2,7 +2,7 @@
 
 Le principe de webpack est simple, on lui donne un ou plusieurs fichiers à l'entrée (entry) et on a un fichier en sortie (output).
 
-Le but de Webpack est de parcourir les fichiers, de trouver les relations entre les fichiers et de fournir des solutions pour packager tous les fichiers qu’il trouve ensemble. Lorsqu’il identifie des fichiers JS, il sait les manipuler, les concaténer. S’il rencontre des éléments qui ne sont pas du JavaScript, alors il a besoin de loader pour savoir les interpréter.
+Le but de Webpack est de parcourir les fichiers, de trouver les relations entre les fichiers (import, export, require) et de fournir des solutions pour packager tous les fichiers qu’il trouve ensemble. Lorsqu’il identifie des fichiers JS, il sait les manipuler, les concaténer. S’il rencontre des éléments qui ne sont pas du JavaScript, alors il a besoin de loader pour savoir les interpréter.
 
 Babel est un exemple de loader bien connu.
 
@@ -92,17 +92,97 @@ Nous pouvons maintenat compiler notre projet
 npm run build
 ````
 
-Un seul fichier `app.bundle.js` dans le dossier `dist` a été généré (alors qu'il y avait deux fichier js). Webpack s'est fié au import et export pour générer un seul fichier.
+Un seul fichier `app.bundle.js` dans le dossier `dist` a été généré (alors qu'il y avait deux fichiers js). Webpack s'est fié au import et export pour générer un seul fichier.
 
 ---
 
 ## Transpiler avec Babel
 
+Transpiler pour rendre notre code JavaScript compatible avec les navigateurs les moins récents !
+Dans nos fichiers d'exemple nous utilisons async  et  await  qui sont apparus dans une version récente de JavaScript que tous les navigateurs ne supportent pas encore.
+
+````shell script
+npm install --save-dev babel-loader @babel/core @babel/preset-env babel-polyfill
+````
+
+Il faut dans le fichier `webpack.config.js` de webpack ajouter Babel dans les `rules`, les `rules` sont des règles de webpack indiquant les loaders à utiliser sur quels fichiers.
+
+````javascript
+const path = require('path');
+
+module.exports = {
+  mode: "production",
+  entry: {
+    polyfill: "babel-polyfill",
+    app: "./src/index.js"
+  },
+  output: {
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist")
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"]
+          }
+        }
+      }
+    ]
+  }
+};
+````
+
+Babel sera exécuté sur tous les fichiers JavaScript du projet, sauf ceux qui se trouvent dans le dossier `node_modules`.
+Dans `entry` on a rajouté `polyfill: "babel-polyfill"` cela veut dire que lorsque nous compilons notre code, deux fichiers vont être générés.
+Il faut mettre a jour le fichier HTML.
+
+````HTML
+<body>
+        <script src="./dist/polyfill.bundle.js"></script>
+        <script src="./dist/app.bundle.js"></script>
+</body>
+````
+
 ---
 
 ## Webpack-dev-server
 
+Est un serveur pour tester votre code et qui recharge automatiquement votre navigateur dès que nous modifions notre code.
+
+````shell script
+npm install --save-dev webpack-dev-server
+````
+
+````json
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
+    "start-server": "webpack serve"
+  }
+````
+
+``ATTENTION`` il se peut que webpack considère que les fichiers sont générés à la racine du server et non dans le dossier `dist`.
+
+````HTML
+<body>
+        <script src="/polyfill.bundle.js"></script>
+        <script src="/app.bundle.js"></script>
+</body>
+````
+
+````shell script
+npm run start-server
+# Project is running at http://localhost:8080/
+````
+
 ---
+
+## ANNEXES
 
 ## Il y a deux manières de lancer webpack
 
