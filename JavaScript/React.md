@@ -847,14 +847,14 @@ npm init
 npm install --save-dev webpack webpack-cli webpack-dev-server
 ````
 
-Ajouter au fichier `package.json` les deux commandes dans la partie `scripts`. Le script `start` démarrera notre serveur de développement en passant la chaine "development" à notre fichier de configuration Webpack. Le script `build` enregistrera un seul fichier `.js`
+Ajouter au fichier `package.json` les deux commandes dans la partie `scripts`. Le script `start:dev` démarrera notre serveur de développement. Le script `build` enregistrera un seul fichier `.js`
 
 ````json
 {
   ...
   "scripts": {
-    "start": "webpack-dev-server --env development",
-    "build": "webpack --env production"
+    "build": "webpack",
+    "start:dev": "webpack serve"
   },
   ...
 }
@@ -863,15 +863,27 @@ Ajouter au fichier `package.json` les deux commandes dans la partie `scripts`. L
 Création du fichier `webpack.config.js`
 
 ````javascript
-module.exports = env => {
-  return {
-    mode: env,
-    entry: './index.js',
-    output: {
-      filename: 'bundle.js',
-    },
+const path = require('path');
+
+module.exports = {
+  mode: "production",
+  entry: {
+    app: "./index.js"
+  },
+  output: {
+    filename: "[name].bundle.js",
+    path: path.resolve(__dirname, "dist")
   }
-}
+};
+````
+
+``ATTENTION`` il se peut que webpack considère que les fichiers sont générés à la racine du server et non dans le dossier `dist`.
+
+````HTML
+<body>
+        <script src="/polyfill.bundle.js"></script>
+        <script src="/app.bundle.js"></script>
+</body>
 ````
 
 ---
