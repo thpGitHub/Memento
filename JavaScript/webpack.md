@@ -162,7 +162,7 @@ npm install --save-dev webpack-dev-server
 "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack",
-    "start-server": "webpack serve"
+    "start-server": "webpack serve --open 'Chrome'"
   }
 ````
 
@@ -179,6 +179,8 @@ npm install --save-dev webpack-dev-server
 npm run start-server
 # Project is running at http://localhost:8080/
 ````
+
+"presets": ["@babel/preset-env", "@babel/preset-react"]
 
 ---
 

@@ -854,7 +854,7 @@ Ajouter au fichier `package.json` les deux commandes dans la partie `scripts`. L
   ...
   "scripts": {
     "build": "webpack",
-    "start:dev": "webpack serve"
+    "start:dev": "webpack serve --open 'Chrome'"
   },
   ...
 }
