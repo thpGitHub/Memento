@@ -189,12 +189,98 @@ npm run start-server
 ## technique plus moderne d'utiliser webpack
 
 ````shell script
+mkdir webpack-tutorial
+cd webpack-tutorial
+npm init -y
+npm i webpack webpack-cli webpack-dev-server --save-dev
+````
+
+Dans `package.json`
+
+````json
+"scripts": {
+    "dev": "webpack --mode development"
+  },
+````
+
+Le point d'entrée par default de webpack est `src/index.js`
+
+````shell script
+mkdir src
+echo 'console.log("Hello webpack!")' > src/index.js
+
+npm run dev
+# Cela va créer un nouveau dossier `dist` avec un fichier bundle Webpack `main.js`
+````
+
+Configuration de Webpack
+
+````shell script
+touch webpack.config.js
+````
+
+Dans ce fichier il faut au minimun un `module.exports` qui est l'exportation de common JS pour Node.js.
+Exemple du fichier `webpack.config.js` pour changer le point d'entrée et la sortie.
+
+````javascript
+const path = require("path");
+
+module.exports = {
+  entry: { index: path.resolve(__dirname, "source", "index.js") }
+};
+// webpack recherchera `source/index.js` comme fichier d'entré
+````
+
+````javascript
+const path = require("path");
+
+module.exports = {
+  output: {
+    path: path.resolve(__dirname, "build")
+  }
+};
+// webpack placera le bundle fichier dans le répertoire `build` à la place de `dist`
+````
+
+Installation du plugin `html-webpack-plugin` pour travailler avec HTML dans webpack. Le pluging chargera nos fichier HTML et il *injecte directement* le(s) bundle(s) dans le même fichier (fini l'import des scripts `.../dist/polyfill.bundle.js">` `.../dist/app.bundle.js` dans le fichier HTML)
+
+````shell script
+npm i html-webpack-plugin --save-dev
+````
+
+````javascript
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+
+module.exports = {
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "src", "index.html")
+    })
+  ]
+};
+````
+
+Utilisation du serveur de développement webpack.Ce package a été installé au début (`npm i webpwebpack-cli webpack-dev-server --save-dev`)
+
+Dans le `package.json` ajouter le script `start`
+
+````json
+"scripts": {
+    "dev": "webpack --mode development",
+    "start": "webpack serve --open 'Firefox'",
+  },
+````
+
+````shell script
+npm start
+````
 
 ---
 
 ## ANNEXES
 
-## Il y a deux manières de lancer webpack
+## Il y a deux manières de lancer webpack 5
 
 - Dans le terminal :
 
