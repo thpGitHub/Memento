@@ -186,7 +186,7 @@ npm run start-server
 
 ---
 
-## technique plus moderne d'utiliser webpack
+## Technique plus moderne d'utiliser webpack
 
 ````shell script
 mkdir webpack-tutorial
@@ -275,6 +275,56 @@ Dans le `package.json` ajouter le script `start`
 ````shell script
 npm start
 ````
+
+### Loaders webpack
+
+Webpack ne comprend que les fichiers JavaScript et JSON.Les loaders permettent à webpack de traiter d'autres types de fichiers et de les convertir en modules valides qui peuvent être consommés par votre application et ajoutés au graphe de dépendances.
+
+- Loaders css
+
+````javascript
+// charger un fichier css dans index.js
+import "./style.css";
+console.log("Hello webpack!");
+````
+
+installation des loaders pour le css : `css-loader` et `style-loader`
+
+````shell script
+npm i css-loader style-loader --save-dev
+````
+
+````javascript
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "src", "index.html")
+    })
+  ]
+};
+````
+
+````shell script
+npm start
+# le feuille de style devrait être chargée dans le head du bundler html (dist/index.html)
+````
+
+**A voir** : MiniCssExtractPlugin : <https://webpack.js.org/plugins/mini-css-extract-plugin/>
+
+**Attention** L'ordre des loaders est importante, les loaders dans webpack sont chargés de droite à gauche ( `css-loader` en premier puis `style-loader`)
+
+- Loaders SASS
 
 ---
 
