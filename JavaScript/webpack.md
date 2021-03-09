@@ -288,13 +288,14 @@ import "./style.css";
 console.log("Hello webpack!");
 ````
 
-installation des loaders pour le css : `css-loader` et `style-loader`
+installation des 2 loaders pour le css : `css-loader` et `style-loader`
 
 ````shell script
 npm i css-loader style-loader --save-dev
 ````
 
 ````javascript
+//webpack.config.js
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
@@ -317,6 +318,11 @@ module.exports = {
 
 ````shell script
 npm start
+# la feuille de style devrait être chargé dans le head du bundler HTML
+````
+
+````shell script
+npm start
 # le feuille de style devrait être chargée dans le head du bundler html (dist/index.html)
 ````
 
@@ -325,6 +331,122 @@ npm start
 **Attention** L'ordre des loaders est importante, les loaders dans webpack sont chargés de droite à gauche ( `css-loader` en premier puis `style-loader`)
 
 - Loaders SASS
+
+Pour travailler avec SASS dans webpack nous devons installer 3 loarders (2 loaders css et un loader sass)
+
+````javascript
+// charger un fichier css dans index.js
+import "./style.scss";
+console.log("Hello webpack!");
+````
+
+````shell script
+npm i css-loader style-loader sass-loader sass --save-dev
+# or only
+npm i sass-loader sass --save-dev
+````
+
+````javascript
+//webpack.config.js
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "src", "index.html")
+    })
+  ]
+};
+````
+
+- Loaders JavaScript moderne avec babel
+
+Babel est un compilateur et un tranpilateur. Babel est capable de transformer en code compatible pour n'importe quel navigateur.
+Pour travailler avec babel dans webpack nous devons installer 3 loarders.
+
+````shell script
+npm i @babel/core babel-loader @babel/preset-env --save-dev
+````
+
+````javascript
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"]
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"]
+          }
+        }
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "src", "index.html")
+    })
+  ]
+};
+````
+
+````shell script
+npm run dev
+````
+
+Autre solution : création d'un fichier de config `babel.config.json`
+
+````json
+{
+  "presets": [
+    "@babel/preset-env"
+  ]
+}
+````
+
+````javascript
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"]
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: ["babel-loader"]
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "src", "index.html")
+    })
+  ]
+};
+````
 
 ---
 
