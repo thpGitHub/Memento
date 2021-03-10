@@ -112,6 +112,7 @@ GIT :
 HTML :
 
 - <https://jatinrao.dev/12-html-tags-you-dont-know?utm_campaign=sebastien_lorber_newsletter&utm_medium=email&utm_source=Revue%20newsletter>
+- <https://google.github.io/styleguide/htmlcssguide.html#Optional_Tags> // voir partie 3.1.7 Balises facultatives
 
 ---
 

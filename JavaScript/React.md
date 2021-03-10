@@ -837,7 +837,7 @@ npm start
 # http://localhost:3000/
 ````
 
-- Un bundler JavaScript, comme Webpack : Un bundler combine tous vos fichiers sources JavaScript dans un seul fichier, qui peut ensuite être inclus dans une balise script dans une page HTML. Les applications React sont le plus souvent construites avec Webpack et Babel, et npm en tant que gestionnaire de packages.
+- Un bundler JavaScript, comme Webpack : Un bundler combine tous vos fichiers sources JavaScript dans un seul fichier, qui peut ensuite être inclus dans une balise script dans une page HTML. Les applications React sont le plus souvent construites avec Webpack et Babel, et npm en tant que gestionnaire de packages. **ATTENTION** pour webpack voir plutôt la note `webpack.md` pour une approche plus moderne.
 
 ````shell script
 mkdir react-app

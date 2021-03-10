@@ -1,6 +1,6 @@
 # WEBPACK
 
-> `attention` voir plus bas une technique plus moderne d'utiliser webpack.
+> **attention** voir plus bas une technique plus moderne d'utiliser webpack.
 
 Le principe de webpack est simple, on lui donne un ou plusieurs fichiers à l'entrée (entry) et on a un fichier en sortie (output).
 
