@@ -318,11 +318,6 @@ module.exports = {
 
 ````shell script
 npm start
-# la feuille de style devrait être chargé dans le head du bundler HTML
-````
-
-````shell script
-npm start
 # le feuille de style devrait être chargée dans le head du bundler html (dist/index.html)
 ````
 
@@ -410,6 +405,7 @@ module.exports = {
 
 ````shell script
 npm run dev
+# Le code transformé est dans `dist/main.js`
 ````
 
 Autre solution : création d'un fichier de config `babel.config.json`
@@ -446,6 +442,103 @@ module.exports = {
     })
   ]
 };
+````
+
+### Configuration de `React` `Webpack` et `Babel` à partir de zéro
+
+Pour utiliser React avec webpack en parallèle au loader babel on doit installer le préréglage (preset) babel pour React `@babel/preset-react`.
+
+````shell script
+npm i @babel/core babel-loader @babel/preset-env @babel/preset-react --save-dev
+````
+
+````javascript
+// webpack.config.js
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const path = require("path");
+
+module.exports = {
+  module: {
+    rules: [
+      {
+        test: /\.scss$/,
+        use: ["style-loader", "css-loader", "sass-loader"]
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env", "@babel/preset-react"]
+          }
+        }
+      }
+    ]
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(__dirname, "src", "index.html")
+    })
+  ]
+};
+````
+
+````shell script
+npm i react react-dom
+````
+
+````javascript
+// src/index.js
+import React, { useState } from "react";
+import { render } from "react-dom";
+
+function App() {
+    const [state, setState] = useState("CLICK ME");
+
+    return <button onClick={() => setState("CLICKED")}>{state}</button>;
+}
+
+render(<App />, document.getElementById("root"));
+````
+
+````html
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Webpack tutorial</title>
+    </head>
+    <body>
+        <h1>Hello Thierry sur Webpack !</h1>
+        <p>Hello sass!</p>
+        <div id="root"></div>
+    </body>
+</html>
+````
+
+````shell script
+npm start
+````
+
+### Mode production
+
+Webpack a deux modes de fonctionnement: le `development` et `production`.
+
+- En mode `development` aucune minification n'est appliquée.
+- En mode `production` une minification est faite avec `TerserWebpackPlugin` et un `scope hoisting` avec `ModuleConcatenationPlugin`
+- La variable d'environnement `process.env.NODE_ENV` est mise à `production`
+
+````json
+"scripts": {
+    "dev": "webpack --mode development",
+    "start": "webpack serve --open 'Firefox'",
+    "build": "webpack --mode production"
+  },
+````
+
+````shell script
+npm run build
 ````
 
 ---
