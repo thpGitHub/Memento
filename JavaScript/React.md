@@ -1,6 +1,6 @@
 # React
 
-Création d'une app React sans ``create react app`` ni de ``CDN``
+Création d'une app React sans ``create react app`` ni de ``CDN`` (voir en annexe pour plus de détails).
 
 - création d'un fichier ``package.json`` à la racine du projet
 
@@ -802,7 +802,22 @@ const handlerInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 
       setForm({ ...form, ...newField }) // fusion de deux objets. Si des proprietées sont en double c'est celles de l'objet de droite qui sont gardées.
     };
+````
 
+````typescript
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      console.log(form);
+      const isFormValid = validateForm();
+      
+      if(isFormValid) {
+        history.push(`/pokemon/${ pokemon.id }`);
+      }
+}
+return (
+    <form onSubmit={ e=> handleSubmit(e)}>
+    //....
+);        
 ````
 
 ## Requêtes HTTP
