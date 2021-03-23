@@ -1029,6 +1029,7 @@ export default PokemonForm;
 ## Requêtes HTTP
 
 Nous pouvons simuler une API REST grace à la librairie json-server
+(C'est comme une mini base de donnée avec un fichier)
 
 ````typescript
 npm install -g json-server
