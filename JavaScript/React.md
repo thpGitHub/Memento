@@ -1044,6 +1044,45 @@ npm run start:api
 
 ````
 
+Utilisation de l'API fetch
+
+````typescript
+import React, { FunctionComponent, useState, useEffect } from 'react';
+import Pokemon from '../models/pokemon';
+import POKEMONS from '../models/mock-pokemon';
+import PokemonCard from '../components/pokemon-card';
+import './pokemon-list.css';
+  
+const PokemonList: FunctionComponent = () => {
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+  
+  useEffect(() => {
+   //  setPokemons(POKEMONS);
+   fetch('http://localhost:3001/pokemon')
+   .then(response => response.json())
+   .then((pokemons) => {
+      setPokemons(pokemons)
+   });
+  }, []);
+  
+  return (
+    
+  <div>
+      <h1>Pokédex</h1>
+      <div>
+         <div className="container">
+            { pokemons.map((pokemon)=> (
+               <PokemonCard key= { pokemon.id } pokemon= { pokemon } />      
+            )) }
+         </div>
+      </div>
+  </div>
+  );
+}
+  
+export default PokemonList;
+````
+
 ---
 
 ## Annexes

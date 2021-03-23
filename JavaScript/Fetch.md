@@ -14,6 +14,14 @@
 ````
 
 ````javascript
+fetch('http://localhost:3001/pokemons')
+   .then(response => response.json())
+   .then((data) => {
+      console.log(data);
+   });
+````
+
+````javascript
     // https://jsonplaceholder.typicode.com/users
     fetch('https://jsonplaceholder.typicode.com/users')
         .then(function(response) {
