@@ -1118,6 +1118,157 @@ const PokemonsDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
     }
 ````
 
+Factoriser du code dans un service : src/services/
+
+````typescript
+import Pokemon from "../models/pokemon";
+ 
+export default class PokemonService {
+ 
+  static getPokemons(): Promise<Pokemon[]> {
+    return fetch('http://localhost:3001/pokemons')
+      .then(response => response.json());
+  }
+ 
+  static getPokemon(id: number): Promise<Pokemon|null> {
+    return fetch(`http://localhost:3001/pokemons/${id}`)
+      .then(response => response.json())
+      .then(data => this.isEmpty(data) ? null : data);
+  }
+ 
+  static isEmpty(data: Object): boolean {
+    return Object.keys(data).length === 0;
+  }
+}
+
+````
+
+````typescript
+import React, { FunctionComponent, useState, useEffect } from 'react';
+import Pokemon from '../models/pokemon';
+import PokemonCard from '../components/pokemon-card';
+import './pokemon-list.css';
+import PokemonService from '../services/pokemon-service';
+  
+const PokemonList: FunctionComponent = () => {
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+  
+  useEffect(() => {
+   PokemonService.getPokemons().then(pokemons => setPokemons(pokemons));
+  }, []);
+  
+  return (  
+      <div>
+          <h1>Pokédex</h1>
+          <div>
+             <div className="container">
+                { pokemons.map((pokemon)=> (
+                   <PokemonCard key= { pokemon.id } pokemon= { pokemon } />      
+                )) }
+             </div>
+          </div>
+      </div>
+  );
+}
+  
+export default PokemonList;
+````
+
+````typescript
+import React, { FunctionComponent, useState, useEffect } from 'react';
+import { RouteComponentProps } from 'react-router-dom';
+import PokemonForm from '../components/pokemon-form';
+import Pokemon from '../models/pokemon';
+import PokemonService from '../services/pokemon-service' ;
+
+type Params = { id: string };
+  
+const PokemonEdit: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
+    
+  const [pokemon, setPokemon] = useState<Pokemon|null>(null);
+  
+  useEffect(() => {
+    PokemonService.getPokemon(+match.params.id).then(pokemon => setPokemon(pokemon));
+  }, [match.params.id]);
+    
+  return (
+    <div>
+      { pokemon ? (
+        <div className="row">
+            <h2 className="header center">Éditer { pokemon.name }</h2>
+            <PokemonForm pokemon={ pokemon }></PokemonForm>
+        </div>
+      ) : (
+        <h4 className="center">Aucun pokémon à afficher !</h4>
+      )}
+    </div>
+  );
+}
+  
+export default PokemonEdit;
+````
+
+Gérer les erreurs HTTP
+
+````typescript
+import Pokemon from "../models/pokemon";
+ 
+export default class PokemonService {
+ 
+  static getPokemons(): Promise<Pokemon[]> {
+    return fetch('http://localhost:3001/pokemons')
+      .then(response => response.json())
+      .catch(error => this.handleError(error));
+  }
+ 
+  static getPokemon(id: number): Promise<Pokemon|null> {
+    return fetch(`http://localhost:3001/pokemons/${id}`)
+      .then(response => response.json())
+      .then(data => this.isEmpty(data) ? null : data)
+      .catch(error => this.handleError(error));
+  }
+ 
+  static isEmpty(data: Object): boolean {
+    return Object.keys(data).length === 0;
+  }
+
+  static handleError(error: Error): void {
+    console.log(error);
+  }
+}
+````
+
+PUT
+
+````typescript
+static updatePokemon(pokemon: Pokemon): Promise<Pokemon> {
+    return fetch(`http://localhost:3001/pokemons/${pokemon.id}`, {
+      method: 'PUT',
+      body: JSON.stringify(pokemon),
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then(response => response.json())
+    .catch(error => this.handleError(error));
+  }
+````
+
+````typescript
+const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      console.log(form);
+      console.log(pokemon);
+      const isFormValid = validateForm();
+      
+      if(isFormValid) {
+        pokemon.name = form.name.value;
+        pokemon.hp = form.hp.value;
+        pokemon.cp = form.cp.value;
+        pokemon.types = form.type.value;
+        PokemonService.updatePokemon(pokemon).then(() => history.push(`/pokemon/${ pokemon.id }`));
+      }
+    }
+````
+
 ---
 
 ## Annexes
