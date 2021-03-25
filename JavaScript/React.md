@@ -1269,6 +1269,16 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     }
 ````
 
+Avec json server on peut ajouter une option pour simuler un délai de répose du serveur
+
+````json
+"scripts": {
+    "start": "react-scripts start",
+    "start:api": "json-server --watch src/models/db.json --port=3001 --delay=500",
+    "build": "react-scripts build"
+  },
+````
+
 ---
 
 ## Annexes
