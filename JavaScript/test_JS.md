@@ -20,6 +20,8 @@ Librairies d'assertions : Chai, Assert, Assert-plus...
 
 Librairies de Mockup : Faker, Sinon?js, Mock Jest, Miragejs...
 
+---
+
 ## Tests unitaires avec `JEST`
 
 ````shell script
@@ -124,7 +126,7 @@ test('Multiplier des nombres', () => {
 
  ---
 
-- `describe` : Regroupe des tests en une suite
+- `describe` : Regroupe une suite de tests
 
 - `test` `it` : Exécute le test unitaire
 
@@ -187,7 +189,7 @@ describe('test de la fonctionnalité afficheMessageCalculAir ', () => {
 
 --- 
 
-### Assert / Matcher
+### Asserts / Matchers
 
 ````javascript
 import { afficheMessageCalculAir, calculAir, calculAirCarre, isAdmin } from './calculHelper';
