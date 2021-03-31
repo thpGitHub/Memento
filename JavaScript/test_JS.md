@@ -13,7 +13,7 @@
 
 ## Assertions
 
-Expression qui doit être évaluée à `true`.
+Expression qui doit être évaluée à **`true`**.
 Librairies d'assertions : Chai, Assert, Assert-plus...
 
 ## Les Mocks
@@ -151,11 +151,20 @@ let afficheMessageCalculAir = (a, b) => {
     return libelle;
 }
 
+const isAdmin = (user) => {    
+    if(user.role === "admin") {
+        return true;
+    } else {
+        throw new Error('interdit');
+    }
+}
+
 export {
     calculAir,
     calculAirCarre,
     multiplication,
-    afficheMessageCalculAir
+    afficheMessageCalculAir,
+    isAdmin
 }
 ````
 
@@ -174,4 +183,141 @@ describe('test de la fonctionnalité afficheMessageCalculAir ', () => {
         expect(afficheMessageCalculAir()).toContain("l'air ne peut pas être calculée")
     })
 })
+````
+
+--- 
+
+### Assert / Matcher
+
+````javascript
+import { afficheMessageCalculAir, calculAir, calculAirCarre, isAdmin } from './calculHelper';
+
+//1er test
+describe('test de la fonctionnalité afficheMessageCalculAir ', () => {
+    test('tester le libellé avec des valeurs correctes pour calculAir', () => {
+        expect(afficheMessageCalculAir(10, 10)).toContain(100);
+    })
+    test('tester le libellé avec des valeurs incorrectes pour calculAir', () => {
+        expect(afficheMessageCalculAir(10, "toto")).toContain("l'air ne peut pas être calculée");
+    })
+    test('tester le libellé avec des valeurs vides pour calculAir', () => {
+        expect(afficheMessageCalculAir()).toContain("l'air ne peut pas être calculée");
+    })
+})
+
+//2eme test
+describe('test de la fonctionnalité CalculAir ', () => {
+    test('tester des valeurs pour calculAir', () => {
+        expect(calculAir(10, 10)).toBe(100);
+    })
+    test('tester des valeurs pour calculAir', () => {
+        expect(calculAir(10, 10)).toBeGreaterThan(0);
+    })
+    test('tester des valeurs pour calculAir', () => {
+        expect(calculAir(10, 10)).toBeGreaterThanOrEqual(100);
+    })
+    test('tester des valeurs pour calculAir', () => {
+        expect(calculAir(10, 10)).not.toBeNaN();
+    })
+})
+//3eme test
+describe('test de la fonctionnalité calculAirCarre ', () => {
+    test('tester des valeurs pour calculAirCarre', () => {
+        expect(calculAirCarre(10)).toBe(100);
+    })
+    test('tester des valeurs pour calculAirCarre', () => {
+        expect(calculAirCarre(10)).toBeGreaterThan(0);
+    })
+})
+//test error
+describe('test de la fonctionnalité isAdmin ', () => {
+    const userSimple = { role: 'guest' };
+    const userAdmin  = { role: 'admin' };
+
+    test('tester isAdmin avec user autre que admin', () => {
+        // pour les erreurs il faut cather l'erreur dans une fonction intermédiaire
+        function callIsAdmin() {
+            isAdmin(userSimple);
+        }
+        expect(callIsAdmin).toThrowError('interdit');
+    })
+    test('tester isAdmin avec user admin', () => {
+        expect(isAdmin(userAdmin)).toBeTruthy();
+    })
+})
+
+// toMatchObject
+const advancedPermission = {
+    domaine: 'toto.com',
+    level: 4,
+    perms: {
+        roles: ['guest', 'reader', 'reviewer'],
+        delegated: true,
+        method: 'oauth2'
+    }
+}
+const advancedUser = {
+    domaine: 'toto.com',
+    level: 4,
+    perms: {
+        roles: ['guest', 'reader', 'reviewer'],
+        delegated: true,
+        method: expect.stringMatching('saml|oauth|oauth2')
+    }
+}
+
+describe('test object avancé permission ', () => {
+    test('teste de permission', () => {
+        expect(advancedPermission).toMatchObject(advancedUser);
+    })
+})   
+
+// toBeinstanceOf
+class User {
+    construtor(nom) {
+        this.nom = nom;
+    }
+}
+
+function auth(name) {
+    if(typeof name === 'undefined') {
+        throw new Error('le nom doit être defini')
+    }
+    return new User(name);
+}
+
+describe('test instance de class ', () => {
+    test('tester instance de User', () => {
+        expect(new User()).toBeInstanceOf(User);
+    })
+    test('tester instance de User', () => {
+        expect(auth('titi')).toBeInstanceOf(User);
+    })
+    test('tester instance de User', () => {
+        // pour les erreurs il faut cather l'erreur dans une fonction intermédiaire
+        function callAuth() {
+            auth();
+        }
+        expect(callAuth).toThrowError('le nom doit être defini');
+    })
+})   
+
+//arrayContaining
+
+function getRolesA() {
+    return ['admin', 'guest'];
+}
+function getRolesB() {
+    return ['admin', 'user'];
+}
+
+describe('test sur de array de roles ', () => {
+    const attendu = ['admin', 'guest'];
+    test('teste array same', () => {
+        expect(getRolesA()).toEqual(expect.arrayContaining(attendu));
+    })
+    test('teste array array not same', () => {
+        expect(getRolesB()).not.toEqual(expect.arrayContaining(attendu));
+    })
+})   
 ````
