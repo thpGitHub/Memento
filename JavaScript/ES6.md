@@ -28,7 +28,7 @@ function logDetails({name, age}) {
 }
 ````
 
-`````javascript
+````javascript
 let emojis = ['🔥', '⏲️', '🏆', '🍉'];
 
 let [fire, clock, , watermelon] = emojis;
