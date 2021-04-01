@@ -187,8 +187,6 @@ describe('test de la fonctionnalité afficheMessageCalculAir ', () => {
 })
 ````
 
---- 
-
 ### Asserts / Matchers
 
 ````javascript
