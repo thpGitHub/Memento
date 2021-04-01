@@ -323,3 +323,76 @@ describe('test sur de array de roles ', () => {
     })
 })   
 ````
+
+---
+
+### Les tests Asynchrones
+
+````javascript
+// Asynchrone avec les callbacks en utilsant done()
+
+function fetchAPI(callback) {
+    setTimeout(() => {
+        callback("{api:ok}");
+    },3000)
+}
+
+describe('test de  fetch API async ', () => {
+        test('testee fetchAPI', (done) => {
+            function callback(data) {
+                try {
+                    expect(data).toBe("{api:ok}");
+                    done();
+                } catch (error) {
+                    done(error)                    ;
+                }
+            }
+            fetchAPI(callback);
+        })
+})   
+
+// Asynchrone avec les promises
+
+function fetchApiPromise() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("{api:ok}");
+        },3000)
+    })
+}
+
+test('test de promise', () => {
+    return fetchApiPromise().then(data => {
+        expect(data).toBe("{api:ok}");
+    })
+})
+````
+
+---
+
+### Jest Mock
+
+````javascript
+// Mock
+
+function forEach(items, callback) {
+    for(let i = 0; i<items.length; i++) {
+        callback(items[i]);
+    }
+}
+
+test('test de la fonction forEach avec mock', () => {
+    const mockCallBack = jest.fn(x => 'salut '+ x);
+    forEach(['toto', 'titi'], mockCallBack);
+
+    expect(mockCallBack.mock.calls.length).toBe(2),
+    expect(mockCallBack.mock.calls[0][0]).toBe('toto'),
+    expect(mockCallBack.mock.calls[1][0]).toBe('titi'),
+    expect(mockCallBack.mock.results[0].value).toBe('salut toto'),
+    expect(mockCallBack.mock.results[1].value).toBe('salut titi')
+})
+````
+
+---
+
+### Tester les composants React
