@@ -394,3 +394,96 @@ test('test de la fonction forEach avec mock', () => {
 ---
 
 ### Tester les composants React
+
+````javascript
+//app.js
+import './App.css';
+import SuperComponent from './SuperComponent';
+
+function App() {
+  return (
+    <div className="App">
+      <SuperComponent>Salut tout le monde</SuperComponent>
+    </div>
+  );
+}
+
+export default App;
+
+````
+
+````javascript
+// SuperComponent.js
+import React from 'react';
+// <SuperComponent> salut tout le monde </SuperComponent
+function SuperComponent({ children }) {
+    
+    const [showMessage, setShowMessage] = React.useState(false);
+    return (
+        <div>
+            <label htmlFor="toggle">Mon super Composant</label>
+            <input
+                id="toggle"
+                type="checkbox"
+                onChange={e => setShowMessage(e.target.checked) }
+                // onChange={ e => setShowMessage(!showMessage) }
+                checked={ showMessage }
+            />
+            <div>
+            { showMessage ? children : null }
+                
+            </div>
+
+        </div>
+    )
+}
+
+export default SuperComponent;
+````
+
+````javascript
+// SuperComponent.test.js
+import { fireEvent, render, screen } from '@testing-library/react';
+import SuperComponent from './SuperComponent';
+
+test('renders Mon super Composant', () => {
+  render(<SuperComponent />);
+  const linkElement = screen.getByText(/Mon super Composant/);
+  expect(linkElement).toBeInTheDocument();
+});
+
+test('renders Mon super Composant et click', () => {
+    const messageAtester = "Salut tout le monde";
+
+    render(<SuperComponent>{ messageAtester }</SuperComponent>);
+    expect(screen.queryByText(messageAtester)).toBeNull();
+    fireEvent.click(screen.getByText(/super/i));
+    expect(screen.getByText(messageAtester)).toBeInTheDocument();
+  });
+````
+
+---
+
+### TDD Test Driven Development
+
+Ecrire les tests avant le Code !
+
+3 lois du TDD :
+
+- Ne pas écrire de code tant que l'on a pas écrit un test qui échoue
+
+- Ne pas écrire plus de tests que nécessaire pour faire échouer. Les échecs de compilation sont des échecs comme les autres.
+
+- Ne pas écrire plus de code qu'il en faut pour faire passer le test qui a échoué.
+
+RVR = Rouge Vert Refactorer
+
+Exemple de spécification pour une fonction multiplication
+
+- Retourner le bon résultat : Ex : 2 x 3 = 6
+
+- Le résultat doit être de type nuymber
+
+- Faire une vérification plus apronfondie avec toEqual
+
+- return error if NaN
