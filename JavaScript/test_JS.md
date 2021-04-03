@@ -487,3 +487,37 @@ Exemple de spécification pour une fonction multiplication
 - Faire une vérification plus apronfondie avec toEqual
 
 - return error if NaN
+
+````javascript
+// multiplication.test.js
+import multiplication from './multiplication'
+
+test('multiplication de number', () => {
+    expect(multiplication(2,3)).toBe(6);
+    expect(typeof multiplication(2,3)).toBe('number');
+    expect(multiplication(2,3)).toEqual(6);
+    expect(multiplication('toto','tata')).toEqual(Error('Number expected as parameter'));
+    expect(multiplication(6,'tata')).toEqual(Error('Number expected as parameter'));
+    expect(multiplication('tata', 6)).toEqual(Error('Number expected as parameter'));
+})
+````
+
+````javascript
+// multiplication.js
+
+/**
+ * 
+ * @param {*} a First param
+ * @param {*} b Second param
+ * @returns Sum params a and b
+ */
+const multiplication = (a, b) => {
+   
+   if(typeof a === 'number' && typeof b === 'number') {
+       return a*b;
+   }
+   return Error('Number expected as parameter');
+   
+}
+export default multiplication;
+````
