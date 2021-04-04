@@ -521,3 +521,60 @@ const multiplication = (a, b) => {
 }
 export default multiplication;
 ````
+
+### TDD sur compoasant REACT
+
+````javascript
+// hidePassword.test.js
+import { render, screen, fireEvent } from '@testing-library/react';
+import HidePassword from './hidePassword';
+
+test('test du rendu de affichage du mdp', () => {
+    const mdp = "azerty123";
+    render(<HidePassword>{ mdp }</HidePassword>);
+    expect(screen.queryByText(mdp)).toBeNull();
+    fireEvent.click(screen.getByLabelText('afficher mdp'));
+    expect(screen.queryByText(mdp)).toBeInTheDocument();
+})
+````
+
+````javascript
+// hidePassword.js
+import React from 'react';
+
+const HidePassword = ( { children }) => {
+    const [showPassword, setShowPassword] = React.useState(false);
+    return (
+        <div>
+            <label htmlFor="mdp">afficher mdp</label>
+            <input type="checkbox" 
+                   id="mdp"
+                   checked={ showPassword }
+                   onChange={ e => setShowPassword(e.target.checked) }
+            />
+            { showPassword ? children : null }
+        </div>
+    )
+}
+
+export default HidePassword;
+````
+
+---
+
+### BDD Behaviour Driven Development
+
+Langage fonctionel commun entre les devs les commerciaux ...
+
+- BDD : Gherkin
+Gherkin est un ensemble de règles de grammaire qui rend le texte brut suffisament structuré pour que `Cucumber` le comprenne.
+
+Cucumber est un framework BDD
+
+---
+
+### Ci Continuous Integration
+
+- Vérifier que chaque modification n'apporte pas de régression.
+
+-
