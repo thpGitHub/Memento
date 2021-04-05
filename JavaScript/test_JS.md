@@ -577,4 +577,8 @@ Cucumber est un framework BDD
 
 - Vérifier que chaque modification n'apporte pas de régression.
 
--
+#### Utilisation de `Circle CI`
+
+Explication rapidddd :
+Connexion à Circle Ci avec notre compte github. Choisir un projet parmis nos repos. Un dossier `.circleci` avec un fichier  `config.yml` vas être créé dans notre repo github.
+Lorsque l'on va push sur github, Circle Ci va vérifier si tous les tests dans le projet sont bon, si oui le repo est modifier sinon aucune modifications.
