@@ -196,7 +196,7 @@ React :
 - <https://www.react.express/> // Documentation React moderne avec tuto complet (A voir !!! notament pour l'utilisation de react avec webpack et babel)
 - <https://www.reactnative.express/>
 - <https://github.com/facebook/create-react-app#getting-started> // documentation sur create-react-app
-
+- <https://levelup.gitconnected.com/how-to-render-react-app-using-express-server-in-node-js-a428ec4dfe2b> // connect react to express js
 // Bonnes pratique dev React :
 
 - <https://alexkondov.com/tao-of-react/>
