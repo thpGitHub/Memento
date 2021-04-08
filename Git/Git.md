@@ -9,7 +9,16 @@ Zone 1 : Working directory | Zone 2 : Staging Area | Zone 3 : .git directory
 
 ---
 
+## Modifier la branche principal en master
+
+````shell script
+git config –global init.defaultBranch main
+````
+
+---
+
 ### Vérifier nos paramètres
+
 ````shell script
   git config --list
   git config user.name
@@ -19,17 +28,23 @@ Zone 1 : Working directory | Zone 2 : Staging Area | Zone 3 : .git directory
   git config --global user.name "Votre nom ou pseudo"
   git config --global user.email "Votre@email.com"   
 ````
+
 ---
+
 > ### Initialisation du dépot local
+
 ````shell script
     git init # Git crée un répertoire .git qui contient tout ce que Git a besoin pour fonctionner
 ````
+
 > ### Lier le dépôt local au dépôt distant (github)
+
 ```shell script
     git remote add origin https://github.com/thpGitHub/NonDossier.git
 ```
 
 > ### Ajouter les modifications local
+
 ````shell script
     git add . # ajoute tous les fichiers présents
     git add *.md
@@ -38,12 +53,13 @@ Zone 1 : Working directory | Zone 2 : Staging Area | Zone 3 : .git directory
 ````shell script
     git add [nomFichier] # ajoute un fichier   
  ````
- 
+
 ````shell script
     git add [nomFichier1] [nomFichier2] # ajoute deux fichiers...
  ````
 
 > ### commit
+
 ````shell script
     git commit # va ouvrir un editeur afin de saisir un commentaire
     git commit -v # ajoute le résultat d'un git diff comme commentaire
@@ -51,7 +67,9 @@ Zone 1 : Working directory | Zone 2 : Staging Area | Zone 3 : .git directory
     git commit -a -m "update file" # permet de passer l'étape de mise à l'index (-a => git add)
     git commit -am "update file" # raccourci de la commande au dessus
 ````
+
 > ### On pousse tous les commits vers le dépôt distant
+
 ````shell script
     git push origin master
 ````
@@ -64,14 +82,16 @@ Zone 1 : Working directory | Zone 2 : Staging Area | Zone 3 : .git directory
     git clone https://github.com/thpGitHub/Memento.git
     git clone https://github.com/thpGitHub/Memento.git changerNomRepertoire
 ````
+
 >   git clone regroupe plusieurs commandes :
 > - Elle crée un nouveau dossier,
 > - puis va à l’intérieur de celui-ci et lance git init pour en faire un dépôt Git vide,
 > - puis ajoute un serveur distant (git remote add) à l’URL que vous lui avez passée (appelé par défaut origin),
 > - puis lance git fetch à partir de ce dépôt distant et
 > - ensuite extrait le dernier commit dans votre répertoire de travail avec git checkout.
- 
+
  > ### git status et git diff
+
  ````shell script
     git status
     git diff # affichera plus de détail qu'un git status sur les fichiers non indexés. On peut voir les différences des fichiers
@@ -83,11 +103,14 @@ Zone 1 : Working directory | Zone 2 : Staging Area | Zone 3 : .git directory
 > ### Effacer/supprimer des fichiers
 
 supprimer
+
 ````shell script
     rm [nomFichier] # supprimera le fichier (de git et de notre ordi !!) avant l'index (avant un add)
     git rm -f [nomFichier] # supprimera le fichier après l'index (après un add) -f pour forcer la suppression !!
 ````
+
 effacer
+
 ````shell script
     #pour effacer un fichier  il faut l'indexer (apres un add)
     git add [nomFichier]
@@ -95,14 +118,17 @@ effacer
 ````
 
 > ### Renommer un fichier
+
 ````shell script
     git mv [nom1] [nom2]
 ````
 
  ---
- 
- ### Travailler avec des dépots distants
- https://git-scm.com/book/fr/v2/Les-bases-de-Git-Travailler-avec-des-d%C3%A9p%C3%B4ts-distants
+
+### Travailler avec des dépots distants
+
+ <https://git-scm.com/book/fr/v2/Les-bases-de-Git-Travailler-avec-des-d%C3%A9p%C3%B4ts-distants>
+
  ````shell script
     git remote # affichera le nom cours du/des dépot/s distant/s
     git remote -v # affichera l'url du/des dépot/s distant/s
@@ -134,9 +160,13 @@ effacer
     git push origin --all # push toutes les branches locales sur le dépot distant origin
     git push origin --tags # push tous nos tags locaux vers le dépôt distant.
 ````
+
 ---
+
 ### Les branches
-https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Branches-et-fusions%C2%A0%3A-les-bases
+
+<https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Branches-et-fusions%C2%A0%3A-les-bases>
+
 ````shell script
     git branch testing # création de la branche testing
     git checkout testing # basculer sur la branche testing (potition du pointeur HEAD sur testing)
@@ -156,7 +186,9 @@ https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Branches-et-fusions%C2%A0%3
     git diff branch1..branch2 -- [file] # compare un fichier spécifique
    
 ````
+
 fusionner des branches
+
 ````shell script
     git checkout master # on se potionne sur la branche master
     git merge correctif # on fusionne la branche correctif dans la branche master (création d'un commit de merge)
@@ -166,14 +198,19 @@ fusionner des branches
     # Attention si on essai de supprimer une branche qui n'a pas été fusionnée (merge) => error: The branch 'correctif' is not fully merged.
     git branch -D correctif # forcer la suppression de la branche correctif
 ````
+
 rebaser des branches
+
 > Ne rebasez jamais des commits qui ont déjà été poussés sur un dépôt public.
+
 ````shell script
 
 ````
 
 ---
+
 ### Visualiser l'historique des validations
+
 ````shell script
     git log # affiche la liste des commits
     git log -p -2 # -p montre les différences et -2 limite à 2
@@ -189,9 +226,11 @@ rebaser des branches
 
     git cherry-pick d356940 de966d4 # va dupliquer les commits d356940 de966d4 dans notre branche
 ````
+
 ---
 
 ### Annuler des actions
+
 ````shell script
     git commit -m 'validation initiale' # on fait un commit puis on s'apperçois d'un oublie
     git add fichier_oublie # on rajoute a l'index le fichier oublié
@@ -227,6 +266,7 @@ rebaser des branches
 ````
 
 ### Générer une clé SSH pour l'authentification
+
 ````shell script
     ssh-keygen -t rsa -b 4096 -C "example@example.com" # commande à exécuter dans le terminal
     # ensuite aller dans le dossier .ssh dans C:\Users\VotreNomD'Utilisateur\
@@ -237,6 +277,7 @@ rebaser des branches
 ---
 
 ### Création d'un fichier ``.gitignore``
+
 > Pour demander à git de ne pas suivre certain type de fichiers, il faut créer un fichier ``.gitignore`` à la racine du projet.
 > Templates pour ``.gitignore`` : https://github.com/github/gitignore :)
 
@@ -249,41 +290,48 @@ rebaser des branches
     .gitignore # on peut aussi ignorer le .gitignore ;), mais il est préférable de ne pas l'ignorer et de le push sur le dépot distant
     # commentaire
 ````
+
 ````shell script
     git rm --cached FILENAME # ignorer un fichier déjà archivé
     git status --ignored # affichera la liste des fichiers ignorés
 ````
+
 A appronfondir ``.git/info/exclude``
 
 ---
+
 ### Création d'un fichier ``.gitattributes``
+
 > On peut dans un fichier ``.gitattributes`` (à la racine du projet) gérer les ``merge`` :
  >> Vous pouvez utiliser les attributs Git pour indiquer à Git d'utiliser différentes stratégies de fusion pour des fichiers spécifiques de votre projet. Une option très utile est de dire à Git de ne pas essayer de fusionner des fichiers spécifiques quand ils ont des ***conflits***, mais plutôt d'utiliser votre côté de la fusion par rapport à quelqu'un d'autre.
- >> 
+ >>
  >> Cela est utile si une branche de votre projet a divergé ou est spécialisée, mais que vous souhaitez pouvoir fusionner les modifications à partir de celle-ci et que vous souhaitez ignorer certains fichiers. Supposons que vous ayez un fichier de paramètres de base de données appelé database.xml qui est différent dans deux branches, et que vous souhaitez fusionner dans votre autre branche sans gâcher le fichier de base de données. Vous pouvez configurer un attribut dans le fichier .gitattributes comme celui-ci:
- >> 
+ >>
  ````gitignore
     database.xml merge=ours
 ````
 
 Et puis définissez une ours stratégie de fusion factice avec:
+
 ````shell script
     git config --global merge.ours.driver true
 ````  
   
  > Si vous fusionnez dans l'autre branche, au lieu d'avoir des conflits de fusion avec le fichier database.xml, vous voyez quelque chose comme ceci:
+
  ````shell script
     $ git merge topic
       # Auto-merging database.xml
       # Merge made by recursive.
       # Dans ce cas, database.xml reste à la version que vous aviez à l'origine.
 ````
+
 ***ATTENTION*** : s'il n'y a pas de conflit entre les fichiers, le fichier sera mergé dans la branche (ex.: si le fichier de la branche est vide il n'y aura pas de conflit!)
 
 templates pour ``.gitattributes`` : https://gitattributes.io/ ou https://github.com/alexkaratarakis/gitattributes
 
 ---
-### Définitions :
 
- - HEAD :  est une référence sur notre position actuelle dans notre répertoire de travail Git.
- 
+### Définitions
+
+- HEAD :  est une référence sur notre position actuelle dans notre répertoire de travail Git.
