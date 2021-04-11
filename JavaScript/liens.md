@@ -159,6 +159,13 @@ mongo :
 
 ---
 
+mongoose :
+
+- <https://mongoosejs.com/docs/guide.html> // doc officielle
+- <https://www.npmjs.com/package/mongoose>
+
+---
+
 Neumorphism
 
 - <https://alexandra-guyot.graphics/2020/03/02/le-neumorphism-la-vraie-fausse-bonne-idee-de-2020/>
