@@ -109,6 +109,12 @@ GIT :
 
 ---
 
+HEROKU :
+
+- <https://devcenter.heroku.com/articles/troubleshooting-node-deploys> // faq deploy on heroku
+
+---
+
 HTML :
 
 - <https://jatinrao.dev/12-html-tags-you-dont-know?utm_campaign=sebastien_lorber_newsletter&utm_medium=email&utm_source=Revue%20newsletter>
@@ -156,6 +162,7 @@ mongo :
 // hébergement de la bdd mongo sur le cloud gratuitement
 
 - <https://www.mongodb.com/cloud/atlas>
+- <https://docs.atlas.mongodb.com/getting-started/>
 
 ---
 
@@ -205,6 +212,7 @@ React :
 - <https://github.com/facebook/create-react-app#getting-started> // documentation sur create-react-app
 - <https://levelup.gitconnected.com/how-to-render-react-app-using-express-server-in-node-js-a428ec4dfe2b> // connect react to express js
 - <https://www.freecodecamp.org/news/deploying-a-mern-application-using-mongodb-atlas-to-heroku/> // How to Deploy a MERN Application to Heroku Using MongoDB Atlas
+- <https://coursework.vschool.io/deploying-mern-app-to-heroku/>
 
 // Bonnes pratique dev React :
 
