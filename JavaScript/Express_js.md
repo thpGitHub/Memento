@@ -1,15 +1,17 @@
-Express JS
+# Express JS
+
 -
 > Express.js est un framework minimaliste pour node.js.
 
 Pour ajouter Express dans le dossier de votre projet :
+
 ```shell script
-   $ npm i express
+   npm i express
 ```
+
 > cette commande va créér un dossier ``node_modules`` un fichier ``package-lock.json`` et enregistrer ``express``
 > en tant que dépendance dans le fichier ``package.json`` (``package.json`` a été créé par ``$ npm init``).
 > ***``Attention``*** il faut avant d'installer express faire un ``$ npm init``.
-
 
 ````json
 {
@@ -17,8 +19,11 @@ Pour ajouter Express dans le dossier de votre projet :
         "express": "^4.17.1"
       }
 }
+
 ````
-Par convention l'objet ``app`` désigne une application ``express`` et possède de nombreuses méthodes   
+
+Par convention l'objet ``app`` désigne une application ``express`` et possède de nombreuses méthodes
+
 ````javascript
     const express = require('express');
     const app = express();
@@ -44,12 +49,15 @@ Par convention l'objet ``app`` désigne une application ``express`` et possède 
     app.use(function (req, res) {
       //...
     });
+
 ````
+
 - ``.use()`` traitera toutes les requêtes.
 - ``.get()`` ne traitera que les requêtes de type GET.
 - ``.post()`` ne traitera que les requêtes de type POST.
 
 Deux façon de créer un serveur HTTP :
+
 ````javascript
     // 1: création d'un serveur HTTP par express
     const express = require('express');
@@ -74,8 +82,10 @@ Deux façon de créer un serveur HTTP :
 ---
 
 ### Les fonctions middleware
+
 >Les fonctions middleware sont des fonctions qui ont accès à l' objet requête ``req``,
 > à l' objet réponse ``res`` et à la fonction middleware ``next()``.
+
 ````javascript
     const app = express()
     
@@ -84,12 +94,15 @@ Deux façon de créer un serveur HTTP :
       next();
     });
 ````
+
 ---
 
-### Erreurs de CORS 
+### Erreurs de CORS
+
 > Cross Origin Resource Sharing est un système de sécurité qui, par défaut
 > bloque les appels HTTP effectués entre des serveurs différents.
 >Pour résoudre le problème nous devons ajouter des headers à notre objet response (res).
+
 ````javascript
     app.use((req, res, next) => {
         //Permet d'accéder à notre API depuis n'importe quelle origine ('*')
@@ -104,9 +117,11 @@ Deux façon de créer un serveur HTTP :
 ````
 
 autre solution : Installer le package ``cors``
+
 ````shell script
-    $ npm i cors
+    npm i cors
 ````
+
 usage simple :
 > ici Faire appel à ce package sans lui passer d’arguments permet d’autoriser tous les accès à votre ressource.
 
@@ -132,11 +147,14 @@ usage simple :
 ### Les routes POST (***attention*** voir plus bas pour modifier ``Récupérer les données d'une requête post``)
 
 > Un package utile quand on veut gérer des demandes POST est : ``body-parser``
+
 ````shell script
-    $ npm i body-parser
+    npm i body-parser
 ````
+
 Analysez les corps des requêtes entrantes dans un middleware avant vos gestionnaires,
  disponibles sous la req.bodypropriété.
+
  ````javascript
     const bodyParser = require('body-parser');
     app.use(body_parser.urlencoded({ extended: false }));
@@ -149,8 +167,9 @@ Analysez les corps des requêtes entrantes dans un middleware avant vos gestionn
 
 ````
 
-> Voici un petit exemple de redirection qui fonctionne avec tous les types de route 
+> Voici un petit exemple de redirection qui fonctionne avec tous les types de route
 > ``res.render()``
+
 ````javascript
 if (!identifiant || !mdp) {
         res.redirect('/admin');
@@ -162,12 +181,15 @@ if (!identifiant || !mdp) {
 ---
 
 ### Les fichiers statics
-> Les fichiers statiques sont les images, les fichiers CSS et les fichiers JavaScript...   
+
+> Les fichiers statiques sont les images, les fichiers CSS et les fichiers JavaScript...
 
 ````javascript
     app.use(express.static('public'));
 ````
+
 > la fonction ``express.static`` est a utiliser dans une fonction ``middleware``
+
 ````javascript
     app.use('/static', express.static('public'));
     app.use('/js', express.static(__dirname + '/public/javascript'));
@@ -180,8 +202,10 @@ if (!identifiant || !mdp) {
         res.send('<img src="/fichier/burger.jpg" alt="burger img">');
     });
 ````
+
 > la methode ``res.sendfile()``
 > La méthode sendFile de l'objet res permet d'envoyer un fichier spécifique au client.
+
 ````javascript
     app.get('/', (req, res) => {
         res.sendFile('accueil.html', { root: 'pages' }); 
@@ -189,14 +213,17 @@ if (!identifiant || !mdp) {
         // res.sendFile(__dirname + '/exercice1_index.html');
     });
 ````
+
 ---
 
 ### Templates
+
 > Le moteur de template le plus utilisé avec express js est ``pug``
 
 ````shell script
-    $ npm i pug
+    npm i pug
 ````
+
 ````javascript
     /* utiliser le module pug
        mettre 'pug' permet de dire que les fichiers sont des .pug 
@@ -206,6 +233,7 @@ if (!identifiant || !mdp) {
     // les fichiers statics ``pug`` se trouverons dans le dossier : /views
     app.set('views', './views');
 ````
+
 ````html
     // le fichier index.pug dans le dossier views
     html
@@ -220,14 +248,17 @@ if (!identifiant || !mdp) {
       res.render('index', { title: 'Hey', message: 'Hello there!'});
     });
 ````
+
 ---
 
 ### Les erreurs
+
 ````javascript
     app.use((req, res) => {
         res.status(404).render('error404');
     });
 ````
+
 ````javascript
     app.use((req, res, next) => {
         switch (res.statusCode) {
@@ -239,12 +270,15 @@ if (!identifiant || !mdp) {
         }
     });
 ````
+
 ---
 
 ### Les sessions
+
 ````shell script
-    $ npm i express-session
+    npm i express-session
 ````
+
 ````javascript
     const session = require (' express-session'); 
 
@@ -270,6 +304,7 @@ if (!identifiant || !mdp) {
      }
     */
 ````
+
 ````javascript
     // supprimer une session
     app.get('/supprimerSession', (req, res) => {
@@ -279,15 +314,17 @@ if (!identifiant || !mdp) {
     });
 ````
 
-> Les données de session sont stockées côté serveur.   
+> Les données de session sont stockées côté serveur.
 > Depuis la version 1.5.0, le cookie-parser n'a plus besoin d'être utilisé pour que ce module fonctionne.
 
 ---
 
-### includes 
+### includes
+
 > Le dossier ``includes`` contenu dans un dossier ``views`` contiendra nos templates comme par exemple :
 
 - accueil.pug
+
 ````jade
     include includes/head
     include includes/header
@@ -297,6 +334,7 @@ if (!identifiant || !mdp) {
 ````
 
 - head.pug
+
 ````jade
     doctype html
     head
@@ -305,6 +343,7 @@ if (!identifiant || !mdp) {
 ````
 
 - hearder.pug
+
 ````jade
     body
         header
@@ -323,10 +362,10 @@ if (!identifiant || !mdp) {
 ````
 
 - footer.pug
+
 ````jade
     // ici code du footer ;)
 ````
-
 
 ---
 
@@ -335,17 +374,21 @@ if (!identifiant || !mdp) {
 ---
 
 ### Récupérer les données dans l'URL (get)
-> L'objet `req` a deux propriétées pour récupérer les données passées dans l'URL 
-- ``params``   
+
+> L'objet `req` a deux propriétées pour récupérer les données passées dans l'URL
+
+- ``params``
+
 ````javascript
     // pour l'URL : http://www.monsite.com/infos/truc/machin
     app.get('/infos/:un/:deux', (req,res) => {
       console.log(req.params.un); //affiche truc 
       console.log(req.params.deux); //affiche machin
     });
-````   
+````
 
-- ``query`` 
+- ``query``
+
 ````javascript
     // pour l'URL : http://www.monsite.com/question?r=chose&t=bidule
     app.get('/question', (req,res) => {
@@ -355,10 +398,13 @@ if (!identifiant || !mdp) {
 ````
 
 ### Récupérer les données d'une requête post
+
 >Afin de pouvoir récupérer les informations du corp de la requête POST il faut instatller le package : ``body_parser``
+
 ````shell script
-    $ npm i body-parser
+    npm i body-parser
 ````
+
 ````javascript
     const bodyParser = require('body-parser');
 
@@ -368,18 +414,21 @@ if (!identifiant || !mdp) {
         res.render('resultat',{datas:req.body}); 
     });
 ````
+
 ---
 
 ### Se connecter à une base de donnée MongoDB avec le module : ``mongodb``
-https://expressjs.com/en/guide/database-integration.html#mongodb
-https://www.npmjs.com/package/mongodb
-// choir le driver de notre mongoDB :   
-http://mongodb.github.io/node-mongodb-native/ 
-http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
+
+<https://expressjs.com/en/guide/database-integration.html#mongodb>
+<https://www.npmjs.com/package/mongodb>
+// choir le driver de notre mongoDB :
+<http://mongodb.github.io/node-mongodb-native/>
+<http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/>
 
 ````shell script
-    $ npm i mongodb
+    npm i mongodb
 ````
+
 ````javascript
     const MongoClient = require('mongodb').MongoClient,
           url         = 'mongodb://localhost:27017/',
@@ -402,6 +451,7 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
 
 // p= datas[0].zipCode
 ````
+
 ````jade
     // accueil.pug
     doctype html
@@ -418,8 +468,10 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
 // p= datas[0].zipCode
 ````
 
-### Se connecter à une base de donnée MongoDB avec le module : ``mongodb`` et avec un fichier js externe 
+### Se connecter à une base de donnée MongoDB avec le module : ``mongodb`` et avec un fichier js externe
+
 - fichier : db.js :
+
 ````javascript
     const MongoClient = require('mongodb').MongoClient,
           url         = 'mongodb://localhost:27017/',
@@ -435,7 +487,9 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
         });
     };
 ````
+
 - fichier : app.js
+
 ````javascript
     const execDB = require('./db');
     // ici exemple avec une route post :
@@ -460,8 +514,11 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
         )  
     });
 ````
-### Amélioration du code 
+
+### Amélioration du code
+
 - fichier : db.js
+
 ````javascript
     const MongoClient = require('mongodb').MongoClient,
         url         = 'mongodb://localhost:27017/',
@@ -499,6 +556,7 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
 ````
 
 - fichier : app.js :
+
 ````javascript
     const execDB = require('./db');
         // ici exemple avec une route post :
@@ -539,8 +597,10 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
 ````
 
 ### ObjectId
-> Pour pouvoir utiliser l' ``_id`` d'une base mongoDb il faut utiliser l'objet ``OjectId`` : 
-- fichier db.js : 
+
+> Pour pouvoir utiliser l' ``_id`` d'une base mongoDb il faut utiliser l'objet ``OjectId`` :
+
+- fichier db.js :
 
 ````javascript
     const ObjectId = require('mongodb').ObjectId;
@@ -550,7 +610,8 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
         return new ObjectId(idText);
     };
 ````
-- fichier app.js : 
+
+- fichier app.js :
 
 ````javascript
     const execDB = require('./db');
@@ -568,13 +629,16 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
         });
     });
 ````
- ---
-### Mongoose
-> Mongoose est un package qui facilite les interactions avec notre base de données MongoDB grâce à des fonctions extrêmement utiles.
-````shell script
-    $ npm i mongoose
-````
 
+ ---
+
+### Mongoose
+
+> Mongoose est un package qui facilite les interactions avec notre base de données MongoDB grâce à des fonctions extrêmement utiles.
+
+````shell script
+    npm i mongoose
+````
 
 ````javascript
     const mongoose = require('mongoose');
@@ -585,18 +649,23 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
       .then(() => console.log('Connexion à MongoDB réussie !'))
       .catch(() => console.log('Connexion à MongoDB échouée !'));
 ````
+
 > L'un des avantages que nous avons à utiliser Mongoose pour gérer notre base de données MongoDB est que nous pouvons implémenter des schémas de données stricts
 
 ---
+
 ### Création d'un fichier ``router.js``
 
 - fichier ``app.js``
+
 ````javascript
     const router = require('./router');
 
     app.use(router); // Requests processing will be defined in the file router
 ````
+
 - fichier ``router.js``
+
 ````javascript
     const express = require("express");
     const router = express.Router();
@@ -607,10 +676,13 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
            res.json("Hello world!!");
        });
 ````
-// http://www.cril.univ-artois.fr/~boussemart/express/chapter01.html
+
+// <http://www.cril.univ-artois.fr/~boussemart/express/chapter01.html>
 
 ---
-### Exemple d'une structure d'application Express 
+
+### Exemple d'une structure d'application Express
+
 ````text
     .
     ├── app.js
@@ -635,6 +707,6 @@ http://mongodb.github.io/node-mongodb-native/3.5/quick-start/quick-start/
 
 ````
 
-
 ### A voir  express-validator
-- https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/forms
+
+- <https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/forms>
