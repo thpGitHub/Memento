@@ -8,6 +8,7 @@ La Structure du projet doit contenir à sa  racine tous les dossiers liés au se
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__node_modules/  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__public/  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|__src/  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|.gitignore  
 |__models/  
 |__node_modules  
 |__routes/  
