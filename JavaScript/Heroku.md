@@ -104,5 +104,5 @@ puis :
     heroku local web # démarrer l'application localement
     heroku local # démarrer l'application localement aussi
     heroku apps:info # informations sur l'application notament la taille de l'app
-    heroku logs --tail # affiche les logs
+    heroku logs --tail # affiche les logs, très utile pour les erreurs !
 ````
