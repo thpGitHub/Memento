@@ -16,7 +16,7 @@ La Structure du projet doit contenir à sa  racine tous les dossiers liés au se
 |__package.json  
 |__server.js  
 
-### Express : server.js
+## Express : server.js
 
 Configuration de Express pour faire deux tâches, il gèrera les appels d'API comme avant et il servira également notre application React
 
