@@ -170,6 +170,7 @@ mongoose :
 
 - <https://mongoosejs.com/docs/guide.html> // doc officielle
 - <https://www.npmjs.com/package/mongoose>
+- <https://mongoosejs.com/docs/models.html> // Models dans mongoose
 
 ---
 
