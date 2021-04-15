@@ -214,6 +214,7 @@ React :
 - <https://www.freecodecamp.org/news/deploying-a-mern-application-using-mongodb-atlas-to-heroku/> // How to Deploy a MERN Application to Heroku Using MongoDB Atlas
 - <https://coursework.vschool.io/deploying-mern-app-to-heroku/>
 - <https://www.positronx.io/react-axios-tutorial-make-http-get-post-requests/> // react Axios Mongo
+-<https://cra.link/deployment> // Explications du deploiement (build) dans une appli CRA.
 
 // Bonnes pratique dev React :
 
