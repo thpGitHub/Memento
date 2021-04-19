@@ -51,6 +51,7 @@ Color css :
 
 - <https://flatuicolors.com/>
 - <https://fr.wikipedia.org/wiki/Couleur_du_Web>
+- <https://color.adobe.com/fr/create/color-wheel> // cool pour le design
 
 ---
 
@@ -67,6 +68,12 @@ css :
 - <https://cssgenerator.org/border-css-generator.html> // générateur de css (shadow, border.....)
 - <https://cssgridgarden.com/#fr> // pour jouer en utilisant du grid
 - <https://flexboxfroggy.com/#fr> // pour jouer en utilisant du flex
+
+---
+
+Design :
+
+- <https://boiling-springs-89508.herokuapp.com>
 
 ---
 

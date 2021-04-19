@@ -81,7 +81,7 @@ Deux façon de créer un serveur HTTP :
 
 ---
 
-### Les fonctions middleware
+## Les fonctions middleware
 
 >Les fonctions middleware sont des fonctions qui ont accès à l' objet requête ``req``,
 > à l' objet réponse ``res`` et à la fonction middleware ``next()``.
@@ -413,6 +413,19 @@ if (!identifiant || !mdp) {
     app.post('/traitement', (req, res) => {
         res.render('resultat',{datas:req.body}); 
     });
+````
+
+***ATTENTION*** ``body_parser`` est dépréciée depuis la version 4.16.0 de Express
+
+````javascript
+// Express v4.16.0 and higher
+// --------------------------
+const express = require('express');
+
+app.use(express.json());
+app.use(express.urlencoded({
+  extended: true
+}));
 ````
 
 ---
