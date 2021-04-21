@@ -98,6 +98,12 @@ Font :
 
 ---
 
+Formations :
+
+- <https://delicious-insights.com/fr/formations/performances-web/> // formations intéressantes notament sur la performance web
+
+---
+
 freeCodeCamp :  
 
 - <https://www.freecodecamp.org/news/best-javascript-tutorial/>
