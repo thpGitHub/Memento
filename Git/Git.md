@@ -83,14 +83,14 @@ git config –global init.defaultBranch main
     git clone https://github.com/thpGitHub/Memento.git changerNomRepertoire
 ````
 
->   git clone regroupe plusieurs commandes :
-> - Elle crée un nouveau dossier,
-> - puis va à l’intérieur de celui-ci et lance git init pour en faire un dépôt Git vide,
-> - puis ajoute un serveur distant (git remote add) à l’URL que vous lui avez passée (appelé par défaut origin),
-> - puis lance git fetch à partir de ce dépôt distant et
-> - ensuite extrait le dernier commit dans votre répertoire de travail avec git checkout.
-
- > ### git status et git diff
+>git clone regroupe plusieurs commandes :
+> -Elle crée un nouveau dossier,
+> -puis va à l’intérieur de celui-ci et lance git init pour en faire un dépôt Git vide,
+> -puis ajoute un serveur distant (git remote add) à l’URL que vous lui avez passée (appelé par défaut origin),
+> -puis lance git fetch à partir de ce dépôt distant et
+> -ensuite extrait le dernier commit dans votre répertoire de travail avec git checkout.
+ 
+ >### git status et git diff
 
  ````shell script
     git status
@@ -168,6 +168,7 @@ effacer
 <https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Branches-et-fusions%C2%A0%3A-les-bases>
 
 ````shell script
+    git branch -M main # Renomerra la branch principale (en général master) en main
     git branch testing # création de la branche testing
     git checkout testing # basculer sur la branche testing (potition du pointeur HEAD sur testing)
     # Attention : Git ne vous laissera pas changer de branche si la branche sur laquelle vous êtes n'est pas
