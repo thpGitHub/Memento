@@ -25,6 +25,7 @@ Configuration de Express pour faire deux tâches, il gèrera les appels d'API co
 const path = require("path")
 
 // ... other app.use middleware 
+// Say to Heroku where are the build folder (/client/build)
 app.use(express.static(path.join(__dirname, "client", "build")))
 
 // ...
