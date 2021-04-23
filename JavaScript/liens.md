@@ -125,6 +125,7 @@ GIT :
 HEROKU :
 
 - <https://devcenter.heroku.com/articles/troubleshooting-node-deploys> // faq deploy on heroku
+- <https://devcenter.heroku.com/articles/renaming-apps#updating-git-remotes> // renommer une application
 
 ---
 
