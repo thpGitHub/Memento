@@ -159,6 +159,11 @@ effacer
     git push origin master # push la branche master du dépot local vers le dépot distant origin
     git push origin --all # push toutes les branches locales sur le dépot distant origin
     git push origin --tags # push tous nos tags locaux vers le dépôt distant.
+
+    heroku apps:rename newname # renommer une app sur heroku
+    #Renaming oldname to newname... done
+    #http://newname.herokuapp.com/ | git@herokuapp.com:newname.git
+    #Git remote heroku updated
 ````
 
 ---

@@ -105,4 +105,9 @@ puis :
     heroku local # démarrer l'application localement aussi
     heroku apps:info # informations sur l'application notament la taille de l'app
     heroku logs --tail # affiche les logs, très utile pour les erreurs !
+
+    heroku apps:rename newname # renommer une app sur heroku
+    #Renaming oldname to newname... done
+    #http://newname.herokuapp.com/ | git@herokuapp.com:newname.git
+    #Git remote heroku updated
 ````
