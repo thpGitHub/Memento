@@ -1,5 +1,7 @@
 # MongoDB
 
+>Une collection est l'équivalent d'une table dans une base de données relationnelle. Une base de données gère une collection de documents(JSON). Le modèle d'un document est que tout est clé/valeur: `"clé":"valeur"`. Un document est encapsulé dans des `{...}`. Une valeur peut être un type scalaire (entier, nombre, texte, booléen, null), des listes de valeurs `[...]`, ou des documents imbriqués.
+
 > Après avoir installé mongoDB (attention pour l'instant je suis dans : C:\Program Files\MongoDB\Server\4.2\bin)
 > on peut commencer par vérifier les services windows qui sont sur notre machine
 > dans recherche taper simplement ``services`` et le service se nomme : ``mongoDB Server``
