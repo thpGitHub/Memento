@@ -705,7 +705,8 @@ app.use(express.urlencoded({
        });
 ````
 
-// <http://www.cril.univ-artois.fr/~boussemart/express/chapter01.html>
+- <http://www.cril.univ-artois.fr/~boussemart/express/chapter01.html>
+- <https://expressjs.com/fr/guide/routing.html>
 
 ---
 
