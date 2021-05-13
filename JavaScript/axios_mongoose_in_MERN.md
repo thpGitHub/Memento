@@ -21,6 +21,7 @@ Création du schema mongoose `user.js` dans le dossier `models`
 > Les modèles .model() sont des constructeurs.
   Les modèles sont responsables de la création et de la lecture des documents à partir de la base de données.
   Le premier argument est le nom singulier de la collection, ici User devrai faire référence à la collection users mais le nom de notre collection est userTest, c'est pour cette raison que le 3eme paramètre a été rajouté.
+  <https://mongoosejs.com/docs/models.html>
 
 ````javascript
 const mongoose = require('mongoose');

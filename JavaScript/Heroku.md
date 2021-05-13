@@ -111,3 +111,9 @@ puis :
     #http://newname.herokuapp.com/ | git@herokuapp.com:newname.git
     #Git remote heroku updated
 ````
+
+---
+
+Ajouter des variables d'environnements dans heroku.
+
+go to  => Settings/Config var (key/value)
