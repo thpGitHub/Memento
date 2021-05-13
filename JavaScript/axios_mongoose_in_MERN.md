@@ -18,6 +18,10 @@ mongoose.connect(connection,{ useNewUrlParser: true,
 
 Création du schema mongoose `user.js` dans le dossier `models`
 
+> Les modèles .model() sont des constructeurs.
+  Les modèles sont responsables de la création et de la lecture des documents à partir de la base de données.
+  Le premier argument est le nom singulier de la collection, ici User devrai faire référence à la collection users mais le nom de notre collection est userTest, c'est pour cette raison que le 3eme paramètre a été rajouté.
+
 ````javascript
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
@@ -32,8 +36,9 @@ const userSchema = new Schema({
         required: true
     },
 });
-// userSchema.set('validateBeforeSave', false);
-module.exports = mongoose.model("User", userSchema, "userTest")
+
+module.exports = mongoose.model("User", userSchema, "userTest");
+// Dans l'idéal : module.exports = mongoose.model("User", userSchema);
 ````
 
 Depuis `server.js`
