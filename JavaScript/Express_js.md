@@ -682,6 +682,79 @@ app.use(express.urlencoded({
 
 ---
 
+### Routes (en mode MVC)
+
+depuis le front :
+
+````javascript
+const handleSubmit = (e) => {
+        
+    axios
+        .get("/loginAll")
+        .then((users) => console.log(users))
+        .catch((err) => console.log(err));
+}        
+````
+
+depuis le back :
+
+`server.js`
+
+````javascript
+const loginRouter = require('./routes/loginRouter');
+app.use('/loginAll', loginRouter);
+````
+
+`loginRouter.js`
+
+````javascript
+const express = require('express');
+const router = express.Router();
+
+// Require controller modules.
+const loginController = require('../controllers/loginController');
+
+/// LOGIN ROUTES ///
+router.get('/', loginController.loginAll);
+
+module.exports = router;
+````
+
+`loginController.js`
+
+````javascript
+const Login = require('../models/loginModel');
+
+exports.loginAll = function(req, res) {
+    Login.find()
+    .then(users => res.json(users))
+    .catch(err => console.log(err))
+}
+````
+
+`loginModel.js`
+
+````javascript
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+
+const loginSchema = new Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+});
+
+// Le premier argument est le nom singulier de la collection
+module.exports = mongoose.model("Login", loginSchema);
+````
+
+---
+
 ### Création d'un fichier ``router.js``
 
 - fichier ``app.js``
@@ -707,6 +780,7 @@ app.use(express.urlencoded({
 
 - <http://www.cril.univ-artois.fr/~boussemart/express/chapter01.html>
 - <https://expressjs.com/fr/guide/routing.html>
+- <https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/routes>
 
 ---
 
