@@ -230,6 +230,7 @@ React :
 - <https://coursework.vschool.io/deploying-mern-app-to-heroku/>
 - <https://www.positronx.io/react-axios-tutorial-make-http-get-post-requests/> // react Axios Mongo
 -<https://cra.link/deployment> // Explications du deploiement (build) dans une appli CRA.
+-<https://daveceddia.com/react-forms/?ck_subscriber_id=1219079978&utm_campaign=sebastien_lorber_newsletter&utm_medium=email&utm_source=Revue%20newsletter> // form en react (!A lire)
 
 // Bonnes pratique dev React :
 
@@ -254,6 +255,12 @@ Rxjs :
 Sass :
 
 - <https://www.sassmeister.com/>
+
+---
+
+Sécurité :
+
+- <https://putaindecode.io/articles/peut-on-securiser-app-frontend/>
 
 ---
 
