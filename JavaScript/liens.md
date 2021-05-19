@@ -262,6 +262,8 @@ Sécurité :
 
 - <https://putaindecode.io/articles/peut-on-securiser-app-frontend/>
 - <https://www.wanadev.fr/204-react-js-2-comment-gerer-le-routing-et-la-securite-sur-une-application-react/>
+- <https://www.websecurity.digicert.com/fr/ca/security-topics/what-is-ssl-tls-https#:~:text=SSL%20signifie%20couche%20des%20sockets,donn%C3%A9es%20envoy%C3%A9es%20sur%20l'Internet.> // connexion SSL TLS
+- <https://expressjs.com/fr/advanced/best-practice-security.html>
 
 ---
 
@@ -270,6 +272,9 @@ docs :
 
 - <https://socket.io/>
 - <https://github.com/socketio/engine.io>
+- <https://www.valentinog.com/blog/socket-react/> //socket io react node
+- <https://css-tricks.com/build-a-chat-app-using-react-hooks-in-100-lines-of-code/>
+- <https://blog.logrocket.com/websockets-tutorial-how-to-go-real-time-with-node-and-react-8e4693fbf843/> // A voir  !
 
 ---
 
