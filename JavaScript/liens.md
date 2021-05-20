@@ -280,6 +280,8 @@ docs :
   },
 });
 - <https://www.fullstacklabs.co/blog/chat-application-react-express-socket-io>
+- <https://socket.io/docs/v3/handling-cors/>
+- <http://expressjs.com/en/resources/middleware/cors.html>
 
 ---
 
