@@ -274,6 +274,11 @@ docs :
 - <https://www.valentinog.com/blog/socket-react/> //socket io react node
 - <https://css-tricks.com/build-a-chat-app-using-react-hooks-in-100-lines-of-code/>
 - <https://blog.logrocket.com/websockets-tutorial-how-to-go-real-time-with-node-and-react-8e4693fbf843/> // A voir  !
+- <https://medium.com/swlh/build-a-real-time-chat-app-with-react-hooks-and-socket-io-4859c9afecb0> // a voir pour  const io = require("socket.io")(server, {
+  cors: {
+    origin: "*",
+  },
+});
 
 ---
 
