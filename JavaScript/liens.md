@@ -241,8 +241,7 @@ React :
 
 Regex :
 
-- <https://regex101.com/>
-// il y a des librairies de regex (notamment pour les emails)
+- <https://regex101.com/> // il y a des librairies de regex (notamment pour les emails)
 
 ---
 
