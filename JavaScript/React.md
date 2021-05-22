@@ -1283,7 +1283,7 @@ Avec json server on peut ajouter une option pour simuler un délai de répose du
 
 ## Annexes
 
-Il existe deux façons courantes de configurer une nouvelle application React:
+### Il existe deux façons courantes de configurer une nouvelle application React:
 
 - L'utilitaire CLI, create-react-app : Facebook fournit un utilitaire de ligne de commande appelé create-react-app qui configure automatiquement un nouveau projet. create-react-app utilise sous le capot par webpack et babel.
 
@@ -1345,7 +1345,7 @@ module.exports = {
 
 ---
 
-Manière intéressante d'insérer du style css dans le jsx
+### Manière intéressante d'insérer du style css dans le jsx
 
 ````javascript
 import React from 'react'
@@ -1361,4 +1361,37 @@ function App() {
 }
 
 ReactDOM.render(<App />, document.querySelector('#app'))
+````
+
+ ---
+
+### Passer des props à une route
+
+````javascript
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import './choose_game.css';
+
+const Choose_Game = () => {
+    const props = 'toto';
+    const history = useHistory(props);
+
+    const handleSubmitOnePlayer = (e) => {
+        e.preventDefault();
+        console.log("in handleSubmitOnePlayer");
+        history.push("/game", props);
+        // props.history.push("/game");
+    }
+````
+
+````javascript
+import React from 'react'
+import { useLocation } from "react-router-dom";
+import './game.css'
+
+const Game = (props) => {
+  
+  console.log(props.location.state); // toto
+
+    return (
 ````

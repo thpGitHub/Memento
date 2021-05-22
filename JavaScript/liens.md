@@ -231,6 +231,7 @@ React :
 - <https://www.positronx.io/react-axios-tutorial-make-http-get-post-requests/> // react Axios Mongo
 -<https://cra.link/deployment> // Explications du deploiement (build) dans une appli CRA.
 -<https://daveceddia.com/react-forms/?ck_subscriber_id=1219079978&utm_campaign=sebastien_lorber_newsletter&utm_medium=email&utm_source=Revue%20newsletter> // form en react (!A lire)
+- <https://stackoverflow.com/questions/59464337/how-to-send-params-in-usehistory-of-react-router-dom>
 
 // Bonnes pratique dev React :
 
@@ -263,6 +264,7 @@ Sécurité :
 - <https://www.wanadev.fr/204-react-js-2-comment-gerer-le-routing-et-la-securite-sur-une-application-react/>
 - <https://www.websecurity.digicert.com/fr/ca/security-topics/what-is-ssl-tls-https#:~:text=SSL%20signifie%20couche%20des%20sockets,donn%C3%A9es%20envoy%C3%A9es%20sur%20l'Internet.> // connexion SSL TLS
 - <https://expressjs.com/fr/advanced/best-practice-security.html>
+- <https://web.dev/trust-tokens/> // token
 
 ---
 
