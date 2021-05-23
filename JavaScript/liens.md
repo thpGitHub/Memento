@@ -229,8 +229,8 @@ React :
 - <https://www.freecodecamp.org/news/deploying-a-mern-application-using-mongodb-atlas-to-heroku/> // How to Deploy a MERN Application to Heroku Using MongoDB Atlas
 - <https://coursework.vschool.io/deploying-mern-app-to-heroku/>
 - <https://www.positronx.io/react-axios-tutorial-make-http-get-post-requests/> // react Axios Mongo
--<https://cra.link/deployment> // Explications du deploiement (build) dans une appli CRA.
--<https://daveceddia.com/react-forms/?ck_subscriber_id=1219079978&utm_campaign=sebastien_lorber_newsletter&utm_medium=email&utm_source=Revue%20newsletter> // form en react (!A lire)
+- <https://cra.link/deployment> // Explications du deploiement (build) dans une appli CRA.
+- <https://daveceddia.com/react-forms/?ck_subscriber_id=1219079978&utm_campaign=sebastien_lorber_newsletter&utm_medium=email&utm_source=Revue%20newsletter> // form en react (!A lire)
 - <https://stackoverflow.com/questions/59464337/how-to-send-params-in-usehistory-of-react-router-dom>
 
 // Bonnes pratique dev React :
@@ -284,6 +284,7 @@ docs :
 - <https://www.fullstacklabs.co/blog/chat-application-react-express-socket-io>
 - <https://socket.io/docs/v3/handling-cors/>
 - <http://expressjs.com/en/resources/middleware/cors.html>
+- <https://www.valentinog.com/blog/socket-react>
 
 ---
 
