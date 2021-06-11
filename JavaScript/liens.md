@@ -233,6 +233,7 @@ React :
 - <https://daveceddia.com/react-forms/?ck_subscriber_id=1219079978&utm_campaign=sebastien_lorber_newsletter&utm_medium=email&utm_source=Revue%20newsletter> // form en react (!A lire)
 - <https://stackoverflow.com/questions/59464337/how-to-send-params-in-usehistory-of-react-router-dom>
 
+- <https://daveceddia.com/useeffect-hook-examples/#:~:text=useEffect%20Does%20Not%20Actively%20%E2%80%9CWatch%E2%80%9D,-Some%20frameworks%20are&text=React%20does%20not%20do%20this,after%20the%20render%20is%20done.> // useEffect en détail !!!
 // Bonnes pratique dev React :
 
 - <https://alexkondov.com/tao-of-react/>
