@@ -6,6 +6,8 @@ accessibilité :
 - <https://color.adobe.com/fr/create/color-accessibility> // daltoniens
 - <https://color.adobe.com/fr/create/color-contrast-analyzer> // Niveau WCAG 2.1
 
+---
+
 animations :
 
 - <https://alexandre-laurent.developpez.com/tutoriels/programmation-jeux/animations-2D/>
@@ -95,6 +97,12 @@ Emoticones  / icones :
 ES6 :
 
 - <http://es6-features.org/#Constants>
+
+---
+
+Extensions Chrome : 
+
+- <https://chrome.google.com/webstore/search/Testing%20Playground?hl=fr> // Testing Playground
 
 ---
 
