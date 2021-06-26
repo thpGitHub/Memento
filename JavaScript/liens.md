@@ -253,6 +253,8 @@ React :
 - <https://alexkondov.com/tao-of-react/>
 - <https://www.joshwcomeau.com/css/styled-components/>
 
+- <https://www.kpiteng.com/blogs/top-10-react-hooks-library/> // 10 react hooks library
+
 ---
 
 Regex :
