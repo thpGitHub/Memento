@@ -159,6 +159,7 @@ effacer
     git push origin master # push la branche master du dépot local vers le dépot distant origin
     git push origin --all # push toutes les branches locales sur le dépot distant origin
     git push origin --tags # push tous nos tags locaux vers le dépôt distant.
+    git push -f heroku main # force le push, écrase le contenu de la branche distante par le contenu de la branch locale
 
     heroku apps:rename newname # renommer une app sur heroku
     #Renaming oldname to newname... done
@@ -224,6 +225,9 @@ rebaser des branches
     git log --pretty=oneline #  affiche chaque commit sur une seule ligne
     git log --oneline --decorate --graph --all # ajoute un joli graphe en caractères ASCII pour décrire l’historique des branches et fusions 
     git log --pretty=format:"%h %s" --graph
+
+    git gitk # interface graphique du dépôt local.
+
     git reflog # affiche l'historique des commits ainsi que toutes les autres actions faites en local
 
     git checkout 93eaf21 # se potitionnner sur un commit
