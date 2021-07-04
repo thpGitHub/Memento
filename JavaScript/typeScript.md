@@ -6,8 +6,9 @@
 
 ````shell script
     npm i  -g typescript
-    tsc nomFichier.tsc // cela va créer un fichier .js transpilé en ES5
-    tsc --watch nomFichier.tsc // surveillera le fichier .ts et mettra à jour le .js
+    tsc nomFichier.ts // cela va créer un fichier .js transpilé en ES5
+    tsc --watch nomFichier.ts // surveillera le fichier .ts et mettra à jour le .js
+    tsc -w nomFichier.ts
     tsc --version
 ````
 
@@ -24,7 +25,7 @@
   C'est accompli en ajoutant un :
   
   Attention à voir pour l'export à la fin
-  export {};
+  `export {};`
   
   à la fin du fichier
 
