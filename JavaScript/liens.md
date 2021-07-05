@@ -302,6 +302,7 @@ docs :
 - <https://socket.io/docs/v3/handling-cors/>
 - <http://expressjs.com/en/resources/middleware/cors.html>
 - <https://www.valentinog.com/blog/socket-react>
+- <https://stackoverflow.com/questions/56405137/node-js-how-to-use-socket-io-in-express-route> // use socket io in express route
 
 ---
 
