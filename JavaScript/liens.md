@@ -91,6 +91,7 @@ Emoticones  / icones :
 - <https://www.flaticon.com/>
 - <https://google.github.io/material-design-icons/#getting-icons> //icons google gratuits
 - <https://material.io/resources/icons/?style=baseline> // icons google gratuits
+- <https://www.flaticon.com/>
 
 ---
 
