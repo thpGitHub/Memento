@@ -175,7 +175,7 @@ la partie serveur express :
 
 ## AJAX avec Axios <a id="axios"></a>
 
-Axios est une bibliothèque JavaScript permettant d'effectuer des requêtes HTTP depuis Node ou XMLHttpRequest ou un navigateur. En tant que bibliothèque moderne, elle est basée sur l'API Promise. Axios présente certains avantages, comme la protection contre les attaques de falsification de requêtes intersites (CSFR). Pour pouvoir utiliser la bibliothèque Axios, les utilisateurs doivent l'installer et l'importer dans votre projet, en utilisant CDN, npm, Yarn ou Bower.
+Axios est une bibliothèque JavaScript permettant d'effectuer des requêtes HTTP depuis Node ou XMLHttpRequest ou un navigateur. Il est isomorphe (= il peut s'exécuter dans le navigateur et nodejs avec la même base de code). En tant que bibliothèque moderne, elle est basée sur l'API Promise. Axios présente certains avantages, comme la protection contre les attaques de falsification de requêtes intersites (CSFR). Pour pouvoir utiliser la bibliothèque Axios, les utilisateurs doivent l'installer et l'importer dans votre projet, en utilisant CDN, npm, Yarn ou Bower.
 
 > Fourni des promesses (la promesse renvoie une seule valeur).
 > Axios est une bibliothèque JavaScript fonctionnant comme un client HTTP.
@@ -200,41 +200,58 @@ On peut utiliser :
 - ``axios.get()``
 - ``axios.post()``
 
+## Typage TypeScript
+
+Afin d'obtenir les typages TypeScript (pour intellisense / saisie semi-automatique) lors de l'utilisation des importations CommonJS, require()utilisez l'approche suivante :
+
+````javascript
+const axios = require('axios').default;
+````
+
 ## Requête GET
 
 ````javascript
-    const axios = require('axios');
-    
-    // Make a request for a user with a given ID
-    axios.get('/user?ID=12345')
-      .then(function (response) {
-        // handle success
-        console.log(response);
-      })
-      .catch(function (error) {
-        // handle error
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });
-    
-    // Optionally the request above could also be done as
-    axios.get('/user', {
-        params: {
-          ID: 12345
-        }
-      })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-      .then(function () {
-        // always executed
-      });  
+const axios = require('axios');
 
+// Make a request for a user with a given ID
+axios.get('/user?ID=12345')
+  .then(function (response) {
+    // handle success
+    console.log(response);
+  })
+  .catch(function (error) {
+    // handle error
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });
+
+// Optionally the request above could also be done as
+axios.get('/user', {
+    params: {
+      ID: 12345
+    }
+  })
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+  .then(function () {
+    // always executed
+  });  
+
+// Want to use async/await? Add the `async` keyword to your outer function/method.
+async function getUser() {
+  try {
+    const response = await axios.get('/user?ID=12345');
+    console.log(response);
+  } catch (error) {
+    console.error(error);
+  }
+}
 ````
 
 ## Requete POST
@@ -250,6 +267,24 @@ On peut utiliser :
       .catch(function (error) {
         console.log(error);
       });
+````
+
+Exécution de plusieurs requêtes simultanées :
+
+````javascript
+function getUserAccount() {
+  return axios.get('/user/12345');
+}
+
+function getUserPermissions() {
+  return axios.get('/user/12345/permissions');
+}
+
+Promise.all([getUserAccount(), getUserPermissions()])
+  .then(function (results) {
+    const acct = results[0];
+    const perm = results[1];
+  });
 ````
 
 ---
