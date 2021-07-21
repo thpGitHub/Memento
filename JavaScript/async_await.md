@@ -49,6 +49,61 @@ Dès que l'on met async devant une fonction cela transforme cette fonction en pr
 
 ---
 
+`login.tsx`
+
+````javascript
+import AuthenticateService from '../services/authentication-services';
+.
+.
+.
+AuthenticateService.verifyLogin(pseudo, pwd).then(res => {
+                                                           if(!res) {
+                                                             setMessage("speudo et/ou mot de passe incorrect");
+                                                             return;
+                                                           }
+                                                           history.push('/choose_game', { pseudo: pseudo,
+                                                                                          privilege: AuthenticateService.privilege
+                                                                                         });
+                                                          });
+````
+
+`authentication-services.ts`
+
+````javascript
+import axios from 'axios';
+
+export default class AuthenticateService {
+    static isAuthenticated = false;
+    static allLogin: any[];
+    static privilege: string;
+
+    static getAllLogins() {
+          return axios
+                .get("/loginAll")
+                .then((allLogin) => {this.allLogin = allLogin.data;
+                                     console.log('in getAllLogin from AUthenticated class', this.allLogin);
+                                     return this.allLogin;
+                                    })
+                .catch((err) => console.log(err));
+    }
+
+    static async verifyLogin(pseudo: string, pwd: string): Promise<boolean> {
+        let result = await this.getAllLogins();
+        for(let i=0; i<this.allLogin.length; i++) {
+                    if(this.allLogin[i].pseudo === pseudo && this.allLogin[i].password === pwd) {
+                        this.isAuthenticated = true;
+                        this.privilege = this.allLogin[i].privileges;
+                        console.log('authenticated ===', this.isAuthenticated);
+                        console.log('privilege ===', this.privilege);
+                    }
+        }
+        return this.isAuthenticated;
+    }
+}
+````
+
+---
+
 ## Exemple avec axios
 
 ````javascript
