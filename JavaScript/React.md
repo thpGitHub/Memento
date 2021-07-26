@@ -767,6 +767,234 @@ const PageNotFound: FunctionComponent = () => {
 export default PageNotFound;
 ````
 
+## Routes Privées
+
+Avant:
+
+````javascript
+import React, { FunctionComponent } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './App.css';
+import Home from './components/home';
+import Login from './components/login';
+import Registration from './components/registration';
+import Choose_Game from './components/choose_game';
+import Game from './components/game';
+import Admin from './components/admin';
+import PageNotFound from './components/pageNotFoung';
+
+const App: FunctionComponent = () => {
+
+  return (
+    
+       <Router>
+       <div>
+             { /*Création d'une div pour gérer l'opacitée*/ }
+             <div id="opacity"></div>
+             { /*Le système de gestion des routes de notre application*/ }
+             <Switch>
+                  <Route exact path="/" component={ Home }/>
+                  <Route exact path="/login" component={ Login }/>
+                  <Route exact path="/registration" component={ Registration }/>
+                  <Route exact path="/choose_game" component={ Choose_Game }/>
+                  <Route exact path="/game" component={ Game }/>
+                  <Route exact path="/admin" component={ Admin }/>
+                  <Route component={ PageNotFound }/>
+             </Switch>
+       </div>
+       </Router>
+       
+  );
+}
+
+export default App;
+
+````
+
+`App.tsx`
+
+````javascript
+import React, { FunctionComponent } from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './App.css';
+import Home from './components/home';
+import Login from './components/login';
+import Registration from './components/registration';
+import Choose_Game from './components/choose_game';
+import Game from './components/game';
+import Admin from './components/admin';
+import PageNotFound from './components/pageNotFoung';
+import PrivateRoute from './components/privateRoute';
+
+const App: FunctionComponent = () => {
+
+  return (
+    
+       <Router>
+       <div>
+             { /*Création d'une div pour gérer l'opacitée*/ }
+             <div id="opacity"></div>
+             { /*Le système de gestion des routes de notre application*/ }
+             <Switch>
+                  <Route exact path="/" component={ Home }/>
+                  <Route exact path="/login" component={ Login }/>
+                  <PrivateRoute exact path="/registration" component={ Registration }/>
+                  <PrivateRoute exact path="/choose_game" component={ Choose_Game }/>
+                  <PrivateRoute exact path="/game" component={ Game }/>
+                  <PrivateRoute exact path="/admin" component={ Admin }/>
+                  <Route component={ PageNotFound }/>
+             </Switch>
+       </div>
+       </Router>
+       
+  );
+}
+
+export default App;
+````
+
+`privateRoute.tsx`
+
+````javascript
+import React from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import AuthenticationService from '../services/authentication-services';
+  
+const PrivateRoute = ({ component: Component, ...rest }: any) => (
+  <Route {...rest} render={(props) => {
+    const isAuthenticated = AuthenticationService.isAuthenticated;
+    if (!isAuthenticated) {    
+      // return <Redirect to={{ pathname: '/login' }} />
+      return <Redirect to={{ pathname: '/login' }} />
+    }
+  
+    return <Component {...props} />
+  }} />
+);
+  
+export default PrivateRoute;
+````
+
+---
+
+## Authentification
+
+`authentication-services.ts`
+
+````javascript
+import axios from 'axios';
+
+export default class AuthenticateService {
+    static isAuthenticated = false;
+    static allLogin: any[];
+    static privilege: string;
+
+    static getAllLogins() {
+          return axios
+                .get("/loginAll")
+                .then((allLogin) => {this.allLogin = allLogin.data;
+                                     console.log('in getAllLogin from AUthenticated class', this.allLogin);
+                                     return this.allLogin;
+                                    })
+                .catch((err) => console.log(err));
+    }
+
+    static async verifyLogin(pseudo: string, pwd: string): Promise<boolean> {
+        let result = await this.getAllLogins();
+        for(let i=0; i<this.allLogin.length; i++) {
+                    if(this.allLogin[i].pseudo === pseudo && this.allLogin[i].password === pwd) {
+                        this.isAuthenticated = true;
+                        this.privilege = this.allLogin[i].privileges;
+                        console.log('authenticated ===', this.isAuthenticated);
+                        console.log('privilege ===', this.privilege);
+                    }
+        }
+        return this.isAuthenticated;
+    }
+}
+````
+
+`login.tsx`
+
+````javascript
+import  React, { useState } from 'react';
+import './login.css';
+import { useHistory } from 'react-router-dom';
+
+import AuthenticateService from '../services/authentication-services';
+
+const Login = () => {
+
+    const [allLogin, setAllLogin]   = useState<any>();
+    const [pseudo, setPseudo]       = useState<string>("");
+    const [pwd, setPwd]             = useState<string>("");
+    const [message, setMessage]     = useState<string>("");
+
+    const history = useHistory();
+    console.log("history ===", history);
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+        e.preventDefault();
+        console.log("allLogin === ", allLogin);
+        
+        if(!pseudo || !pwd) {
+            setMessage('veuillez remplir tous les champs');
+            return;
+        }
+
+        AuthenticateService.verifyLogin(pseudo, pwd).then(res => {console.log("res in login.tsx ===", res);
+                                                                  if(!res) {
+                                                                    setMessage("peudo et/ou mot de passe incorrect");
+                                                                    return;
+                                                                  }
+                                                                  history.push('/choose_game', { pseudo: pseudo,
+                                                                                                 privilege: AuthenticateService.privilege
+                                                                                                });
+                                                                 });
+
+    }
+    /*
+    * vérification au keyup si tous les champs sont remplis on supprime le message 'veuillez remplir tous les champs'
+    */
+    const handleKeyUp = (): void => {
+        console.log('key up function enter :)');
+        
+        if(pseudo !== "" && pwd !== "") {
+            setMessage("");
+        }
+    }
+
+    return (
+        <div>
+            <form id="login" onSubmit={ e=> handleSubmit(e) } onKeyUp={ handleKeyUp }>
+                <h1>LOGIN</h1>
+                <div id="message_login">{ message }</div>
+                <input
+                    id="pseudo"
+                    name="pseudo"
+                    type="text"
+                    onChange={ (e) => setPseudo(e.target.value) }
+                    spellCheck="false"
+                    placeholder="Pseudo"
+                    autoComplete="off"
+                />
+                <input 
+                    id="pwd"
+                    name="pwd"
+                    type="password"
+                    onChange={ (e) => setPwd(e.target.value) }
+                    placeholder="Password"
+                />
+                <input type="submit"   name="submit" value="Login"/>
+                <a href="/registration">Create an Account</a>
+            </form>
+        </div>
+    );
+}
+
+export default Login;
+````
+
 ---
 
 ## Les formulaires
@@ -1283,7 +1511,7 @@ Avec json server on peut ajouter une option pour simuler un délai de répose du
 
 ## Annexes
 
-### Il existe deux façons courantes de configurer une nouvelle application React:
+### Il existe deux façons courantes de configurer une nouvelle application React
 
 - L'utilitaire CLI, create-react-app : Facebook fournit un utilitaire de ligne de commande appelé create-react-app qui configure automatiquement un nouveau projet. create-react-app utilise sous le capot par webpack et babel.
 
