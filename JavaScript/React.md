@@ -362,6 +362,30 @@ Astuce ici avec l'operateur ternaire
   );
 `````
 
+toggle les classes et css
+
+````javascript
+import { useState } from "react";
+import Item from "./Components/Item/Item";
+
+function App() {
+  const [toggle, setToggle] = useState(false);
+
+  const changeState = () => {
+    setToggle(!toggle);
+  };
+
+  return (
+    <div className="App">
+      <div className={toggle ? "box animated" : "box"}></div>
+      <button onClick={changeState}>Change state</button>
+    </div>
+  );
+}
+
+export default App;
+````
+
 ## Afficher une liste de tableau avec la méthode native map() dans JSX
 
 > Lorsqu’on affiche une liste dans du code JSX, il est important d’appliquer la propriété key, sous peine de lever une erreur.
