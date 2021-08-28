@@ -616,6 +616,57 @@ export default PokemonCard;
 
 > Fonction JavaScript dont le nom commence par ``use``, cette fonction peut être appelée par d'autres Hooks.
 
+`useDimension.js`
+
+````javascript
+export default function useDimension() {
+
+    const [dimension, setDimension] = useState();
+
+    useEffect(() => {
+        window.addEventListener('resize', resizeFunc);
+
+        function resizeFunc() {
+            setDimension(window.innerWidth);
+        }
+
+        resizeFunc();
+
+        return () => {
+            window.addEventListener('resize', resizeFunc)
+        }
+    }, [])
+
+    return dimension;
+}
+````
+
+`app.js`
+
+````javascript
+import useDimension from './useDimension';
+
+function App() {
+  
+  const browserWidth = useDimension();
+  console.log(browserWidth);
+
+  if(browserWidth > 772) {
+    console.log("grand écran");
+  } else {
+    console.log("petit écran");
+  }
+
+  return (
+    <div className="App">
+      
+    </div>
+  );
+}
+
+export default App;
+````
+
 ---
 
 ## Les routes
@@ -1646,4 +1697,22 @@ const Game = (props) => {
   console.log(props.location.state); // toto
 
     return (
+````
+
+---
+
+## Librairie `uuid`
+
+````shell script
+npm install uuid
+````
+
+````javascript
+import { v4 as uuidv4 } from 'uuid';
+uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
+
+// or
+
+const { v4: uuidv4 } = require('uuid');
+uuidv4(); // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
 ````

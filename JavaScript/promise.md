@@ -1,8 +1,7 @@
-Les promesses en JavaScript ( promises )
--
+# Les promesses en JavaScript ( promises )
 
-> JavaScript a un thread unique, ce qui signifie que deux scripts ne peuvent pas s'exécuter en même temps, 
-> ils doivent s'exécuter l'un derrière l'autre.   
+> JavaScript a un thread unique, ce qui signifie que deux scripts ne peuvent pas s'exécuter en même temps,
+> ils doivent s'exécuter l'un derrière l'autre.
 > Une promesse est un objet qui représente la résolution (resolve) ou l'échec (reject) d'une opération asynchrone.
 
 ````javascript
@@ -20,10 +19,10 @@ Les promesses en JavaScript ( promises )
         .catch(function(value_reject_promise1) { // la methode .catch fait référence à reject
             console.error(value_reject_promise1);   // output : ko
         })    
-
-
 ````
+
 Une promesse a trois états :
+
 - Pending (En attente) : c'est l'état initial
 - Fulfilled (accompli) : l'opération est terminée avec succès
 - Rejected             : l'opération a échouée
@@ -41,7 +40,8 @@ Une promesse a trois états :
     });
 ````
 
-### Chainer les promesses avec ```then```
+## Chainer les promesses avec ```then```
+
 > Il existe 4 méthodes statiques dans la classe Promise:
 
 - Promise.resolve
@@ -49,9 +49,8 @@ Une promesse a trois états :
 - Promise.all
 - Promise.race
 
-
 > Pour synchroniser les uns derrière les autres plusieurs appels asynchrones, on peut chainer les promesses
-> afin de pouvoir utiliser la valeur de la première promesse dans les appels suivants. 
+> afin de pouvoir utiliser la valeur de la première promesse dans les appels suivants.
 
 ````javascript
     var add = function(x, y) {
@@ -103,10 +102,13 @@ Une promesse a trois états :
 ````
 
 ---
-### Générateurs de fonctions (A voir)
+
+## Générateurs de fonctions (A voir)
+
 ---
 
-### Promise.all (itérable) est très utile pour les demandes multiples à différentes sources
+## Promise.all (itérable) est très utile pour les demandes multiples à différentes sources
+
 > La méthode Promise.all (itérable) renvoie une seule promesse qui se résout lorsque toutes les promesses de l'argument itérable ont été résolues ou lorsque l'argument itérable ne contient aucune promesse. Il rejette avec la raison de la première promesse qui rejette.
 
 ````javascript
