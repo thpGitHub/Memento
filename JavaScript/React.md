@@ -1,5 +1,19 @@
 # React
 
+<!-- 1. [Il existe deux types de composant dans REACT](#il-existe-deux-types-de-composant-dans-REACT) -->
+1. [Deux types de composant](#2components)
+2. [JSX](#jsx)
+3. [Props](#props)
+4. [Propriétées Calculées](#propsCalc)
+5. [Hooks](#hooks)
+6. [Routes](#routes)
+7. [Routes Privées](#privatesRoutes)
+8. [Authentification](#auth)
+9. [Formulairess](#forms)
+10. [Requêtes HTTP](#requetesHTTP)
+11. [API de Context](#context)
+12. [Annexes](#annexes)
+
 Création d'une app React sans ``create react app`` ni de ``CDN`` (voir en annexe pour plus de détails).
 
 - création d'un fichier ``package.json`` à la racine du projet
@@ -122,7 +136,7 @@ ReactDom.render(
 
 ---
 
-## Il existe deux types de composant dans REACT
+## Il existe deux types de composant dans REACT <a name="2components"></a>
 
 Composant de fonction                       | Composant de classe
 --- | ---
@@ -164,7 +178,7 @@ Pas de gestion du cycle de vie du composant | Gestion du cycle de vie du composa
 
 ---
 
-## Les Hooks
+## Les Hooks <a name="hooks"></a>
 
 > Les Hooks permettent de rajouter un ``state`` à un composant de fonction et se nomme ``useState``.
 Les Hooks sont des fonctions javaScript.
@@ -238,7 +252,7 @@ export default App;
 
 ---
 
-## JSX et le DOM virtuel
+## JSX et le DOM virtuel <a name="jsx"></a>
 
  Gestionnaire d'événement REACT :
 
@@ -425,7 +439,7 @@ Avec le destructuring on peut récupérer juste le nom :
 
 ---
 
-## Les props
+## Les props <a name="props"></a>
 
 > Pour passer une props à un composant il faut l'ajouter en paramètre de la fonction du composant.
 > On passe des props depuis un composant parent
@@ -560,7 +574,7 @@ export default PokemonCard;
 
 ---
 
-## les propriétée calculée
+## les propriétées calculées <a name="propsCalc"></a>
 
 > Sont des fonctions dans un composent pour transformer des données avant l'affichage dans le DOM. Ici nous allons créér une fonction formatDate().
 
@@ -612,7 +626,7 @@ export default PokemonCard;
 
 ---
 
-## Hook personnalisés
+## Hooks personnalisés <a name="hooksPerso"></a>
 
 > Fonction JavaScript dont le nom commence par ``use``, cette fonction peut être appelée par d'autres Hooks.
 
@@ -669,7 +683,7 @@ export default App;
 
 ---
 
-## Les routes
+## Les routes <a name="routes"></a>
 
 > il faut installer la librairie ``react-router-dom`` pour ajouter la navigation dans le DOM du navigateur, car React ne possède pas de système de navigation par defaut
 > Le Router depuis App :
@@ -842,7 +856,7 @@ const PageNotFound: FunctionComponent = () => {
 export default PageNotFound;
 ````
 
-## Routes Privées
+## Routes Privées <a name="privatesRoutes"></a>
 
 Avant:
 
@@ -952,7 +966,7 @@ export default PrivateRoute;
 
 ---
 
-## Authentification
+## Authentification <a name="auth"></a>
 
 `authentication-services.ts`
 
@@ -1072,7 +1086,7 @@ export default Login;
 
 ---
 
-## Les formulaires
+## Les formulaires <a name="forms"></a>
 
 ````html
  <label htmlFor="hp">Point de vie</label> <!-- for devient htmlFor en jsx -->
@@ -1329,7 +1343,7 @@ const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
 export default PokemonForm;
 ````
 
-## Requêtes HTTP
+## Requêtes HTTP <a name="requetesHTTP"></a>
 
 Nous pouvons simuler une API REST grace à la librairie json-server
 (C'est comme une mini base de donnée avec un fichier)
@@ -1583,6 +1597,10 @@ Avec json server on peut ajouter une option pour simuler un délai de répose du
 ````
 
 ---
+
+## API de Context <a name="context"></a>
+
+L'API de context fait partie de REACT. Permet de partager des données dans toutes l'application.
 
 ## Annexes
 
