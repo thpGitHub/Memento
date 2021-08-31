@@ -1683,6 +1683,152 @@ export default function BtnToggle() {
 }
 ````
 
+---
+Autre exemple :
+Il est possible de passer des fonctions dans le context
+
+`\src\index.css`
+
+````css
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  transition: color 0.4s ease-in-out,
+  background-color 0.4s ease-in-out;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.dark-body {
+  background: #222;
+  color: #f1f1f1;
+}
+````
+
+`\src\Components\BtnToggle\BtnToggle.css`
+
+````css
+.btn-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: none;
+}
+.dark-btn {
+    background: #222;
+    color: #f1f1f1;
+}
+````
+
+`\src\Context\ThemeContext.js`
+
+````javascript
+import React, { createContext, useState } from 'react';
+
+export const ThemeContext = createContext();
+
+const ThemeContextProvider = props => {
+
+    const [theme, setTheme] = useState(false);
+
+    const toggleTheme = () => {
+        setTheme(!theme);
+    }
+    if (theme) {
+        document.body.classList.add("dark-body");
+    } else {
+        document.body.classList.remove("dark-body");
+    }
+
+    return (
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+            { props.children }
+        </ThemeContext.Provider>
+    )
+
+}
+export default ThemeContextProvider;
+````
+
+`\src\App.js`
+
+````javascript
+import './App.css';
+import Content from './Components/Content/Content';
+import ThemeContextProvider from './Context/ThemeContext';
+
+function App() {
+  return (
+    <div className="App">
+      <ThemeContextProvider>
+        <Content />
+      </ThemeContextProvider>
+    </div>
+  );
+}
+
+export default App;
+````
+
+`\src\Components\Content\Content.js`
+
+````javascript
+import React, { useContext } from 'react';
+import BtnToggle from '../BtnToggle/BtnToggle';
+import './Content.css';
+import { ThemeContext } from '../../Context/ThemeContext';
+
+export default function Content() {
+
+    const { theme } = useContext(ThemeContext);
+
+    console.log(theme);
+
+    return (
+        <div className="container">
+            <BtnToggle />
+            <h1> Lorem ipsum dolor sit amet.</h1>
+            <p className="content-txt">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam feugiat, turpis at pulvinar vulputate, erat libero tristique tellus, nec bibendum odio risus sit amet ante. Aliquam erat volutpat. Nunc auctor. Mauris pretium quam et urna. 
+            </p>
+        </div>
+    )
+}
+````
+
+`\src\Components\BtnToggle\BtnToggle.js``
+
+````javascript
+import React, { useContext } from 'react';
+import './BtnToggle.css';
+import { ThemeContext } from '../../Context/ThemeContext';
+
+export default function BtnToggle() {
+
+    const { toggleTheme, theme } = useContext(ThemeContext);
+
+    return (
+        <button
+        onClick={ toggleTheme }
+        className={ theme ? "btn-toggle" : "btn-toggle dark-btn" }>
+            { theme ? "LIGHT" : "DARK"}
+        </button>
+    )
+}
+````
+
 ## Annexes
 
 ### Il existe deux façons courantes de configurer une nouvelle application React
