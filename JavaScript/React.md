@@ -1602,6 +1602,87 @@ Avec json server on peut ajouter une option pour simuler un délai de répose du
 
 L'API de context fait partie de REACT. Permet de partager des données dans toutes l'application.
 
+`\src\Context\ThemeContext.js`
+
+````javascript
+import React, { createContext, useState } from 'react';
+
+export const ThemeContext = createContext();
+
+const ThemeContextProvider = props => {
+
+    const [theme, setTheme] = useState("Hello Context");
+
+    return (
+        <ThemeContext.Provider value={{ theme }}>
+            { props.children }
+        </ThemeContext.Provider>
+    )
+
+}
+export default ThemeContextProvider;
+````
+
+`\src\App.js`
+
+````javascript
+import './App.css';
+import Content from './Components/Content/Content';
+import ThemeContextProvider from './Context/ThemeContext';
+
+function App() {
+  return (
+    <div className="App">
+      <ThemeContextProvider>
+        <Content />
+      </ThemeContextProvider>
+    </div>
+  );
+}
+
+export default App;
+
+````
+
+`\src\Components\Content\Content.js``
+
+````javascript
+import React, { useContext } from 'react';
+import BtnToggle from '../BtnToggle/BtnToggle';
+import './Content.css';
+import { ThemeContext } from '../../Context/ThemeContext';
+
+export default function Content() {
+
+    const { theme } = useContext(ThemeContext);
+
+    console.log(theme); // Hello Context
+
+    return (
+        <div className="container">
+            <BtnToggle />
+            <h1> Lorem ipsum dolor sit amet.</h1>
+            <p className="content-txt">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam feugiat, turpis at pulvinar vulputate, erat libero tristique tellus, 
+            </p>
+        </div>
+    )
+}
+````
+
+`\src\Components\BtnToggle\BtnToggle.js`
+
+````javascript
+import React from 'react';
+import './BtnToggle.css';
+
+export default function BtnToggle() {
+    return (
+        <button className="btn-toggle">Toggle</button>
+    )
+}
+````
+
 ## Annexes
 
 ### Il existe deux façons courantes de configurer une nouvelle application React
