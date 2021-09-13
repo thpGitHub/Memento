@@ -8,11 +8,12 @@
 5. [Hooks](#hooks)
 6. [Routes](#routes)
 7. [Routes Privées](#privatesRoutes)
-8. [Authentification](#auth)
-9. [Formulairess](#forms)
-10. [Requêtes HTTP](#requetesHTTP)
-11. [API de Context](#context)
-12. [Annexes](#annexes)
+8. [Les hooks "useLocation" et "useParams"](#useLocation)
+9. [Authentification](#auth)
+10. [Formulairess](#forms)
+11. [Requêtes HTTP](#requetesHTTP)
+12. [API de Context](#context)
+13. [Annexes](#annexes)
 
 Création d'une app React sans ``create react app`` ni de ``CDN`` (voir en annexe pour plus de détails).
 
@@ -779,7 +780,7 @@ const PokemonsDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
 
 ````
 
-Utilisation du Hook ``useHistory`` pour faire les redirections. Il nous donne accès à l'objet représentant l'historique du navigateur. L'autre possibilité est d'utilser ``Link`` (useHistory et Link font la même chose à savoir rediriger, mais l'objet de useHistory offre plus de possiblilité en terme de méthode comme par exemple goback)
+Utilisation du Hook ``useHistory`` pour faire les redirections. Il nous donne accès à l'objet représentant l'historique du navigateur. L'autre possibilité est d'utilser ``Link`` (useHistory et Link font la même chose à savoir rediriger, mais l'objet de useHistory offre plus de possiblilité en terme de méthode comme par exemple goback). A voir aussi `navlinks`
 
 ````typescript
 import React, { FunctionComponent, useState } from 'react';
@@ -962,6 +963,66 @@ const PrivateRoute = ({ component: Component, ...rest }: any) => (
 );
   
 export default PrivateRoute;
+````
+
+---
+
+## Les hooks "useLocation" et "useParams" <a name="useLocation"></a>
+
+C'est hooks ont été créés par l'équipe de React router
+
+`App.js`
+
+````javascript
+import './App.css';
+import Accueil from './Components/Accueil'; 
+import Projets from './Components/Projets'; 
+import Contacts from './Components/Contacts';
+import Nav from './Components/Nav/Nav' ;
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+
+
+function App() {
+  return (
+    <>
+      {/* <Accueil/> */}
+      <Router>
+        <Nav/>
+        <Switch>
+          <Route exact path="/" component={ Accueil } />
+          <Route exact path="/Projets" component={ Projets } />
+          <Route exact path="/Projets/:slug" component={ Projets } />
+          <Route exact path="/Contacts" component={ Contacts } />
+          <Route component={ () => <div>ERREUR 404 :(</div> }/>
+        </Switch>
+      </Router>
+    </>
+  );
+}
+
+export default App;
+````
+
+`Projets.js`
+
+````javascript
+import React from 'react';
+import { useParams } from 'react-router-dom';
+
+
+export default function Projets() {
+
+    //http://localhost:3000/Projets/toto ici le slug c'est toto
+    const { slug } = useParams();
+    console.log(slug); // toto
+
+    return (
+        <>
+            <h1>Section PROJETS</h1>
+            <p>{ slug }</p>
+        </>
+    )
+}
 ````
 
 ---
