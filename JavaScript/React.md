@@ -13,7 +13,8 @@
 10. [Formulairess](#forms)
 11. [Requêtes HTTP](#requetesHTTP)
 12. [API de Context](#context)
-13. [Annexes](#annexes)
+13. [Redux](#redux)
+14. [Annexes](#annexes)
 
 Création d'une app React sans ``create react app`` ni de ``CDN`` (voir en annexe pour plus de détails).
 
@@ -1025,6 +1026,54 @@ export default function Projets() {
 }
 ````
 
+useLocation
+
+`Accueil.js`
+
+````javascript
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+export default function Accueil() {
+    return (
+        <>
+            <h1>Bienvenue ACCUEIL</h1>
+            <Link
+            to={{
+                pathname: "/Contacts",
+                state: {
+                    txt: "voilà des données"
+                }
+            }}
+            >
+            Aller à la section Contacts
+            </Link>
+        
+        </>
+    )
+}
+````
+
+`Contacts.js`
+
+````javascript
+import React from 'react'
+import { useLocation } from 'react-router-dom'
+
+export default function Contacts() {
+
+    const location = useLocation();
+    console.log(location); 
+    // renvoi un objet contenant un "state" nous permettant de passer des données
+    // lorque l'on navigue dans notre application
+    console.log(location.state.txt); // voilà des données
+    return (
+        <h1>Section CONTACTS</h1>
+    )
+}
+
+````
+
 ---
 
 ## Authentification <a name="auth"></a>
@@ -1889,6 +1938,211 @@ export default function BtnToggle() {
     )
 }
 ````
+
+---
+
+## Redux <a name="redux"></a>
+
+<https://react-redux.js.org/>
+
+````shell script
+  npm install redux
+  npm install react-redux
+````
+
+> Création simple d'un store et d'un reducer
+
+`App.js`
+
+````javascript
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+      
+    </div>
+  );
+}
+
+export default App;
+
+````
+
+`index.js`
+
+````javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import CounterReducer from './Reducers/CounterReducer';
+
+const Store = createStore(CounterReducer);
+
+ReactDOM.render(
+  <Provider store={ Store }>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+````
+
+`\src\Reducers\CounterReducer.js`
+
+````javascript
+const INITIAL_STATE = {
+    count: 0
+}
+
+function CounterReducer(state = INITIAL_STATE, action) {
+  
+    return state;
+}
+
+export default CounterReducer;
+````
+
+> utilisation de `useSelector` pour se connecter au store depuis le composent Counter.js
+
+`index.js`
+
+````javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import CounterReducer from './Reducers/CounterReducer';
+
+const Store = createStore(CounterReducer);
+
+ReactDOM.render(
+  <Provider store={ Store }>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+````
+
+`App.js`
+
+````javascript
+import './App.css';
+import Counter from './Components/Counter'
+
+function App() {
+  return (
+    <div className="App">
+      <Counter/>
+    </div>
+  );
+}
+
+export default App;
+````
+
+`\src\Components\Counter.js`
+
+````javascript
+import React from 'react';
+import { useSelector } from 'react-redux';
+
+export default function Counter() {
+
+    const count = useSelector(state => state.count)
+
+    return (
+        <div>
+            <h1>Les données : { count }</h1>
+        </div>
+    )
+}
+````
+
+`\src\Reducers\CounterReducer.js`
+
+````javascript
+const INITIAL_STATE = {
+    count: 10
+}
+
+function CounterReducer(state = INITIAL_STATE, action) {
+  
+    return state;
+}
+
+export default CounterReducer;
+````
+
+> Modification du state en utilisant useDispatch pour envoyer une Action
+
+`\src\Components\Counter.js`
+
+````javascript
+import React from 'react';
+import { useSelector, useDispatch} from 'react-redux';
+
+export default function Counter() {
+
+    const count = useSelector(state => state.count)
+    const dispatch = useDispatch();
+
+    const incrFunc = () => {
+        dispatch({
+            type: "INCR"
+        })
+    }
+    const decrFunc = () => {
+        dispatch({
+            type: "DECR"
+        })
+    }
+
+    return (
+        <div>
+            <h1>Les données : { count }</h1>
+            <button onClick={ decrFunc }>-1</button>
+            <button onClick={ incrFunc }>+1</button>
+        </div>
+    )
+}
+````
+
+`\src\Reducers\CounterReducer.js`
+
+````javascript
+const INITIAL_STATE = {
+    count: 10
+}
+
+function CounterReducer(state = INITIAL_STATE, action) {
+  
+    switch(action.type){
+        case 'INCR': {
+            return {
+                ...state, // copie du state
+                count: state.count +1
+            }
+        }
+        case 'DECR': {
+            return {
+                ...state, // copie du state
+                count: state.count -1
+            }
+        }
+    }
+
+    return state;
+}
+
+export default CounterReducer;
+````
+
+---
 
 ## Annexes
 
