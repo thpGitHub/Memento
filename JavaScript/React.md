@@ -2225,6 +2225,124 @@ ReactDOM.render(
 );
 ````
 
+`App.js`
+
+````javascript
+import './App.css';
+import Counter from './Components/Counter'
+
+function App() {
+  return (
+    <div className="App">
+      <Counter/>
+    </div>
+  );
+}
+
+export default App;
+````
+
+> Combiner plusieurs reducers (combineReducers)
+
+`\src\App.js`
+
+````javascript
+import './App.css';
+import Counter from './Components/Counter'
+
+function App() {
+  return (
+    <div className="App">
+      <Counter/>
+    </div>
+  );
+}
+
+export default App;
+````
+
+`\src\index.js`
+
+````javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import { createStore, combineReducers } from 'redux';
+import { Provider } from 'react-redux';
+import CounterReducer from './Reducers/CounterReducer';
+import AddCartReducer from './Reducers/AddCartReducer';
+
+const rootReducer = combineReducers({
+  CounterReducer,
+  AddCartReducer
+})
+
+const Store = createStore(rootReducer);
+
+ReactDOM.render(
+  <Provider store={ Store }>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+````
+
+`\src\Components\Counter.js`
+
+````javascript
+import React, { useState } from 'react';
+import { useSelector, useDispatch} from 'react-redux';
+
+export default function Counter() {
+
+    const [cartData, setCartData] = useState(0);
+    // const cart = useSelector(state => state.cart);
+    const { cart, count } = useSelector(state => ({
+        ...state.AddCartReducer,
+        ...state.CounterReducer
+    }));
+
+    const dispatch = useDispatch();
+
+    const addToCartFunc = () => {
+        dispatch({
+            type: "ADDCART",
+            payload: cartData
+        })
+    }
+
+    return (
+        <div>
+            <h1>Votre panier : { cart }</h1>
+            {/* <button onClick={ decrFunc }>-1</button>
+            <button onClick={ incrFunc }>+1</button> */}
+            <input 
+            value={ cartData }
+            onInput={ e=> setCartData(e.target.value) }
+            type="number"/>
+            <br/>
+            <button onClick={ addToCartFunc }>Ajouter au panier</button>
+        </div>
+    )
+}
+````
+
+> Améliorer l'architecture du projet
+
+````text
+    .
+    ├── src
+    │   ├── Components/
+    │   ├── redux/
+    │       ├── Reducers/
+    │            ├── AddCartReducer.js
+    │            ├── CounterReducer.js
+    │       └── store.js
+    .    
+    .
+````
+
 ---
 
 ## Annexes
