@@ -2343,6 +2343,181 @@ export default function Counter() {
     .
 ````
 
+`\src\App.js`
+
+````javascript
+import './App.css';
+import Counter from './Components/Counter'
+
+function App() {
+  return (
+    <div className="App">
+      <Counter/>
+    </div>
+  );
+}
+
+export default App;
+````
+
+`\src\index.js`
+
+````javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+
+ReactDOM.render(
+  <Provider store={ store }>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
+````
+
+`\src\redux\store.js`
+
+````javascript
+import { createStore, combineReducers } from 'redux';
+import CounterReducer from './Reducers/CounterReducer';
+import AddCartReducer from './Reducers/AddCartReducer';
+
+const rootReducer = combineReducers({
+  CounterReducer,
+  AddCartReducer
+})
+
+const store = createStore(rootReducer);
+
+export default store;
+````
+
+`\src\redux\Reducers\AddCartReducer.js`
+
+````javascript
+const INITIAL_STATE = {
+    cart: 910
+}
+
+function AddCartReducer(state = INITIAL_STATE, action) {
+  
+    switch(action.type){
+        case 'ADDCART': {
+            return {
+                ...state, // copie du state
+                cart: action.payload
+            }
+        }
+    }
+
+    return state;
+}
+
+export default AddCartReducer;
+````
+
+`\src\redux\Reducers\CounterReducer.js`
+
+````javascript
+const INITIAL_STATE = {
+    count: 100
+}
+
+function CounterReducer(state = INITIAL_STATE, action) {
+  
+    switch(action.type){
+        case 'INCR': {
+            return {
+                ...state, // copie du state
+                count: state.count +1
+            }
+        }
+        case 'DECR': {
+            return {
+                ...state, // copie du state
+                count: state.count -1
+            }
+        }
+    }
+
+    return state;
+}
+
+export default CounterReducer;
+````
+
+`\src\Components\Counter.js`
+
+````javascript
+import React, { useState } from 'react';
+import { useSelector, useDispatch} from 'react-redux';
+
+export default function Counter() {
+
+    const [cartData, setCartData] = useState(0);
+    // const cart = useSelector(state => state.cart);
+    const { cart, count } = useSelector(state => ({
+        ...state.AddCartReducer,
+        ...state.CounterReducer
+    }));
+
+    const dispatch = useDispatch();
+
+    const addToCartFunc = () => {
+        dispatch({
+            type: "ADDCART",
+            payload: cartData
+        })
+    }
+
+    return (
+        <div>
+            <h1>Votre panier : { cart } { count }</h1>
+            {/* <button onClick={ decrFunc }>-1</button>
+            <button onClick={ incrFunc }>+1</button> */}
+            <input 
+            value={ cartData }
+            onInput={ e=> setCartData(e.target.value) }
+            type="number"/>
+            <br/>
+            <button onClick={ addToCartFunc }>Ajouter au panier</button>
+        </div>
+    )
+}
+````
+
+> middleware : les middlewares se trigger (déclenche) lorsque l'on dispatch quelque chose. effectue une action avant le dispatch.
+
+`store.js`
+
+````javascript
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import CounterReducer from './Reducers/CounterReducer';
+import AddCartReducer from './Reducers/AddCartReducer';
+
+const rootReducer = combineReducers({
+  CounterReducer,
+  AddCartReducer
+})
+
+// curryfication !!!
+const customMiddleware = store => next => action => {
+    console.log(store);
+    console.log(store.getState()); // les states du store avant le dispatch
+    console.log(next);// execute le dispatch
+    console.log(action);// action du dispatch
+
+    next(action); // on execute le dispatch
+} 
+
+const store = createStore(rootReducer, applyMiddleware(customMiddleware));
+
+export default store;
+````
+
 ---
 
 ## Annexes
