@@ -1710,7 +1710,7 @@ Avec json server on peut ajouter une option pour simuler un délai de répose du
 
 ## API de Context <a name="context"></a>
 
-L'API de context fait partie de REACT. Permet de partager des données dans toutes l'application.
+L'API de context fait partie de REACT. Permet de partager des données dans toute l'application.
 
 `\src\Context\ThemeContext.js`
 
@@ -2140,6 +2140,89 @@ function CounterReducer(state = INITIAL_STATE, action) {
 }
 
 export default CounterReducer;
+````
+
+> Envoyer des données supplémentaires avec un dispatch (payload)
+
+`\src\Reducers\AddCartReducer.js`
+
+````javascript
+const INITIAL_STATE = {
+    cart: 10
+}
+
+function AddCartReducer(state = INITIAL_STATE, action) {
+  
+    switch(action.type){
+        case 'ADDCART': {
+            return {
+                ...state, // copie du state
+                cart: action.payload
+            }
+        }
+    }
+
+    return state;
+}
+
+export default AddCartReducer;
+````
+
+`\src\Components\Counter.js`
+
+````javascript
+import React, { useState } from 'react';
+import { useSelector, useDispatch} from 'react-redux';
+
+export default function Counter() {
+
+    const [cartData, setCartData] = useState(0);
+    const cart = useSelector(state => state.cart);
+    const dispatch = useDispatch();
+
+    const addToCartFunc = () => {
+        dispatch({
+            type: "ADDCART",
+            payload: cartData
+        })
+    }
+
+    return (
+        <div>
+            <h1>Votre panier : { cart }</h1>
+            {/* <button onClick={ decrFunc }>-1</button>
+            <button onClick={ incrFunc }>+1</button> */}
+            <input 
+            value={ cartData }
+            onInput={ e=> setCartData(e.target.value) }
+            type="number"/>
+            <br/>
+            <button onClick={ addToCartFunc }>Ajouter au panier</button>
+        </div>
+    )
+}
+````
+
+`index.js`
+
+````javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+//import CounterReducer from './Reducers/CounterReducer';
+import AddCartReducer from './Reducers/AddCartReducer';
+
+const Store = createStore(AddCartReducer);
+
+ReactDOM.render(
+  <Provider store={ Store }>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+);
 ````
 
 ---
