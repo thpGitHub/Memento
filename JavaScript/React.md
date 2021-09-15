@@ -2335,9 +2335,9 @@ export default function Counter() {
     ├── src
     │   ├── Components/
     │   ├── redux/
-    │       ├── Reducers/
-    │            ├── AddCartReducer.js
-    │            ├── CounterReducer.js
+    │       ├── reducers/
+    │            ├── addCartReducer.js
+    │            ├── counterReducer.js
     │       └── store.js
     .    
     .
@@ -2382,12 +2382,12 @@ ReactDOM.render(
 
 ````javascript
 import { createStore, combineReducers } from 'redux';
-import CounterReducer from './Reducers/CounterReducer';
-import AddCartReducer from './Reducers/AddCartReducer';
+import counterReducer from './Reducers/CounterReducer';
+import addCartReducer from './Reducers/AddCartReducer';
 
 const rootReducer = combineReducers({
-  CounterReducer,
-  AddCartReducer
+  counterReducer,
+  addCartReducer
 })
 
 const store = createStore(rootReducer);
@@ -2395,7 +2395,7 @@ const store = createStore(rootReducer);
 export default store;
 ````
 
-`\src\redux\Reducers\AddCartReducer.js`
+`\src\redux\reducers\addCartReducer.js`
 
 ````javascript
 const INITIAL_STATE = {
@@ -2419,7 +2419,7 @@ function AddCartReducer(state = INITIAL_STATE, action) {
 export default AddCartReducer;
 ````
 
-`\src\redux\Reducers\CounterReducer.js`
+`\src\redux\reducers\counterReducer.js`
 
 ````javascript
 const INITIAL_STATE = {
@@ -2517,6 +2517,15 @@ const store = createStore(rootReducer, applyMiddleware(customMiddleware));
 
 export default store;
 ````
+
+> Appel asynchrone avec Redux
+
+Installation du middleware `thunk`. grace a ce middleware nous pouvons passer des fonction au dispatch
+
+````shell script
+npm install redux-thunk
+````
+
 
 ---
 
