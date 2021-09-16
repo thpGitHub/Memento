@@ -2134,6 +2134,7 @@ function CounterReducer(state = INITIAL_STATE, action) {
                 count: state.count -1
             }
         }
+        // no default
     }
 
     return state;
@@ -2160,6 +2161,7 @@ function AddCartReducer(state = INITIAL_STATE, action) {
                 cart: action.payload
             }
         }
+        // no default
     }
 
     return state;
@@ -2411,6 +2413,7 @@ function AddCartReducer(state = INITIAL_STATE, action) {
                 cart: action.payload
             }
         }
+        // no default
     }
 
     return state;
@@ -2441,6 +2444,7 @@ function CounterReducer(state = INITIAL_STATE, action) {
                 count: state.count -1
             }
         }
+        // no default
     }
 
     return state;
@@ -2489,7 +2493,7 @@ export default function Counter() {
 }
 ````
 
-> middleware : les middlewares se trigger (déclenche) lorsque l'on dispatch quelque chose. effectue une action avant le dispatch.
+> middleware : les middlewares se trigger (déclenche) lorsque l'on dispatch quelque chose. effectue une action avant le dispatch. Ici on créé une fonction (customMiddleware) que l'on passe à applyMiddleware.
 
 `store.js`
 
@@ -2520,12 +2524,115 @@ export default store;
 
 > Appel asynchrone avec Redux
 
-Installation du middleware `thunk`. grace a ce middleware nous pouvons passer des fonction au dispatch
+Installation du middleware `thunk`, grace à ce middleware nous pouvons passer des fonctions au dispatch (ici getCatImg)
 
 ````shell script
 npm install redux-thunk
 ````
 
+`store.js`
+
+````javascript
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import counterReducer from './reducers/counterReducer';
+import addCartReducer from './reducers/addCartReducer';
+import dataImgReducer from './reducers/dataImgReducer';
+import thunk from 'redux-thunk';
+
+const rootReducer = combineReducers({
+  counterReducer,
+  addCartReducer,
+  dataImgReducer
+})
+
+const store = createStore(rootReducer, applyMiddleware(thunk));
+
+export default store;
+````
+
+`dataImgReducer.js`
+
+````javascript
+const INITIAL_STATE = {
+    imgURL: ""
+}
+
+function dataImgReducer(state = INITIAL_STATE, action) {
+  
+    switch(action.type){
+        case 'LOADIMG': {
+            return {
+                ...state, // copie du state
+                imgURL: action.payload
+            }
+        }
+    }
+
+    return state;
+}
+
+export default dataImgReducer;
+
+export const getCatImg = () => dispatch => {
+
+    fetch('https://api.thecatapi.com/v1/images/search')
+    .then(response => response.json())
+    .then(data => {
+        dispatch({
+            type: 'LOADIMG',
+            payload: data[0].url
+        })
+    })
+}
+````
+
+`Counter.js`
+
+````javascript
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch} from 'react-redux';
+import { getCatImg } from '../redux/reducers/dataImgReducer';
+
+export default function Counter() {
+
+    const [cartData, setCartData] = useState(0);
+    // const cart = useSelector(state => state.cart);
+    const { cart, count, imgURL } = useSelector(state => ({
+        ...state.AddCartReducer,
+        ...state.CounterReducer,
+        ...state.dataImgReducer
+    }));
+
+    const dispatch = useDispatch();
+
+    const addToCartFunc = () => {
+        dispatch({
+            type: "ADDCART",
+            payload: cartData
+        })
+    }
+
+    useEffect(() => {
+        dispatch(getCatImg())
+    }, [])
+
+    return (
+        <div>
+            <h1>Votre panier : { cart } { count }</h1>
+            {/* <button onClick={ decrFunc }>-1</button>
+            <button onClick={ incrFunc }>+1</button> */}
+            <input 
+            value={ cartData }
+            onInput={ e=> setCartData(e.target.value) }
+            type="number"/>
+            <br/>
+            <button onClick={ addToCartFunc }>Ajouter au panier</button>
+            
+            { imgURL && <img style={{ width: "300px" }} src={ imgURL }/>}
+        </div>
+    )
+}
+````
 
 ---
 
