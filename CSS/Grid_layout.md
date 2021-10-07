@@ -71,3 +71,56 @@
 ````
 
 >La grille commencera par placer les éléments pour lesquels on a défini une position. Puis les autres sont placés automatiquement dans les espaces restants.
+
+---
+
+Ici un exemple avec `auto-fill`
+
+````css
+.galerie {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
+  justify-content: center;
+  grid-gap: 10px;
+}
+.item {
+  width: 300px;
+  height: 200px;
+}
+.item img {
+  width: 100%;
+  height: auto;
+}
+````
+
+---
+
+````css
+.grid3 {
+  max-width: 600px;
+  margin: 15px auto 150px;
+  display: grid;
+  grid-gap: 10px;
+  grid-template-rows: repeat(3, [row] 100px);
+  grid-template-columns: repeat(4, [col] 1fr);
+}
+
+.grid3 .b1 {
+  grid-column: col / span 2;
+}
+.grid3 .b2 {
+  grid-column: col 3 / span 2;
+}
+.grid3 .b3 {
+  grid-column: col;
+  grid-row: row 2
+}
+.grid3 .b4 {
+  grid-column: col 2 / span 3;
+  grid-row: row 2;
+}
+.grid3 .b5 {
+  grid-column: col / span 4;
+  grid-row: 3;
+}
+````

@@ -100,13 +100,39 @@ Cette propriété définit le facteur de croissance d'un élément par rapport a
 
 ````css
 flex-grow: 2
-/* l'élément grandira deux fois plus qu'un élément flex-grow: 1 il aura ddeux fois plus d'espace */
+/* l'élément grandira deux fois plus qu'un élément flex-grow: 1 il aura deux fois plus d'espace */
 ````
 
 ## flex-shrink
 
 Cette propriété définit le facteur de réduction d'un élément par rapport aux autres éléments dans le conteneur. Un facteur est un nombre. La valeur par défaut est 1.
 
-## flex-basis
+## flex-basis vs width ? (à voir pour la différence)
+
+````css
+.containerB {
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+}
+.b1, .b2, .b4, .b5 {
+  /* width: 45%; */
+  flex-basis: 45%;
+}
+.b3 {
+  flex-basis: calc(90% + 10px);
+}
+````
+
+````html
+<div class="container-flex containerB">
+          <div class="item-flex  b1"></div>
+          <div class="item-flex  b2"></div>
+          <div class="item-flex  b3"></div>
+          <div class="item-flex  b4"></div>
+          <div class="item-flex  b5"></div>
+      </div>
+````
 
 ## flex
