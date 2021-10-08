@@ -104,3 +104,71 @@ Transitions
   transform: rotate(720deg);
   }
 ````
+
+---
+
+Pseudo-éléments
+
+````html
+<button class="focus-anim">
+      FOCUS
+    </button>
+````
+
+````css
+body {
+    background: #f1f1f1;
+}
+
+.focus-anim {
+  padding: 30px 45px;
+  font-size: 50px;
+  border-radius: 3px;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  background: transparent;
+  outline: none;
+  border: none;
+  color: #f1f1f1;
+}
+.focus-anim::before, .focus-anim::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.2s ease-in-out;
+}
+.focus-anim::before {
+  border: 2px solid tomato;
+}
+.focus-anim::after {
+  background: #000;
+  z-index: -1;
+}
+.focus-anim:hover::before {
+  transform: scaleY(1.1) scaleX(1.05);
+}
+.focus-anim:hover::after {
+  transform: scaleY(0.9) scaleX(0.95);
+}
+
+/* Lorque utilisateur appuis sur tab */
+
+.focus-anim:focus::before {
+  transform: scaleY(1.1) scaleX(1.05);
+}
+.focus-anim:focus::after {
+  transform: scaleY(0.9) scaleX(0.95);
+}
+
+/* Lorque utilisateur click sur le button (click css) */
+
+.focus-anim:active::before {
+  transform: scaleY(1.3) scaleX(1.2);
+}
+````
