@@ -172,3 +172,55 @@ body {
   transform: scaleY(1.3) scaleX(1.2);
 }
 ````
+
+---
+
+Responsive
+
+Images adaptatives directement dans le html :
+
+````html
+<img 
+    srcset="
+    ressources/waterfall-400.png 400w,
+    ressources/waterfall-700.png 700w,
+    ressources/waterfall-1100.png 1100w,
+    "
+    sizes="
+    (max-width: 500px) 400px,
+    (max-width: 800px) 700px,
+    1100px
+    "
+    src="ressources/waterfall-1100.png" 
+    alt="waterfall"
+    >
+````
+
+sans media queries avec la création d'un interval avec max-width et min-width :
+
+````css
+.card {
+    max-width: 1100px;
+    min-width: 300px;
+}
+````
+
+media queries avec un and :
+
+````css
+@media screen and (min-width: 800px) and (max-width: 1300px) {
+    .txt-input {
+        width: 600px;
+    }
+}
+````
+
+media queries en fonction de l'orientation :
+
+````css
+@media screen and (orientation: portrait) {
+    .txt-input {
+        background: crimson;
+    }
+}
+````
