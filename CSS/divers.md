@@ -224,3 +224,48 @@ media queries en fonction de l'orientation :
     }
 }
 ````
+
+---
+
+Perspective
+
+---
+
+Parallax
+
+````css
+.section {
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  /* parallax */
+  background-attachment: fixed;
+  /* parallax */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.section h2 {
+  text-align: center;
+  background: #f1f1f1;
+  padding: 20px;
+  font-size: 55px;
+  font-weight: 200;
+}
+
+.s1 {
+  background-image: url(imgs/img1.jpg);
+}
+.s2 {
+  background-image: url(imgs/img2.jpg);
+
+}
+.s3 {
+  background-image: url(imgs/img3.jpg);
+}
+````
+
+---
+
+Shadows
