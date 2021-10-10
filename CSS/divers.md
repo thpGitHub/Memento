@@ -269,3 +269,77 @@ Parallax
 ---
 
 Shadows
+
+---
+
+Unités :
+
+A voir rem em vmin...
+A voir aussi la technique du 
+
+````css
+html {
+    font-size: 62.5%;
+}
+````
+
+---
+
+Carousel
+
+````html
+<div class="cadre">
+      <div class="carousel">
+        <div class="element">"Exceptionnel."</div>
+        <div class="element">"20/20."</div>
+        <div class="element">"Service d'exception.".</div>
+        <div class="element">"Ponctuel..".</div>
+        <div class="element">"Exceptionnel.".</div>
+      </div>
+    </div>
+````
+
+````css
+body {
+    height: 100vh;
+    font-family: sans-serif;
+}
+
+.cadre {
+    position: relative;
+    background: rgb(55, 55, 55);
+    color: whitesmoke;
+    width: 600px;
+    height: 200px;
+    margin: 0 auto;
+    top: 10rem;
+    overflow: hidden;
+    border-radius: 5px;
+}
+.carousel {
+    text-align: center;
+    animation: carousel 8s ease-in-out infinite;
+}
+.element {
+    font-size: 50px;
+    line-height: 200px;
+}
+
+@keyframes carousel {
+    0%, 20% {
+        transform: translateY(0);
+    }
+    25%, 45% {
+        transform: translateY(-200px);
+    }
+    50%, 70% {
+        transform: translateY(-400px);
+    }
+    75%, 95% {
+        transform: translateY(-600px);
+    }
+    100% {
+        transform: translateY(-800px);
+    }
+}
+````
