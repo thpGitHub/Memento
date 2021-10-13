@@ -48,6 +48,7 @@ git config –global init.defaultBranch main
 ````shell script
     git add . # ajoute tous les fichiers présents
     git add *.md
+    git add test_*.md
 ````
 
 ````shell script
@@ -56,6 +57,11 @@ git config –global init.defaultBranch main
 
 ````shell script
     git add [nomFichier1] [nomFichier2] # ajoute deux fichiers...
+ ````
+
+ ````shell script
+    git add . -u # u pour update. Prend uniquement les fichiers déjà suivis et pas les fichiers Untracked
+    git add . --dry-run # Simulation pour voir ce que Git va ajouter a l'index
  ````
 
 > ### commit
