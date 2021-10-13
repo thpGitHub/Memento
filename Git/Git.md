@@ -230,6 +230,7 @@ rebaser des branches
     git log --stat # visualiser des statistiques résumées pour chaque commit
     git log --pretty=oneline #  affiche chaque commit sur une seule ligne
     git log --oneline --decorate --graph --all # ajoute un joli graphe en caractères ASCII pour décrire l’historique des branches et fusions 
+    git log --graph --online --first-parent develop # historique seulement de la branche develop
     git log --pretty=format:"%h %s" --graph
 
     git gitk # interface graphique du dépôt local.
