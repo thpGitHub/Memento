@@ -1,5 +1,109 @@
 # SASS
 
+## Variables
+
+````scss
+$base-color: #c6538c;
+$border-dark: rgba($base-color, 0.88);
+
+.alert {
+  border: 1px solid $border-dark;
+}
+````
+
+---
+
+## Le nesting
+
+````scss
+.container {
+  background: #00308f;
+
+  h1 {
+    font-size: 40px;
+  }
+
+  button {
+    padding: 10px 15px;
+    
+    &:hover {
+      background: lightblue;
+      color: #f1f1f1;
+    }
+  }
+}
+````
+
+## Placeholder Selectors
+
+````scss
+%title {
+  font-size: 45px;
+  text-align: center;
+  padding: 12px 0;
+}
+
+h2 {
+  color: crimson;
+  @extend %title;
+}
+h3 {
+  color: lightgreen;
+  @extend %title;
+}
+h4 {
+  color: lightblue;
+  @extend %title;
+}
+````
+
+---
+
+## Mixin
+
+````scss
+@mixin inputs($padding, $fontSize, $maxWidth) {
+  display: block;
+  padding: $padding;
+  font-size: $fontSize;
+  width: 100%;
+  max-width: $maxWidth;
+  margin: 50px auto;
+}
+
+.inp-large {
+  @include inputs(24px, 20px , 800px);
+}
+
+.inp-small {
+  @include inputs(4px, 10px , 200px);
+}
+````
+
+---
+
+## Boucle
+
+````scss
+@for $i from 1 through 100 {
+  .b#{$i}{
+    width: 10px * $i;
+    height: 10px * $i;
+  }
+}
+````
+
+````html
+<div class="blocks-container">
+      <div class="block b1"></div>
+      <div class="block b2"></div>
+     <!-- . 
+          .
+          .-->
+      <div class="block b100"></div>
+    </div>
+````
+
 exemple d'animation css avec une boucle sass
 
 ````css
