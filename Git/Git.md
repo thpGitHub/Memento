@@ -177,7 +177,8 @@ effacer
 
 ### Les branches
 
-<https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Branches-et-fusions%C2%A0%3A-les-bases>
+- <https://git-scm.com/book/fr/v2/Les-branches-avec-Git-Branches-et-fusions%C2%A0%3A-les-bases>
+- <https://nvie.com/posts/a-successful-git-branching-model/#the-main-branches>
 
 ````shell script
     git branch -M main # Renomerra la branch principale (en général master) en main
@@ -186,6 +187,7 @@ effacer
     # Attention : Git ne vous laissera pas changer de branche si la branche sur laquelle vous êtes n'est pas
     # propre (si il reste des commits à faire par ex.). Mais on peut contourner ceci par le remisage et l’amendement de commit ;)
       git branch -b testing # raccourci pour créér une branche et se potionner dessus
+    git checkout -b myfeature develop # création d'une nouvelle branche myfeature depuis develop et on se positionne dessus   
     git log --oneline --decorate
     git log --oneline --decorate --graph --all # va afficher l’historique de vos commits, affichant les endroits où sont 
     # positionnés vos pointeurs de branche ainsi que la manière dont votre historique a divergé.
