@@ -280,10 +280,13 @@ rebaser des branches
     # Il va créer un HEAD détaché.
     # Il permet aussi, dans le cas de fichiers indexés mais pas encore commités, de désindexer les fichiers.    
     git reset [Commit-Cible] --hard # revenir au commit cible en supprimant DEFINITIVEMENT tous les commits suivants
-
-
-
 ````
+
+---
+
+### Tags
+
+---
 
 ### Générer une clé SSH pour l'authentification
 
