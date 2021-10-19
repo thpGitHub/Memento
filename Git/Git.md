@@ -163,6 +163,7 @@ effacer
     # git reset  pour faire la même chose, mais sur une branche privée.
 
     git push origin master # push la branche master du dépot local vers le dépot distant origin
+    git push -u origin main 
     git push origin --all # push toutes les branches locales sur le dépot distant origin
     git push origin --tags # push tous nos tags locaux vers le dépôt distant.
     git push -f heroku main # force le push, écrase le contenu de la branche distante par le contenu de la branch locale
