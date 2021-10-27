@@ -1,5 +1,40 @@
 # Grid Layout
 
+## Alignement avec Grid
+
+Il existe 6 propriétés pour positionner la grille dans son conteneur et les éléments de la grille :
+`justify-items` `align-items` `justify-content` `align-content` `justify-self` `align-self`
+
+````css
+.container {
+    background-color: #eee;
+    width: 500px;
+    margin: 30px auto;
+
+    display: grid; /*la class container contiendra une grille*/
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(2, 150px);
+
+    grid-gap: 30px;
+
+    justify-items: center; /*justifer les éléments le long de l'axe des lignes 'row axis'*/
+    align-items: center; /*aligner les éléments le long de l'axe des colonnes 'column axis'*/
+    justify-content: center;
+}
+
+.items {
+    padding: 20px;
+    font-size: 30px;
+    font-family: sans-serif;
+    width: 15px;
+    height: 15px;
+}
+````
+
+Lorsque la grille entière est plus petite que l'espace du conteneur on peut utiliser `justify-content` pour justifier la grille le long des axes de lignes
+
+---
+
 ````css
 .wrapper {
     display: grid;
