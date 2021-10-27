@@ -2,6 +2,8 @@
 
 ## Alignement avec Grid
 
+- <https://www.digitalocean.com/community/tutorials/css-align-justify>
+
 Il existe 6 propriétés pour positionner la grille dans son conteneur et les éléments de la grille :
 `justify-items` `align-items` `justify-content` `align-content` `justify-self` `align-self`
 
@@ -11,15 +13,14 @@ Il existe 6 propriétés pour positionner la grille dans son conteneur et les é
     width: 500px;
     margin: 30px auto;
 
-    display: grid; /*la class container contiendra une grille*/
+    display: grid; /* la class container contiendra une grille! */
     grid-template-columns: repeat(3, 150px);
     grid-template-rows: repeat(2, 150px);
 
     grid-gap: 30px;
 
-    justify-items: center; /*justifer les éléments le long de l'axe des lignes 'row axis'*/
-    align-items: center; /*aligner les éléments le long de l'axe des colonnes 'column axis'*/
-    justify-content: center;
+    justify-items: center; /* justifer les éléments le long de l'axe des lignes 'row axis' */
+    align-items: center; /* aligner les éléments le long de l'axe des colonnes 'column axis' */
 }
 
 .items {
@@ -31,7 +32,36 @@ Il existe 6 propriétés pour positionner la grille dans son conteneur et les é
 }
 ````
 
-Lorsque la grille entière est plus petite que l'espace du conteneur on peut utiliser `justify-content` pour justifier la grille le long des axes de lignes
+Lorsque la grille entière est plus petite que l'espace du conteneur on peut utiliser `justify-content` pour justifier la grille le long des axes de lignes et `align-content` est utilisé pour aligner la grille le long de l'axe des collonnes
+
+````css
+.container {
+    background-color: #eee;
+    width: 1000px;
+    height: 600px;
+    margin: 30px auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 150px);
+    grid-template-rows: repeat(2, 150px);
+
+    grid-gap: 30px;
+
+    justify-items: center;
+    align-items: center;
+    justify-content: center; 
+    align-content: center;
+
+}
+````
+
+`justify-self` et `align-self`  s'appliquent directement aux éléments pour les positionner différemment du reste des éléments de la grille
+
+````css
+.item3 {
+  justify-self: end;
+}
+````
 
 ---
 
