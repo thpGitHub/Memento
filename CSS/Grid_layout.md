@@ -63,6 +63,19 @@ Lorsque la grille entière est plus petite que l'espace du conteneur on peut uti
 }
 ````
 
+## `max-content` et `min-content`
+
+````css
+grid-template-columns: max-content 1fr 1fr; /* la première colonne aura une largeur de son contenu total et les deux autres se répartissent l'espace restant. pour la première colonne contient une phrase la largeur de la colonne sera cette pharse*/
+grid-template-columns: max-content 1fr min-content; /* la largeur de la dernière colonne sera le mot le plus grands et ira à la ligne */
+grid-template-rows: repeat(2, min-content); /* la hauteur des lignes va s'adapter au contenu*/
+grid-template-rows: repeat(2, max-content);/*aura le même effet sur la hauteur des lignes que min-content*/
+grid-template-rows: repeat(2, minmax(150px, min-content)); /* jusqu'a 150px la hauteur sera de 150px au dela la hauteur sera en fonction du contenu*/
+grid-template-columns: minmax(200px, 700px) repeat(2, 1fr); /* la première colonne aura une largeur min de 200 px et une largeur max de 700px*/
+````
+
+## `auto-fill`
+
 ---
 
 ````css
