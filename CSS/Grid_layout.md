@@ -76,6 +76,37 @@ grid-template-columns: minmax(200px, 700px) repeat(2, 1fr); /* la première colo
 
 ## `auto-fill`
 
+````css
+.container {
+    background-color: #eee;
+    width: 1000px;
+    height: 600px;
+    margin: 30px auto;
+
+    display: grid;
+    
+    grid-template-rows: repeat(2, 150px);
+    grid-template-columns: repeat(auto-fill, 100px); /* création de colonne automatique de 100px de large, ici 10 colonnes */
+}
+````
+
+## `auto-fit`
+
+````css
+.container {
+    background-color: #eee;
+    width: 90%;
+    height: 600px;
+    margin: 30px auto;
+
+    display: grid;
+    
+    grid-template-rows: repeat(2, 150px);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* la nombre de colonnes sera en fonction de notre contenu(nb de div par ex.)*/
+    grid-auto-rows: 150px; /* pour la hauteur des lignes même pour les ligne implicites !*/
+}
+````
+
 ---
 
 ````css
