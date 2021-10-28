@@ -103,7 +103,7 @@ grid-template-columns: minmax(200px, 700px) repeat(2, 1fr); /* la première colo
     
     grid-template-rows: repeat(2, 150px);
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* la nombre de colonnes sera en fonction de notre contenu(nb de div par ex.)*/
-    grid-auto-rows: 150px; /* pour la hauteur des lignes même pour les ligne implicites !*/
+    grid-auto-rows: 150px; /* pour la hauteur des lignes même pour les lignes implicites !*/
 }
 ````
 
