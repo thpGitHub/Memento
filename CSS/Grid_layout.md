@@ -233,3 +233,28 @@ Ici un exemple avec `auto-fill`
   grid-row: 3;
 }
 ````
+
+---
+
+Astuce : hauteur des lignes en fonction de la largeur du navigateur :
+
+````css
+.container {
+    display: grid;
+
+    grid-template-columns:
+    minmax(6rem, 1fr)
+    [start]
+    repeat(8, min-conent, 14rem)
+    [end]
+    minmax(6rem, 1fr);
+}
+
+.galerie {
+    background-color: #eee;
+    grid-column: start / end;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 5vw); /*la hauteur des lignes seront responsive en fonction de la largeur du navigateur*/  
+}
+````

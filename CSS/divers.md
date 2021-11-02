@@ -38,6 +38,18 @@ video {
 /* object-position: center */
 ````
 
+Exemple avec une image
+
+````css
+.galerieImg {
+    /*Voir l'exemple avec les exercices GRID*/
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+````
+
 ---
 
 *Un élément positionné (position: ) va passer au dessus d'un élément non positioné !*
