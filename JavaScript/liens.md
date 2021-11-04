@@ -283,6 +283,7 @@ Rxjs :
 Sass :
 
 - <https://www.sassmeister.com/>
+- <https://sass-guidelin.es/fr/> // bonne pratique sass :)
 
 ---
 
