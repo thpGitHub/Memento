@@ -1,5 +1,61 @@
 # SASS
 
+````shell script
+npm install -g sass
+
+sass input.scss output.css
+sass --watch input.scss output.css
+````
+
+## Extension VS Code
+
+`Live Sass Compiler`
+
+---
+
+## Partial (partiel)
+
+Un partiel est un fichier Sass nommé avec un underscore au début du fichier.
+Exemple `_partial.scss`,
+l'underscore indique à Sass que le fichier n'est qu'un fichier partiel et qu'il ne doit pas générer un fichier CSS. Les partiels Sass sont utilisés avec `@use`.
+
+---
+
+## @import @use @foward
+
+*!* il est maintenant recommander de ne plus utiliser `@import`
+
+````scss
+// _colors.scss
+
+$red: red;
+$blue: blue
+````
+
+Avec `@import`
+
+````scss
+// style.scss
+
+@import './colors';
+
+body {
+  color: $blue;
+}
+````
+
+Avec `@use`
+
+````scss
+@use './colors';
+
+body {
+  color: colors.$blue;
+}
+````
+
+---
+
 ## Variables
 
 ````scss
@@ -150,3 +206,5 @@ h1 span {
       <span>.</span>
     </h1>
 ````
+
+---
