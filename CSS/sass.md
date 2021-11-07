@@ -11,6 +11,8 @@ sass --watch input.scss output.css
 
 `Live Sass Compiler`
 
+*!* Au 07/11/2021 live sass compiler ne fonctionne pas avec `@use` j'utilise donc `sass --watch input.scss output.css` et cela fonctionne bien avec `@use` et `@foward`
+
 ---
 
 ## Encodage
