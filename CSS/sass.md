@@ -13,6 +13,16 @@ sass --watch input.scss output.css
 
 ---
 
+## Encodage
+
+Afin d’éviter tout problème lié à l’encodage des caractères, il est recommandé de forcer l’encodage UTF-8 dans le fichier principal. Assurez-vous que ce soit le premier élément de la feuille de style et qu’il n’y ait aucun caractère de quelque nature en amont.
+
+````css
+@charset 'utf-8';
+````
+
+---
+
 ## Partial (partiel)
 
 Un partiel est un fichier Sass nommé avec un underscore au début du fichier.
@@ -51,6 +61,14 @@ Avec `@use`
 
 body {
   color: colors.$blue;
+}
+````
+
+````scss
+@use './colors' as *;
+
+body {
+  color: $blue;
 }
 ````
 
@@ -205,6 +223,24 @@ h1 span {
       <span>.</span>
       <span>.</span>
     </h1>
+````
+
+---
+
+## Architecture
+
+ Exemple d'une architecture 7-1 (7 dossiers - 1 fichier)
+
+````text
+    .
+    ├── abstracts/
+    ├── base/
+    ├── components/
+    ├── layout/
+    ├── pages/
+    ├── themes/
+    ├── vendors/
+    └── main.scss
 ````
 
 ---
