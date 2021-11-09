@@ -25,6 +25,76 @@ Afin d’éviter tout problème lié à l’encodage des caractères, il est rec
 
 ---
 
+## map
+
+la propriété map correspond aux tableaux associatifs (array). Une map est une liste de clés avec des valeurs associés.
+
+fonctions de map :
+
+- `map-get($map, $cle)` Retourne la valeur associée à une clé donnée d’une map.
+
+- `map-has-key($map, $cle)` Vérifie si une clé existe dans une map.
+
+- `map-merge($map1, $map2)` Fusionne deux maps dans une nouvelle map.
+
+- `map-remove($map, $cle(s))` Retourne une nouvelle map tout en enlevant une ou plusieurs clés.
+
+- `map-keys($map)` Retourne une liste des clés d’une map.
+
+- `map-values($map)` Retourne une liste des valeurs d’une map.
+
+````scss
+$map: (
+  cle1: valeur1,
+  cle2: valeur2,
+  cle3: valeur3
+);
+
+.block {
+  font-size: map-get($map, cle1);
+}
+
+.block {
+  @if map-has-key($map, cle1) {
+    font-size: map-get($map, cle1);
+  } @else {
+    font-size : 12px;
+  }
+}
+````
+
+---
+
+## Breakpoints
+
+````scss
+// Map des breakpoints
+$breakpoints: (
+  $small: 576px,
+  $medium: 768px,
+  $large: 992px,
+);
+// Mixin pour appeler les breakpoints facilement
+@mixin bp($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        $value: map-get($breakpoints, $breakpoint);
+         
+        @media screen and (min-width: $value) {
+            @content;
+        }
+    }
+}
+// Dans le SASS
+.block {
+  display: none;
+  @include bp(large) {
+    display: block;
+  }
+}
+````
+
+---
+
 ## Partial (partiel)
 
 Un partiel est un fichier Sass nommé avec un underscore au début du fichier.
