@@ -63,6 +63,30 @@ $map: (
 }
 ````
 
+````scss
+// Map des différentes couleurs
+$colors: (
+   gray: (
+     base: #ccc,
+     light: #f2f2f2,
+     dark: #666
+   ),
+   blue: (
+      base: #4c4c4c,
+     light: #a5a5ff,
+     dark : #00007f
+  )
+);
+// Fonction pour appeler les couleurs facilement
+@function setcolor($scheme, $tone: base) {
+  @return map-get(map-get($colors, $scheme), $tone);
+}
+// Appel de la fonction pour afficher la couleur souhaitée
+.element {
+  color: setcolor(brown,light) ;
+}
+````
+
 ---
 
 ## Breakpoints
@@ -114,7 +138,7 @@ $red: red;
 $blue: blue
 ````
 
-Avec `@import`
+- Avec `@import`
 
 ````scss
 // style.scss
@@ -126,7 +150,7 @@ body {
 }
 ````
 
-Avec `@use`
+- Avec `@use`
 
 ````scss
 @use './colors';
@@ -141,6 +165,27 @@ body {
 
 body {
   color: $blue;
+}
+````
+
+- Avec `@use` et `@forward`
+
+````scss
+// abstracts/_variables.scss
+$blue: pink;
+````
+
+````scss
+// abstracts/_index.scss
+@forward "./variables";
+````
+
+````scss
+// main.scss
+@use "./abstracts";
+
+h1 {
+    color: abstracts.$blue;
 }
 ````
 
@@ -306,10 +351,22 @@ h1 span {
 ````text
     .
     ├── abstracts/
+        └── _variables.scss
+        └── _mixins.scss
+        └── _placeholders.scss
+        └── _functions.scss
+        └── _index.scss
     ├── base/
     ├── components/
+        └── _header.scss
+        └── _footer.scss
+        └── _nav.scss
+        └── _index.scss
     ├── layout/
     ├── pages/
+        └── _home.scss
+        └── _contact.scss
+        └── _index.scss
     ├── themes/
     ├── vendors/
     └── main.scss
