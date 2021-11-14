@@ -40,6 +40,8 @@ Une promesse a trois états :
     });
 ````
 
+> ***!*** si on est dans le reject le programme s'arrêtera (penser au try catch !) (Note pur moi : appronfondir ce point !!!!)
+
 ## Chainer les promesses avec ```then```
 
 > Il existe 4 méthodes statiques dans la classe Promise:
