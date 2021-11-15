@@ -4,6 +4,7 @@
     const children = "Bienvenue sur mon site";
     const className = "rootContainer";
     const props = { children, className };
+    
     console.log(props);
     // {children: 'Bienvenue sur mon site', className: 'rootContainer'}
     
