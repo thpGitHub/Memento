@@ -256,6 +256,38 @@ export default App;
 
 ## JSX et le DOM virtuel <a name="jsx"></a>
 
+Exemple de React sans le `JSX`
+
+````html
+<!-- Manipuler le DOM avec React Sans JSX-->
+
+<html>
+  <head>
+    <script src="https://unpkg.com/react@17.0.2/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      const rootEl = document.getElementById('root')
+      const divEl = React.createElement('div', {
+        className: 'rootContainer',
+        children: [
+          React.createElement('h1', null, 'Bienvenue'),
+          React.createElement('h2', null, 'Commencez ici'),
+          React.createElement(
+            'p',
+            null,
+            'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+          ),
+        ],
+      })
+      ReactDOM.render(divEl, rootEl)
+    </script>
+  </body>
+</html>
+````
+
  Gestionnaire d'événement REACT :
 
 ``onclick`` devient en react ``onClick``

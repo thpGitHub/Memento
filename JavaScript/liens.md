@@ -86,6 +86,12 @@ Design :
 
 ---
 
+Emmet :
+
+- <https://docs.emmet.io/cheat-sheet/>
+
+---
+
 Emoticones  / icones :
 
 - <https://emojiterra.com/fr/>
@@ -265,6 +271,7 @@ React :
 
 - <https://www.kpiteng.com/blogs/top-10-react-hooks-library/> // 10 react hooks library
 -<https://felixgerschau.com/react-hooks-separation-of-concerns/?utm_campaign=sebastien_lorber_newsletter&utm_medium=email&utm_source=Revue%20newsletter> Bonne pratique Hooks séparer les logiques
+- <https://codeburst.io/declarative-vs-imperative-programming-a8a7c93d9ad2> // programmation dzclarative vs imperative
 
 ---
 
