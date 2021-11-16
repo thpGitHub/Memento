@@ -140,6 +140,8 @@ ReactDom.render(
 
 ## Il existe deux types de composant dans REACT <a name="2components"></a>
 
+> Les noms des composants commencent toujours par une majuscule
+
 Composant de fonction                       | Composant de classe
 --- | ---
 *Stateless component*                       | *Statefull component*
@@ -476,7 +478,26 @@ Avec le destructuring on peut récupérer juste le nom :
 ## Les props <a name="props"></a>
 
 > Pour passer une props à un composant il faut l'ajouter en paramètre de la fonction du composant.
-> On passe des props depuis un composant parent
+> On passe des props depuis un composant parent.
+> Les props sont les données en entrées d'un composant.
+> Les props sonts des objets.
+
+````javascript
+  function Hello (props) {
+    return <h1> Hello ${props.name} </h1>
+  }
+  // Appel
+  <Hello name="thierry"/>
+
+  // Avec la destructuration
+  function Hello ({name}) {
+    return <h1> Hello {name} </h1>
+  }
+  // Appel
+  <Hello name="thierry"/>
+
+
+````
 
 ````typescript
 return (
@@ -604,6 +625,29 @@ const PokemonCard: FunctionComponent<Props> = ({ pokemon, borderColor = 'olive' 
 }
 
 export default PokemonCard;
+````
+
+### `PropTypes`
+
+Nous pouvons utiliser des extensions JavaScript comme Flow ou TypeScript pour valider les types de notre application. Mais même si vous ne les utilisez pas, React possède ses propres fonctionnalités de validation de types.
+
+````javascript
+import PropTypes from 'prop-types';
+
+const Paragraphe = ({text, author}) => {
+        return (
+          <p className="paragraphe">
+            {text} : {author}
+          </p>
+        )
+      }
+
+      Paragraphe.propTypes = {
+        text: PropTypes.number,
+        author: PropTypes.string,
+        // text: PropTypes.string.isRequired,
+        // author: PropTypes.string.isRequired
+      }
 ````
 
 ---
