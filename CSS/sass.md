@@ -5,6 +5,21 @@ npm install -g sass
 
 sass input.scss output.css
 sass --watch input.scss output.css
+sass --watch ./sass/main.scss:.public/css/style.css
+sass --watch app/sass:public/stylesheets
+
+# 4 modes de compilation
+sass --watch input.scss output.css # mode nested par defaut
+sass --watch input.scss output.css --style expanded # mode expanded ressemble en tout point à du CSS qu’on aurait rédigé manuellement 
+sass --watch input.scss output.css --style compact # mode compact traduit le CSS avec un ensemble de règles par ligne
+sass --watch input.scss output.css --style compressed # mode compressed retire tous les espaces et retours à la ligne inutiles
+````
+
+````json
+// package.json
+"scripts": {
+  "sass": "sass --watch ./sass/main.scss:.public/css/style.css"
+},
 ````
 
 ## Extension VS Code
@@ -346,7 +361,7 @@ h1 span {
 
 ## Architecture
 
- Exemple d'une architecture 7-1 (7 dossiers - 1 fichier)
+ Exemple d'une architecture avec le Pattern 7-1 (7 dossiers - 1 fichier)
 
 ````text
     .
