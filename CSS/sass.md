@@ -372,6 +372,10 @@ h1 span {
         └── _functions.scss
         └── _index.scss
     ├── base/
+        └── _base.scss
+        └── _reset.scss
+        └── _typography.scss
+        └── _index.scss
     ├── components/
         └── _header.scss
         └── _footer.scss
