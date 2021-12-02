@@ -1324,6 +1324,30 @@ return (
 );        
 ````
 
+---
+
+Exemple :
+
+````javascript
+const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`bonjour ${e.target.elements.emailInput.value}`); //pour récupèrer la valeur de l'email
+  }
+
+  return (
+    <form onSubmit={handleSubmit}>
+      <label>
+        Adresse email :
+        <input type="text" name="emailInput" />
+      </label>
+      <input type="submit" value="Connexion" />
+    </form>
+  )
+}
+````
+
+---
+
 Exemple :
 
 ````typescript

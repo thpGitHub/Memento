@@ -77,6 +77,7 @@ css :
 - <https://cssgenerator.org/border-css-generator.html> // générateur de css (shadow, border.....)
 - <https://cssgridgarden.com/#fr> // pour jouer en utilisant du grid
 - <https://flexboxfroggy.com/#fr> // pour jouer en utilisant du flex
+- <https://markodenic.com/tools/buttons-generator/?ref=producthunt> // Idéé pour un mini projet !!!!!
 
 ---
 
