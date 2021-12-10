@@ -436,6 +436,34 @@ function App() {
 export default App;
 ````
 
+````javascript
+function Login({initialEmail = ''}) {
+  const [email, setEmail] = React.useState(initialEmail)
+  const [error, setError] = React.useState(false)
+  const handleChange = event => {
+    setEmail(event.target.value)
+    setError(!event.target.value.includes('@'))
+  }
+  return (
+    <div>
+      <form>
+        <label>Entrez votre email : </label>
+        <input value={email} onChange={handleChange} />
+      </form>
+      <div style={{color: error ? 'red' : ''}}>
+        Votre {email} est {error ? 'non valide' : 'valide'}{' '}
+      </div>
+    </div>
+  )
+}
+
+function App() {
+  return <Login initialEmail="example@example.com" />
+}
+
+export default App
+````
+
 ## Afficher une liste de tableau avec la méthode native map() dans JSX
 
 > Lorsqu’on affiche une liste dans du code JSX, il est important d’appliquer la propriété key, sous peine de lever une erreur.
