@@ -209,6 +209,43 @@ let setName = nameStateVariable[1];
 */
 ````
 
+### Lazy Lazy initialisation
+
+> Si l’on a besoin d'une valeur qu’une seul fois il est possible de passer une fonction fléchée à  React.useState(() => fonctionLongue()). La fonction longue ne sera alors appelé qu’une seule fois ce qui améliorera les performances.
+
+````javascript
+import * as React from 'react'
+
+function Login({initialEmail = ''}) {
+  const [email, setEmail] = React.useState(
+    () => window.localStorage.getItem('email') || initialEmail,
+  )
+  const [error, setError] = React.useState(false)
+  const handleChange = event => {
+    setEmail(event.target.value)
+    setError(!event.target.value.includes('@'))
+    window.localStorage.setItem('email', event.target.value)
+  }
+  return (
+    <div>
+      <form>
+        <label>Entrez votre email : </label>
+        <input value={email} onChange={handleChange} />
+      </form>
+      <div style={{color: error ? 'red' : ''}}>
+        Votre {email} est {error ? 'non valide' : 'valide'}{' '}
+      </div>
+    </div>
+  )
+}
+
+function App() {
+  return <Login initialEmail="example@example.com" />
+}
+
+export default App
+````
+
 > Les hooks permettent de rajouter des méthodes de  ``cycle de vie`` à un composants de fonction et se nomme ``useEffect``.
 
 Il y a trois méthodes ``de cycle de vie`` d'un composant dans React :
