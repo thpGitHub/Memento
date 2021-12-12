@@ -55,3 +55,18 @@ p {
     }
 }
 ````
+
+````html
+vw : 1% de la largeur du viewport de l'utilisateur
+
+vh : 1% de la hauteur du viewport de l'utilisateur
+
+vmin : 1% de la plus basse dimension du viewport de l'utilisateur
+
+vmax : 1% de la plus haute dimension du viewport de l'utilisateur
+
+Le view height est très intéressant car les éléments de block prennent la taille de leur contenu.
+Les éléments Html et body sont des blocs, c'est pour ca qu'il n'est pas possible de leur donner une taille en pourcentage (100% ne fonctionne pas).
+Les vh sont très intéressant pour donner une hauteur variable en fonction du viewport de l'utilisateur
+
+````
