@@ -347,6 +347,13 @@ export default App
 - On appel les hooks uniquement depuis des composants de fonction ! Exception : on peut appeler un hook depuis un autre composant que l'on a créé (hooks personnalisé).
 - Quand on utilise la méthode du hook (ex. setName...) la valeur du state est remplacée complètement et non fusionnée !
 
+## `useRef`
+
+La différence entre `useState` et `useRef` est que `useState` provoque un nouveau rendu, `useRef` ne le fait pas.
+
+> Fondamentalement, nous utilisons UseState dans les cas où la valeur de l'état doit être mise à jour avec un nouveau rendu.
+lorsque vous voulez que vos informations persistent pendant la durée de vie du composant, vous utiliserez UseRef car ce n'est tout simplement pas pour travailler avec le re-rendu.
+
 ---
 
 ## JSX et le DOM virtuel <a name="jsx"></a>
