@@ -32,13 +32,15 @@ fetch('http://localhost:3001/pokemons')
         });
 ````
 
-Il y a plusieurs typage de données pour la ``response`` : 
+Il y a plusieurs typage de données pour la ``response`` :
 
 - response.arrayBuffer()
 - response.blob()
 - response.json()
 - response.text()
 - response.formData()
+
+>bien que la méthode soit nommée json(), le résultat n'est pas JSON mais est plutôt le résultat de la prise en entrée de JSON et de son analyse pour produire un objet JavaScript.
 
 Attrapper les erreurs :
 

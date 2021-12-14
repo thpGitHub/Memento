@@ -23,7 +23,9 @@ API REST :
 - www.navitia.io  // datas sur les transports
 - <https://jsonplaceholder.typicode.com/> // fake JSON data
 - <https://www.npmjs.com/package/json-server> // simuler une API REST
-- <https://docs.thecatapi.com/> cat api 
+- <https://docs.thecatapi.com/> //cat api
+- <https://hn.algolia.com/api> // api de recherche d'articles
+- <https://unsplash.com/developers> // api bank d'images
 
 ---
 
