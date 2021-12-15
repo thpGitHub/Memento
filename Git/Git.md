@@ -112,6 +112,9 @@ git config –global init.defaultBranch main
 
 ### Fork un dépot existant
 
+> Il n'est pas possible de fork un repo qui nous appartient !.
+Astuce: créer un autre compte github (Avoir quel est l'interet ?) sinon si on veut juste une copie d'un de nos repos on peut dans github importer un repo existant (voir en dessous)
+
 -<https://grafikart.fr/tutoriels/fork-pull-request-591>
 
 Un fork va créer une copie (sur notre github) il faudra faire ensuite un git clone pour l'utiliser en local.
