@@ -31,19 +31,19 @@ git config –global init.defaultBranch main
 
 ---
 
-> ### Initialisation du dépot local
+### Initialisation du dépot local
 
 ````shell script
     git init # Git crée un répertoire .git qui contient tout ce que Git a besoin pour fonctionner
 ````
 
-> ### Lier le dépôt local au dépôt distant (github)
+### Lier le dépôt local au dépôt distant (github)
 
 ```shell script
     git remote add origin https://github.com/thpGitHub/NonDossier.git
 ```
 
-> ### Ajouter les modifications local
+### Ajouter les modifications local
 
 ````shell script
     git add . # ajoute tous les fichiers présents
@@ -64,7 +64,9 @@ git config –global init.defaultBranch main
     git add . --dry-run # Simulation pour voir ce que Git va ajouter a l'index
  ````
 
-> ### commit
+---
+
+### commit
 
 ````shell script
     git commit # va ouvrir un editeur afin de saisir un commentaire
@@ -74,13 +76,25 @@ git config –global init.defaultBranch main
     git commit -am "update file" # raccourci de la commande au dessus
 ````
 
-> ### On pousse tous les commits vers le dépôt distant
+### On pousse tous les commits vers le dépôt distant
 
 ````shell script
     git push origin master
 ````
 
-> ### Cloner un dépot existant (vide ou non)
+---
+
+### Git clone vs git fork
+
+> La principale différence entre le git clone et le fork réside dans le degré de contrôle et d'indépendance que vous souhaitez sur la base de code une fois que vous l'avez copiée.
+
+> Lorsqu'un dépôt Git est cloné, le dépôt cible reste partagé entre tous.
+
+>une opération de fork créera une toute nouvelle copie du référentiel cible. Le développeur qui effectue le fork aura un contrôle total sur la base de code nouvellement copiée.
+
+> Un fork permet d'utiliser des Pull request
+
+### Cloner un dépot existant (vide ou non)
 
 ````shell script
     git clone [repo-url]
@@ -95,8 +109,21 @@ git config –global init.defaultBranch main
 > -puis ajoute un serveur distant (git remote add) à l’URL que vous lui avez passée (appelé par défaut origin),
 > -puis lance git fetch à partir de ce dépôt distant et
 > -ensuite extrait le dernier commit dans votre répertoire de travail avec git checkout.
- 
- >### git status et git diff
+
+### Fork un dépot existant
+
+-<https://grafikart.fr/tutoriels/fork-pull-request-591>
+
+Un fork va créer une copie (sur notre github) il faudra faire ensuite un git clone pour l'utiliser en local.
+Attention ne jamis travailler sur la branche master mais créer des branches, c'est depuis ces branches
+
+### Importer un dépot existant
+
+- <https://docs.github.com/en/github/importing-your-projects-to-github/importing-source-code-to-github/importing-a-repository-with-github-importer>
+
+---
+
+### git status et git diff
 
  ````shell script
     git status
@@ -106,7 +133,7 @@ git config –global init.defaultBranch main
     git difftool # visualiser les différences avec un outil graphique ou externe
 ````
 
-> ### Effacer/supprimer des fichiers
+### Effacer/supprimer des fichiers
 
 supprimer
 
@@ -123,7 +150,7 @@ effacer
     git rm --cached [nomFichier] #  cela va annuler le suivi de version du fichier tout en le conservant sur l'ordi
 ````
 
-> ### Renommer un fichier
+### Renommer un fichier
 
 ````shell script
     git mv [nom1] [nom2]
