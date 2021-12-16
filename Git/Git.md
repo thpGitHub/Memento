@@ -115,7 +115,7 @@ git config –global init.defaultBranch main
 > Il n'est pas possible de fork un repo qui nous appartient !.
 Astuce: créer un autre compte github (Avoir quel est l'interet ?) sinon si on veut juste une copie d'un de nos repos on peut dans github importer un repo existant (voir en dessous)
 
--<https://grafikart.fr/tutoriels/fork-pull-request-591>
+- <https://grafikart.fr/tutoriels/fork-pull-request-591>
 
 Un fork va créer une copie (sur notre github) il faudra faire ensuite un git clone pour l'utiliser en local.
 Attention ne jamis travailler sur la branche master mais créer des branches, c'est depuis ces branches

@@ -26,6 +26,7 @@ API REST :
 - <https://docs.thecatapi.com/> //cat api
 - <https://hn.algolia.com/api> // api de recherche d'articles
 - <https://unsplash.com/developers> // api bank d'images
+- <https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa/related?hl=fr> //extension json formateur sympas pour visualiser les retours d'api dans chrome
 
 ---
 
@@ -115,6 +116,7 @@ ES6 :
 Extensions Chrome : 
 
 - <https://chrome.google.com/webstore/search/Testing%20Playground?hl=fr> // Testing Playground
+- <https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa/related?hl=fr> // json formateur sympas pour visualiser les retour d'api dans chrome
 
 ---
 
