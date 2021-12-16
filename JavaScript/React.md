@@ -354,6 +354,8 @@ La différence entre `useState` et `useRef` est que `useState` provoque un nouve
 > Fondamentalement, nous utilisons UseState dans les cas où la valeur de l'état doit être mise à jour avec un nouveau rendu.
 lorsque vous voulez que vos informations persistent pendant la durée de vie du composant, vous utiliserez UseRef car ce n'est tout simplement pas pour travailler avec le re-rendu.
 
+> la fonction entière est exécutée chaque fois qu'elle est restituée. Ce qui signifie que les variables initialisées avec un simple let x = 5;dans le corps de la fonction seront réinitialisées à chaque rendu, les réinitialisant. C'est la raison pour laquelle nous avons besoin de crochets comme useRef, cela donne une référence à une valeur qui persiste entre les rendus
+
 ---
 
 ## JSX et le DOM virtuel <a name="jsx"></a>
