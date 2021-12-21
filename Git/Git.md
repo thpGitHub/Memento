@@ -212,6 +212,7 @@ effacer
 - <https://nvie.com/posts/a-successful-git-branching-model/#the-main-branches>
 
 ````shell script
+    git branch -a # affichera les branches du dépot local et celles du dépot distant
     git branch -M main # Renomerra la branch principale (en général master) en main
     git branch testing # création de la branche testing
     git checkout testing # basculer sur la branche testing (potition du pointeur HEAD sur testing)
