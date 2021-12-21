@@ -246,7 +246,13 @@ function App() {
 export default App
 ````
 
+### `useEffect`
+
 > Les hooks permettent de rajouter des méthodes de  `cycle de vie` à un composants de fonction et se nomme `useEffect`. `useEffect` sera exécuté après le rendu !
+
+>En utilisant ce Hook, vous dites à React que votre composant doit faire quelque chose après le rendu. React se souviendra de la fonction que vous avez transmise (nous l'appellerons notre « effet ») et l'appellera plus tard après avoir effectué les mises à jour du DOM.
+
+> Le useEffectne s'exécute pas pendant le rendu. Il s'exécute après le rendu.
 
 Il y a trois méthodes `de cycle de vie` d'un composant dans React :
 
