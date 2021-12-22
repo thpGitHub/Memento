@@ -20,7 +20,7 @@ API REST :
 - <https://pokeapi.co/>
 - <https://jsonplaceholder.typicode.com/> // pour générer du contenu fictif
 - <https://swapi.dev/>
-- www.navitia.io  // datas sur les transports
+- www.navitia.io // datas sur les transports
 - <https://jsonplaceholder.typicode.com/> // fake JSON data
 - <https://www.npmjs.com/package/json-server> // simuler une API REST
 - <https://docs.thecatapi.com/> //cat api
@@ -33,7 +33,7 @@ API REST :
 babel :
 
 - <https://babeljs.io/>  
-apres avant:
+  apres avant:
 - <https://babeljs.io/repl#?browsers=&build=&builtIns=false&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&shippedProposals=false&circleciRepo=&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=es2015%2Creact%2Cstage-2&prettier=false&targets=&version=7.9.0&externalPlugins=>
 
 ---
@@ -41,7 +41,7 @@ apres avant:
 bootstrap :
 
 - <https://bootsnipp.com/snippets/92e5X>
-// pour trouver un template rapidos
+  // pour trouver un template rapidos
 - <https://startbootstrap.com/>
 - <https://hackerthemes.com/bootstrap-cheatsheet/>
 
@@ -76,7 +76,7 @@ Color Themes :
 css :
 
 - <https://tympanus.net/codrops/css_reference/> //codrops site TRES interressant avec tuto sur les effects css et plus...
-- <https://cssvalues.com/>  // Entre une proprieté css pour connaitre tous les paramètres associés
+- <https://cssvalues.com/> // Entre une proprieté css pour connaitre tous les paramètres associés
 - <https://cssgenerator.org/border-css-generator.html> // générateur de css (shadow, border.....)
 - <https://cssgridgarden.com/#fr> // pour jouer en utilisant du grid
 - <https://flexboxfroggy.com/#fr> // pour jouer en utilisant du flex
@@ -97,7 +97,7 @@ Emmet :
 
 ---
 
-Emoticones  / icones :
+Emoticones / icones :
 
 - <https://emojiterra.com/fr/>
 - <https://www.flaticon.com/>
@@ -114,7 +114,7 @@ ES6 :
 
 ---
 
-Extensions Chrome : 
+Extensions Chrome :
 
 - <https://chrome.google.com/webstore/search/Testing%20Playground?hl=fr> // Testing Playground
 - <https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa/related?hl=fr> // json formateur sympas pour visualiser les retour d'api dans chrome
@@ -133,7 +133,7 @@ Formations :
 
 ---
 
-freeCodeCamp :  
+freeCodeCamp :
 
 - <https://www.freecodecamp.org/news/best-javascript-tutorial/>
 - <https://www.freecodecamp.org/news/learn-these-javascript-fundamentals-and-become-a-better-developer-2a031a0dc9cf/>
@@ -167,8 +167,7 @@ HTML :
 
 IMAGE :
 
--<https://www.pexels.com/fr-fr/>
--<https://unsplash.com/>
+-<https://www.pexels.com/fr-fr/> -<https://unsplash.com/>
 
 ---
 
@@ -207,7 +206,7 @@ les déconfinés de l'IT
 
 ---
 
-mongo :  
+mongo :
 
 // hébergement de la bdd mongo sur le cloud gratuitement
 
@@ -247,7 +246,7 @@ Panier d'achat :
 pug :
 
 - <https://pugjs.org/api/getting-started.html>
-//convertisseur HTML to pug :
+  //convertisseur HTML to pug :
 - <https://html-to-pug.com/>
 
 ---
@@ -270,7 +269,7 @@ React :
 - <https://stackoverflow.com/questions/59464337/how-to-send-params-in-usehistory-of-react-router-dom>
 
 - <https://daveceddia.com/useeffect-hook-examples/#:~:text=useEffect%20Does%20Not%20Actively%20%E2%80%9CWatch%E2%80%9D,-Some%20frameworks%20are&text=React%20does%20not%20do%20this,after%20the%20render%20is%20done.> // useEffect en détail !!!
-// Bonnes pratique dev React :
+  // Bonnes pratique dev React :
 
 - <https://alexkondov.com/tao-of-react/>
 - <https://www.joshwcomeau.com/css/styled-components/>
@@ -281,6 +280,7 @@ React :
 - <https://www.npmjs.com/package/clipboard> // librairie clipboard
 - <https://alexsidorenko.com/blog/useeffect/>
 - <https://beta.reactjs.org/learn/keeping-components-pure> // :)
+- <https://www.tremplin-numerique.org/rendu-conditionnel-dans-react> // rendu conditionnel
 
 ---
 
@@ -320,12 +320,12 @@ docs :
 - <https://github.com/socketio/engine.io>
 - <https://www.valentinog.com/blog/socket-react/> //socket io react node
 - <https://css-tricks.com/build-a-chat-app-using-react-hooks-in-100-lines-of-code/>
-- <https://blog.logrocket.com/websockets-tutorial-how-to-go-real-time-with-node-and-react-8e4693fbf843/> // A voir  !
-- <https://medium.com/swlh/build-a-real-time-chat-app-with-react-hooks-and-socket-io-4859c9afecb0> // a voir pour  const io = require("socket.io")(server, {
+- <https://blog.logrocket.com/websockets-tutorial-how-to-go-real-time-with-node-and-react-8e4693fbf843/> // A voir !
+- <https://medium.com/swlh/build-a-real-time-chat-app-with-react-hooks-and-socket-io-4859c9afecb0> // a voir pour const io = require("socket.io")(server, {
   cors: {
-    origin: "*",
+  origin: "\*",
   },
-});
+  });
 - <https://www.fullstacklabs.co/blog/chat-application-react-express-socket-io>
 - <https://socket.io/docs/v3/handling-cors/>
 - <http://expressjs.com/en/resources/middleware/cors.html>
