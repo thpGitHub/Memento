@@ -362,6 +362,14 @@ lorsque vous voulez que vos informations persistent pendant la durée de vie du 
 
 > la fonction entière est exécutée chaque fois qu'elle est restituée. Ce qui signifie que les variables initialisées avec un simple let x = 5;dans le corps de la fonction seront réinitialisées à chaque rendu, les réinitialisant. C'est la raison pour laquelle nous avons besoin de crochets comme useRef, cela donne une référence à une valeur qui persiste entre les rendus
 
+## `useReducer`
+
+`useReducer` est souvent préférable à useState quand vous avez une logique d’état local complexe qui comprend plusieurs sous-valeurs, ou quand l’état suivant dépend de l’état précédent.
+
+Le `useReducer` permet de séparer la gestion de l'état de la logique de rendu du composant.
+
+la conception `useReducer()` est basée sur l' architecture Flux <https://facebook.github.io/flux/docs/in-depth-overview/>
+
 ---
 
 ## JSX et le DOM virtuel <a name="jsx"></a>
