@@ -370,6 +370,94 @@ Le `useReducer` permet de séparer la gestion de l'état de la logique de rendu 
 
 la conception `useReducer()` est basée sur l' architecture Flux <https://facebook.github.io/flux/docs/in-depth-overview/>
 
+````javascript
+import * as React from 'react'
+
+const reducer = (prevState, newState) => {
+  return newState
+}
+
+function Compteur() {
+  const [count, setCount] = React.useReducer(reducer, 0)
+  return (
+    <input type="button" onClick={() => setCount(count + 1)} value={count} />
+  )
+}
+
+function App() {
+  return <Compteur />
+}
+
+export default App
+
+````
+
+````javascript
+import * as React from 'react'
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      state++
+      return state
+    case 'DECREMENT':
+      state--
+      return state
+    case 'RESET':
+      return 0
+    default:
+      throw new Error()
+  }
+}
+
+function Compteur() {
+  const [count, dispatch] = React.useReducer(reducer, 0)
+
+  const increment = () => {
+    dispatch({type: 'INCREMENT'})
+  }
+  const decrement = () => {
+    dispatch({type: 'DECREMENT'})
+  }
+  const reset = () => {
+    dispatch({type: 'RESET'})
+  }
+
+  return (
+    <>
+      <input
+        type="button"
+        onClick={() => {
+          increment()
+        }}
+        value={`incrémenter ${count}`}
+      />
+      <input
+        type="button"
+        onClick={() => {
+          decrement()
+        }}
+        value={`décrémenter ${count}`}
+      />
+      <input
+        type="button"
+        onClick={() => {
+          reset()
+        }}
+        value={`reseter ${count}`}
+      />
+    </>
+  )
+}
+
+function App() {
+  return <Compteur />
+}
+
+export default App
+
+````
+
 ---
 
 ## JSX et le DOM virtuel <a name="jsx"></a>
