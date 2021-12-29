@@ -527,6 +527,72 @@ function App() {
 export default App
 ````
 
+## object state
+
+````javascript
+import * as React from 'react'
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return {count: state.count + action.payload}
+    case 'DECREMENT':
+      return {count: state.count - action.payload}
+    case 'RESET':
+      return {count:0}
+    default:
+      throw new Error()
+  }
+}
+
+function Compteur() {
+  const [state, dispatch] = React.useReducer(reducer, {count: 0})
+
+  const increment = (step = 1) => {
+    dispatch({type: 'INCREMENT', payload: step})
+  }
+  const decrement = (step = 1) => {
+    dispatch({type: 'DECREMENT', payload: step})
+  }
+  const reset = () => {
+    dispatch({type: 'RESET'})
+  }
+
+  return (
+    <>
+      <input
+        type="button"
+        onClick={() => {
+          increment(10)
+        }}
+        value={`incrémenter ${state.count}`}
+      />
+      <input
+        type="button"
+        onClick={() => {
+          decrement(2)
+        }}
+        value={`décrémenter ${state.count}`}
+      />
+      <input
+        type="button"
+        onClick={() => {
+          reset()
+        }}
+        value={`reseter ${state.count}`}
+      />
+    </>
+  )
+}
+
+function App() {
+  return <Compteur />
+}
+
+export default App
+
+````
+
 ---
 
 ## JSX et le DOM virtuel <a name="jsx"></a>
