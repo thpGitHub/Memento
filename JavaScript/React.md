@@ -364,6 +364,12 @@ lorsque vous voulez que vos informations persistent pendant la durée de vie du 
 
 ## `useReducer`
 
+Règle de base
+
+- si l'état se met à jour indépendamment - séparez useStates
+- pour l'état qui se met à jour ensemble, ou un seul champ à la fois met à jour - un seul objet useState
+- pour l'état où les interactions utilisateur mettent à jour différentes parties de l'état - useReducer
+
 `useReducer` est souvent préférable à useState quand vous avez une logique d’état local complexe qui comprend plusieurs sous-valeurs, ou quand l’état suivant dépend de l’état précédent.
 
 Le `useReducer` permet de séparer la gestion de l'état de la logique de rendu du composant.
@@ -398,11 +404,9 @@ import * as React from 'react'
 const reducer = (state, action) => {
   switch (action.type) {
     case 'INCREMENT':
-      state++
-      return state
+      return ++state
     case 'DECREMENT':
-      state--
-      return state
+      return --state
     case 'RESET':
       return 0
     default:
@@ -456,6 +460,71 @@ function App() {
 
 export default App
 
+````
+
+## `payload data`
+
+````javascript
+import * as React from 'react'
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'INCREMENT':
+      return state + action.payload
+    case 'DECREMENT':
+      return state - action.payload
+    case 'RESET':
+      return 0
+    default:
+      throw new Error()
+  }
+}
+
+function Compteur() {
+  const [count, dispatch] = React.useReducer(reducer, 0)
+
+  const increment = (step = 1) => {
+    dispatch({type: 'INCREMENT', payload: step})
+  }
+  const decrement = (step = 1) => {
+    dispatch({type: 'DECREMENT', payload: step})
+  }
+  const reset = () => {
+    dispatch({type: 'RESET'})
+  }
+
+  return (
+    <>
+      <input
+        type="button"
+        onClick={() => {
+          increment(10)
+        }}
+        value={`incrémenter ${count}`}
+      />
+      <input
+        type="button"
+        onClick={() => {
+          decrement(2)
+        }}
+        value={`décrémenter ${count}`}
+      />
+      <input
+        type="button"
+        onClick={() => {
+          reset()
+        }}
+        value={`reseter ${count}`}
+      />
+    </>
+  )
+}
+
+function App() {
+  return <Compteur />
+}
+
+export default App
 ````
 
 ---
