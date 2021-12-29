@@ -68,3 +68,34 @@ Si on souhaite utiliser Fetch avec node et non dans le navigateur :
 ````javascript
     const fetch = require("node-fetch");
 ````
+
+## Fournir des options à la requête
+
+La méthode fetch() accepte un second paramètre, optionnel ; un objet init qui vous permet de contrôler un certain nombre de réglages :
+
+- <https://developer.mozilla.org/fr/docs/Web/API/Fetch_API/Using_Fetch#fournir_des_options_%C3%A0_la_requ%C3%AAte>
+
+````javascript
+var myHeaders = new Headers();
+
+var myInit = { method: 'GET',
+               headers: myHeaders,
+               mode: 'cors',
+               cache: 'default' };
+
+fetch('flowers.jpg',myInit)
+.then(function(response) {
+  return response.blob();
+})
+.then(function(myBlob) {
+  var objectURL = URL.createObjectURL(myBlob);
+  myImage.src = objectURL;
+});
+````
+
+A voir pour le header de fetch :
+
+- <https://github.github.io/fetch/>
+
+- URLSearchParams : application/x-www-form-urlencoded;charset=UTF-8
+- FormData : multipart/form-data
