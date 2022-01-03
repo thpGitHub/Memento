@@ -509,6 +509,47 @@ export default App
 
 ````
 
+Autre exemple intérressant :
+
+````javascript
+const reducer = (state, action) => ({...state, ...action})
+
+function useFindMarvelByName(marvelName) {
+  const [state, dispatch] = React.useReducer(reducer, {
+    marvel: null,
+    error: null,
+  })
+
+  React.useEffect(() => {
+    if (!marvelName) {
+      return
+    }
+    dispatch({error: null})
+    dispatch({marvel: null})
+
+    fetchMarvel(marvelName)
+      .then(marvel => dispatch({marvel}))
+      .catch(error => dispatch({error}))
+  }, [marvelName])
+
+  return state
+}
+
+function Marvel({marvelName}) {
+  const state = useFindMarvelByName(marvelName)
+  console.log('state ===', state);
+  const {error, marvel} = state
+  if (error) {
+    throw error
+  }
+  return (
+    <div>
+      {marvel ? <MarvelPersoView marvel={marvel} /> : `Le marvel n'existe pas`}
+    </div>
+  )
+}
+````
+
 ## `payload data`
 
 ````javascript
