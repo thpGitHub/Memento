@@ -364,6 +364,10 @@ lorsque vous voulez que vos informations persistent pendant la durée de vie du 
 
 ## `useReducer`
 
+- <https://ichi.pro/fr/usereducer-explique-14778598713646>
+
+Tout ce que `useReducer` fait est de prendre un état initial et de nous donner un moyen de modifier cet état en fonction des règles que nous définissons.
+
 Règle de base
 
 - si l'état se met à jour indépendamment - séparez useStates
@@ -375,6 +379,49 @@ Règle de base
 Le `useReducer` permet de séparer la gestion de l'état de la logique de rendu du composant.
 
 la conception `useReducer()` est basée sur l' architecture Flux <https://facebook.github.io/flux/docs/in-depth-overview/>
+
+````javascript
+// Le premier argument passé au hook useReducer est une fonction reducer.
+// On appel dispatch () lorsque veut changer le state et envoyer des actions au reducer.
+const [state, dispatch] = useReducer(reducer, initialState)
+
+const reducer = (state, action) => {
+// Met à jour le state avec les règles d'actions.
+// En  générale, l'action est un objet qui a un type et peut aussi avoir une charge utile (payload).
+return updatedState;
+}
+````
+
+````javascript
+const initialState = {
+    moneyInBank: 0,
+    moneyInSofa: 999,
+    billsToPay: 1000
+}
+
+const reducer = (state, action) => {
+    switch(action.type){
+        case "DEPOSIT MONEY IN BANK":
+            return {...state,
+                    moneyInBank: state.moneyInBank + action.payload
+                   };
+        case "PAY SOME BILLS":
+            return {...state,
+                    billsToPay: state.billsToPay - action.payload
+                   };
+        case "CLEAN THE SOFA":
+            return {...state,
+                    moneyInBank: state.moneyInBank
+                                 + state.moneyInSofa,
+                    moneyInSofa: 0
+                   };
+};
+}
+// Pour chaque cas, on retourne un nouvel objet state, (cela empêche de muter le state)
+// l'opérateur de ...state copie toutes les propriétés et valeurs existantes dans un nouvel objet.
+// Ensuite, nous écrasons la propriété que nous voulons mettre à jour en la déclarant explicitement
+// à nouveau avec la nouvelle valeur.
+````
 
 ````javascript
 import * as React from 'react'
