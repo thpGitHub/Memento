@@ -615,6 +615,86 @@ function App() {
 export default App
 ````
 
+Type d'action, chargement de status et payload :
+
+````javascript
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'fetching':
+      return {status: 'fetching', marvel: null, error: null}
+    case 'done':
+      return {status: 'done', marvel: action.payload, error: null}
+    case 'fail':
+      return {status: 'fail', marvel: null, error: action.error}
+    default:
+      throw new Error('Action non supportée')
+  }
+}
+
+function useFindMarvelByName(marvelName) {
+  const [state, dispatch] = React.useReducer(reducer, {
+    marvel: null,
+    error: null,
+    status: 'idle',
+  })
+
+  React.useEffect(() => {
+    if (!marvelName) {
+      return
+    }
+    // dispatch({error: null})
+    // dispatch({marvel: null})
+    dispatch({type: 'fetching'})
+    fetchMarvel(marvelName)
+      .then(marvel => dispatch({type: 'done', payload: marvel}))
+      .catch(error => dispatch({type: 'fail', error}))
+  }, [marvelName])
+
+  return state
+}
+
+function Marvel({marvelName}) {
+  const state = useFindMarvelByName(marvelName)
+  const {error, marvel, status} = state
+  if (error) {
+    throw error
+  } else if (status === 'idle') {
+    return 'Entrer un nom de marvel !'
+  } else if (status === 'fetching') {
+    return 'Chargement en cours...'
+  } else if (status === 'done') {
+    return (
+      <div>
+        {marvel ? (
+          <MarvelPersoView marvel={marvel} />
+        ) : (
+          `Le marvel n'existe pas`
+        )}
+      </div>
+    )
+  }
+}
+function App() {
+  const [marvelName, setMarvelName] = React.useState('')
+  const handleSearch = name => {
+    setMarvelName(name)
+  }
+  return (
+    <div className="marvel-app">
+      <MarvelSearchForm marvelName={marvelName} onSearch={handleSearch} />
+      <div className="marvel-detail">
+        <ErrorBoundary key={marvelName} FallbackComponent={ErrorDisplay}>
+          <Marvel marvelName={marvelName} />
+        </ErrorBoundary>
+      </div>
+    </div>
+  )
+}
+
+export default App
+
+````
+
 ## object state
 
 ````javascript
