@@ -176,6 +176,7 @@ JS :
 
 - <https://2020.stateofjs.com/fr-FR/>
 - <https://risingstars.js.org/2020/en#section-all>
+- <https://risingstars.js.org/2021/en#section-desktop>
 
 ---
 
