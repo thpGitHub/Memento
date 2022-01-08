@@ -1179,6 +1179,10 @@ export default App
 
 ## `useMemo`
 
+## `useLayoutEffect`
+
+## `useImperativeHandle`
+
 ---
 
 ## JSX et le DOM virtuel <a name="jsx"></a>
