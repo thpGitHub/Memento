@@ -193,7 +193,7 @@ effacer
     # git reset  pour faire la même chose, mais sur une branche privée.
 
     git push origin master # push la branche master du dépot local vers le dépot distant origin
-    git push -u origin main 
+    git push -u origin main # Voir à la fin de ce fichier --set-upstream
     git push origin --all # push toutes les branches locales sur le dépot distant origin
     git push origin --tags # push tous nos tags locaux vers le dépôt distant.
     git push -f heroku main # force le push, écrase le contenu de la branche distante par le contenu de la branch locale
@@ -225,6 +225,9 @@ effacer
     # positionnés vos pointeurs de branche ainsi que la manière dont votre historique a divergé.
     git branch # affichera la liste de toutes les branches (* devant une branche: c'est que le pointeur HEAD se situe sur cette branche)
     git branch -v # affichera la liste des derniers commits sur chaque branche
+    git branch -vv # affichera la liste des derniers commits sur chaque branche
+    # et entre [] les branches en amont (upstream) liées à nos branches locale
+    git branch -avv
     git branch --merged # affichera quelles branches ont déjà été fusionnées dans votre branche courante (*)
     git branch --no-merged # affichera les branches qui ne sont pas fusionnées (merge)
     git diff branch1..branch2 # affichera la différence entre les deux branches
@@ -389,3 +392,29 @@ templates pour ``.gitattributes`` : https://gitattributes.io/ ou https://github.
 ### Définitions
 
 - HEAD :  est une référence sur notre position actuelle dans notre répertoire de travail Git.
+
+### A voir
+
+- <https://devconnected.com/how-to-set-upstream-branch-on-git/>
+
+---
+
+````shell script
+#La différence entre
+git push origin <branch>
+#et
+git push --set-upstream origin <branch>
+#est qu'ils poussent tous les deux très bien vers le référentiel distant, mais c'est lorsque vous tirez que vous remarquez la différence.
+
+#Si vous faites:
+git push origin <branch>
+#lorsque vous tirez, vous devez faire:
+git pull origin <branch>
+
+#Mais si vous faites:
+git push --set-upstream origin <branch>
+#alors, lorsque vous tirez, vous n'avez qu'à faire:
+git pull
+
+#Ainsi, l'ajout de --set-upstreampermet de ne pas avoir à spécifier de quelle branche vous voulez extraire à chaque fois que vous le faites git pull.
+````
