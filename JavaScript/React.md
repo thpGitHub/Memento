@@ -1425,11 +1425,6 @@ Les composants sont comme des fonctions JavaScript, ils acceptent des entrées a
 
 Lorsque React rencontre un élément représentant un composant défini par l’utilisateur, il transmet les attributs JSX et les enfants à ce composant sous la forme d’un objet unique (`props`).
 
-> Pour passer une props à un composant il faut l'ajouter en paramètre de la fonction du composant.
-> On passe des props depuis un composant parent.
-> Les props sont les données en entrées d'un composant.
-> Les props sonts des objets.
-
 ```javascript
 function Welcome(props) {
   // props === {name: 'Sara'}
