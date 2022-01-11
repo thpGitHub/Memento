@@ -1,6 +1,7 @@
 # React
 
 <!-- 1. [Il existe deux types de composant dans REACT](#il-existe-deux-types-de-composant-dans-REACT) -->
+
 1. [Deux types de composant](#2components)
 2. [JSX](#jsx)
 3. [Props](#props)
@@ -16,11 +17,11 @@
 13. [Redux](#redux)
 14. [Annexes](#annexes)
 
-Création d'une app React sans ``create react app`` ni de ``CDN`` (voir en annexe pour plus de détails).
+Création d'une app React sans `create react app` ni de `CDN` (voir en annexe pour plus de détails).
 
-- création d'un fichier ``package.json`` à la racine du projet
+- création d'un fichier `package.json` à la racine du projet
 
-````JSON
+```JSON
     {
   "name": "react-pokemons-app",
   "version": "1.0.0",
@@ -56,11 +57,11 @@ Création d'une app React sans ``create react app`` ni de ``CDN`` (voir en annex
     ]
   }
 }
-````
+```
 
-- création d'un fichier ``tsconfig.json`` à la racine du projet. Fichier de configuration typescript
+- création d'un fichier `tsconfig.json` à la racine du projet. Fichier de configuration typescript
 
-````JSON
+```JSON
 {
   "compilerOptions": {
     "target": "es5",
@@ -87,39 +88,34 @@ Création d'une app React sans ``create react app`` ni de ``CDN`` (voir en annex
     "src"
   ]
 }
-````
+```
 
-- ``$ npm install`` pour installer toutes les dépendances du fichier ``package.json`` et va créer un dossier ``node_modules``
-- création d'un dossier ``src`` avec un fichier ``App.tsx`` et ``index.tsx`` qui fera le lien entre ``App.tsx`` et ``index.html``
+- `$ npm install` pour installer toutes les dépendances du fichier `package.json` et va créer un dossier `node_modules`
+- création d'un dossier `src` avec un fichier `App.tsx` et `index.tsx` qui fera le lien entre `App.tsx` et `index.html`
 
-````typescript
-import React from 'react';
-  
+```typescript
+import React from "react";
+
 const App: React.FC = () => {
- const name: String = 'React';
-    
- return (
-  <h1>Hello, {name} !</h1>
- )
-}
-  
+  const name: String = "React";
+
+  return <h1>Hello, {name} !</h1>;
+};
+
 export default App;
-````
+```
 
-````typescript
-import React from 'react';
-import ReactDom from 'react-dom';
-import App from './App';
+```typescript
+import React from "react";
+import ReactDom from "react-dom";
+import App from "./App";
 
-ReactDom.render(
-   <App/>,
-   document.querySelector('#root')
-);
-````
+ReactDom.render(<App />, document.querySelector("#root"));
+```
 
-- création d'un dossier ``public`` avec un fichier ``index.
+- création d'un dossier `public` avec un fichier ``index.
 
-````HTML
+```HTML
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -132,9 +128,9 @@ ReactDom.render(
     <div id="root">L'application est en cours de chargement...</div>
   </body>
 </html>
-````
+```
 
-- lancer l'application ``$ npm start``
+- lancer l'application `$ npm start`
 
 ---
 
@@ -142,62 +138,59 @@ ReactDom.render(
 
 > Les noms des composants commencent toujours par une majuscule
 
-Composant de fonction                       | Composant de classe
---- | ---
-*Stateless component*                       | *Statefull component*
-Plus performant                             |  Moins performant
-Plus concis                                 | Plus long à écrire
-Pas de gestion du state                     | Gestion du state
-Pas de gestion du cycle de vie du composant | Gestion du cycle de vie du composant
+| Composant de fonction                       | Composant de classe                  |
+| ------------------------------------------- | ------------------------------------ |
+| _Stateless component_                       | _Statefull component_                |
+| Plus performant                             | Moins performant                     |
+| Plus concis                                 | Plus long à écrire                   |
+| Pas de gestion du state                     | Gestion du state                     |
+| Pas de gestion du cycle de vie du composant | Gestion du cycle de vie du composant |
 
 - Les composants de fonctions
 
-````typescript
-  import React, { FunctionComponent } from 'react';
-  
-  const App: FunctionComponent = () => { // correspond : const App: React.FC = () => {
-    const name: String = 'React';
-    
-    return (
-     <h1>Hello, {name} !</h1>
-    )
-  }
-  
-  export default App;
-````
+```typescript
+import React, { FunctionComponent } from "react";
+
+const App: FunctionComponent = () => {
+  // correspond : const App: React.FC = () => {
+  const name: String = "React";
+
+  return <h1>Hello, {name} !</h1>;
+};
+
+export default App;
+```
 
 - Les componsant de classe
 
-````typescript
-  import React from 'react';
-  
-  export default class App extends React.Component {
-    const name: String = 'React';
-    
-    render() {
-      return <h1>Hello, {name} !</h1>;
-    }
+```typescript
+import React from "react";
+
+export default class App extends React.Component {
+  name: String = "React";
+
+  render() {
+    return <h1>Hello, {name} !</h1>;
   }
-````
+}
+```
 
 ---
 
 ## Les Hooks <a name="hooks"></a>
 
-> Les Hooks permettent de rajouter un ``state`` à un composant de fonction et se nomme ``useState``.
-Les Hooks sont des fonctions javaScript.
+> Les Hooks permettent de rajouter un `state` à un composant de fonction et se nomme `useState`.
+> Les Hooks sont des fonctions javaScript.
 
-````typescript
-  import React, { FunctionComponent, useState } from 'react';
-  
+```typescript
+import React, { FunctionComponent, useState } from "react";
+
 const App: FunctionComponent = () => {
- const [name, setName] = useState<string> ('React');
-    
- return (
-  <h1>Hello, {name} !</h1>
- )
-}
-  
+  const [name, setName] = useState<string>("React");
+
+  return <h1>Hello, {name} !</h1>;
+};
+
 export default App;
 
 /*
@@ -207,120 +200,118 @@ let nameStateVariable = useState('React');
 let name = nameStateVariable[0];
 let setName = nameStateVariable[1];
 */
-````
+```
 
 ### Lazy Lazy initialisation
 
-> Si l’on a besoin d'une valeur qu’une seul fois il est possible de passer une fonction fléchée à  React.useState(() => fonctionLongue()). La fonction longue ne sera alors appelé qu’une seule fois ce qui améliorera les performances.
+> Si l’on a besoin d'une valeur qu’une seul fois il est possible de passer une fonction fléchée à React.useState(() => fonctionLongue()). La fonction longue ne sera alors appelé qu’une seule fois ce qui améliorera les performances.
 
-````javascript
-import * as React from 'react'
+```javascript
+import * as React from "react";
 
-function Login({initialEmail = ''}) {
+function Login({ initialEmail = "" }) {
   const [email, setEmail] = React.useState(
-    () => window.localStorage.getItem('email') || initialEmail,
-  )
-  const [error, setError] = React.useState(false)
-  const handleChange = event => {
-    setEmail(event.target.value)
-    setError(!event.target.value.includes('@'))
-    window.localStorage.setItem('email', event.target.value)
-  }
+    () => window.localStorage.getItem("email") || initialEmail
+  );
+  const [error, setError] = React.useState(false);
+  const handleChange = (event) => {
+    setEmail(event.target.value);
+    setError(!event.target.value.includes("@"));
+    window.localStorage.setItem("email", event.target.value);
+  };
   return (
     <div>
       <form>
         <label>Entrez votre email : </label>
         <input value={email} onChange={handleChange} />
       </form>
-      <div style={{color: error ? 'red' : ''}}>
-        Votre {email} est {error ? 'non valide' : 'valide'}{' '}
+      <div style={{ color: error ? "red" : "" }}>
+        Votre {email} est {error ? "non valide" : "valide"}{" "}
       </div>
     </div>
-  )
+  );
 }
 
 function App() {
-  return <Login initialEmail="example@example.com" />
+  return <Login initialEmail="example@example.com" />;
 }
 
-export default App
-````
+export default App;
+```
 
 ### `useEffect`
 
-> Les hooks permettent de rajouter des méthodes de  `cycle de vie` à un composants de fonction et se nomme `useEffect`. `useEffect` sera exécuté après le rendu !
+> Les hooks permettent de rajouter des méthodes de `cycle de vie` à un composants de fonction et se nomme `useEffect`. `useEffect` sera exécuté après le rendu !
 
->En utilisant ce Hook, vous dites à React que votre composant doit faire quelque chose après le rendu. React se souviendra de la fonction que vous avez transmise (nous l'appellerons notre « effet ») et l'appellera plus tard après avoir effectué les mises à jour du DOM.
+> En utilisant ce Hook, vous dites à React que votre composant doit faire quelque chose après le rendu. React se souviendra de la fonction que vous avez transmise (nous l'appellerons notre « effet ») et l'appellera plus tard après avoir effectué les mises à jour du DOM.
 
 > Le useEffectne s'exécute pas pendant le rendu. Il s'exécute après le rendu.
 
 Il y a trois méthodes `de cycle de vie` d'un composant dans React :
 
-- `` componentDidMount() ``
-C'est la méthode appelée en premier lors de la création d'un composant lorsqu'il est inséré dans le DOM.
-Cela permet de mettre en place certaines instructions lors de l'initialisation du composant, comme la récupération de données depuis un serveur distant par exemple.
-On parle de ``montage`` du composant.
+- `componentDidMount()`
+  C'est la méthode appelée en premier lors de la création d'un composant lorsqu'il est inséré dans le DOM.
+  Cela permet de mettre en place certaines instructions lors de l'initialisation du composant, comme la récupération de données depuis un serveur distant par exemple.
+  On parle de `montage` du composant.
 
-- ``componentDidUpdate(prevProps, prevState)``
-Dès que les valeurs d'une propriété du composant sont modifiées, le composant est mis à jour.
-La méthode reçoit en paramètre deux objets représentant les ``props`` et le ``state`` avant la mise à jour.
-Cela permet de travailler sur le DOM une fois que le composant a été mis à jour.
+- `componentDidUpdate(prevProps, prevState)`
+  Dès que les valeurs d'une propriété du composant sont modifiées, le composant est mis à jour.
+  La méthode reçoit en paramètre deux objets représentant les `props` et le `state` avant la mise à jour.
+  Cela permet de travailler sur le DOM une fois que le composant a été mis à jour.
 
-- ``componentWillUnmount()``
-C'est la dernière méthode de cycle de vie d'un composant, appelé juste avant que le composant soit détruit par React.
-Un composant est détruit lorsqu'il est retirer du DOM. Cette méthode permet de se désabonner de certaines dépendances du composant et ainsi éviter les problèmes de performance.
-Cette étape est appelé ``démontage``.
+- `componentWillUnmount()`
+  C'est la dernière méthode de cycle de vie d'un composant, appelé juste avant que le composant soit détruit par React.
+  Un composant est détruit lorsqu'il est retirer du DOM. Cette méthode permet de se désabonner de certaines dépendances du composant et ainsi éviter les problèmes de performance.
+  Cette étape est appelé `démontage`.
 
-````typescript
-    import React, { FunctionComponent, useState, useEffect } from 'react';
-    import Pokemon from './models/pokemon';
-    import POKEMONS from './models/mock-pokemon';
-  
-    const App: FunctionComponent = () => {
-      const [pokemons, setPokemons] = useState<Pokemon[]> ([]);
-   
-      useEffect( () => {
-        setPokemons(POKEMONS);
-      }, []);
+```typescript
+import React, { FunctionComponent, useState, useEffect } from "react";
+import Pokemon from "./models/pokemon";
+import POKEMONS from "./models/mock-pokemon";
 
-    return (
-      <h2>Il y a  {pokemons.length} pokemons !</h2>
-    )
-    };
-  
+const App: FunctionComponent = () => {
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
+
+  useEffect(() => {
+    setPokemons(POKEMONS);
+  }, []);
+
+  return <h2>Il y a {pokemons.length} pokemons !</h2>;
+};
+
 export default App;
-````
+```
 
 ### Dépendances d’effets
 
-````javascript
-const [name, setName] = React.useState()
+```javascript
+const [name, setName] = React.useState();
 React.useEffect(() => {
   //se déclanche uniquement quand name change de valeur via setName
-}, [name])
-````
+}, [name]);
+```
 
 ### Dépendances d’effets sur props
 
-````javascript
-import * as React from 'react'
+```javascript
+import * as React from "react";
 
-function Login({initialEmail = ''}) {
+function Login({ initialEmail = "" }) {
   const [email, setEmail] = React.useState(
-    () => window.localStorage.getItem('email') || initialEmail,
-  )
-  const [password, setPassword] = React.useState('')
-  const handleChange = async event => setEmail(event.target.value)
-  const handlePasswordChange = async event => setPassword(event.target.value)
+    () => window.localStorage.getItem("email") || initialEmail
+  );
+  const [password, setPassword] = React.useState("");
+  const handleChange = async (event) => setEmail(event.target.value);
+  const handlePasswordChange = async (event) => setPassword(event.target.value);
 
   React.useEffect(() => {
-    window.localStorage.setItem('email', email)
-    console.log('useEffect email a changé')
-  }, [email])
+    window.localStorage.setItem("email", email);
+    console.log("useEffect email a changé");
+  }, [email]);
   React.useEffect(() => {
-    window.localStorage.setItem('email', initialEmail)
-    console.log('useEffect initialEmail a changé')
-  }, [initialEmail])
+    window.localStorage.setItem("email", initialEmail);
+    console.log("useEffect initialEmail a changé");
+  }, [initialEmail]);
   return (
     <div>
       <form>
@@ -330,22 +321,21 @@ function Login({initialEmail = ''}) {
         <input value={password} onChange={handlePasswordChange} />
       </form>
     </div>
-  )
+  );
 }
 
 function App() {
-  const [count, setCount] = React.useState(0)
+  const [count, setCount] = React.useState(0);
   React.useEffect(() => {
     const interval = setInterval(() => {
-      setCount(count => count + 1)
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [])
-  return <Login initialEmail={`example-${count}@example.com`} />
+      setCount((count) => count + 1);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, []);
+  return <Login initialEmail={`example-${count}@example.com`} />;
 }
-export default App
-
-````
+export default App;
+```
 
 ## 3 règles à respecter avec les Hooks
 
@@ -358,7 +348,7 @@ export default App
 La différence entre `useState` et `useRef` est que `useState` provoque un nouveau rendu, `useRef` ne le fait pas.
 
 > Fondamentalement, nous utilisons UseState dans les cas où la valeur de l'état doit être mise à jour avec un nouveau rendu.
-lorsque vous voulez que vos informations persistent pendant la durée de vie du composant, vous utiliserez UseRef car ce n'est tout simplement pas pour travailler avec le re-rendu.
+> lorsque vous voulez que vos informations persistent pendant la durée de vie du composant, vous utiliserez UseRef car ce n'est tout simplement pas pour travailler avec le re-rendu.
 
 > la fonction entière est exécutée chaque fois qu'elle est restituée. Ce qui signifie que les variables initialisées avec un simple let x = 5;dans le corps de la fonction seront réinitialisées à chaque rendu, les réinitialisant. C'est la raison pour laquelle nous avons besoin de crochets comme useRef, cela donne une référence à une valeur qui persiste entre les rendus
 
@@ -380,289 +370,283 @@ Le `useReducer` permet de séparer la gestion de l'état de la logique de rendu 
 
 la conception `useReducer()` est basée sur l' architecture Flux <https://facebook.github.io/flux/docs/in-depth-overview/>
 
-````javascript
+```javascript
 // Le premier argument passé au hook useReducer est une fonction reducer.
 // On appel dispatch () lorsque veut changer le state et envoyer des actions au reducer.
-const [state, dispatch] = useReducer(reducer, initialState)
+const [state, dispatch] = useReducer(reducer, initialState);
 
 const reducer = (state, action) => {
-// Met à jour le state avec les règles d'actions.
-// En  générale, l'action est un objet qui a un type et peut aussi avoir une charge utile (payload).
-return updatedState;
-}
-````
-
-````javascript
-const initialState = {
-    moneyInBank: 0,
-    moneyInSofa: 999,
-    billsToPay: 1000
-}
-
-const reducer = (state, action) => {
-    switch(action.type){
-        case "DEPOSIT MONEY IN BANK":
-            return {...state,
-                    moneyInBank: state.moneyInBank + action.payload
-                   };
-        case "PAY SOME BILLS":
-            return {...state,
-                    billsToPay: state.billsToPay - action.payload
-                   };
-        case "CLEAN THE SOFA":
-            return {...state,
-                    moneyInBank: state.moneyInBank
-                                 + state.moneyInSofa,
-                    moneyInSofa: 0
-                   };
+  // Met à jour le state avec les règles d'actions.
+  // En  générale, l'action est un objet qui a un type et peut aussi avoir une charge utile (payload).
+  return updatedState;
 };
-}
+```
+
+```javascript
+const initialState = {
+  moneyInBank: 0,
+  moneyInSofa: 999,
+  billsToPay: 1000,
+};
+
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "DEPOSIT MONEY IN BANK":
+      return { ...state, moneyInBank: state.moneyInBank + action.payload };
+    case "PAY SOME BILLS":
+      return { ...state, billsToPay: state.billsToPay - action.payload };
+    case "CLEAN THE SOFA":
+      return {
+        ...state,
+        moneyInBank: state.moneyInBank + state.moneyInSofa,
+        moneyInSofa: 0,
+      };
+  }
+};
 // Pour chaque cas, on retourne un nouvel objet state, (cela empêche de muter le state)
 // l'opérateur de ...state copie toutes les propriétés et valeurs existantes dans un nouvel objet.
 // Ensuite, nous écrasons la propriété que nous voulons mettre à jour en la déclarant explicitement
 // à nouveau avec la nouvelle valeur.
-````
+```
 
-````javascript
-import * as React from 'react'
+```javascript
+import * as React from "react";
 
 const reducer = (prevState, newState) => {
-  return newState
-}
+  return newState;
+};
 
 function Compteur() {
-  const [count, setCount] = React.useReducer(reducer, 0)
+  const [count, setCount] = React.useReducer(reducer, 0);
   return (
     <input type="button" onClick={() => setCount(count + 1)} value={count} />
-  )
+  );
 }
 
 function App() {
-  return <Compteur />
+  return <Compteur />;
 }
 
-export default App
+export default App;
+```
 
-````
-
-````javascript
-import * as React from 'react'
+```javascript
+import * as React from "react";
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'INCREMENT':
-      return ++state
-    case 'DECREMENT':
-      return --state
-    case 'RESET':
-      return 0
+    case "INCREMENT":
+      return ++state;
+    case "DECREMENT":
+      return --state;
+    case "RESET":
+      return 0;
     default:
-      throw new Error()
+      throw new Error();
   }
-}
+};
 
 function Compteur() {
-  const [count, dispatch] = React.useReducer(reducer, 0)
+  const [count, dispatch] = React.useReducer(reducer, 0);
 
   const increment = () => {
-    dispatch({type: 'INCREMENT'})
-  }
+    dispatch({ type: "INCREMENT" });
+  };
   const decrement = () => {
-    dispatch({type: 'DECREMENT'})
-  }
+    dispatch({ type: "DECREMENT" });
+  };
   const reset = () => {
-    dispatch({type: 'RESET'})
-  }
+    dispatch({ type: "RESET" });
+  };
 
   return (
     <>
       <input
         type="button"
         onClick={() => {
-          increment()
+          increment();
         }}
         value={`incrémenter ${count}`}
       />
       <input
         type="button"
         onClick={() => {
-          decrement()
+          decrement();
         }}
         value={`décrémenter ${count}`}
       />
       <input
         type="button"
         onClick={() => {
-          reset()
+          reset();
         }}
         value={`reseter ${count}`}
       />
     </>
-  )
+  );
 }
 
 function App() {
-  return <Compteur />
+  return <Compteur />;
 }
 
-export default App
-
-````
+export default App;
+```
 
 Autre exemple intérressant :
 
-````javascript
-const reducer = (state, action) => ({...state, ...action})
+```javascript
+const reducer = (state, action) => ({ ...state, ...action });
 
 function useFindMarvelByName(marvelName) {
   const [state, dispatch] = React.useReducer(reducer, {
     marvel: null,
     error: null,
-  })
+  });
 
   React.useEffect(() => {
     if (!marvelName) {
-      return
+      return;
     }
-    dispatch({error: null})
-    dispatch({marvel: null})
+    dispatch({ error: null });
+    dispatch({ marvel: null });
 
     fetchMarvel(marvelName)
-      .then(marvel => dispatch({marvel}))
-      .catch(error => dispatch({error}))
-  }, [marvelName])
+      .then((marvel) => dispatch({ marvel }))
+      .catch((error) => dispatch({ error }));
+  }, [marvelName]);
 
-  return state
+  return state;
 }
 
-function Marvel({marvelName}) {
-  const state = useFindMarvelByName(marvelName)
-  console.log('state ===', state);
-  const {error, marvel} = state
+function Marvel({ marvelName }) {
+  const state = useFindMarvelByName(marvelName);
+  console.log("state ===", state);
+  const { error, marvel } = state;
   if (error) {
-    throw error
+    throw error;
   }
   return (
     <div>
       {marvel ? <MarvelPersoView marvel={marvel} /> : `Le marvel n'existe pas`}
     </div>
-  )
+  );
 }
-````
+```
 
 ## `payload data`
 
-````javascript
-import * as React from 'react'
+```javascript
+import * as React from "react";
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'INCREMENT':
-      return state + action.payload
-    case 'DECREMENT':
-      return state - action.payload
-    case 'RESET':
-      return 0
+    case "INCREMENT":
+      return state + action.payload;
+    case "DECREMENT":
+      return state - action.payload;
+    case "RESET":
+      return 0;
     default:
-      throw new Error()
+      throw new Error();
   }
-}
+};
 
 function Compteur() {
-  const [count, dispatch] = React.useReducer(reducer, 0)
+  const [count, dispatch] = React.useReducer(reducer, 0);
 
   const increment = (step = 1) => {
-    dispatch({type: 'INCREMENT', payload: step})
-  }
+    dispatch({ type: "INCREMENT", payload: step });
+  };
   const decrement = (step = 1) => {
-    dispatch({type: 'DECREMENT', payload: step})
-  }
+    dispatch({ type: "DECREMENT", payload: step });
+  };
   const reset = () => {
-    dispatch({type: 'RESET'})
-  }
+    dispatch({ type: "RESET" });
+  };
 
   return (
     <>
       <input
         type="button"
         onClick={() => {
-          increment(10)
+          increment(10);
         }}
         value={`incrémenter ${count}`}
       />
       <input
         type="button"
         onClick={() => {
-          decrement(2)
+          decrement(2);
         }}
         value={`décrémenter ${count}`}
       />
       <input
         type="button"
         onClick={() => {
-          reset()
+          reset();
         }}
         value={`reseter ${count}`}
       />
     </>
-  )
+  );
 }
 
 function App() {
-  return <Compteur />
+  return <Compteur />;
 }
 
-export default App
-````
+export default App;
+```
 
 Type d'action, chargement de status et payload :
 
-````javascript
+```javascript
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'fetching':
-      return {status: 'fetching', marvel: null, error: null}
-    case 'done':
-      return {status: 'done', marvel: action.payload, error: null}
-    case 'fail':
-      return {status: 'fail', marvel: null, error: action.error}
+    case "fetching":
+      return { status: "fetching", marvel: null, error: null };
+    case "done":
+      return { status: "done", marvel: action.payload, error: null };
+    case "fail":
+      return { status: "fail", marvel: null, error: action.error };
     default:
-      throw new Error('Action non supportée')
+      throw new Error("Action non supportée");
   }
-}
+};
 
 function useFindMarvelByName(marvelName) {
   const [state, dispatch] = React.useReducer(reducer, {
     marvel: null,
     error: null,
-    status: 'idle',
-  })
+    status: "idle",
+  });
 
   React.useEffect(() => {
     if (!marvelName) {
-      return
+      return;
     }
     // dispatch({error: null})
     // dispatch({marvel: null})
-    dispatch({type: 'fetching'})
+    dispatch({ type: "fetching" });
     fetchMarvel(marvelName)
-      .then(marvel => dispatch({type: 'done', payload: marvel}))
-      .catch(error => dispatch({type: 'fail', error}))
-  }, [marvelName])
+      .then((marvel) => dispatch({ type: "done", payload: marvel }))
+      .catch((error) => dispatch({ type: "fail", error }));
+  }, [marvelName]);
 
-  return state
+  return state;
 }
 
-function Marvel({marvelName}) {
-  const state = useFindMarvelByName(marvelName)
-  const {error, marvel, status} = state
+function Marvel({ marvelName }) {
+  const state = useFindMarvelByName(marvelName);
+  const { error, marvel, status } = state;
   if (error) {
-    throw error
-  } else if (status === 'idle') {
-    return 'Entrer un nom de marvel !'
-  } else if (status === 'fetching') {
-    return 'Chargement en cours...'
-  } else if (status === 'done') {
+    throw error;
+  } else if (status === "idle") {
+    return "Entrer un nom de marvel !";
+  } else if (status === "fetching") {
+    return "Chargement en cours...";
+  } else if (status === "done") {
     return (
       <div>
         {marvel ? (
@@ -671,14 +655,14 @@ function Marvel({marvelName}) {
           `Le marvel n'existe pas`
         )}
       </div>
-    )
+    );
   }
 }
 function App() {
-  const [marvelName, setMarvelName] = React.useState('')
-  const handleSearch = name => {
-    setMarvelName(name)
-  }
+  const [marvelName, setMarvelName] = React.useState("");
+  const handleSearch = (name) => {
+    setMarvelName(name);
+  };
   return (
     <div className="marvel-app">
       <MarvelSearchForm marvelName={marvelName} onSearch={handleSearch} />
@@ -688,84 +672,82 @@ function App() {
         </ErrorBoundary>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
-
-````
+export default App;
+```
 
 ## object state
 
-````javascript
-import * as React from 'react'
+```javascript
+import * as React from "react";
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'INCREMENT':
-      return {count: state.count + action.payload}
-    case 'DECREMENT':
-      return {count: state.count - action.payload}
-    case 'RESET':
-      return {count:0}
+    case "INCREMENT":
+      return { count: state.count + action.payload };
+    case "DECREMENT":
+      return { count: state.count - action.payload };
+    case "RESET":
+      return { count: 0 };
     default:
-      throw new Error()
+      throw new Error();
   }
-}
+};
 
 function Compteur() {
-  const [state, dispatch] = React.useReducer(reducer, {count: 0})
+  const [state, dispatch] = React.useReducer(reducer, { count: 0 });
 
   const increment = (step = 1) => {
-    dispatch({type: 'INCREMENT', payload: step})
-  }
+    dispatch({ type: "INCREMENT", payload: step });
+  };
   const decrement = (step = 1) => {
-    dispatch({type: 'DECREMENT', payload: step})
-  }
+    dispatch({ type: "DECREMENT", payload: step });
+  };
   const reset = () => {
-    dispatch({type: 'RESET'})
-  }
+    dispatch({ type: "RESET" });
+  };
 
   return (
     <>
       <input
         type="button"
         onClick={() => {
-          increment(10)
+          increment(10);
         }}
         value={`incrémenter ${state.count}`}
       />
       <input
         type="button"
         onClick={() => {
-          decrement(2)
+          decrement(2);
         }}
         value={`décrémenter ${state.count}`}
       />
       <input
         type="button"
         onClick={() => {
-          reset()
+          reset();
         }}
         value={`reseter ${state.count}`}
       />
     </>
-  )
+  );
 }
 
 function App() {
-  return <Compteur />
+  return <Compteur />;
 }
 
-export default App
-
-````
+export default App;
+```
 
 Fetch générique
 
-````js
-import * as React from 'react'
-import {ErrorBoundary} from 'react-error-boundary'
+```js
+import * as React from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import {
   fetchMarvel,
   fetchMarvelById,
@@ -773,103 +755,103 @@ import {
   MarvelSearchForm,
   ErrorDisplay,
   MarvelPersoView,
-} from '../marvel'
-import '../02-styles.css'
+} from "../marvel";
+import "../02-styles.css";
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'fetching':
-      return {status: 'fetching', data: null, error: null}
-    case 'done':
-      return {status: 'done', data: action.payload, error: null}
-    case 'fail':
-      return {status: 'fail', data: null, error: action.error}
+    case "fetching":
+      return { status: "fetching", data: null, error: null };
+    case "done":
+      return { status: "done", data: action.payload, error: null };
+    case "fail":
+      return { status: "fail", data: null, error: action.error };
     default:
-      throw new Error('Action non supporté')
+      throw new Error("Action non supporté");
   }
-}
+};
 
 function useFetchData(search, fetch) {
   const [state, dispatch] = React.useReducer(reducer, {
     data: null,
     error: null,
-    status: 'idle',
-  })
+    status: "idle",
+  });
 
   React.useEffect(() => {
     if (!search) {
-      return
+      return;
     }
-    dispatch({type: 'fetching'})
+    dispatch({ type: "fetching" });
     fetch(search)
-      .then(result => dispatch({type: 'done', payload: result}))
-      .catch(error => dispatch({type: 'fail', error}))
-  }, [search, fetch])
+      .then((result) => dispatch({ type: "done", payload: result }))
+      .catch((error) => dispatch({ type: "fail", error }));
+  }, [search, fetch]);
 
-  return state
+  return state;
 }
 
 function useFindMarvelList(marvelName) {
-  return useFetchData(marvelName, fetchMarvelsList)
+  return useFetchData(marvelName, fetchMarvelsList);
 }
 
 function useFindMarvelByName(marvelName) {
-  return useFetchData(marvelName, fetchMarvel)
+  return useFetchData(marvelName, fetchMarvel);
 }
 
-function Marvel({marvelName}) {
-  const state = useFindMarvelByName(marvelName, fetchMarvelById)
-  const {data: marvel, error, status} = state //data:marvel renomme 
-  if (status === 'fail') {
-    throw error
-  } else if (status === 'idle') {
-    return 'enter un nom de Marvel'
-  } else if (status === 'fetching') {
-    return 'chargement en cours ...'
-  } else if (status === 'done') {
-    return <MarvelPersoView marvel={marvel} />
+function Marvel({ marvelName }) {
+  const state = useFindMarvelByName(marvelName, fetchMarvelById);
+  const { data: marvel, error, status } = state; //data:marvel renomme
+  if (status === "fail") {
+    throw error;
+  } else if (status === "idle") {
+    return "enter un nom de Marvel";
+  } else if (status === "fetching") {
+    return "chargement en cours ...";
+  } else if (status === "done") {
+    return <MarvelPersoView marvel={marvel} />;
   }
 }
 
-function MarvelList({marvelName}) {
-  const state = useFindMarvelList(marvelName, fetchMarvelById)
-  const {data: marvels, error, status} = state
-  if (status === 'fail') {
-    throw error
-  } else if (status === 'idle') {
-    return 'enter un nom de Marvel'
-  } else if (status === 'fetching') {
-    return 'chargement en cours ...'
-  } else if (status === 'done') {
+function MarvelList({ marvelName }) {
+  const state = useFindMarvelList(marvelName, fetchMarvelById);
+  const { data: marvels, error, status } = state;
+  if (status === "fail") {
+    throw error;
+  } else if (status === "idle") {
+    return "enter un nom de Marvel";
+  } else if (status === "fetching") {
+    return "chargement en cours ...";
+  } else if (status === "done") {
     return (
       <>
-        {marvels.map(marvel => {
+        {marvels.map((marvel) => {
           return (
             <div key={marvel.id}>
-              <hr style={{background: 'grey'}} />
+              <hr style={{ background: "grey" }} />
               <MarvelPersoView marvel={marvel} />
             </div>
-          )
+          );
         })}
       </>
-    )
+    );
   }
 }
 
 function App() {
-  const [marvelName, setMarvelName] = React.useState('')
-  const [searchList, setSearchList] = React.useState(false)
-  const handleSearch = name => {
-    setMarvelName(name)
-  }
+  const [marvelName, setMarvelName] = React.useState("");
+  const [searchList, setSearchList] = React.useState(false);
+  const handleSearch = (name) => {
+    setMarvelName(name);
+  };
   return (
     <div className="marvel-app">
       <label>
         <input
           type="checkbox"
           checked={searchList}
-          onChange={e => setSearchList(e.target.checked)}
-        />{' '}
+          onChange={(e) => setSearchList(e.target.checked)}
+        />{" "}
         Chercher une liste ?
       </label>
       <MarvelSearchForm marvelName={marvelName} onSearch={handleSearch} />
@@ -883,15 +865,15 @@ function App() {
         </ErrorBoundary>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
-````
+export default App;
+```
 
 ## `useCallback`
 
-`useCallback` renvoi une fonction *callback* mémoïsé : mise en cache des valeurs de retour d'une
+`useCallback` renvoi une fonction _callback_ mémoïsé : mise en cache des valeurs de retour d'une
 fonction selon ses valeurs d'entrée. Le but de cette technique d'optimisation de code
 est de diminuer le temps d'exécution d'un programme informatique en mémorisant les
 valeurs retournées par une fonction.
@@ -899,125 +881,125 @@ valeurs retournées par une fonction.
 `useCallback` permet d'isoler les fonctions gourmandes en ressources afin qu'elles ne s'exécutent
 pas automatiquement à chaque rendu mais s'exécute que lorsque l'une de ses dépendances est mise à jour.
 
-````javascript
-import * as React from 'react'
-import {ErrorBoundary} from 'react-error-boundary'
+```javascript
+import * as React from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import {
   fetchMarvel,
   fetchMarvelsList,
   MarvelSearchForm,
   ErrorDisplay,
   MarvelPersoView,
-} from '../marvel'
-import '../02-styles.css'
+} from "../marvel";
+import "../02-styles.css";
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'fetching':
-      return {status: 'fetching', data: null, error: null}
-    case 'done':
-      return {status: 'done', data: action.payload, error: null}
-    case 'fail':
-      return {status: 'fail', data: null, error: action.error}
+    case "fetching":
+      return { status: "fetching", data: null, error: null };
+    case "done":
+      return { status: "done", data: action.payload, error: null };
+    case "fail":
+      return { status: "fail", data: null, error: action.error };
     default:
-      throw new Error('Action non supporté')
+      throw new Error("Action non supporté");
   }
-}
+};
 
 function useFetchData(callback) {
   const [state, dispatch] = React.useReducer(reducer, {
     data: null,
     error: null,
-    status: 'idle',
-  })
+    status: "idle",
+  });
 
   React.useEffect(() => {
-    const promise = callback()
+    const promise = callback();
     if (!promise) {
-      return
+      return;
     }
-    dispatch({type: 'fetching'})
+    dispatch({ type: "fetching" });
     promise
-      .then(marvel => dispatch({type: 'done', payload: marvel}))
-      .catch(error => dispatch({type: 'fail', error}))
-  }, [callback])
+      .then((marvel) => dispatch({ type: "done", payload: marvel }))
+      .catch((error) => dispatch({ type: "fail", error }));
+  }, [callback]);
 
-  return state
+  return state;
 }
 
 function useFindMarvelList(marvelName) {
   const cb = React.useCallback(() => {
     if (!marvelName) {
-      return
+      return;
     }
-    return fetchMarvelsList(marvelName)
-  }, [marvelName])
-  return useFetchData(cb)
+    return fetchMarvelsList(marvelName);
+  }, [marvelName]);
+  return useFetchData(cb);
 }
 
 function useFindMarvelByName(marvelName) {
   const cb = React.useCallback(() => {
     if (!marvelName) {
-      return
+      return;
     }
-    return fetchMarvel(marvelName)
-  }, [marvelName])
-  return useFetchData(cb)
+    return fetchMarvel(marvelName);
+  }, [marvelName]);
+  return useFetchData(cb);
 }
 
-function Marvel({marvelName}) {
-  const state = useFindMarvelByName(marvelName)
-  const {data: marvel, error, status} = state
-  if (status === 'fail') {
-    throw error
-  } else if (status === 'idle') {
-    return 'enter un nom de Marvel'
-  } else if (status === 'fetching') {
-    return 'chargement en cours ...'
-  } else if (status === 'done') {
-    return <MarvelPersoView marvel={marvel} />
+function Marvel({ marvelName }) {
+  const state = useFindMarvelByName(marvelName);
+  const { data: marvel, error, status } = state;
+  if (status === "fail") {
+    throw error;
+  } else if (status === "idle") {
+    return "enter un nom de Marvel";
+  } else if (status === "fetching") {
+    return "chargement en cours ...";
+  } else if (status === "done") {
+    return <MarvelPersoView marvel={marvel} />;
   }
 }
 
-function MarvelList({marvelName}) {
-  const state = useFindMarvelList(marvelName)
-  const {data: marvels, error, status} = state
-  if (status === 'fail') {
-    throw error
-  } else if (status === 'idle') {
-    return 'enter un nom de Marvel'
-  } else if (status === 'fetching') {
-    return 'chargement en cours ...'
-  } else if (status === 'done') {
+function MarvelList({ marvelName }) {
+  const state = useFindMarvelList(marvelName);
+  const { data: marvels, error, status } = state;
+  if (status === "fail") {
+    throw error;
+  } else if (status === "idle") {
+    return "enter un nom de Marvel";
+  } else if (status === "fetching") {
+    return "chargement en cours ...";
+  } else if (status === "done") {
     return (
       <>
-        {marvels.map(marvel => {
+        {marvels.map((marvel) => {
           return (
             <div key={marvel.id}>
-              <hr style={{background: 'grey'}} />
+              <hr style={{ background: "grey" }} />
               <MarvelPersoView marvel={marvel} />
             </div>
-          )
+          );
         })}
       </>
-    )
+    );
   }
 }
 
 function App() {
-  const [marvelName, setMarvelName] = React.useState('')
-  const [searchList, setSearchList] = React.useState('')
-  const handleSearch = name => {
-    setMarvelName(name)
-  }
+  const [marvelName, setMarvelName] = React.useState("");
+  const [searchList, setSearchList] = React.useState("");
+  const handleSearch = (name) => {
+    setMarvelName(name);
+  };
   return (
     <div className="marvel-app">
       <label>
         <input
           type="checkbox"
           checked={searchList}
-          onChange={e => setSearchList(e.target.checked)}
-        />{' '}
+          onChange={(e) => setSearchList(e.target.checked)}
+        />{" "}
         Chercher une liste ?
       </label>
       <MarvelSearchForm marvelName={marvelName} onSearch={handleSearch} />
@@ -1031,133 +1013,133 @@ function App() {
         </ErrorBoundary>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
-````
+export default App;
+```
 
 > Optimisation du code
 
-````javascript
-import * as React from 'react'
-import {ErrorBoundary} from 'react-error-boundary'
+```javascript
+import * as React from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import {
   fetchMarvel,
   fetchMarvelsList,
   MarvelSearchForm,
   ErrorDisplay,
   MarvelPersoView,
-} from '../marvel'
-import '../02-styles.css'
+} from "../marvel";
+import "../02-styles.css";
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'fetching':
-      return {status: 'fetching', data: null, error: null}
-    case 'done':
-      return {status: 'done', data: action.payload, error: null}
-    case 'fail':
-      return {status: 'fail', data: null, error: action.error}
+    case "fetching":
+      return { status: "fetching", data: null, error: null };
+    case "done":
+      return { status: "done", data: action.payload, error: null };
+    case "fail":
+      return { status: "fail", data: null, error: action.error };
     default:
-      throw new Error('Action non supporté')
+      throw new Error("Action non supporté");
   }
-}
+};
 
 function useFetchData() {
   const [state, dispatch] = React.useReducer(reducer, {
     data: null,
     error: null,
-    status: 'idle',
-  })
-  const {data, error, status} = state
+    status: "idle",
+  });
+  const { data, error, status } = state;
 
-  const execute = React.useCallback(promise => {
-    dispatch({type: 'fetching'})
+  const execute = React.useCallback((promise) => {
+    dispatch({ type: "fetching" });
     promise
-      .then(marvel => dispatch({type: 'done', payload: marvel}))
-      .catch(error => dispatch({type: 'fail', error}))
-  }, [])
+      .then((marvel) => dispatch({ type: "done", payload: marvel }))
+      .catch((error) => dispatch({ type: "fail", error }));
+  }, []);
 
-  return {data, error, status, execute}
+  return { data, error, status, execute };
 }
 
 function useFindMarvelList(marvelName) {
-  const {data, error, status, execute} = useFetchData()
+  const { data, error, status, execute } = useFetchData();
   React.useEffect(() => {
     if (!marvelName) {
-      return
+      return;
     }
-    execute(fetchMarvelsList(marvelName))
-  }, [marvelName, execute])
-  return {data, error, status}
+    execute(fetchMarvelsList(marvelName));
+  }, [marvelName, execute]);
+  return { data, error, status };
 }
 
 function useFindMarvelByName(marvelName) {
-  const {data, error, status, execute} = useFetchData()
+  const { data, error, status, execute } = useFetchData();
   React.useEffect(() => {
     if (!marvelName) {
-      return
+      return;
     }
-    execute(fetchMarvel(marvelName))
-  }, [marvelName, execute])
-  return {data, error, status}
+    execute(fetchMarvel(marvelName));
+  }, [marvelName, execute]);
+  return { data, error, status };
 }
 
-function Marvel({marvelName}) {
-  const state = useFindMarvelByName(marvelName)
+function Marvel({ marvelName }) {
+  const state = useFindMarvelByName(marvelName);
 
-  const {data: marvel, error, status} = state
-  if (status === 'fail') {
-    throw error
-  } else if (status === 'idle') {
-    return 'enter un nom de Marvel'
-  } else if (status === 'fetching') {
-    return 'chargement en cours ...'
-  } else if (status === 'done') {
-    return <MarvelPersoView marvel={marvel} />
+  const { data: marvel, error, status } = state;
+  if (status === "fail") {
+    throw error;
+  } else if (status === "idle") {
+    return "enter un nom de Marvel";
+  } else if (status === "fetching") {
+    return "chargement en cours ...";
+  } else if (status === "done") {
+    return <MarvelPersoView marvel={marvel} />;
   }
 }
 
-function MarvelList({marvelName}) {
-  const state = useFindMarvelList(marvelName)
-  const {data: marvels, error, status} = state
-  if (status === 'fail') {
-    throw error
-  } else if (status === 'idle') {
-    return 'enter un nom de Marvel'
-  } else if (status === 'fetching') {
-    return 'chargement en cours ...'
-  } else if (status === 'done') {
+function MarvelList({ marvelName }) {
+  const state = useFindMarvelList(marvelName);
+  const { data: marvels, error, status } = state;
+  if (status === "fail") {
+    throw error;
+  } else if (status === "idle") {
+    return "enter un nom de Marvel";
+  } else if (status === "fetching") {
+    return "chargement en cours ...";
+  } else if (status === "done") {
     return (
       <>
-        {marvels.map(marvel => {
+        {marvels.map((marvel) => {
           return (
             <div key={marvel.id}>
-              <hr style={{background: 'grey'}} />
+              <hr style={{ background: "grey" }} />
               <MarvelPersoView marvel={marvel} />
             </div>
-          )
+          );
         })}
       </>
-    )
+    );
   }
 }
 
 function App() {
-  const [marvelName, setMarvelName] = React.useState('')
-  const [searchList, setSearchList] = React.useState('')
-  const handleSearch = name => {
-    setMarvelName(name)
-  }
+  const [marvelName, setMarvelName] = React.useState("");
+  const [searchList, setSearchList] = React.useState("");
+  const handleSearch = (name) => {
+    setMarvelName(name);
+  };
   return (
     <div className="marvel-app">
       <label>
         <input
           type="checkbox"
           checked={searchList}
-          onChange={e => setSearchList(e.target.checked)}
-        />{' '}
+          onChange={(e) => setSearchList(e.target.checked)}
+        />{" "}
         Chercher une liste ?
       </label>
       <MarvelSearchForm marvelName={marvelName} onSearch={handleSearch} />
@@ -1171,11 +1153,11 @@ function App() {
         </ErrorBoundary>
       </div>
     </div>
-  )
+  );
 }
 
-export default App
-````
+export default App;
+```
 
 ## `useMemo`
 
@@ -1189,7 +1171,7 @@ export default App
 
 Exemple de React sans le `JSX`
 
-````html
+```html
 <!-- Manipuler le DOM avec React Sans JSX-->
 
 <html>
@@ -1200,138 +1182,143 @@ Exemple de React sans le `JSX`
   <body>
     <div id="root"></div>
     <script>
-      const rootEl = document.getElementById('root')
-      const divEl = React.createElement('div', {
-        className: 'rootContainer',
+      const rootEl = document.getElementById("root");
+      const divEl = React.createElement("div", {
+        className: "rootContainer",
         children: [
-          React.createElement('h1', null, 'Bienvenue'),
-          React.createElement('h2', null, 'Commencez ici'),
+          React.createElement("h1", null, "Bienvenue"),
+          React.createElement("h2", null, "Commencez ici"),
           React.createElement(
-            'p',
+            "p",
             null,
-            'Lorem Ipsum is simply dummy text of the printing and typesetting industry',
+            "Lorem Ipsum is simply dummy text of the printing and typesetting industry"
           ),
         ],
-      })
-      ReactDOM.render(divEl, rootEl)
+      });
+      ReactDOM.render(divEl, rootEl);
     </script>
   </body>
 </html>
-````
+```
 
- Gestionnaire d'événement REACT :
+Gestionnaire d'événement REACT :
 
-``onclick`` devient en react ``onClick``
+`onclick` devient en react `onClick`
 
-``mousseenter`` devient en react ``onMouseEnter``
+`mousseenter` devient en react `onMouseEnter`
 
 etc...
 
 En CSS `border-color` devient `borderColor`.
 L'attribut style en jsx doit être un objet JavaScript
 
-````typescript
-<h1 style={{color: "red"}}>Hello Style!</h1>
+```typescript
+<h1 style={{ color: "red" }}>Hello Style!</h1>;
 
 function App() {
   const style = {
-    padding: '40px',
-    textAlign: 'center',
-  }
+    padding: "40px",
+    textAlign: "center",
+  };
 
-  return <div style={style}>Welcome to React!</div>
+  return <div style={style}>Welcome to React!</div>;
 }
+```
 
-````
+```typescript
+import React, { FunctionComponent, useState, useEffect } from "react";
+import Pokemon from "./models/pokemon";
+import POKEMONS from "./models/mock-pokemon";
 
-````typescript
-
-import React, { FunctionComponent, useState, useEffect } from 'react';
-import Pokemon from './models/pokemon';
-import POKEMONS from './models/mock-pokemon';
-  
 const App: FunctionComponent = () => {
-     const [pokemons, setPokemons] = useState<Pokemon[]> ([]);
-   
-     useEffect( () => {
-          setPokemons(POKEMONS);
-     }, []);
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
 
-     // cette variable est un gestionnaire d'événement.
-     const showPokemonsCount = () => {
-          console.log(pokemons.length);
-     };
+  useEffect(() => {
+    setPokemons(POKEMONS);
+  }, []);
 
-     return (  // ici commence le JSX
-          <div>
-               <h1>Pokédex</h1>
-               // les évènements REACT sont en camel case par rapport aux évents JS.
-               <p onClick={showPokemonsCount}>Afficher le nombre de Pokémons</p>
-          </div>
-     )
+  // cette variable est un gestionnaire d'événement.
+  const showPokemonsCount = () => {
+    console.log(pokemons.length);
+  };
+
+  return (
+    // ici commence le JSX
+    <div>
+      <h1>Pokédex</h1>
+      // les évènements REACT sont en camel case par rapport aux évents JS.
+      <p onClick={showPokemonsCount}>Afficher le nombre de Pokémons</p>
+    </div>
+  );
 };
-  
+
 export default App;
-````
+```
 
 Récupérer l'évènement natif javaScript :
 
-````typescript
+```typescript
+import React, { FunctionComponent, useState, useEffect } from "react";
+import Pokemon from "./models/pokemon";
+import POKEMONS from "./models/mock-pokemon";
 
-import React, { FunctionComponent, useState, useEffect } from 'react';
-import Pokemon from './models/pokemon';
-import POKEMONS from './models/mock-pokemon';
-  
 const App: FunctionComponent = () => {
-     const [pokemons, setPokemons] = useState<Pokemon[]> ([]);
-   
-     useEffect( () => {
-          setPokemons(POKEMONS);
-     }, []);
+  const [pokemons, setPokemons] = useState<Pokemon[]>([]);
 
-     // cette variable est un gestionnaire d'événement.
-     const showPokemonsCount = () => {
-          console.log(pokemons.length);
-     };
-     const addPokemon = (name: string, e: any) => {
-          console.log(e);
-          if (e.nativeEvent.which === 1) {
-               console.log(`Le pokémon ${name} a été ajouté au pokédex, avec le click gauche`);
-          } else {
-               console.log(`Le pokémon ${name} a été ajouté au pokédex, avec le click droit`)
-          }
-     };
-     return (  
-          <div>
-               <h1>Pokédex</h1>
-               // les évènements REACT sont en camel case par rapport aux évents JS.
-               <p onClick={showPokemonsCount}>Afficher le nombre de Pokémons</p>
-               <button onClick={(e) => addPokemon('toto', e)}>Ajouter un Pokémon !</button>
-          </div>
-     )
+  useEffect(() => {
+    setPokemons(POKEMONS);
+  }, []);
+
+  // cette variable est un gestionnaire d'événement.
+  const showPokemonsCount = () => {
+    console.log(pokemons.length);
+  };
+  const addPokemon = (name: string, e: any) => {
+    console.log(e);
+    if (e.nativeEvent.which === 1) {
+      console.log(
+        `Le pokémon ${name} a été ajouté au pokédex, avec le click gauche`
+      );
+    } else {
+      console.log(
+        `Le pokémon ${name} a été ajouté au pokédex, avec le click droit`
+      );
+    }
+  };
+  return (
+    <div>
+      <h1>Pokédex</h1>
+      // les évènements REACT sont en camel case par rapport aux évents JS.
+      <p onClick={showPokemonsCount}>Afficher le nombre de Pokémons</p>
+      <button onClick={(e) => addPokemon("toto", e)}>
+        Ajouter un Pokémon !
+      </button>
+    </div>
+  );
 };
-  
+
 export default App;
-````
+```
 
 ## Les conditions dans JSX
 
-*ATTENTION* JSX comprend les ``expressions`` javascript mais ne comprend pas les ``instructions`` javascript
+_ATTENTION_ JSX comprend les `expressions` javascript mais ne comprend pas les `instructions` javascript
 
 Astuce ici avec l'operateur &&
 
-````typescript
-  return (
-    <div>
-      {age > 18 && // si la condition est true le paragraphe sera affiché grace à l'oppérateur &&
-        <p>Vous êtes majeur, donc vous pouvez voir ce contenu.</p>}
-    </div>
-  );
-````
+```typescript
+return (
+  <div>
+    {age > 18 && ( // si la condition est true le paragraphe sera affiché grace à l'oppérateur &&
+      <p>Vous êtes majeur, donc vous pouvez voir ce contenu.</p>
+    )}
+  </div>
+);
+```
 
 Astuce ici avec l'operateur ternaire
 
-````typescript
+```typescript
   return (
     <p> {age > 18 ? (
       Vous êtes majeur, donc vous pouvez voir ce contenu.
@@ -1339,11 +1326,11 @@ Astuce ici avec l'operateur ternaire
       Vous êtes mineur, il faut attendre.
     )};
   );
-`````
+```
 
 toggle les classes et css
 
-````javascript
+```javascript
 import { useState } from "react";
 import Item from "./Components/Item/Item";
 
@@ -1363,249 +1350,314 @@ function App() {
 }
 
 export default App;
-````
+```
 
-````javascript
-function Login({initialEmail = ''}) {
-  const [email, setEmail] = React.useState(initialEmail)
-  const [error, setError] = React.useState(false)
-  const handleChange = event => {
-    setEmail(event.target.value)
-    setError(!event.target.value.includes('@'))
-  }
+```javascript
+function Login({ initialEmail = "" }) {
+  const [email, setEmail] = React.useState(initialEmail);
+  const [error, setError] = React.useState(false);
+  const handleChange = (event) => {
+    setEmail(event.target.value);
+    setError(!event.target.value.includes("@"));
+  };
   return (
     <div>
       <form>
         <label>Entrez votre email : </label>
         <input value={email} onChange={handleChange} />
       </form>
-      <div style={{color: error ? 'red' : ''}}>
-        Votre {email} est {error ? 'non valide' : 'valide'}{' '}
+      <div style={{ color: error ? "red" : "" }}>
+        Votre {email} est {error ? "non valide" : "valide"}{" "}
       </div>
     </div>
-  )
+  );
 }
 
 function App() {
-  return <Login initialEmail="example@example.com" />
+  return <Login initialEmail="example@example.com" />;
 }
 
-export default App
-````
+export default App;
+```
 
 ## Afficher une liste de tableau avec la méthode native map() dans JSX
 
 > Lorsqu’on affiche une liste dans du code JSX, il est important d’appliquer la propriété key, sous peine de lever une erreur.
 
-````typescript
-  return (
-   <ul>
-   // attention                V  ici () et non {}
+```typescript
+return (
+  <ul>
+    // attention V ici () et non {}
     {pokemons.map((pokemon) => (
       <li key={pokemon.name}>{pokemon.name}</li>
-    ))} 
-   </ul>
-  );
-`````
+    ))}
+  </ul>
+);
+```
 
-````typescript
-  return (
-   <ul>
+```typescript
+return (
+  <ul>
     {pokemons.map((pokemon, index) => (
       <li key={index}>{pokemon.name}</li>
-    ))} 
-   </ul>
-  );
-`````
+    ))}
+  </ul>
+);
+```
 
 Avec le destructuring on peut récupérer juste le nom :
 
-````typescript
-  return (
-   <ul>
-    {pokemons.map(({name}) => (
+```typescript
+return (
+  <ul>
+    {pokemons.map(({ name }) => (
       <li key={name}>{name}</li>
-    ))} 
-   </ul>
-  );
-`````
+    ))}
+  </ul>
+);
+```
 
 ---
 
 ## Les props <a name="props"></a>
+
+Les composants sont comme des fonctions JavaScript, ils acceptent des entrées appelées `props` et renvoient des éléments React décrivant ce qui doit apparaître à l’écran.
+
+Lorsque React rencontre un élément représentant un composant défini par l’utilisateur, il transmet les attributs JSX et les enfants à ce composant sous la forme d’un objet unique (`props`).
 
 > Pour passer une props à un composant il faut l'ajouter en paramètre de la fonction du composant.
 > On passe des props depuis un composant parent.
 > Les props sont les données en entrées d'un composant.
 > Les props sonts des objets.
 
-````javascript
-  function Hello (props) {
-    return <h1> Hello ${props.name} </h1>
-  }
-  // Appel
-  <Hello name="thierry"/>
+```javascript
+function Welcome(props) {
+  // props === {name: 'Sara'}
+  // puis
+  // props === {name: 'Edite'}
 
-  // Avec la destructuration
-  function Hello ({name}) {
-    return <h1> Hello {name} </h1>
-  }
-  // Appel
-  <Hello name="thierry"/>
+  return <h1>Bonjour, {props.name}</h1>;
+}
 
+function App() {
+  return (
+    <div>
+      <Welcome name="Sara" />
+      <Welcome name="Edite" />
+    </div>
+  );
+}
+```
 
-````
+```javascript
+function Welcome(props) {
+  // props === {name: 'Sara', children: Array(2)}
+  // children: (2) [{…}, {…}]
+  // children contient le <h1> et le <h2> cela pourrait être des composants
+  return (
+    <>
+      <h1>Hello, {props.name} </h1>
+      {props.children} {/*Affichera le <h1>Bonne et le <h2>Année*/}
+    </>
+  );
+}
 
-````typescript
+function App() {
+  return (
+    <div>
+      <Welcome name="Sara"> {/*name === attribut*/}
+        <h1>Bonne</h1>  {/*children*/}
+        <h2>Année</h2>  {/*children*/}
+      </Welcome>
+    </div>
+  );
+}
+```
+
+```javascript
+function Welcome(props) {
+  return <div {...props}/>
+  // Affichera Bonne Année
+  // Ici nous pouvons faire ça car ...props ne contient que {children: Array(2)}
+  // et ne contient pas d'attributs
+}
+
+function App() {
+  return (
+    <div>
+      <Welcome>
+        <h1>Bonne</h1>
+        <h2>Année</h2>
+      </Welcome>
+      
+    </div>
+  );
+}
+```
+
+```javascript
+function Hello(props) {
+  return <h1> Hello ${props.name} </h1>;
+}
+// Appel
+<Hello name="thierry" />;
+
+// Avec la destructuration
+function Hello({ name }) {
+  return <h1> Hello {name} </h1>;
+}
+// Appel
+<Hello name="thierry" />;
+```
+
+```typescript
 return (
   // Ici nous passons la props pokemon au composant PokemonCard
-  <PokemonCard pokemon={ pokemon } />
+  <PokemonCard pokemon={pokemon} />
 );
-````
+```
 
-````typescript
-
-interface Props  {
-    pokemon: Pokemon
-};
+```typescript
+interface Props {
+  pokemon: Pokemon;
+}
 
 // ici le composant PokemonCard n'acceptera une seul props de type Pokemon
 const PokemonCard: FunctionComponent<Props> = ({ pokemon }) => {
-
-    return (
-        
+  return (
+    <div>
+      {/* <h1>Pokédex</h1> */}
       <div>
-        {/* <h1>Pokédex</h1> */}
-        <div>  
-            <div className="ff">
-               <div>
-                  <img src={ pokemon.picture } alt={ pokemon.name }/>
-               </div>
-               <div>
-                  <div>{ pokemon.name }</div>
-                  <div>{ pokemon.created.toString() }</div>
-               </div>
-            </div>            
+        <div className="ff">
+          <div>
+            <img src={pokemon.picture} alt={pokemon.name} />
+          </div>
+          <div>
+            <div>{pokemon.name}</div>
+            <div>{pokemon.created.toString()}</div>
+          </div>
         </div>
+      </div>
     </div>
-
-    );
-}
+  );
+};
 
 export default PokemonCard;
-````
+```
 
 Props par defaut grace à typeScript
 
-````typescript
-interface Props  {
-    pokemon: Pokemon,
-    borderColor?: string
-};
-
-const PokemonCard: FunctionComponent<Props> = ({ pokemon, borderColor = 'olive' }) => {
-
-    return (
-        
-      <div>
-        {/* <h1>Pokédex</h1> */}
-        <div>  
-            <div className="ff" style={{ borderColor: borderColor }}>
-               <div>
-                  <img src={ pokemon.picture } alt={ pokemon.name }/>
-               </div>
-               <div>
-                  <div>{ pokemon.name }</div>
-                  <div>{ pokemon.created.toString() }</div>
-               </div>
-            </div>            
-        </div>
-    </div>
-
-    );
+```typescript
+interface Props {
+  pokemon: Pokemon;
+  borderColor?: string;
 }
 
-export default PokemonCard;
-````
+const PokemonCard: FunctionComponent<Props> = ({
+  pokemon,
+  borderColor = "olive",
+}) => {
+  return (
+    <div>
+      {/* <h1>Pokédex</h1> */}
+      <div>
+        <div className="ff" style={{ borderColor: borderColor }}>
+          <div>
+            <img src={pokemon.picture} alt={pokemon.name} />
+          </div>
+          <div>
+            <div>{pokemon.name}</div>
+            <div>{pokemon.created.toString()}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-````typescript
+export default PokemonCard;
+```
+
+```typescript
 return (
   // Ici la props borderColor écrasera la valeur par defaut dans le composant PokemonCard
-  <PokemonCard pokemon={ pokemon } borderColor="tomato"/>
+  <PokemonCard pokemon={pokemon} borderColor="tomato" />
 );
-````
+```
 
 exemple
 
-````typescript
-import  React, { FunctionComponent,useState, useEffect } from 'react';
-import Pokemon from '../models/pokemon';
-import './pokemon-card.css'
+```typescript
+import React, { FunctionComponent, useState, useEffect } from "react";
+import Pokemon from "../models/pokemon";
+import "./pokemon-card.css";
 
-interface Props  {
-    pokemon: Pokemon,
-    borderColor?: string
-};
-
-const PokemonCard: FunctionComponent<Props> = ({ pokemon, borderColor = 'olive' }) => {
-
-    const [color, setColor] = useState<string>();
-
-    const showBorder = () => {
-        setColor(borderColor);
-    }
-    const hideBorder = () => {
-        setColor("whitesmoke");
-    }
-
-    return (
-        
-      <div>
-        {/* <h1>Pokédex</h1> */}
-        <div>  
-            <div className="ff"
-                 style={{ borderColor: color }} 
-                 onMouseEnter={ showBorder } 
-                 onMouseLeave={ hideBorder }>
-               <div>
-                  <img src={ pokemon.picture } alt={ pokemon.name }/>
-               </div>
-               <div>
-                  <div>{ pokemon.name }</div>
-                  <div>{ pokemon.created.toString() }</div>
-               </div>
-            </div>            
-        </div>
-    </div>
-
-    );
+interface Props {
+  pokemon: Pokemon;
+  borderColor?: string;
 }
 
+const PokemonCard: FunctionComponent<Props> = ({
+  pokemon,
+  borderColor = "olive",
+}) => {
+  const [color, setColor] = useState<string>();
+
+  const showBorder = () => {
+    setColor(borderColor);
+  };
+  const hideBorder = () => {
+    setColor("whitesmoke");
+  };
+
+  return (
+    <div>
+      {/* <h1>Pokédex</h1> */}
+      <div>
+        <div
+          className="ff"
+          style={{ borderColor: color }}
+          onMouseEnter={showBorder}
+          onMouseLeave={hideBorder}
+        >
+          <div>
+            <img src={pokemon.picture} alt={pokemon.name} />
+          </div>
+          <div>
+            <div>{pokemon.name}</div>
+            <div>{pokemon.created.toString()}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default PokemonCard;
-````
+```
 
 ### `PropTypes`
 
 Nous pouvons utiliser des extensions JavaScript comme Flow ou TypeScript pour valider les types de notre application. Mais même si vous ne les utilisez pas, React possède ses propres fonctionnalités de validation de types.
 
-````javascript
-import PropTypes from 'prop-types';
+```javascript
+import PropTypes from "prop-types";
 
-const Paragraphe = ({text, author}) => {
-        return (
-          <p className="paragraphe">
-            {text} : {author}
-          </p>
-        )
-      }
+const Paragraphe = ({ text, author }) => {
+  return (
+    <p className="paragraphe">
+      {text} : {author}
+    </p>
+  );
+};
 
-      Paragraphe.propTypes = {
-        text: PropTypes.number,
-        author: PropTypes.string,
-        // text: PropTypes.string.isRequired,
-        // author: PropTypes.string.isRequired
-      }
-````
+Paragraphe.propTypes = {
+  text: PropTypes.number,
+  author: PropTypes.string,
+  // text: PropTypes.string.isRequired,
+  // author: PropTypes.string.isRequired
+};
+```
 
 ---
 
@@ -1613,124 +1665,126 @@ const Paragraphe = ({text, author}) => {
 
 > Sont des fonctions dans un composent pour transformer des données avant l'affichage dans le DOM. Ici nous allons créér une fonction formatDate().
 
-````typescript
-import React, { FunctionComponent, useState } from 'react';
-import Pokemon from '../models/pokemon';
-import './pokemon-card.css';
-  
+```typescript
+import React, { FunctionComponent, useState } from "react";
+import Pokemon from "../models/pokemon";
+import "./pokemon-card.css";
+
 type Props = {
-  pokemon: Pokemon,
-  borderColor?: string
+  pokemon: Pokemon;
+  borderColor?: string;
 };
-  
-const PokemonCard: FunctionComponent<Props> = ({ pokemon, borderColor = '#009688' }) => {
-    
+
+const PokemonCard: FunctionComponent<Props> = ({
+  pokemon,
+  borderColor = "#009688",
+}) => {
   const [color, setColor] = useState<string>();
 
   const showBorder = () => {
-      setColor(borderColor);
-  };  
+    setColor(borderColor);
+  };
 
   const hideBorder = () => {
-      setColor('#f5f5f5'); // on remet la bordure en gris.s
-  };  
+    setColor("#f5f5f5"); // on remet la bordure en gris.s
+  };
 
   const formatDate = (date: Date): string => {
-      return `${date.getDate()}/${date.getMonth()+1}/${date.getFullYear()}`;
+    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
   };
 
   return (
-    <div className="col s6 m4" onMouseEnter={ showBorder } onMouseLeave={ hideBorder }>
+    <div
+      className="col s6 m4"
+      onMouseEnter={showBorder}
+      onMouseLeave={hideBorder}
+    >
       <div className="card horizontal" style={{ borderColor: color }}>
-        <div className="card-image"> 
-          <img src={ pokemon.picture } alt={ pokemon.name }/>
+        <div className="card-image">
+          <img src={pokemon.picture} alt={pokemon.name} />
         </div>
         <div className="card-stacked">
           <div className="card-content">
-            <p>{ pokemon.name }</p>
-            <p><small>{ formatDate(pokemon.created) }</small></p>
+            <p>{pokemon.name}</p>
+            <p>
+              <small>{formatDate(pokemon.created)}</small>
+            </p>
           </div>
         </div>
-      </div> 
+      </div>
     </div>
   );
-}
-  
+};
+
 export default PokemonCard;
-````
+```
 
 ---
 
 ## Hooks personnalisés <a name="hooksPerso"></a>
 
-> Fonction JavaScript dont le nom commence par ``use``, cette fonction peut être appelée par d'autres Hooks.
+> Fonction JavaScript dont le nom commence par `use`, cette fonction peut être appelée par d'autres Hooks.
 
 `useDimension.js`
 
-````javascript
+```javascript
 export default function useDimension() {
+  const [dimension, setDimension] = useState();
 
-    const [dimension, setDimension] = useState();
+  useEffect(() => {
+    window.addEventListener("resize", resizeFunc);
 
-    useEffect(() => {
-        window.addEventListener('resize', resizeFunc);
+    function resizeFunc() {
+      setDimension(window.innerWidth);
+    }
 
-        function resizeFunc() {
-            setDimension(window.innerWidth);
-        }
+    resizeFunc();
 
-        resizeFunc();
+    return () => {
+      window.addEventListener("resize", resizeFunc);
+    };
+  }, []);
 
-        return () => {
-            window.addEventListener('resize', resizeFunc)
-        }
-    }, [])
-
-    return dimension;
+  return dimension;
 }
-````
+```
 
 `app.js`
 
-````javascript
-import useDimension from './useDimension';
+```javascript
+import useDimension from "./useDimension";
 
 function App() {
-  
   const browserWidth = useDimension();
   console.log(browserWidth);
 
-  if(browserWidth > 772) {
+  if (browserWidth > 772) {
     console.log("grand écran");
   } else {
     console.log("petit écran");
   }
 
-  return (
-    <div className="App">
-      
-    </div>
-  );
+  return <div className="App"></div>;
 }
 
 export default App;
-````
+```
 
 ---
 
 ## Les routes <a name="routes"></a>
 
-> il faut installer la librairie ``react-router-dom`` pour ajouter la navigation dans le DOM du navigateur, car React ne possède pas de système de navigation par defaut
+> il faut installer la librairie `react-router-dom` pour ajouter la navigation dans le DOM du navigateur, car React ne possède pas de système de navigation par defaut
 > Le Router depuis App :
 
-````typescript
+```typescript
 import React, { FunctionComponent } from 'react';
 import PokemonList from './pages/pokemon-list';
 import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
 import PokemonDetail from './pages/pokemon-detail';
 
 const App: FunctionComponent = () => {
-     
+
      return (
        { /*<Router basename={ process.env.PUBLIC_URL }> */ }
          <Router>
@@ -1754,251 +1808,271 @@ const App: FunctionComponent = () => {
 };
 
 export default App;
-````
+```
 
 > route dans le composant PokemonDetail
 
-````typescript
-import React, { FunctionComponent, useState, useEffect } from 'react';
-import { RouteComponentProps, Link } from 'react-router-dom';
-import Pokemon from '../models/pokemon';
-import POKEMONS from '../models/mock-pokemon';
-import formatDate from '../helpers/format-date';
-import formatType from '../helpers/format-type';
+```typescript
+import React, { FunctionComponent, useState, useEffect } from "react";
+import { RouteComponentProps, Link } from "react-router-dom";
+import Pokemon from "../models/pokemon";
+import POKEMONS from "../models/mock-pokemon";
+import formatDate from "../helpers/format-date";
+import formatType from "../helpers/format-type";
 
-interface Params { id: string };
+interface Params {
+  id: string;
+}
 
-const PokemonsDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
-    const [pokemon, setPokemon] = useState<Pokemon | null>(null);
+const PokemonsDetail: FunctionComponent<RouteComponentProps<Params>> = ({
+  match,
+}) => {
+  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
 
-    useEffect(() => {
-        POKEMONS.forEach(pokemon => {
-            if (match.params.id === pokemon.id.toString()) {
-                setPokemon(pokemon);
-            }
-        });
-        
-    }, [match.params.id]);
+  useEffect(() => {
+    POKEMONS.forEach((pokemon) => {
+      if (match.params.id === pokemon.id.toString()) {
+        setPokemon(pokemon);
+      }
+    });
+  }, [match.params.id]);
 
-    return (
-        <div>
-            { pokemon ? (
-                <div className="container_wrapper"> 
-                <div className="wrapper">     
-                    <div id="aspicot">{ pokemon.name }</div>
-                    <div id="image"><img src={ pokemon.picture } alt=""/></div>
-                    <div id="name">Nom</div>
-                    <div id="name-pokemon">{ pokemon.name }</div>
-                    <div id="pdv">Point de vie</div>
-                    <div id="pdv-pokemon">{ pokemon.hp }</div>
-                    <div id="typeP">Types</div>
-                    <div id="type-pokemon">{ pokemon.types.map((type)=>(
-                        <span key={ type } style={{ backgroundColor: formatType(type), borderRadius: '20px', padding:'0.5em' }}>{ type }</span>
-                    )) }
-                    </div>
-                    <div id="date">Date de création</div>
-                    <div id="date-pokemon">{ formatDate(pokemon.created) }</div>
-                    <div id="retour">
-                        <Link to="/">Retour</Link>
-                    </div>
-                </div>
+  return (
+    <div>
+      {pokemon ? (
+        <div className="container_wrapper">
+          <div className="wrapper">
+            <div id="aspicot">{pokemon.name}</div>
+            <div id="image">
+              <img src={pokemon.picture} alt="" />
             </div>
-             ) : (
-                <h1>Le pokémon demandé nexiste pas !</h1>)
-
-            }
+            <div id="name">Nom</div>
+            <div id="name-pokemon">{pokemon.name}</div>
+            <div id="pdv">Point de vie</div>
+            <div id="pdv-pokemon">{pokemon.hp}</div>
+            <div id="typeP">Types</div>
+            <div id="type-pokemon">
+              {pokemon.types.map((type) => (
+                <span
+                  key={type}
+                  style={{
+                    backgroundColor: formatType(type),
+                    borderRadius: "20px",
+                    padding: "0.5em",
+                  }}
+                >
+                  {type}
+                </span>
+              ))}
+            </div>
+            <div id="date">Date de création</div>
+            <div id="date-pokemon">{formatDate(pokemon.created)}</div>
+            <div id="retour">
+              <Link to="/">Retour</Link>
+            </div>
+          </div>
         </div>
-
-        
-    );
-    }
-
-````
-
-Utilisation du Hook ``useHistory`` pour faire les redirections. Il nous donne accès à l'objet représentant l'historique du navigateur. L'autre possibilité est d'utilser ``Link`` (useHistory et Link font la même chose à savoir rediriger, mais l'objet de useHistory offre plus de possiblilité en terme de méthode comme par exemple goback). A voir aussi `navlinks`
-
-````typescript
-import React, { FunctionComponent, useState } from 'react';
-import Pokemon from '../models/pokemon';
-import './pokemon-card.css';
-import formatDate from '../helpers/format-date';
-import formatType from '../helpers/format-type';
-import { useHistory } from 'react-router-dom';
-  
-type Props = {
-  pokemon: Pokemon,
-  borderColor?: string
+      ) : (
+        <h1>Le pokémon demandé nexiste pas !</h1>
+      )}
+    </div>
+  );
 };
-  
-const PokemonCard: FunctionComponent<Props> = ({ pokemon, borderColor = '#009688' }) => {
-    
+```
+
+Utilisation du Hook `useHistory` pour faire les redirections. Il nous donne accès à l'objet représentant l'historique du navigateur. L'autre possibilité est d'utilser `Link` (useHistory et Link font la même chose à savoir rediriger, mais l'objet de useHistory offre plus de possiblilité en terme de méthode comme par exemple goback). A voir aussi `navlinks`
+
+```typescript
+import React, { FunctionComponent, useState } from "react";
+import Pokemon from "../models/pokemon";
+import "./pokemon-card.css";
+import formatDate from "../helpers/format-date";
+import formatType from "../helpers/format-type";
+import { useHistory } from "react-router-dom";
+
+type Props = {
+  pokemon: Pokemon;
+  borderColor?: string;
+};
+
+const PokemonCard: FunctionComponent<Props> = ({
+  pokemon,
+  borderColor = "#009688",
+}) => {
   const [color, setColor] = useState<string>();
   const history = useHistory();
 
   const showBorder = () => {
-      setColor(borderColor);
-  };  
+    setColor(borderColor);
+  };
 
   const hideBorder = () => {
-      setColor('#f5f5f5'); // on remet la bordure en gris.s
-  }; 
-  
+    setColor("#f5f5f5"); // on remet la bordure en gris.s
+  };
+
   const goToPokemon = (id: number) => {
     history.push(`/pokemon/${id}`);
-  }
+  };
 
   return (
-    <div className="col s6 m4" onClick={ () => goToPokemon(pokemon.id) } onMouseEnter={ showBorder } onMouseLeave={ hideBorder }>
+    <div
+      className="col s6 m4"
+      onClick={() => goToPokemon(pokemon.id)}
+      onMouseEnter={showBorder}
+      onMouseLeave={hideBorder}
+    >
       <div className="card horizontal" style={{ borderColor: color }}>
-        <div className="card-image"> 
-          <img src={ pokemon.picture } alt={ pokemon.name }/>
+        <div className="card-image">
+          <img src={pokemon.picture} alt={pokemon.name} />
         </div>
         <div className="card-stacked">
           <div className="card-content">
-            <p>{ pokemon.name }</p>
-            <p><small>{ formatDate(pokemon.created) }</small></p>
-            { pokemon.types.map(type => (
-              <span key={ type } className={formatType(type)}>{ type }</span>
-            )) }
+            <p>{pokemon.name}</p>
+            <p>
+              <small>{formatDate(pokemon.created)}</small>
+            </p>
+            {pokemon.types.map((type) => (
+              <span key={type} className={formatType(type)}>
+                {type}
+              </span>
+            ))}
           </div>
         </div>
-      </div> 
+      </div>
     </div>
   );
-}
-  
+};
+
 export default PokemonCard;
-````
+```
 
 gérer les erreurs 404
 
-````typescript
-import React, { FunctionComponent } from 'react';
-import { Link } from 'react-router-dom';
-  
+```typescript
+import React, { FunctionComponent } from "react";
+import { Link } from "react-router-dom";
+
 const PageNotFound: FunctionComponent = () => {
-  
   return (
     <div className="center">
-      <img src="http://assets.pokemon.com/assets/cms2/img/pokedex/full/035.png" alt="Page non trouvée"/>
-      <h1>Hey, cette page n'existe pas !</h1> 
+      <img
+        src="http://assets.pokemon.com/assets/cms2/img/pokedex/full/035.png"
+        alt="Page non trouvée"
+      />
+      <h1>Hey, cette page n'existe pas !</h1>
       <Link to="/" className="waves-effect waves-teal btn-flat">
         Retourner à l'accueil
       </Link>
     </div>
   );
-}
-  
+};
+
 export default PageNotFound;
-````
+```
 
 ## Routes Privées <a name="privatesRoutes"></a>
 
 Avant:
 
-````javascript
-import React, { FunctionComponent } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import './App.css';
-import Home from './components/home';
-import Login from './components/login';
-import Registration from './components/registration';
-import Choose_Game from './components/choose_game';
-import Game from './components/game';
-import Admin from './components/admin';
-import PageNotFound from './components/pageNotFoung';
+```javascript
+import React, { FunctionComponent } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
+import Home from "./components/home";
+import Login from "./components/login";
+import Registration from "./components/registration";
+import Choose_Game from "./components/choose_game";
+import Game from "./components/game";
+import Admin from "./components/admin";
+import PageNotFound from "./components/pageNotFoung";
 
 const App: FunctionComponent = () => {
-
   return (
-    
-       <Router>
-       <div>
-             { /*Création d'une div pour gérer l'opacitée*/ }
-             <div id="opacity"></div>
-             { /*Le système de gestion des routes de notre application*/ }
-             <Switch>
-                  <Route exact path="/" component={ Home }/>
-                  <Route exact path="/login" component={ Login }/>
-                  <Route exact path="/registration" component={ Registration }/>
-                  <Route exact path="/choose_game" component={ Choose_Game }/>
-                  <Route exact path="/game" component={ Game }/>
-                  <Route exact path="/admin" component={ Admin }/>
-                  <Route component={ PageNotFound }/>
-             </Switch>
-       </div>
-       </Router>
-       
+    <Router>
+      <div>
+        {/*Création d'une div pour gérer l'opacitée*/}
+        <div id="opacity"></div>
+        {/*Le système de gestion des routes de notre application*/}
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/registration" component={Registration} />
+          <Route exact path="/choose_game" component={Choose_Game} />
+          <Route exact path="/game" component={Game} />
+          <Route exact path="/admin" component={Admin} />
+          <Route component={PageNotFound} />
+        </Switch>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
-
-````
+```
 
 `App.tsx`
 
-````javascript
-import React, { FunctionComponent } from 'react'
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import './App.css';
-import Home from './components/home';
-import Login from './components/login';
-import Registration from './components/registration';
-import Choose_Game from './components/choose_game';
-import Game from './components/game';
-import Admin from './components/admin';
-import PageNotFound from './components/pageNotFoung';
-import PrivateRoute from './components/privateRoute';
+```javascript
+import React, { FunctionComponent } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import "./App.css";
+import Home from "./components/home";
+import Login from "./components/login";
+import Registration from "./components/registration";
+import Choose_Game from "./components/choose_game";
+import Game from "./components/game";
+import Admin from "./components/admin";
+import PageNotFound from "./components/pageNotFoung";
+import PrivateRoute from "./components/privateRoute";
 
 const App: FunctionComponent = () => {
-
   return (
-    
-       <Router>
-       <div>
-             { /*Création d'une div pour gérer l'opacitée*/ }
-             <div id="opacity"></div>
-             { /*Le système de gestion des routes de notre application*/ }
-             <Switch>
-                  <Route exact path="/" component={ Home }/>
-                  <Route exact path="/login" component={ Login }/>
-                  <PrivateRoute exact path="/registration" component={ Registration }/>
-                  <PrivateRoute exact path="/choose_game" component={ Choose_Game }/>
-                  <PrivateRoute exact path="/game" component={ Game }/>
-                  <PrivateRoute exact path="/admin" component={ Admin }/>
-                  <Route component={ PageNotFound }/>
-             </Switch>
-       </div>
-       </Router>
-       
+    <Router>
+      <div>
+        {/*Création d'une div pour gérer l'opacitée*/}
+        <div id="opacity"></div>
+        {/*Le système de gestion des routes de notre application*/}
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/login" component={Login} />
+          <PrivateRoute exact path="/registration" component={Registration} />
+          <PrivateRoute exact path="/choose_game" component={Choose_Game} />
+          <PrivateRoute exact path="/game" component={Game} />
+          <PrivateRoute exact path="/admin" component={Admin} />
+          <Route component={PageNotFound} />
+        </Switch>
+      </div>
+    </Router>
   );
-}
+};
 
 export default App;
-````
+```
 
 `privateRoute.tsx`
 
-````javascript
-import React from 'react';
-import { Route, Redirect } from 'react-router-dom';
-import AuthenticationService from '../services/authentication-services';
-  
+```javascript
+import React from "react";
+import { Route, Redirect } from "react-router-dom";
+import AuthenticationService from "../services/authentication-services";
+
 const PrivateRoute = ({ component: Component, ...rest }: any) => (
-  <Route {...rest} render={(props) => {
-    const isAuthenticated = AuthenticationService.isAuthenticated;
-    if (!isAuthenticated) {    
-      // return <Redirect to={{ pathname: '/login' }} />
-      return <Redirect to={{ pathname: '/login' }} />
-    }
-  
-    return <Component {...props} />
-  }} />
+  <Route
+    {...rest}
+    render={(props) => {
+      const isAuthenticated = AuthenticationService.isAuthenticated;
+      if (!isAuthenticated) {
+        // return <Redirect to={{ pathname: '/login' }} />
+        return <Redirect to={{ pathname: "/login" }} />;
+      }
+
+      return <Component {...props} />;
+    }}
+  />
 );
-  
+
 export default PrivateRoute;
-````
+```
 
 ---
 
@@ -2008,27 +2082,26 @@ C'est hooks ont été créés par l'équipe de React router
 
 `App.js`
 
-````javascript
-import './App.css';
-import Accueil from './Components/Accueil'; 
-import Projets from './Components/Projets'; 
-import Contacts from './Components/Contacts';
-import Nav from './Components/Nav/Nav' ;
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
+```javascript
+import "./App.css";
+import Accueil from "./Components/Accueil";
+import Projets from "./Components/Projets";
+import Contacts from "./Components/Contacts";
+import Nav from "./Components/Nav/Nav";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
     <>
       {/* <Accueil/> */}
       <Router>
-        <Nav/>
+        <Nav />
         <Switch>
-          <Route exact path="/" component={ Accueil } />
-          <Route exact path="/Projets" component={ Projets } />
-          <Route exact path="/Projets/:slug" component={ Projets } />
-          <Route exact path="/Contacts" component={ Contacts } />
-          <Route component={ () => <div>ERREUR 404 :(</div> }/>
+          <Route exact path="/" component={Accueil} />
+          <Route exact path="/Projets" component={Projets} />
+          <Route exact path="/Projets/:slug" component={Projets} />
+          <Route exact path="/Contacts" component={Contacts} />
+          <Route component={() => <div>ERREUR 404 :(</div>} />
         </Switch>
       </Router>
     </>
@@ -2036,77 +2109,70 @@ function App() {
 }
 
 export default App;
-````
+```
 
 `Projets.js`
 
-````javascript
-import React from 'react';
-import { useParams } from 'react-router-dom';
-
+```javascript
+import React from "react";
+import { useParams } from "react-router-dom";
 
 export default function Projets() {
+  //http://localhost:3000/Projets/toto ici le slug c'est toto
+  const { slug } = useParams();
+  console.log(slug); // toto
 
-    //http://localhost:3000/Projets/toto ici le slug c'est toto
-    const { slug } = useParams();
-    console.log(slug); // toto
-
-    return (
-        <>
-            <h1>Section PROJETS</h1>
-            <p>{ slug }</p>
-        </>
-    )
+  return (
+    <>
+      <h1>Section PROJETS</h1>
+      <p>{slug}</p>
+    </>
+  );
 }
-````
+```
 
 useLocation
 
 `Accueil.js`
 
-````javascript
-import React from 'react';
-import { Link } from 'react-router-dom';
+```javascript
+import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Accueil() {
-    return (
-        <>
-            <h1>Bienvenue ACCUEIL</h1>
-            <Link
-            to={{
-                pathname: "/Contacts",
-                state: {
-                    txt: "voilà des données"
-                }
-            }}
-            >
-            Aller à la section Contacts
-            </Link>
-        
-        </>
-    )
+  return (
+    <>
+      <h1>Bienvenue ACCUEIL</h1>
+      <Link
+        to={{
+          pathname: "/Contacts",
+          state: {
+            txt: "voilà des données",
+          },
+        }}
+      >
+        Aller à la section Contacts
+      </Link>
+    </>
+  );
 }
-````
+```
 
 `Contacts.js`
 
-````javascript
-import React from 'react'
-import { useLocation } from 'react-router-dom'
+```javascript
+import React from "react";
+import { useLocation } from "react-router-dom";
 
 export default function Contacts() {
-
-    const location = useLocation();
-    console.log(location); 
-    // renvoi un objet contenant un "state" nous permettant de passer des données
-    // lorque l'on navigue dans notre application
-    console.log(location.state.txt); // voilà des données
-    return (
-        <h1>Section CONTACTS</h1>
-    )
+  const location = useLocation();
+  console.log(location);
+  // renvoi un objet contenant un "state" nous permettant de passer des données
+  // lorque l'on navigue dans notre application
+  console.log(location.state.txt); // voilà des données
+  return <h1>Section CONTACTS</h1>;
 }
-
-````
+```
 
 ---
 
@@ -2114,42 +2180,46 @@ export default function Contacts() {
 
 `authentication-services.ts`
 
-````javascript
-import axios from 'axios';
+```javascript
+import axios from "axios";
 
 export default class AuthenticateService {
-    static isAuthenticated = false;
-    static allLogin: any[];
-    static privilege: string;
+  static isAuthenticated = false;
+  static allLogin: any[];
+  static privilege: string;
 
-    static getAllLogins() {
-          return axios
-                .get("/loginAll")
-                .then((allLogin) => {this.allLogin = allLogin.data;
-                                     console.log('in getAllLogin from AUthenticated class', this.allLogin);
-                                     return this.allLogin;
-                                    })
-                .catch((err) => console.log(err));
-    }
+  static getAllLogins() {
+    return axios
+      .get("/loginAll")
+      .then((allLogin) => {
+        this.allLogin = allLogin.data;
+        console.log("in getAllLogin from AUthenticated class", this.allLogin);
+        return this.allLogin;
+      })
+      .catch((err) => console.log(err));
+  }
 
-    static async verifyLogin(pseudo: string, pwd: string): Promise<boolean> {
-        let result = await this.getAllLogins();
-        for(let i=0; i<this.allLogin.length; i++) {
-                    if(this.allLogin[i].pseudo === pseudo && this.allLogin[i].password === pwd) {
-                        this.isAuthenticated = true;
-                        this.privilege = this.allLogin[i].privileges;
-                        console.log('authenticated ===', this.isAuthenticated);
-                        console.log('privilege ===', this.privilege);
-                    }
-        }
-        return this.isAuthenticated;
+  static async verifyLogin(pseudo: string, pwd: string): Promise<boolean> {
+    let result = await this.getAllLogins();
+    for (let i = 0; i < this.allLogin.length; i++) {
+      if (
+        this.allLogin[i].pseudo === pseudo &&
+        this.allLogin[i].password === pwd
+      ) {
+        this.isAuthenticated = true;
+        this.privilege = this.allLogin[i].privileges;
+        console.log("authenticated ===", this.isAuthenticated);
+        console.log("privilege ===", this.privilege);
+      }
     }
+    return this.isAuthenticated;
+  }
 }
-````
+```
 
 `login.tsx`
 
-````javascript
+```javascript
 import  React, { useState } from 'react';
 import './login.css';
 import { useHistory } from 'react-router-dom';
@@ -2169,7 +2239,7 @@ const Login = () => {
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
         e.preventDefault();
         console.log("allLogin === ", allLogin);
-        
+
         if(!pseudo || !pwd) {
             setMessage('veuillez remplir tous les champs');
             return;
@@ -2191,7 +2261,7 @@ const Login = () => {
     */
     const handleKeyUp = (): void => {
         console.log('key up function enter :)');
-        
+
         if(pseudo !== "" && pwd !== "") {
             setMessage("");
         }
@@ -2211,7 +2281,7 @@ const Login = () => {
                     placeholder="Pseudo"
                     autoComplete="off"
                 />
-                <input 
+                <input
                     id="pwd"
                     name="pwd"
                     type="password"
@@ -2226,51 +2296,52 @@ const Login = () => {
 }
 
 export default Login;
-````
+```
 
 ---
 
 ## Les formulaires <a name="forms"></a>
 
-````html
- <label htmlFor="hp">Point de vie</label> <!-- for devient htmlFor en jsx -->
-````
+```html
+<label htmlFor="hp">Point de vie</label>
+<!-- for devient htmlFor en jsx -->
+```
 
 On peut créér des formulaires de deux manières diférentes :
 
-Composant controlés         | Composant non controlés
---- | ---
-State                       | DOM
-Tous les formulaires        |  Seulement les petits formulaires
-Le plus utilisé             | Le moins utilisé
+| Composant controlés  | Composant non controlés          |
+| -------------------- | -------------------------------- |
+| State                | DOM                              |
+| Tous les formulaires | Seulement les petits formulaires |
+| Le plus utilisé      | Le moins utilisé                 |
 
 > Evènements des formulaires React avec le typage de typeScript :
 
-````typescript
+```typescript
 // Tous les événements des éléments de formulaire sont du type, où T est le type d'élément HTML
 React.ChangeEvent<T>
 
 React.ChangeEvent<HTMLInputElement>
 React.ChangeEvent<HTMLTextAreaElement>
 React.ChangeEvent<HTMLInputSelect>
-````
+```
 
-````typescript
+```typescript
 const handlerInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const fieldName: string = e.target.name;
-      const fieldValue: string = e.target.value;
-      const newField: Field = { [fieldName]: { value: fieldValue }};
+  const fieldName: string = e.target.name;
+  const fieldValue: string = e.target.value;
+  const newField: Field = { [fieldName]: { value: fieldValue } };
 
-      setForm({ ...form, ...newField }) // fusion de deux objets. Si des proprietées sont en double c'est celles de l'objet de droite qui sont gardées.
-    };
-````
+  setForm({ ...form, ...newField }); // fusion de deux objets. Si des proprietées sont en double c'est celles de l'objet de droite qui sont gardées.
+};
+```
 
-````typescript
+```typescript
 const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       console.log(form);
       const isFormValid = validateForm();
-      
+
       if(isFormValid) {
         history.push(`/pokemon/${ pokemon.id }`);
       }
@@ -2278,14 +2349,14 @@ const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 return (
     <form onSubmit={ e=> handleSubmit(e)}>
     //....
-);        
-````
+);
+```
 
 ---
 
 Exemple :
 
-````javascript
+```javascript
 const handleSubmit = (e) => {
     e.preventDefault();
     alert(`bonjour ${e.target.elements.emailInput.value}`); //pour récupèrer la valeur de l'email
@@ -2301,219 +2372,266 @@ const handleSubmit = (e) => {
     </form>
   )
 }
-````
+```
 
 ---
 
 Exemple :
 
-````typescript
-import React, { FunctionComponent, useState } from 'react';
-import { useHistory } from 'react-router-dom';
-import Pokemon from '../models/pokemon';
-import formatType from '../helpers/format-type';
-import './pokemon-form.css';
-  
+```typescript
+import React, { FunctionComponent, useState } from "react";
+import { useHistory } from "react-router-dom";
+import Pokemon from "../models/pokemon";
+import formatType from "../helpers/format-type";
+import "./pokemon-form.css";
+
 type Field = {
-  value?: any,
-  error?: string,
-  isValid?: boolean
-}
+  value?: any;
+  error?: string;
+  isValid?: boolean;
+};
 
 type Form = {
-  name: Field,
-  hp: Field,
-  cp: Field,
-  type: Field
+  name: Field;
+  hp: Field;
+  cp: Field;
+  type: Field;
 };
 
 type Props = {
-  pokemon: Pokemon
+  pokemon: Pokemon;
 };
 
 const PokemonForm: FunctionComponent<Props> = ({ pokemon }) => {
-  
-  const [form, setForm] = useState<Form>(
-    {
-      name: { value: pokemon.name,
-              isValid: true },
-      hp:   { value: pokemon.hp,
-              isValid: true },
-      cp:   { value: pokemon.cp,
-              isValid: true },
-      type: { value: pokemon.types,
-              isValid: true }
-    }
-    );
+  const [form, setForm] = useState<Form>({
+    name: { value: pokemon.name, isValid: true },
+    hp: { value: pokemon.hp, isValid: true },
+    cp: { value: pokemon.cp, isValid: true },
+    type: { value: pokemon.types, isValid: true },
+  });
 
-    const history = useHistory();
-    
-    const types: string[] = [
-      'Plante', 'Feu', 'Eau', 'Insecte', 'Normal', 'Electrik',
-      'Poison', 'Fée', 'Vol', 'Combat', 'Psy'
-    ];
-    
-    const whichType = (type: string): boolean => {
-      return form.type.value.includes(type);
-    }
+  const history = useHistory();
 
-    const handlerInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-      const fieldName: string = e.target.name;
-      const fieldValue: string = e.target.value;
-      const newField: Field = { [fieldName]: { value: fieldValue }};
+  const types: string[] = [
+    "Plante",
+    "Feu",
+    "Eau",
+    "Insecte",
+    "Normal",
+    "Electrik",
+    "Poison",
+    "Fée",
+    "Vol",
+    "Combat",
+    "Psy",
+  ];
 
-      setForm({ ...form, ...newField })
-    };
+  const whichType = (type: string): boolean => {
+    return form.type.value.includes(type);
+  };
 
-    const selectType = (type: string, e: React.ChangeEvent<HTMLInputElement>): void => {
-      const checked = e.target.checked;
-      let newField: Field;
+  const handlerInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const fieldName: string = e.target.name;
+    const fieldValue: string = e.target.value;
+    const newField: Field = { [fieldName]: { value: fieldValue } };
 
-      if(checked) {
-        // Si l'utilisateur coche un type, à l'ajoute à la liste des types du pokémon.
-        const newTypes: string[] = form.type.value.concat([type]);
-        newField = { value: newTypes };
-      } else {
-        // Si l'utilisateur décoche un type, on le retire de la liste des types du pokémon.
-        const newTypes: string[] = form.type.value.filter((currentType: string) => currentType !== type) ;
-        newField = { value: newTypes };
-      }
+    setForm({ ...form, ...newField });
+  };
 
-      setForm({...form, ...{ type: newField }});
-    }
+  const selectType = (
+    type: string,
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    const checked = e.target.checked;
+    let newField: Field;
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      console.log(form);
-      const isFormValid = validateForm();
-      
-      if(isFormValid) {
-        history.push(`/pokemon/${ pokemon.id }`);
-      }
+    if (checked) {
+      // Si l'utilisateur coche un type, à l'ajoute à la liste des types du pokémon.
+      const newTypes: string[] = form.type.value.concat([type]);
+      newField = { value: newTypes };
+    } else {
+      // Si l'utilisateur décoche un type, on le retire de la liste des types du pokémon.
+      const newTypes: string[] = form.type.value.filter(
+        (currentType: string) => currentType !== type
+      );
+      newField = { value: newTypes };
     }
 
-    const validateForm = () => {
-      let newForm: Form = form;
-      
-      // Validator name
-      if(!/^[a-zA-Zàéè ]{3,25}$/.test(form.name.value)) {
-        const errorMsg: string = 'Le nom du pokémon est requis (1-25).';
-        const newField: Field = { value: form.name.value, error: errorMsg, isValid: false };
-        newForm = { ...newForm, ...{ name: newField } };
-      } else {
-        const newField: Field = { value: form.name.value, error: '', isValid: true };
-        newForm = { ...newForm, ...{ name: newField } };
-      }
-  
-      // Validator hp
-      if(!/^[0-9]{1,3}$/.test(form.hp.value)) {
-        const errorMsg: string = 'Les points de vie du pokémon sont compris entre 0 et 999.';
-        const newField: Field = {value: form.hp.value, error: errorMsg, isValid: false};
-        newForm = { ...newForm, ...{ hp: newField } };
-      } else {
-        const newField: Field = { value: form.hp.value, error: '', isValid: true };
-        newForm = { ...newForm, ...{ hp: newField } };
-      }
-  
-      // Validator cp
-      if(!/^[0-9]{1,2}$/.test(form.cp.value)) {
-        const errorMsg: string = 'Les dégâts du pokémon sont compris entre 0 et 99';
-        const newField: Field = {value: form.cp.value, error: errorMsg, isValid: false};
-        newForm = { ...newForm, ...{ cp: newField } };
-      } else {
-        const newField: Field = { value: form.cp.value, error: '', isValid: true };
-        newForm = { ...newForm, ...{ cp: newField } };
-      }
-  
-      setForm(newForm);
-      return newForm.name.isValid && newForm.hp.isValid && newForm.cp.isValid;
+    setForm({ ...form, ...{ type: newField } });
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(form);
+    const isFormValid = validateForm();
+
+    if (isFormValid) {
+      history.push(`/pokemon/${pokemon.id}`);
+    }
+  };
+
+  const validateForm = () => {
+    let newForm: Form = form;
+
+    // Validator name
+    if (!/^[a-zA-Zàéè ]{3,25}$/.test(form.name.value)) {
+      const errorMsg: string = "Le nom du pokémon est requis (1-25).";
+      const newField: Field = {
+        value: form.name.value,
+        error: errorMsg,
+        isValid: false,
+      };
+      newForm = { ...newForm, ...{ name: newField } };
+    } else {
+      const newField: Field = {
+        value: form.name.value,
+        error: "",
+        isValid: true,
+      };
+      newForm = { ...newForm, ...{ name: newField } };
     }
 
-    const isTypesValid = (type: string): boolean => {
-      // Cas n°1: Le pokémon a un seul type, qui correspond au type passé en paramètre.
-      // Dans ce cas on revoie false, car l'utilisateur ne doit pas pouvoir décoché ce type (sinon le pokémon aurait 0 type, ce qui est interdit)
-      if (form.type.value.length === 1 && whichType(type)) {
-        return false;
-      }
-      
-      // Cas n°1: Le pokémon a au moins 3 types.
-      // Dans ce cas il faut empêcher à l'utilisateur de cocher un nouveau type, mais pas de décocher les types existants.
-      if (form.type.value.length >= 3 && !whichType(type)) { 
-        return false; 
-      } 
-      
-      // Après avoir passé les deux tests ci-dessus, on renvoie 'true', 
-      // c'est-à-dire que l'on autorise l'utilisateur à cocher ou décocher un nouveau type.
-      return true;
+    // Validator hp
+    if (!/^[0-9]{1,3}$/.test(form.hp.value)) {
+      const errorMsg: string =
+        "Les points de vie du pokémon sont compris entre 0 et 999.";
+      const newField: Field = {
+        value: form.hp.value,
+        error: errorMsg,
+        isValid: false,
+      };
+      newForm = { ...newForm, ...{ hp: newField } };
+    } else {
+      const newField: Field = {
+        value: form.hp.value,
+        error: "",
+        isValid: true,
+      };
+      newForm = { ...newForm, ...{ hp: newField } };
     }
+
+    // Validator cp
+    if (!/^[0-9]{1,2}$/.test(form.cp.value)) {
+      const errorMsg: string =
+        "Les dégâts du pokémon sont compris entre 0 et 99";
+      const newField: Field = {
+        value: form.cp.value,
+        error: errorMsg,
+        isValid: false,
+      };
+      newForm = { ...newForm, ...{ cp: newField } };
+    } else {
+      const newField: Field = {
+        value: form.cp.value,
+        error: "",
+        isValid: true,
+      };
+      newForm = { ...newForm, ...{ cp: newField } };
+    }
+
+    setForm(newForm);
+    return newForm.name.isValid && newForm.hp.isValid && newForm.cp.isValid;
+  };
+
+  const isTypesValid = (type: string): boolean => {
+    // Cas n°1: Le pokémon a un seul type, qui correspond au type passé en paramètre.
+    // Dans ce cas on revoie false, car l'utilisateur ne doit pas pouvoir décoché ce type (sinon le pokémon aurait 0 type, ce qui est interdit)
+    if (form.type.value.length === 1 && whichType(type)) {
+      return false;
+    }
+
+    // Cas n°1: Le pokémon a au moins 3 types.
+    // Dans ce cas il faut empêcher à l'utilisateur de cocher un nouveau type, mais pas de décocher les types existants.
+    if (form.type.value.length >= 3 && !whichType(type)) {
+      return false;
+    }
+
+    // Après avoir passé les deux tests ci-dessus, on renvoie 'true',
+    // c'est-à-dire que l'on autorise l'utilisateur à cocher ou décocher un nouveau type.
+    return true;
+  };
 
   return (
-    <form onSubmit={ e=> handleSubmit(e)}>
-      
-            <div>
-              <img src={pokemon.picture} alt={form.name.value} style={{width: '250px', margin: '0 auto'}}/>
-            </div>      
-                {/* Pokemon name */}
-                <div>
-                  <label htmlFor="name">Nom</label>
-                  <input id="name" name="name" type="text" value={ form.name.value } onChange={ e => handlerInputChange(e) }></input>
-                  { form.name.error && 
-                  <div>
-                    { form.name.error }
-                  </div>
-                  }
-                </div>
-                {/* Pokemon hp */}
-                <div>
-                  <label htmlFor="hp">Point de vie</label>
-                  <input id="hp" name="hp" type="number" value={ form.hp.value} onChange={ e => handlerInputChange(e) }></input>
-                  { form.hp.error && 
-                  <div>
-                    { form.hp.error }
-                  </div>
-                  }
-                </div>
-                {/* Pokemon cp */}
-                <div >
-                  <label htmlFor="cp">Dégâts</label>
-                  <input id="cp" name="cp" type="number" value={ form.cp.value} onChange={ e => handlerInputChange(e) }></input>
-                  { form.cp.error && 
-                  <div>
-                    { form.cp.error }
-                  </div>
-                  }
-                </div>
-                {/* Pokemon types */}
-                <div>
-                  <label>Types</label>
-                  {types.map(type => (
-                    <div key={type} style={{ marginBottom: '10px' }}>
-                      <label>
-                        <input id={ type } type="checkbox" checked={whichType(type)} disabled={ !isTypesValid(type) } onChange={e => selectType(type, e)}></input>
-                        <span id="type" style={{ backgroundColor: formatType(type) }}>{ type }
-                          {/* <p className={formatType(type)}>{ type }</p> */}
-                          
-                        </span>
-                      </label>
-                    </div>
-                  ))}
-                </div>
-              
-              <div>
-                {/* Submit button */}
-                <button type="submit">Valider</button>
-              </div>
-            
+    <form onSubmit={(e) => handleSubmit(e)}>
+      <div>
+        <img
+          src={pokemon.picture}
+          alt={form.name.value}
+          style={{ width: "250px", margin: "0 auto" }}
+        />
+      </div>
+      {/* Pokemon name */}
+      <div>
+        <label htmlFor="name">Nom</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          value={form.name.value}
+          onChange={(e) => handlerInputChange(e)}
+        ></input>
+        {form.name.error && <div>{form.name.error}</div>}
+      </div>
+      {/* Pokemon hp */}
+      <div>
+        <label htmlFor="hp">Point de vie</label>
+        <input
+          id="hp"
+          name="hp"
+          type="number"
+          value={form.hp.value}
+          onChange={(e) => handlerInputChange(e)}
+        ></input>
+        {form.hp.error && <div>{form.hp.error}</div>}
+      </div>
+      {/* Pokemon cp */}
+      <div>
+        <label htmlFor="cp">Dégâts</label>
+        <input
+          id="cp"
+          name="cp"
+          type="number"
+          value={form.cp.value}
+          onChange={(e) => handlerInputChange(e)}
+        ></input>
+        {form.cp.error && <div>{form.cp.error}</div>}
+      </div>
+      {/* Pokemon types */}
+      <div>
+        <label>Types</label>
+        {types.map((type) => (
+          <div key={type} style={{ marginBottom: "10px" }}>
+            <label>
+              <input
+                id={type}
+                type="checkbox"
+                checked={whichType(type)}
+                disabled={!isTypesValid(type)}
+                onChange={(e) => selectType(type, e)}
+              ></input>
+              <span id="type" style={{ backgroundColor: formatType(type) }}>
+                {type}
+                {/* <p className={formatType(type)}>{ type }</p> */}
+              </span>
+            </label>
+          </div>
+        ))}
+      </div>
+
+      <div>
+        {/* Submit button */}
+        <button type="submit">Valider</button>
+      </div>
     </form>
   );
 };
-   
+
 export default PokemonForm;
-````
+```
 
 > Autre exemple:
 
-````javascript
+```javascript
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import "./Form.css";
@@ -2531,14 +2649,12 @@ export default function Form() {
   };
 
   const handleInputs = (e) => {
-
     if (e.target.classList.contains("inp-title")) {
-        const newObjState = { ...article, title: e.target.value };
-        setArticle(newObjState);
-    }
-    else if (e.target.classList.contains("inp-body")) {
-        const newObjState = { ...article, body: e.target.value };
-        setArticle(newObjState);
+      const newObjState = { ...article, title: e.target.value };
+      setArticle(newObjState);
+    } else if (e.target.classList.contains("inp-body")) {
+      const newObjState = { ...article, body: e.target.value };
+      setArticle(newObjState);
     }
   };
 
@@ -2571,15 +2687,14 @@ export default function Form() {
     </>
   );
 }
-
-````
+```
 
 ## Requêtes HTTP <a name="requetesHTTP"></a>
 
 Nous pouvons simuler une API REST grace à la librairie json-server
 (C'est comme une mini base de donnée avec un fichier)
 
-````typescript
+```typescript
 npm install -g json-server
 // puis création d'un fichier db.json
 // puis lancement du server json pour simuler l'API REST
@@ -2590,48 +2705,47 @@ npm run start:api
 
 // !! avoir : pourquoi npm start et npm run start:api ?
 
-````
+```
 
 Utilisation de l'API fetch
 
-````typescript
-import React, { FunctionComponent, useState, useEffect } from 'react';
-import Pokemon from '../models/pokemon';
-import POKEMONS from '../models/mock-pokemon';
-import PokemonCard from '../components/pokemon-card';
-import './pokemon-list.css';
-  
+```typescript
+import React, { FunctionComponent, useState, useEffect } from "react";
+import Pokemon from "../models/pokemon";
+import POKEMONS from "../models/mock-pokemon";
+import PokemonCard from "../components/pokemon-card";
+import "./pokemon-list.css";
+
 const PokemonList: FunctionComponent = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
-  
+
   useEffect(() => {
-   //  setPokemons(POKEMONS);
-   fetch('http://localhost:3001/pokemon')
-   .then(response => response.json())
-   .then((pokemons) => {
-      setPokemons(pokemons)
-   });
+    //  setPokemons(POKEMONS);
+    fetch("http://localhost:3001/pokemon")
+      .then((response) => response.json())
+      .then((pokemons) => {
+        setPokemons(pokemons);
+      });
   }, []);
-  
+
   return (
-    
-  <div>
+    <div>
       <h1>Pokédex</h1>
       <div>
-         <div className="container">
-            { pokemons.map((pokemon)=> (
-               <PokemonCard key= { pokemon.id } pokemon= { pokemon } />      
-            )) }
-         </div>
+        <div className="container">
+          {pokemons.map((pokemon) => (
+            <PokemonCard key={pokemon.id} pokemon={pokemon} />
+          ))}
+        </div>
       </div>
-  </div>
+    </div>
   );
-}
-  
-export default PokemonList;
-````
+};
 
-````javascript
+export default PokemonList;
+```
+
+```javascript
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import { RouteComponentProps, Link } from 'react-router-dom';
 import Pokemon from '../models/pokemon';
@@ -2657,125 +2771,126 @@ const PokemonsDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
         .then(pokemon => {
             if(pokemon.id) setPokemon(pokemon);
         });
-        
+
     }, [match.params.id]);
 
-    return ( 
+    return (
       // .....
     );
     }
-````
+```
 
 Factoriser du code dans un service : src/services/
 
-````typescript
+```typescript
 import Pokemon from "../models/pokemon";
- 
+
 export default class PokemonService {
- 
   static getPokemons(): Promise<Pokemon[]> {
-    return fetch('http://localhost:3001/pokemons')
-      .then(response => response.json());
+    return fetch("http://localhost:3001/pokemons").then((response) =>
+      response.json()
+    );
   }
- 
-  static getPokemon(id: number): Promise<Pokemon|null> {
+
+  static getPokemon(id: number): Promise<Pokemon | null> {
     return fetch(`http://localhost:3001/pokemons/${id}`)
-      .then(response => response.json())
-      .then(data => this.isEmpty(data) ? null : data);
+      .then((response) => response.json())
+      .then((data) => (this.isEmpty(data) ? null : data));
   }
- 
+
   static isEmpty(data: Object): boolean {
     return Object.keys(data).length === 0;
   }
 }
+```
 
-````
+```typescript
+import React, { FunctionComponent, useState, useEffect } from "react";
+import Pokemon from "../models/pokemon";
+import PokemonCard from "../components/pokemon-card";
+import "./pokemon-list.css";
+import PokemonService from "../services/pokemon-service";
 
-````typescript
-import React, { FunctionComponent, useState, useEffect } from 'react';
-import Pokemon from '../models/pokemon';
-import PokemonCard from '../components/pokemon-card';
-import './pokemon-list.css';
-import PokemonService from '../services/pokemon-service';
-  
 const PokemonList: FunctionComponent = () => {
   const [pokemons, setPokemons] = useState<Pokemon[]>([]);
-  
+
   useEffect(() => {
-   PokemonService.getPokemons().then(pokemons => setPokemons(pokemons));
+    PokemonService.getPokemons().then((pokemons) => setPokemons(pokemons));
   }, []);
-  
-  return (  
-      <div>
-          <h1>Pokédex</h1>
-          <div>
-             <div className="container">
-                { pokemons.map((pokemon)=> (
-                   <PokemonCard key= { pokemon.id } pokemon= { pokemon } />      
-                )) }
-             </div>
-          </div>
-      </div>
-  );
-}
-  
-export default PokemonList;
-````
 
-````typescript
-import React, { FunctionComponent, useState, useEffect } from 'react';
-import { RouteComponentProps } from 'react-router-dom';
-import PokemonForm from '../components/pokemon-form';
-import Pokemon from '../models/pokemon';
-import PokemonService from '../services/pokemon-service' ;
-
-type Params = { id: string };
-  
-const PokemonEdit: FunctionComponent<RouteComponentProps<Params>> = ({ match }) => {
-    
-  const [pokemon, setPokemon] = useState<Pokemon|null>(null);
-  
-  useEffect(() => {
-    PokemonService.getPokemon(+match.params.id).then(pokemon => setPokemon(pokemon));
-  }, [match.params.id]);
-    
   return (
     <div>
-      { pokemon ? (
+      <h1>Pokédex</h1>
+      <div>
+        <div className="container">
+          {pokemons.map((pokemon) => (
+            <PokemonCard key={pokemon.id} pokemon={pokemon} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default PokemonList;
+```
+
+```typescript
+import React, { FunctionComponent, useState, useEffect } from "react";
+import { RouteComponentProps } from "react-router-dom";
+import PokemonForm from "../components/pokemon-form";
+import Pokemon from "../models/pokemon";
+import PokemonService from "../services/pokemon-service";
+
+type Params = { id: string };
+
+const PokemonEdit: FunctionComponent<RouteComponentProps<Params>> = ({
+  match,
+}) => {
+  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
+
+  useEffect(() => {
+    PokemonService.getPokemon(+match.params.id).then((pokemon) =>
+      setPokemon(pokemon)
+    );
+  }, [match.params.id]);
+
+  return (
+    <div>
+      {pokemon ? (
         <div className="row">
-            <h2 className="header center">Éditer { pokemon.name }</h2>
-            <PokemonForm pokemon={ pokemon }></PokemonForm>
+          <h2 className="header center">Éditer {pokemon.name}</h2>
+          <PokemonForm pokemon={pokemon}></PokemonForm>
         </div>
       ) : (
         <h4 className="center">Aucun pokémon à afficher !</h4>
       )}
     </div>
   );
-}
-  
+};
+
 export default PokemonEdit;
-````
+```
 
 Gérer les erreurs HTTP
 
-````typescript
+```typescript
 import Pokemon from "../models/pokemon";
- 
+
 export default class PokemonService {
- 
   static getPokemons(): Promise<Pokemon[]> {
-    return fetch('http://localhost:3001/pokemons')
-      .then(response => response.json())
-      .catch(error => this.handleError(error));
+    return fetch("http://localhost:3001/pokemons")
+      .then((response) => response.json())
+      .catch((error) => this.handleError(error));
   }
- 
-  static getPokemon(id: number): Promise<Pokemon|null> {
+
+  static getPokemon(id: number): Promise<Pokemon | null> {
     return fetch(`http://localhost:3001/pokemons/${id}`)
-      .then(response => response.json())
-      .then(data => this.isEmpty(data) ? null : data)
-      .catch(error => this.handleError(error));
+      .then((response) => response.json())
+      .then((data) => (this.isEmpty(data) ? null : data))
+      .catch((error) => this.handleError(error));
   }
- 
+
   static isEmpty(data: Object): boolean {
     return Object.keys(data).length === 0;
   }
@@ -2784,11 +2899,11 @@ export default class PokemonService {
     console.log(error);
   }
 }
-````
+```
 
 PUT
 
-````typescript
+```typescript
 static updatePokemon(pokemon: Pokemon): Promise<Pokemon> {
     return fetch(`http://localhost:3001/pokemons/${pokemon.id}`, {
       method: 'PUT',
@@ -2798,34 +2913,36 @@ static updatePokemon(pokemon: Pokemon): Promise<Pokemon> {
     .then(response => response.json())
     .catch(error => this.handleError(error));
   }
-````
+```
 
-````typescript
+```typescript
 const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      console.log(form);
-      console.log(pokemon);
-      const isFormValid = validateForm();
-      
-      if(isFormValid) {
-        pokemon.name = form.name.value;
-        pokemon.hp = form.hp.value;
-        pokemon.cp = form.cp.value;
-        pokemon.types = form.type.value;
-        PokemonService.updatePokemon(pokemon).then(() => history.push(`/pokemon/${ pokemon.id }`));
-      }
-    }
-````
+  e.preventDefault();
+  console.log(form);
+  console.log(pokemon);
+  const isFormValid = validateForm();
+
+  if (isFormValid) {
+    pokemon.name = form.name.value;
+    pokemon.hp = form.hp.value;
+    pokemon.cp = form.cp.value;
+    pokemon.types = form.type.value;
+    PokemonService.updatePokemon(pokemon).then(() =>
+      history.push(`/pokemon/${pokemon.id}`)
+    );
+  }
+};
+```
 
 Avec json server on peut ajouter une option pour simuler un délai de répose du serveur
 
-````json
+```json
 "scripts": {
     "start": "react-scripts start",
     "start:api": "json-server --watch src/models/db.json --port=3001 --delay=500",
     "build": "react-scripts build"
   },
-````
+```
 
 ---
 
@@ -2835,31 +2952,29 @@ L'API de context fait partie de REACT. Permet de partager des données dans tout
 
 `\src\Context\ThemeContext.js`
 
-````javascript
-import React, { createContext, useState } from 'react';
+```javascript
+import React, { createContext, useState } from "react";
 
 export const ThemeContext = createContext();
 
-const ThemeContextProvider = props => {
+const ThemeContextProvider = (props) => {
+  const [theme, setTheme] = useState("Hello Context");
 
-    const [theme, setTheme] = useState("Hello Context");
-
-    return (
-        <ThemeContext.Provider value={{ theme }}>
-            { props.children }
-        </ThemeContext.Provider>
-    )
-
-}
+  return (
+    <ThemeContext.Provider value={{ theme }}>
+      {props.children}
+    </ThemeContext.Provider>
+  );
+};
 export default ThemeContextProvider;
-````
+```
 
 `\src\App.js`
 
-````javascript
-import './App.css';
-import Content from './Components/Content/Content';
-import ThemeContextProvider from './Context/ThemeContext';
+```javascript
+import "./App.css";
+import Content from "./Components/Content/Content";
+import ThemeContextProvider from "./Context/ThemeContext";
 
 function App() {
   return (
@@ -2872,133 +2987,128 @@ function App() {
 }
 
 export default App;
-
-````
+```
 
 `\src\Components\Content\Content.js``
 
-````javascript
-import React, { useContext } from 'react';
-import BtnToggle from '../BtnToggle/BtnToggle';
-import './Content.css';
-import { ThemeContext } from '../../Context/ThemeContext';
+```javascript
+import React, { useContext } from "react";
+import BtnToggle from "../BtnToggle/BtnToggle";
+import "./Content.css";
+import { ThemeContext } from "../../Context/ThemeContext";
 
 export default function Content() {
+  const { theme } = useContext(ThemeContext);
 
-    const { theme } = useContext(ThemeContext);
+  console.log(theme); // Hello Context
 
-    console.log(theme); // Hello Context
-
-    return (
-        <div className="container">
-            <BtnToggle />
-            <h1> Lorem ipsum dolor sit amet.</h1>
-            <p className="content-txt">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam feugiat, turpis at pulvinar vulputate, erat libero tristique tellus, 
-            </p>
-        </div>
-    )
+  return (
+    <div className="container">
+      <BtnToggle />
+      <h1> Lorem ipsum dolor sit amet.</h1>
+      <p className="content-txt">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam
+        feugiat, turpis at pulvinar vulputate, erat libero tristique tellus,
+      </p>
+    </div>
+  );
 }
-````
+```
 
 `\src\Components\BtnToggle\BtnToggle.js`
 
-````javascript
-import React from 'react';
-import './BtnToggle.css';
+```javascript
+import React from "react";
+import "./BtnToggle.css";
 
 export default function BtnToggle() {
-    return (
-        <button className="btn-toggle">Toggle</button>
-    )
+  return <button className="btn-toggle">Toggle</button>;
 }
-````
+```
 
 ---
+
 Autre exemple :
 Il est possible de passer des fonctions dans le context
 
 `\src\index.css`
 
-````css
+```css
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+    "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transition: color 0.4s ease-in-out,
-  background-color 0.4s ease-in-out;
+  transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 .dark-body {
   background: #222;
   color: #f1f1f1;
 }
-````
+```
 
 `\src\Components\BtnToggle\BtnToggle.css`
 
-````css
+```css
 .btn-toggle {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    border-radius: 50%;
-    width: 75px;
-    height: 75px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    outline: none;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  border-radius: 50%;
+  width: 75px;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: none;
 }
 .dark-btn {
-    background: #222;
-    color: #f1f1f1;
+  background: #222;
+  color: #f1f1f1;
 }
-````
+```
 
 `\src\Context\ThemeContext.js`
 
-````javascript
-import React, { createContext, useState } from 'react';
+```javascript
+import React, { createContext, useState } from "react";
 
 export const ThemeContext = createContext();
 
-const ThemeContextProvider = props => {
+const ThemeContextProvider = (props) => {
+  const [theme, setTheme] = useState(false);
 
-    const [theme, setTheme] = useState(false);
+  const toggleTheme = () => {
+    setTheme(!theme);
+  };
+  if (theme) {
+    document.body.classList.add("dark-body");
+  } else {
+    document.body.classList.remove("dark-body");
+  }
 
-    const toggleTheme = () => {
-        setTheme(!theme);
-    }
-    if (theme) {
-        document.body.classList.add("dark-body");
-    } else {
-        document.body.classList.remove("dark-body");
-    }
-
-    return (
-        <ThemeContext.Provider value={{ theme, toggleTheme }}>
-            { props.children }
-        </ThemeContext.Provider>
-    )
-
-}
+  return (
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      {props.children}
+    </ThemeContext.Provider>
+  );
+};
 export default ThemeContextProvider;
-````
+```
 
 `\src\App.js`
 
-````javascript
-import './App.css';
-import Content from './Components/Content/Content';
-import ThemeContextProvider from './Context/ThemeContext';
+```javascript
+import "./App.css";
+import Content from "./Components/Content/Content";
+import ThemeContextProvider from "./Context/ThemeContext";
 
 function App() {
   return (
@@ -3011,54 +3121,56 @@ function App() {
 }
 
 export default App;
-````
+```
 
 `\src\Components\Content\Content.js`
 
-````javascript
-import React, { useContext } from 'react';
-import BtnToggle from '../BtnToggle/BtnToggle';
-import './Content.css';
-import { ThemeContext } from '../../Context/ThemeContext';
+```javascript
+import React, { useContext } from "react";
+import BtnToggle from "../BtnToggle/BtnToggle";
+import "./Content.css";
+import { ThemeContext } from "../../Context/ThemeContext";
 
 export default function Content() {
+  const { theme } = useContext(ThemeContext);
 
-    const { theme } = useContext(ThemeContext);
+  console.log(theme);
 
-    console.log(theme);
-
-    return (
-        <div className="container">
-            <BtnToggle />
-            <h1> Lorem ipsum dolor sit amet.</h1>
-            <p className="content-txt">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam feugiat, turpis at pulvinar vulputate, erat libero tristique tellus, nec bibendum odio risus sit amet ante. Aliquam erat volutpat. Nunc auctor. Mauris pretium quam et urna. 
-            </p>
-        </div>
-    )
+  return (
+    <div className="container">
+      <BtnToggle />
+      <h1> Lorem ipsum dolor sit amet.</h1>
+      <p className="content-txt">
+        Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nullam
+        feugiat, turpis at pulvinar vulputate, erat libero tristique tellus, nec
+        bibendum odio risus sit amet ante. Aliquam erat volutpat. Nunc auctor.
+        Mauris pretium quam et urna.
+      </p>
+    </div>
+  );
 }
-````
+```
 
 `\src\Components\BtnToggle\BtnToggle.js``
 
-````javascript
-import React, { useContext } from 'react';
-import './BtnToggle.css';
-import { ThemeContext } from '../../Context/ThemeContext';
+```javascript
+import React, { useContext } from "react";
+import "./BtnToggle.css";
+import { ThemeContext } from "../../Context/ThemeContext";
 
 export default function BtnToggle() {
+  const { toggleTheme, theme } = useContext(ThemeContext);
 
-    const { toggleTheme, theme } = useContext(ThemeContext);
-
-    return (
-        <button
-        onClick={ toggleTheme }
-        className={ theme ? "btn-toggle" : "btn-toggle dark-btn" }>
-            { theme ? "LIGHT" : "DARK"}
-        </button>
-    )
+  return (
+    <button
+      onClick={toggleTheme}
+      className={theme ? "btn-toggle" : "btn-toggle dark-btn"}
+    >
+      {theme ? "LIGHT" : "DARK"}
+    </button>
+  );
 }
-````
+```
 
 ---
 
@@ -3066,394 +3178,383 @@ export default function BtnToggle() {
 
 <https://react-redux.js.org/>
 
-````shell script
+```shell script
   npm install redux
   npm install react-redux
-````
+```
 
 > Création simple d'un store et d'un reducer
 
 `App.js`
 
-````javascript
-import './App.css';
+```javascript
+import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      
-    </div>
-  );
+  return <div className="App"></div>;
 }
 
 export default App;
-
-````
+```
 
 `index.js`
 
-````javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import CounterReducer from './Reducers/CounterReducer';
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import CounterReducer from "./Reducers/CounterReducer";
 
 const Store = createStore(CounterReducer);
 
 ReactDOM.render(
-  <Provider store={ Store }>
+  <Provider store={Store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-````
+```
 
 `\src\Reducers\CounterReducer.js`
 
-````javascript
+```javascript
 const INITIAL_STATE = {
-    count: 0
-}
+  count: 0,
+};
 
 function CounterReducer(state = INITIAL_STATE, action) {
-  
-    return state;
+  return state;
 }
 
 export default CounterReducer;
-````
+```
 
 > utilisation de `useSelector` pour se connecter au store depuis le composent Counter.js
 
 `index.js`
 
-````javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
-import CounterReducer from './Reducers/CounterReducer';
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import CounterReducer from "./Reducers/CounterReducer";
 
 const Store = createStore(CounterReducer);
 
 ReactDOM.render(
-  <Provider store={ Store }>
+  <Provider store={Store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-````
+```
 
 `App.js`
 
-````javascript
-import './App.css';
-import Counter from './Components/Counter'
+```javascript
+import "./App.css";
+import Counter from "./Components/Counter";
 
 function App() {
   return (
     <div className="App">
-      <Counter/>
+      <Counter />
     </div>
   );
 }
 
 export default App;
-````
+```
 
 `\src\Components\Counter.js`
 
-````javascript
-import React from 'react';
-import { useSelector } from 'react-redux';
+```javascript
+import React from "react";
+import { useSelector } from "react-redux";
 
 export default function Counter() {
+  const count = useSelector((state) => state.count);
 
-    const count = useSelector(state => state.count)
-
-    return (
-        <div>
-            <h1>Les données : { count }</h1>
-        </div>
-    )
+  return (
+    <div>
+      <h1>Les données : {count}</h1>
+    </div>
+  );
 }
-````
+```
 
 `\src\Reducers\CounterReducer.js`
 
-````javascript
+```javascript
 const INITIAL_STATE = {
-    count: 10
-}
+  count: 10,
+};
 
 function CounterReducer(state = INITIAL_STATE, action) {
-  
-    return state;
+  return state;
 }
 
 export default CounterReducer;
-````
+```
 
 > Modification du state en utilisant useDispatch pour envoyer une Action
 
 `\src\Components\Counter.js`
 
-````javascript
-import React from 'react';
-import { useSelector, useDispatch} from 'react-redux';
+```javascript
+import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Counter() {
+  const count = useSelector((state) => state.count);
+  const dispatch = useDispatch();
 
-    const count = useSelector(state => state.count)
-    const dispatch = useDispatch();
+  const incrFunc = () => {
+    dispatch({
+      type: "INCR",
+    });
+  };
+  const decrFunc = () => {
+    dispatch({
+      type: "DECR",
+    });
+  };
 
-    const incrFunc = () => {
-        dispatch({
-            type: "INCR"
-        })
-    }
-    const decrFunc = () => {
-        dispatch({
-            type: "DECR"
-        })
-    }
-
-    return (
-        <div>
-            <h1>Les données : { count }</h1>
-            <button onClick={ decrFunc }>-1</button>
-            <button onClick={ incrFunc }>+1</button>
-        </div>
-    )
+  return (
+    <div>
+      <h1>Les données : {count}</h1>
+      <button onClick={decrFunc}>-1</button>
+      <button onClick={incrFunc}>+1</button>
+    </div>
+  );
 }
-````
+```
 
 `\src\Reducers\CounterReducer.js`
 
-````javascript
+```javascript
 const INITIAL_STATE = {
-    count: 10
-}
+  count: 10,
+};
 
 function CounterReducer(state = INITIAL_STATE, action) {
-  
-    switch(action.type){
-        case 'INCR': {
-            return {
-                ...state, // copie du state
-                count: state.count +1
-            }
-        }
-        case 'DECR': {
-            return {
-                ...state, // copie du state
-                count: state.count -1
-            }
-        }
-        // no default
+  switch (action.type) {
+    case "INCR": {
+      return {
+        ...state, // copie du state
+        count: state.count + 1,
+      };
     }
+    case "DECR": {
+      return {
+        ...state, // copie du state
+        count: state.count - 1,
+      };
+    }
+    // no default
+  }
 
-    return state;
+  return state;
 }
 
 export default CounterReducer;
-````
+```
 
 > Envoyer des données supplémentaires avec un dispatch (payload)
 
 `\src\Reducers\AddCartReducer.js`
 
-````javascript
+```javascript
 const INITIAL_STATE = {
-    cart: 10
-}
+  cart: 10,
+};
 
 function AddCartReducer(state = INITIAL_STATE, action) {
-  
-    switch(action.type){
-        case 'ADDCART': {
-            return {
-                ...state, // copie du state
-                cart: action.payload
-            }
-        }
-        // no default
+  switch (action.type) {
+    case "ADDCART": {
+      return {
+        ...state, // copie du state
+        cart: action.payload,
+      };
     }
+    // no default
+  }
 
-    return state;
+  return state;
 }
 
 export default AddCartReducer;
-````
+```
 
 `\src\Components\Counter.js`
 
-````javascript
-import React, { useState } from 'react';
-import { useSelector, useDispatch} from 'react-redux';
+```javascript
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Counter() {
+  const [cartData, setCartData] = useState(0);
+  const cart = useSelector((state) => state.cart);
+  const dispatch = useDispatch();
 
-    const [cartData, setCartData] = useState(0);
-    const cart = useSelector(state => state.cart);
-    const dispatch = useDispatch();
+  const addToCartFunc = () => {
+    dispatch({
+      type: "ADDCART",
+      payload: cartData,
+    });
+  };
 
-    const addToCartFunc = () => {
-        dispatch({
-            type: "ADDCART",
-            payload: cartData
-        })
-    }
-
-    return (
-        <div>
-            <h1>Votre panier : { cart }</h1>
-            {/* <button onClick={ decrFunc }>-1</button>
+  return (
+    <div>
+      <h1>Votre panier : {cart}</h1>
+      {/* <button onClick={ decrFunc }>-1</button>
             <button onClick={ incrFunc }>+1</button> */}
-            <input 
-            value={ cartData }
-            onInput={ e=> setCartData(e.target.value) }
-            type="number"/>
-            <br/>
-            <button onClick={ addToCartFunc }>Ajouter au panier</button>
-        </div>
-    )
+      <input
+        value={cartData}
+        onInput={(e) => setCartData(e.target.value)}
+        type="number"
+      />
+      <br />
+      <button onClick={addToCartFunc}>Ajouter au panier</button>
+    </div>
+  );
 }
-````
+```
 
 `index.js`
 
-````javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { createStore } from 'redux';
-import { Provider } from 'react-redux';
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { createStore } from "redux";
+import { Provider } from "react-redux";
 //import CounterReducer from './Reducers/CounterReducer';
-import AddCartReducer from './Reducers/AddCartReducer';
+import AddCartReducer from "./Reducers/AddCartReducer";
 
 const Store = createStore(AddCartReducer);
 
 ReactDOM.render(
-  <Provider store={ Store }>
+  <Provider store={Store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-````
+```
 
 `App.js`
 
-````javascript
-import './App.css';
-import Counter from './Components/Counter'
+```javascript
+import "./App.css";
+import Counter from "./Components/Counter";
 
 function App() {
   return (
     <div className="App">
-      <Counter/>
+      <Counter />
     </div>
   );
 }
 
 export default App;
-````
+```
 
 > Combiner plusieurs reducers (combineReducers)
 
 `\src\App.js`
 
-````javascript
-import './App.css';
-import Counter from './Components/Counter'
+```javascript
+import "./App.css";
+import Counter from "./Components/Counter";
 
 function App() {
   return (
     <div className="App">
-      <Counter/>
+      <Counter />
     </div>
   );
 }
 
 export default App;
-````
+```
 
 `\src\index.js`
 
-````javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { createStore, combineReducers } from 'redux';
-import { Provider } from 'react-redux';
-import CounterReducer from './Reducers/CounterReducer';
-import AddCartReducer from './Reducers/AddCartReducer';
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { createStore, combineReducers } from "redux";
+import { Provider } from "react-redux";
+import CounterReducer from "./Reducers/CounterReducer";
+import AddCartReducer from "./Reducers/AddCartReducer";
 
 const rootReducer = combineReducers({
   CounterReducer,
-  AddCartReducer
-})
+  AddCartReducer,
+});
 
 const Store = createStore(rootReducer);
 
 ReactDOM.render(
-  <Provider store={ Store }>
+  <Provider store={Store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-````
+```
 
 `\src\Components\Counter.js`
 
-````javascript
-import React, { useState } from 'react';
-import { useSelector, useDispatch} from 'react-redux';
+```javascript
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Counter() {
+  const [cartData, setCartData] = useState(0);
+  // const cart = useSelector(state => state.cart);
+  const { cart, count } = useSelector((state) => ({
+    ...state.AddCartReducer,
+    ...state.CounterReducer,
+  }));
 
-    const [cartData, setCartData] = useState(0);
-    // const cart = useSelector(state => state.cart);
-    const { cart, count } = useSelector(state => ({
-        ...state.AddCartReducer,
-        ...state.CounterReducer
-    }));
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  const addToCartFunc = () => {
+    dispatch({
+      type: "ADDCART",
+      payload: cartData,
+    });
+  };
 
-    const addToCartFunc = () => {
-        dispatch({
-            type: "ADDCART",
-            payload: cartData
-        })
-    }
-
-    return (
-        <div>
-            <h1>Votre panier : { cart }</h1>
-            {/* <button onClick={ decrFunc }>-1</button>
+  return (
+    <div>
+      <h1>Votre panier : {cart}</h1>
+      {/* <button onClick={ decrFunc }>-1</button>
             <button onClick={ incrFunc }>+1</button> */}
-            <input 
-            value={ cartData }
-            onInput={ e=> setCartData(e.target.value) }
-            type="number"/>
-            <br/>
-            <button onClick={ addToCartFunc }>Ajouter au panier</button>
-        </div>
-    )
+      <input
+        value={cartData}
+        onInput={(e) => setCartData(e.target.value)}
+        type="number"
+      />
+      <br />
+      <button onClick={addToCartFunc}>Ajouter au panier</button>
+    </div>
+  );
 }
-````
+```
 
 > Améliorer l'architecture du projet
 
-````text
+```text
     .
     ├── src
     │   ├── Components/
@@ -3462,298 +3563,298 @@ export default function Counter() {
     │            ├── addCartReducer.js
     │            ├── counterReducer.js
     │       └── store.js
-    .    
     .
-````
+    .
+```
 
 `\src\App.js`
 
-````javascript
-import './App.css';
-import Counter from './Components/Counter'
+```javascript
+import "./App.css";
+import Counter from "./Components/Counter";
 
 function App() {
   return (
     <div className="App">
-      <Counter/>
+      <Counter />
     </div>
   );
 }
 
 export default App;
-````
+```
 
 `\src\index.js`
 
-````javascript
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import { Provider } from 'react-redux';
-import store from './redux/store';
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 
 ReactDOM.render(
-  <Provider store={ store }>
+  <Provider store={store}>
     <App />
   </Provider>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-````
+```
 
 `\src\redux\store.js`
 
-````javascript
-import { createStore, combineReducers } from 'redux';
-import counterReducer from './Reducers/CounterReducer';
-import addCartReducer from './Reducers/AddCartReducer';
+```javascript
+import { createStore, combineReducers } from "redux";
+import counterReducer from "./Reducers/CounterReducer";
+import addCartReducer from "./Reducers/AddCartReducer";
 
 const rootReducer = combineReducers({
   counterReducer,
-  addCartReducer
-})
+  addCartReducer,
+});
 
 const store = createStore(rootReducer);
 
 export default store;
-````
+```
 
 `\src\redux\reducers\addCartReducer.js`
 
-````javascript
+```javascript
 const INITIAL_STATE = {
-    cart: 910
-}
+  cart: 910,
+};
 
 function AddCartReducer(state = INITIAL_STATE, action) {
-  
-    switch(action.type){
-        case 'ADDCART': {
-            return {
-                ...state, // copie du state
-                cart: action.payload
-            }
-        }
-        // no default
+  switch (action.type) {
+    case "ADDCART": {
+      return {
+        ...state, // copie du state
+        cart: action.payload,
+      };
     }
+    // no default
+  }
 
-    return state;
+  return state;
 }
 
 export default AddCartReducer;
-````
+```
 
 `\src\redux\reducers\counterReducer.js`
 
-````javascript
+```javascript
 const INITIAL_STATE = {
-    count: 100
-}
+  count: 100,
+};
 
 function CounterReducer(state = INITIAL_STATE, action) {
-  
-    switch(action.type){
-        case 'INCR': {
-            return {
-                ...state, // copie du state
-                count: state.count +1
-            }
-        }
-        case 'DECR': {
-            return {
-                ...state, // copie du state
-                count: state.count -1
-            }
-        }
-        // no default
+  switch (action.type) {
+    case "INCR": {
+      return {
+        ...state, // copie du state
+        count: state.count + 1,
+      };
     }
+    case "DECR": {
+      return {
+        ...state, // copie du state
+        count: state.count - 1,
+      };
+    }
+    // no default
+  }
 
-    return state;
+  return state;
 }
 
 export default CounterReducer;
-````
+```
 
 `\src\Components\Counter.js`
 
-````javascript
-import React, { useState } from 'react';
-import { useSelector, useDispatch} from 'react-redux';
+```javascript
+import React, { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function Counter() {
+  const [cartData, setCartData] = useState(0);
+  // const cart = useSelector(state => state.cart);
+  const { cart, count } = useSelector((state) => ({
+    ...state.AddCartReducer,
+    ...state.CounterReducer,
+  }));
 
-    const [cartData, setCartData] = useState(0);
-    // const cart = useSelector(state => state.cart);
-    const { cart, count } = useSelector(state => ({
-        ...state.AddCartReducer,
-        ...state.CounterReducer
-    }));
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  const addToCartFunc = () => {
+    dispatch({
+      type: "ADDCART",
+      payload: cartData,
+    });
+  };
 
-    const addToCartFunc = () => {
-        dispatch({
-            type: "ADDCART",
-            payload: cartData
-        })
-    }
-
-    return (
-        <div>
-            <h1>Votre panier : { cart } { count }</h1>
-            {/* <button onClick={ decrFunc }>-1</button>
+  return (
+    <div>
+      <h1>
+        Votre panier : {cart} {count}
+      </h1>
+      {/* <button onClick={ decrFunc }>-1</button>
             <button onClick={ incrFunc }>+1</button> */}
-            <input 
-            value={ cartData }
-            onInput={ e=> setCartData(e.target.value) }
-            type="number"/>
-            <br/>
-            <button onClick={ addToCartFunc }>Ajouter au panier</button>
-        </div>
-    )
+      <input
+        value={cartData}
+        onInput={(e) => setCartData(e.target.value)}
+        type="number"
+      />
+      <br />
+      <button onClick={addToCartFunc}>Ajouter au panier</button>
+    </div>
+  );
 }
-````
+```
 
 > middleware : les middlewares se trigger (déclenche) lorsque l'on dispatch quelque chose. effectue une action avant le dispatch. Ici on créé une fonction (customMiddleware) que l'on passe à applyMiddleware.
 
 `store.js`
 
-````javascript
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import CounterReducer from './Reducers/CounterReducer';
-import AddCartReducer from './Reducers/AddCartReducer';
+```javascript
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import CounterReducer from "./Reducers/CounterReducer";
+import AddCartReducer from "./Reducers/AddCartReducer";
 
 const rootReducer = combineReducers({
   CounterReducer,
-  AddCartReducer
-})
+  AddCartReducer,
+});
 
 // curryfication !!!
-const customMiddleware = store => next => action => {
-    console.log(store);
-    console.log(store.getState()); // les states du store avant le dispatch
-    console.log(next);// execute le dispatch
-    console.log(action);// action du dispatch
+const customMiddleware = (store) => (next) => (action) => {
+  console.log(store);
+  console.log(store.getState()); // les states du store avant le dispatch
+  console.log(next); // execute le dispatch
+  console.log(action); // action du dispatch
 
-    next(action); // on execute le dispatch
-} 
+  next(action); // on execute le dispatch
+};
 
 const store = createStore(rootReducer, applyMiddleware(customMiddleware));
 
 export default store;
-````
+```
 
 > Appel asynchrone avec Redux
 
 Installation du middleware `thunk`, grace à ce middleware nous pouvons passer des fonctions au dispatch (ici getCatImg)
 
-````shell script
+```shell script
 npm install redux-thunk
-````
+```
 
 `store.js`
 
-````javascript
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import counterReducer from './reducers/counterReducer';
-import addCartReducer from './reducers/addCartReducer';
-import dataImgReducer from './reducers/dataImgReducer';
-import thunk from 'redux-thunk';
+```javascript
+import { createStore, combineReducers, applyMiddleware } from "redux";
+import counterReducer from "./reducers/counterReducer";
+import addCartReducer from "./reducers/addCartReducer";
+import dataImgReducer from "./reducers/dataImgReducer";
+import thunk from "redux-thunk";
 
 const rootReducer = combineReducers({
   counterReducer,
   addCartReducer,
-  dataImgReducer
-})
+  dataImgReducer,
+});
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
 
 export default store;
-````
+```
 
 `dataImgReducer.js`
 
-````javascript
+```javascript
 const INITIAL_STATE = {
-    imgURL: ""
-}
+  imgURL: "",
+};
 
 function dataImgReducer(state = INITIAL_STATE, action) {
-  
-    switch(action.type){
-        case 'LOADIMG': {
-            return {
-                ...state, // copie du state
-                imgURL: action.payload
-            }
-        }
+  switch (action.type) {
+    case "LOADIMG": {
+      return {
+        ...state, // copie du state
+        imgURL: action.payload,
+      };
     }
+  }
 
-    return state;
+  return state;
 }
 
 export default dataImgReducer;
 
-export const getCatImg = () => dispatch => {
-
-    fetch('https://api.thecatapi.com/v1/images/search')
-    .then(response => response.json())
-    .then(data => {
-        dispatch({
-            type: 'LOADIMG',
-            payload: data[0].url
-        })
-    })
-}
-````
+export const getCatImg = () => (dispatch) => {
+  fetch("https://api.thecatapi.com/v1/images/search")
+    .then((response) => response.json())
+    .then((data) => {
+      dispatch({
+        type: "LOADIMG",
+        payload: data[0].url,
+      });
+    });
+};
+```
 
 `Counter.js`
 
-````javascript
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch} from 'react-redux';
-import { getCatImg } from '../redux/reducers/dataImgReducer';
+```javascript
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { getCatImg } from "../redux/reducers/dataImgReducer";
 
 export default function Counter() {
+  const [cartData, setCartData] = useState(0);
+  // const cart = useSelector(state => state.cart);
+  const { cart, count, imgURL } = useSelector((state) => ({
+    ...state.AddCartReducer,
+    ...state.CounterReducer,
+    ...state.dataImgReducer,
+  }));
 
-    const [cartData, setCartData] = useState(0);
-    // const cart = useSelector(state => state.cart);
-    const { cart, count, imgURL } = useSelector(state => ({
-        ...state.AddCartReducer,
-        ...state.CounterReducer,
-        ...state.dataImgReducer
-    }));
+  const dispatch = useDispatch();
 
-    const dispatch = useDispatch();
+  const addToCartFunc = () => {
+    dispatch({
+      type: "ADDCART",
+      payload: cartData,
+    });
+  };
 
-    const addToCartFunc = () => {
-        dispatch({
-            type: "ADDCART",
-            payload: cartData
-        })
-    }
+  useEffect(() => {
+    dispatch(getCatImg());
+  }, []);
 
-    useEffect(() => {
-        dispatch(getCatImg())
-    }, [])
-
-    return (
-        <div>
-            <h1>Votre panier : { cart } { count }</h1>
-            {/* <button onClick={ decrFunc }>-1</button>
+  return (
+    <div>
+      <h1>
+        Votre panier : {cart} {count}
+      </h1>
+      {/* <button onClick={ decrFunc }>-1</button>
             <button onClick={ incrFunc }>+1</button> */}
-            <input 
-            value={ cartData }
-            onInput={ e=> setCartData(e.target.value) }
-            type="number"/>
-            <br/>
-            <button onClick={ addToCartFunc }>Ajouter au panier</button>
-            
-            { imgURL && <img style={{ width: "300px" }} src={ imgURL }/>}
-        </div>
-    )
+      <input
+        value={cartData}
+        onInput={(e) => setCartData(e.target.value)}
+        type="number"
+      />
+      <br />
+      <button onClick={addToCartFunc}>Ajouter au panier</button>
+
+      {imgURL && <img style={{ width: "300px" }} src={imgURL} />}
+    </div>
+  );
 }
-````
+```
 
 ---
 
@@ -3763,26 +3864,26 @@ export default function Counter() {
 
 - L'utilitaire CLI, create-react-app : Facebook fournit un utilitaire de ligne de commande appelé create-react-app qui configure automatiquement un nouveau projet. create-react-app utilise sous le capot par webpack et babel.
 
-````shell script
+```shell script
 npx create-react-app my-app
 cd my-app
 npm start
 # http://localhost:3000/
-````
+```
 
 - Un bundler JavaScript, comme Webpack : Un bundler combine tous vos fichiers sources JavaScript dans un seul fichier, qui peut ensuite être inclus dans une balise script dans une page HTML. Les applications React sont le plus souvent construites avec Webpack et Babel, et npm en tant que gestionnaire de packages. **ATTENTION** pour webpack voir plutôt la note `webpack.md` pour une approche plus moderne.
 
-````shell script
+```shell script
 mkdir react-app
 cd react-app
 npm init
 
 npm install --save-dev webpack webpack-cli webpack-dev-server
-````
+```
 
 Ajouter au fichier `package.json` les deux commandes dans la partie `scripts`. Le script `start:dev` démarrera notre serveur de développement. Le script `build` enregistrera un seul fichier `.js`
 
-````json
+```json
 {
   ...
   "scripts": {
@@ -3791,59 +3892,59 @@ Ajouter au fichier `package.json` les deux commandes dans la partie `scripts`. L
   },
   ...
 }
-````
+```
 
 Création du fichier `webpack.config.js`
 
-````javascript
-const path = require('path');
+```javascript
+const path = require("path");
 
 module.exports = {
   mode: "production",
   entry: {
-    app: "./index.js"
+    app: "./index.js",
   },
   output: {
     filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist")
-  }
+    path: path.resolve(__dirname, "dist"),
+  },
 };
-````
+```
 
-``ATTENTION`` il se peut que webpack considère que les fichiers sont générés à la racine du server et non dans le dossier `dist`.
+`ATTENTION` il se peut que webpack considère que les fichiers sont générés à la racine du server et non dans le dossier `dist`.
 
-````HTML
+```HTML
 <body>
         <script src="/polyfill.bundle.js"></script>
         <script src="/app.bundle.js"></script>
 </body>
-````
+```
 
 ---
 
 ### Manière intéressante d'insérer du style css dans le jsx
 
-````javascript
-import React from 'react'
-import ReactDOM from 'react-dom'
+```javascript
+import React from "react";
+import ReactDOM from "react-dom";
 
 function App() {
   const style = {
-    padding: '40px',
-    textAlign: 'center',
-  }
+    padding: "40px",
+    textAlign: "center",
+  };
 
-  return <div style={style}>Welcome to React!</div>
+  return <div style={style}>Welcome to React!</div>;
 }
 
-ReactDOM.render(<App />, document.querySelector('#app'))
-````
+ReactDOM.render(<App />, document.querySelector("#app"));
+```
 
- ---
+---
 
 ### Passer des props à une route
 
-````javascript
+```javascript
 import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import './choose_game.css';
@@ -3858,34 +3959,34 @@ const Choose_Game = () => {
         history.push("/game", props);
         // props.history.push("/game");
     }
-````
+```
 
-````javascript
+```javascript
 import React from 'react'
 import { useLocation } from "react-router-dom";
 import './game.css'
 
 const Game = (props) => {
-  
+
   console.log(props.location.state); // toto
 
     return (
-````
+```
 
 ---
 
 ## Librairie `uuid`
 
-````shell script
+```shell script
 npm install uuid
-````
+```
 
-````javascript
-import { v4 as uuidv4 } from 'uuid';
+```javascript
+import { v4 as uuidv4 } from "uuid";
 uuidv4(); // ⇨ '9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d'
 
 // or
 
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
 uuidv4(); // ⇨ '1b9d6bcd-bbfd-4b2d-9b5d-ab8dfbbd4bed'
-````
+```

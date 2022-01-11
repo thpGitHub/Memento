@@ -226,7 +226,7 @@ effacer
     git branch # affichera la liste de toutes les branches (* devant une branche: c'est que le pointeur HEAD se situe sur cette branche)
     git branch -v # affichera la liste des derniers commits sur chaque branche
     git branch -vv # affichera la liste des derniers commits sur chaque branche
-    # et entre [] les branches en amont (upstream) liées à nos branches locale
+    # et entre [] les branches en amont (upstream) liées à nos branches locales
     git branch -avv
     git branch --merged # affichera quelles branches ont déjà été fusionnées dans votre branche courante (*)
     git branch --no-merged # affichera les branches qui ne sont pas fusionnées (merge)
