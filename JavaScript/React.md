@@ -1423,7 +1423,7 @@ return (
 
 Les composants sont comme des fonctions JavaScript, ils acceptent des entrées appelées `props` et renvoient des éléments React décrivant ce qui doit apparaître à l’écran.
 
-Lorsque React rencontre un élément représentant un composant défini par l’utilisateur, il transmet les attributs JSX et les enfants à ce composant sous la forme d’un objet unique (`props`).
+Lorsque React rencontre un élément représentant un composant défini par l’utilisateur, il transmet les attributs JSX et les enfants à ce composant sous la forme d’un objet unique (`props`). Cet objet contient les attributs et un tableau d'objets des childrens.
 
 ```javascript
 function Welcome(props) {
