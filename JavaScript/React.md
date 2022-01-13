@@ -2943,7 +2943,7 @@ Avec json server on peut ajouter une option pour simuler un délai de répose du
 
 ## API de Context <a name="context"></a>
 
-L'API de context fait partie de REACT. Permet de partager des données dans toute l'application.
+L'API de context fait partie de REACT. Permet de partager des données dans toute l'application. Context est un moyen de partager simplement les props entre les composants.
 
 `\src\Context\ThemeContext.js`
 
