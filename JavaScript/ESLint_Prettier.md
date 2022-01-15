@@ -81,4 +81,13 @@ npx prettier --check . # vérifie seulement que les fichiers sont déjà format�
 
 ## ESLint avec Prettier
 
+Surtout utile si on modifie `ESLint` avec des règles qui rentrent en conflit avec les règles de `Prettier` ou que l'on importe une config `ESLint` populaire comme `eslint-config-airbnb` <https://www.npmjs.com/package/eslint-config-airbnb> déjà configuré.
+
+Pour éviter tout conflit entre `ESLint` et `Prettier` <https://github.com/prettier/eslint-config-prettier#installation>
+
+````shell script
+npm install --save-dev eslint-config-prettier
+# pour désactive toutes les règles inutiles ou susceptibles d'entrer en conflit avec Prettier .
+````
+
 ## Husky
