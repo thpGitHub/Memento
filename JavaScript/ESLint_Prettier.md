@@ -1,8 +1,14 @@
-# ESLint, Prettier et Husky
+# ESLint, Prettier, Husky et Lint-staged
 
 `ESLint` analyse statiquement notre code pour trouver les problèmes.
 
 `Prettier` va formater notre code en suivant des règles prédéfinies.
+
+`husky` permet d'utiliser les githooks comme s'il s'agissait de scripts npm.
+
+`Lint-staged` nous permet d'exécuter des scripts sur des fichiers `staged` (cad des fichiers prêts à être commit) dans git.
+
+Le but de ces 4 outils est qu'ils travaillent ensemble afin de fournir un code de qualité et déviter les conflits lorsque l'on travail en équipe.
 
 ## ESLint
 
@@ -90,4 +96,10 @@ npm install --save-dev eslint-config-prettier
 # pour désactive toutes les règles inutiles ou susceptibles d'entrer en conflit avec Prettier .
 ````
 
-## Husky
+## Husky avec Lint-staged
+
+Pour éviter de commit du code non formater et non analysé
+
+ <https://medium.com/@okonetchnikov/make-linting-great-again-f3890e1ad6b8>
+
+ <https://github.com/okonet/lint-staged>
