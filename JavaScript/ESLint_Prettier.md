@@ -6,9 +6,29 @@
 
 `husky` permet d'utiliser les githooks comme s'il s'agissait de scripts npm.
 
-`Lint-staged` nous permet d'exécuter des scripts sur des fichiers `staged` (cad des fichiers prêts à être commit) dans git.
+`Lint-staged` nous permet d'exécuter des scripts sur des fichiers `staged` (ajouté à Git avec git add …, mais pas encore commit) dans Git.
 
 Le but de ces 4 outils est qu'ils travaillent ensemble afin de fournir un code de qualité et déviter les conflits lorsque l'on travail en équipe.
+
+## Résumé des actions
+
+- installation dans VS Code de l'extension `ESLint` et `prettier Code formatter`
+
+- Création d'un projet React avec `Create-react-app`
+
+- `npm install --save-dev --save-exact prettier`
+
+- Création du fichier `.prettierrc.json`
+
+- Création du fichier `.prettierignore`
+
+- `npm install --save-dev eslint-config-prettier`
+
+- Ajouter `prettier` dans `"eslintConfig"` du `package.json`
+
+- Changer `Prettier: require config` dans les `settings` de VS Code
+
+- `npx mrm@2 lint-staged`
 
 ## ESLint
 
@@ -29,7 +49,7 @@ Si on utilise pas `Create React App` il faudra installer ESLint comme indiquer d
 
 ## Prettier
 
-Il est important d' installer Prettier localement dans chaque projet, afin que chaque projet reçoive la bonne version de Prettier.
+Il est important d' installer `Prettier` localement dans chaque projet, afin que chaque projet reçoive la bonne version de `Prettier`.
 
 <https://prettier.io/docs/en/install.html>
 
@@ -96,9 +116,64 @@ npm install --save-dev eslint-config-prettier
 # pour désactive toutes les règles inutiles ou susceptibles d'entrer en conflit avec Prettier .
 ````
 
+Ensuite, ajoutez `prettier`au tableau "extends" dans votre fichier `package.json`. Assurez-vous de mettre `prettier` en dernier, afin qu'il ait la possibilité de remplacer quelques règles des autres configurations.
+
+````JSON
+"eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest",
+      "prettier"
+    ]
+  }
+````
+
+Dans VS Code on peut demander un formatage du code que si un fichier de config existe :
+
+<img width="500"
+      alt="prettier require config"
+      src="../assets/prettier_require_config.PNG"
+/>
+
+on peut aussi demander que le formatage soit fait quand on sauvegarde :
+
+<img width="500"
+      alt="format on save"
+      src="../assets/format_on_save.PNG"
+/>
+
+Pour le moment je formate le code avec `prettier` que manuellement avec `ALT` + `MAJ` + `f`
 ## Husky avec Lint-staged
 
-Pour éviter de commit du code non formater et non analysé
+<https://github.com/okonet/lint-staged#what-commands-are-supported>
+
+Ces deux outils nous permettent de formater notre code chaque fois que nous faisons un `commit` dans Git. Cela évitera de `commit` du code non formater et non analysé.
+
+La commande suivante installera et configurera `husky` et `lint-stage` en fonction des outils de qualité de code que nous avons installé dans les `devDependencies` du fichier `package.json`. Les outils de qualité de code que nous avons installé sont `ESLint` et `Prettier`.
+🚨 Il faut lancer cette commande uniquement après avoir installé `ESLint` et `Prettier`
+<https://github.com/okonet/lint-staged#what-commands-are-supported>
+
+````shell script
+npx mrm@2 lint-staged
+````
+
+Cela va créer un dossier `.husky` a la racine de notre projet et modifier notre `package.json` en rajoutant un script :
+
+````shell script
+"scripts": {
+   #...
+    "prepare": "husky install"
+  }
+````
+
+Ainsi que :
+
+````shell script
+"lint-staged": {
+    "*.{js,css,md}": "prettier --write"
+  }
+  #"src/**/*.{js,jsx,ts,tsx,json,css,scss,md}":
+````
 
  <https://medium.com/@okonetchnikov/make-linting-great-again-f3890e1ad6b8>
 
