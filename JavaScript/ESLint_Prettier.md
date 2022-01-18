@@ -71,7 +71,7 @@ puis création de deux fichiers à la racine du projet :
   "endOfLine": "lf",
   "htmlWhitespaceSensitivity": "css",
   "insertPragma": false,
-  "jsxBracketSameLine": false,
+  "bracketSameLine": false,
   "jsxSingleQuote": false,
   "printWidth": 80,
   "proseWrap": "always",
@@ -92,12 +92,13 @@ coverage
 build
 ````
 
+Commandes utiles :
+
 ````shell script
 npx prettier --write . # on peut formater tous les fichiers avec Prettier
 npx prettier --write app/ # formater que le dossier app
 npx prettier --write app/components/Button.js
 npx prettier --check . # vérifie seulement que les fichiers sont déjà formatés, plutôt que de les écraser
-# npx nous permet d'exécuter des outils installés localement !
 ````
 
 ---
@@ -143,6 +144,7 @@ on peut aussi demander que le formatage soit fait quand on sauvegarde :
 />
 
 Pour le moment je formate le code avec `prettier` que manuellement avec `ALT` + `MAJ` + `f`
+
 ## Husky avec Lint-staged
 
 <https://github.com/okonet/lint-staged#what-commands-are-supported>

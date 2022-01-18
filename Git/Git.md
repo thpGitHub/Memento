@@ -247,6 +247,7 @@ fusionner des branches
     git branch -d correctif # suppression de la branche correctif qui ne sert plus à rien car elle a été fusionnée (merge)
     # Attention si on essai de supprimer une branche qui n'a pas été fusionnée (merge) => error: The branch 'correctif' is not fully merged.
     git branch -D correctif # forcer la suppression de la branche correctif
+    git push origin --delete [nom_de_la_branche] # supprime la branche sur le dépot distant origin
 ````
 
 rebaser des branches
