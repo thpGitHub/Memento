@@ -64,7 +64,7 @@ puis création de deux fichiers à la racine du projet :
 `.prettierrc.json`et `.prettierignore`
 
 ````javascript
-// .prettierrc exemple
+// .prettierrc.json
 {
   "arrowParens": "avoid",
   "bracketSpacing": false,
@@ -86,7 +86,7 @@ puis création de deux fichiers à la racine du projet :
 ````
 
 ````javascript
-// .prettierignore exemple 
+// .prettierignore 
 node_modules
 coverage
 build
@@ -143,7 +143,7 @@ on peut aussi demander que le formatage soit fait quand on sauvegarde :
       src="../assets/format_on_save.PNG"
 />
 
-Pour le moment je formate le code avec `prettier` que manuellement avec `ALT` + `MAJ` + `f`
+Pour le moment je formate le code avec `prettier` manuellement avec `ALT` + `MAJ` + `f`
 
 ## Husky avec Lint-staged
 
