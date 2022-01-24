@@ -2939,6 +2939,84 @@ Avec json server on peut ajouter une option pour simuler un délai de répose du
   },
 ```
 
+### Gérer les erreurs avec `errorBoundary`
+
+Le concept autour des Error Boundaries est de permettre d’intercepter les erreurs des composants dans lesquelles ils sont encapsulés. L’idée étant de pouvoir continuer à utiliser l’application là où les composants fonctionnent encore, tout en informant l’utilisateur qu’il y a un pépin sur certains d’entre eux.
+
+Une nouvelle méthode du cycle de vie de React : `componentDidCatch` :
+
+C’est cette méthode qui va catch les erreurs levée par les composants enfants et agir en conséquence. S’il n’y a pas d’erreur, on se contente de retourner le composant children.
+
+````javascript
+import * as React from 'react'
+import {ErrorBoundary} from 'react-error-boundary'
+import {fetchMarvel, MarvelPersoView, MarvelSearchForm} from '../marvel'
+import '../08-styles.css'
+
+function MarvelDetails({marvelName}) {
+  const [marvel, setMarvel] = React.useState()
+  const [error, setError] = React.useState(null)
+
+  React.useEffect(() => {
+    console.log('React.useEffect', marvelName)
+    if (!marvelName) {
+      return
+    }
+    setMarvel(null)
+    fetchMarvel(marvelName)
+      .then(marvel => setMarvel(marvel))
+      .catch(error => setError(error))
+  }, [marvelName])
+
+  if (error) {
+    // this will be handled by an error boundary
+    throw error
+  }
+  if (!marvelName) {
+    return 'Entrer un nom de personnage Marvel'
+  }
+  if (!marvel) {
+    return 'chargement ...'
+  }
+  return (
+    <div>
+      <MarvelPersoView marvel={marvel} />
+    </div>
+  )
+}
+
+function ErrorDisplay({error}) {
+  return (
+    <div style={{color: 'red'}}>
+      Une erreur est survenue lors de la recherche de Marvel detail :{' '}
+      <pre style={{color: 'grey'}}> Détail : {error.message}</pre>
+    </div>
+  )
+}
+
+function App() {
+  const [marvelName, setMarvelName] = React.useState('')
+  const handleSearch = name => {
+    setMarvelName(name)
+  }
+  return (
+    <div className="marvel-app">
+      <MarvelSearchForm marvelName={marvelName} onSearch={handleSearch} />
+      <div className="marvel-detail">
+      /*
+      * Mettre une key unique pour forcer le composant à se démonter / remonter (mount/unmount)
+      * Pcq s'il y a une erreur le composant va rester bloqué !
+      */
+        <ErrorBoundary key={marvelName} FallbackComponent={ErrorDisplay}>
+          <MarvelDetails marvelName={marvelName} />
+        </ErrorBoundary>
+      </div>
+    </div>
+  )
+}
+export default App
+````
+
 ---
 
 ## API de Context <a name="context"></a>
