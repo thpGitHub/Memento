@@ -62,3 +62,14 @@ console.log(fire, clock, watermelon); // 🔥 ⏲️ 🍉
 ````
 
 ## Spread Operator and Rest Parameter
+
+````javascript
+const [status, setStatus] = useState({
+    loading: null,
+    done: null,
+    fail: null,
+  })
+
+setStatus({...status, loading: 'Loading'})  
+setStatus({...status, loading: null, fail: null})
+````
