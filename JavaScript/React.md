@@ -873,6 +873,9 @@ export default App;
 
 ## `useCallback`
 
+<https://www.w3schools.com/react/react_usecallback.asp>
+<https://rednet.io/2020-10-05-les-hooks-la-performance.html>
+
 `useCallback` renvoi une fonction _callback_ mémoïsé : mise en cache des valeurs de retour d'une
 fonction selon ses valeurs d'entrée. Le but de cette technique d'optimisation de code
 est de diminuer le temps d'exécution d'un programme informatique en mémorisant les
