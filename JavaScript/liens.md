@@ -64,6 +64,7 @@ Color css :
 - <https://flatuicolors.com/>
 - <https://fr.wikipedia.org/wiki/Couleur_du_Web>
 - <https://color.adobe.com/fr/create/color-wheel> // cool pour le design
+- <https://coolors.co/292f36-a63446-f3de8a-49a078-5fb49c>
 
 ---
 

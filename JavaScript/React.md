@@ -4446,11 +4446,11 @@ export default function Counter() {
 
 ---
 
-## Les images <a name="img"></a>
+## Les images locales avec React<a name="img"></a>
 
-Plusieurs techniques exitent pour les images avec React :
+Plusieurs techniques exitent :
 
-- Images dans le dossier public
+- Images dans le dossier `public`
 
 ````javascript
 //Les images sont dans :  public/Assets/sun-color.png
@@ -4461,7 +4461,7 @@ Plusieurs techniques exitent pour les images avec React :
 
 ````
 
-- Images dans le dossier src
+- Images dans le dossier `src`
 
 ````javascript
 //Les images sont dans :  src/Assets/sun-color.png
@@ -4469,6 +4469,16 @@ Plusieurs techniques exitent pour les images avec React :
 import sunLight from '../Assets/sun-color.png'
 
 <img src={sunLight} alt="img sun light" />
+````
+
+- Lorsque l'on utilise `create-react-app` il est possible d'importer et d'utiliser les SVG en tant que composent React
+
+````javascript
+//Les images sont dans :  src/Assets/sun-warm.svg
+
+import { ReactComponent as SunDark } from '../Assets/sun-warm.svg';
+
+<SunDark />
 ````
 
 ---
