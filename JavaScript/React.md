@@ -3248,7 +3248,7 @@ export default function BtnToggle() {
 }
 ```
 
-### créer un hook consommateur
+### créer un hook consommateur `useTheme`
 
 ````javascript
 import * as React from 'react'
@@ -4471,7 +4471,7 @@ import sunLight from '../Assets/sun-color.png'
 <img src={sunLight} alt="img sun light" />
 ````
 
-- Lorsque l'on utilise `create-react-app` il est possible d'importer et d'utiliser les SVG en tant que composent React
+- Lorsque l'on utilise `create-react-app` il est possible d'importer et d'utiliser les SVG en tant que composant React
 
 ````javascript
 //Les images sont dans :  src/Assets/sun-warm.svg
