@@ -4446,6 +4446,33 @@ export default function Counter() {
 
 ---
 
+## Les images <a name="img"></a>
+
+Plusieurs techniques exitent pour les images avec React :
+
+- Images dans le dossier public
+
+````javascript
+//Les images sont dans :  public/Assets/sun-color.png
+
+<img src={process.env.PUBLIC_URL + '/Assets/sun-color.png'} alt='img sun light' />
+// ou
+<img src={window.location.origin + '/Assets/sun-color.png'} alt='img sun light' />
+
+````
+
+- Images dans le dossier src
+
+````javascript
+//Les images sont dans :  src/Assets/sun-color.png
+
+import sunLight from '../Assets/sun-color.png'
+
+<img src={sunLight} alt="img sun light" />
+````
+
+---
+
 ## Annexes
 
 ### Il existe deux façons courantes de configurer une nouvelle application React
