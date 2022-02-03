@@ -3026,6 +3026,8 @@ export default App
 
 L'API de context fait partie de REACT. Permet de partager des données dans toute l'application. Context est un moyen de partager simplement les props entre les composants.
 
+Le provider wrap les composants enfants qui pourront consommer les données fournis par le context.
+
 `\src\Context\ThemeContext.js`
 
 ```javascript
