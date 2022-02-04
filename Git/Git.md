@@ -213,8 +213,11 @@ effacer
 
 ````shell script
     git branch -a # affichera les branches du dépot local et celles du dépot distant
-    git branch -M main # Renomerra la branch principale (en général master) en main
+    git branch -M main # renommera la branch principale (en général master) en main
+    git branch -m new-name # si on est sur la branche que l'on renomme
+    git branch -m old-name new-name # si on est sur une branche différente
     git branch testing # création de la branche testing
+    git push origin :old-name new-name # supprimer l'ancienne brance distante et push la nouvelle
     git checkout testing # basculer sur la branche testing (potition du pointeur HEAD sur testing)
     # Attention : Git ne vous laissera pas changer de branche si la branche sur laquelle vous êtes n'est pas
     # propre (si il reste des commits à faire par ex.). Mais on peut contourner ceci par le remisage et l’amendement de commit ;)
