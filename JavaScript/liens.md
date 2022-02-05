@@ -120,6 +120,7 @@ Extensions Chrome :
 
 - <https://chrome.google.com/webstore/search/Testing%20Playground?hl=fr> // Testing Playground
 - <https://chrome.google.com/webstore/detail/json-formatter/bcjindcccaagfpapjjmafapmmgkkhgoa/related?hl=fr> // json formateur sympas pour visualiser les retour d'api dans chrome
+- <https://chrome.google.com/webstore/detail/lighthouse/blipmdconlkpinefehnmjammfjpmpbjk?hl=fr>
 
 ---
 
