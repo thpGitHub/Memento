@@ -69,3 +69,9 @@ test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
   expect(label).toHaveTextContent(`Merci`)
 })
 ```
+
+## Annexes
+
+```shell script
+npm test -- --coverage
+```
