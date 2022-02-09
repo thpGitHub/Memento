@@ -1,12 +1,33 @@
 # React Testing
 
+Avec `create-react-app` `Jest` est déjà installé.
+
+`Jest` recherchera des fichiers de test avec l'une des conventions de dénomination courantes suivantes :
+
+- Fichiers avec `.js` suffixe dans le dossier `__tests__`.
+- Fichiers avec `.test.js` suffixe.
+- Fichiers avec `.spec.js` suffixe.
+
+Les fichiers `.test.js/` `.spec.js`(ou les dossiers `__tests__`) peuvent être situés à n'importe quelle profondeur sous le `src` dossier de niveau supérieur.
+
+Nous vous recommandons de placer les fichiers (ou dossiers `__tests__`) de test à côté du code qu'ils testent afin que les importations relatives apparaissent plus courtes. Par exemple, si `App.test.js` et `App.js` se trouvent dans le même dossier, le test n'a besoin que de `import App from './App'` au lieu d'un long chemin relatif. La colocalisation permet également de trouver des tests plus rapidement dans des projets plus importants.
+
 ## React Testing Library
 
-- <https://github.com/testing-library/react-testing-library>
-
 ```shell script
-npm install --save-dev @testing-library/react
+# installation de @testing-library/react et @testing-library/jest-dom
+npm install --save @testing-library/react @testing-library/jest-dom
 ```
+
+Pour éviter d'`import '@testing-library/jest-dom';` à chaque fois dans les fichiers de test il faut créer un fichier : `src/setupTests.js` contenant :
+
+```javascript
+// react-testing-library renders your components to document.body,
+// this adds jest-dom's custom assertions
+import '@testing-library/jest-dom';
+```
+
+- <https://github.com/testing-library/react-testing-library>
 
 ```javascript
 import Hello from '../../components/hello'
@@ -33,16 +54,6 @@ expect(deleteButton).toHaveClass('btn-link')
 ```
 
 - <https://github.com/testing-library/jest-dom>
-
-```shell script
-npm install --save-dev @testing-library/jest-dom
-```
-
-```javascript
-// Import @testing-library/jest-dom once (for instance in your tests setup file) and you're good to go:
-// In your own jest-setup.js (or any other name) at the root of the folder src/
-import '@testing-library/jest-dom'
-```
 
 ```javascript
 import Hello from '../../components/hello'
