@@ -72,9 +72,13 @@ npm test -- --coverage
 
 ## React Testing Library
 
-Est une bibliothèque qui donne accès à davantage d'outils permettant de tester des composants.
+Avec `create-react-app` `React Testing Library` est déjà installé.
+
+Est une bibliothèque qui donne accès à davantage d'outils permettant de tester des composants. Pour tester nos composants, il faudra donc faire un `render`, vérifier le DOM généré, et le comparer avec ce qui était attendu. Cette bibliothèque ne remplace pas Jest, au contraire, elle est complémentaire à Jest. `React Test Library` nous permet de nous concentrer sur le DOM, en le recréant, en permettant de simuler des interactions et de vérifier ce qui est rendu. Cela nous aide à nous mettre dans la peau de nos utilisateurs, et à anticiper ce qu'ils verront.
 
 `Jest` est l'outil de base pour nos tests, et `React Testing Library` est l'outil qui nous facilite les tests de composants.
+
+pour info :
 
 ```shell script
 # installation de @testing-library/react et @testing-library/jest-dom
