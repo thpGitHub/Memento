@@ -110,6 +110,8 @@ test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
 })
 ```
 
+`userEvent` vs `fireEvent` A voir !
+
 ## testing-library/jest-dom
 
 `Matchers` Jest personnalisés pour tester l'état du DOM.
@@ -133,6 +135,137 @@ test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
   expect(label).toHaveTextContent(`Bonjour John`)
   fireEvent.click(envoyer)
   expect(label).toHaveTextContent(`Merci`)
+})
+```
+
+Exemple
+
+`Search.js`
+
+```javascript
+import {useState, useContext} from 'react'
+import './Search.css'
+//** react icons **/
+import {IconContext} from 'react-icons'
+import {MdImageSearch} from 'react-icons/md'
+//** Contexts **/
+import {ThemeContext} from '../Contexts/ThemeContext.js'
+// ** img **
+import {ReactComponent as SunLight} from '../Assets/sun-color.svg'
+import {ReactComponent as SunDark} from '../Assets/sun-warm.svg'
+
+export default function Search({onChangeQuery, stateFetchPhotos}) {
+  const [searchInput, setSearchInput] = useState('')
+
+  const {toggleTheme, theme} = useContext(ThemeContext)
+
+  const handleChange = e => {
+    e.preventDefault()
+    setSearchInput(e.target.value)
+    // console.log('status in search component ===', stateFetchPhotos)
+  }
+
+  const handleChangeQuery = e => {
+    e.preventDefault()
+    if (searchInput !== '') {
+      onChangeQuery(searchInput)
+      setSearchInput('')
+    }
+  }
+
+  return (
+    <form className="search-container" onSubmit={handleChangeQuery}>
+      <input
+        type="search"
+        className="search-input"
+        placeholder=" Search Photos ...."
+        onChange={handleChange}
+        value={searchInput}
+        autoFocus
+      />
+      <IconContext.Provider value={{className: 'react-icons-search'}}>
+        <button type="submit" className="search-button">
+          <MdImageSearch />
+        </button>
+        <button
+          onClick={toggleTheme}
+          className={theme ? 'btn-toggle' : 'btn-toggle dark-btn'}
+        >
+          {theme ? (
+            <SunLight data-testid="SunLight" />
+          ) : (
+            <SunDark data-testid="SunDark" />
+          )}
+        </button>
+      </IconContext.Provider>
+      {stateFetchPhotos.status === 'loading' && <span>⏳ Loading...</span>}
+      {stateFetchPhotos.status === 'fail' && (
+        <span>❌ {stateFetchPhotos.fail.message}</span>
+      )}
+    </form>
+  )
+}
+```
+
+`Search.test.js`
+
+```javascript
+import Search from '../Components/Search.js'
+import {render, fireEvent, screen} from '@testing-library/react'
+//** Contexts **/
+import ThemeContextProvider from '../Contexts/ThemeContext.js'
+
+describe('Search Component', () => {
+  const SearchComponent = (statePhotos) => {
+    const handleChangeQuery = changeQuery => {
+      const fakeChangeQuery = changeQuery
+    }
+    const stateFetchPhotos =  {
+      status: statePhotos,
+      fail: {
+        Message: 'error'
+      }
+    }
+    render(
+      <ThemeContextProvider>
+        <Search
+          onChangeQuery={handleChangeQuery}
+          stateFetchPhotos={stateFetchPhotos}
+        />
+      </ThemeContextProvider>,
+    )
+  }
+
+  it('Should render without crashing', async () => {
+    SearchComponent()
+  })
+
+  it('Should icone theme SunDark exist', async () => {
+    SearchComponent()
+    expect(screen.getByTestId('SunDark')).toBeTruthy()
+  })
+
+  it('Should change theme', async () => {
+    SearchComponent()
+    let element = screen.getByTestId('SunDark')
+
+    fireEvent.click(element)
+
+    element = screen.getByTestId('SunLight')
+    expect(element.getAttribute('data-testid')).toBe('SunLight')
+  })
+  it('Should display ⏳ Loading...', async () => {
+    SearchComponent('loading')
+    
+    const element = screen.getByTestId('Loading')
+    expect(element.textContent).toBe('⏳ Loading...')
+  })
+  it('Should display ❌', async () => {
+    SearchComponent('fail')
+    
+    const element = screen.getByTestId('Fail')
+    expect(element.textContent).toMatch(/❌/)
+  })
 })
 ```
 
