@@ -110,6 +110,27 @@ git config –global init.defaultBranch main
 > -puis lance git fetch à partir de ce dépôt distant et
 > -ensuite extrait le dernier commit dans votre répertoire de travail avec git checkout.
 
+```shell script
+# Après un git clone
+git branch
+* master
+# Les autres branches se cachent
+git branch -a
+* master
+  remotes/origin/HEAD
+  remotes/origin/master
+  remotes/origin/v1.0-stable
+  remotes/origin/experimental
+# Pour simplement jeter un coup d'œil rapide sur une branche
+git checkout origin/experimental
+#Pour travailler sur cette branche
+git checkout experimental
+
+git branch
+* experimental
+  master
+```
+
 ### Fork un dépot existant
 
 > Il n'est pas possible de fork un repo qui nous appartient !.
