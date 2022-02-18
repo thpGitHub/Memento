@@ -80,6 +80,8 @@ visibility: hidden;
 
 ````
 
+> Cacher un élément avec les @media query : Attention `display: none` ne fonctionne que sur les `id` et non avec  les `class` (A Voir !!!)
+
 ---
 
 Fusion des marges
