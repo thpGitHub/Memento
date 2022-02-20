@@ -123,6 +123,21 @@ expect(deleteButton).toHaveClass('btn-link')
 
 - <https://github.com/testing-library/jest-dom>
 
+Exemple :
+
+```javascript
+import Footer from './Footer.jsx'
+import { render } from '@testing-library/react'
+ 
+describe('Footer', () => {
+    test('Should render without crash', async () => {
+        render(<Footer />)
+    })
+})
+```
+
+Exemple :
+
 ```javascript
 import Hello from '../../components/hello'
 import {render, fireEvent} from '@testing-library/react'
@@ -138,7 +153,7 @@ test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
 })
 ```
 
-Exemple
+Exemple :
 
 `Search.js`
 
@@ -198,9 +213,11 @@ export default function Search({onChangeQuery, stateFetchPhotos}) {
           )}
         </button>
       </IconContext.Provider>
-      {stateFetchPhotos.status === 'loading' && <span>⏳ Loading...</span>}
+      {stateFetchPhotos.status === 'loading' && (
+        <span data-testid="Loading">⏳ Loading...</span>
+      )}
       {stateFetchPhotos.status === 'fail' && (
-        <span>❌ {stateFetchPhotos.fail.message}</span>
+        <span data-testid="Fail">❌ {stateFetchPhotos.fail.message}</span>
       )}
     </form>
   )
