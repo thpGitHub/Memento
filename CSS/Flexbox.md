@@ -51,6 +51,35 @@ flex-wrap: nowrap | wrap | wrap-reverse
 flex-flow: column nowrap;
 ````
 
+## Méthodes d'alignement
+
+<https://stackoverflow.com/questions/32551291/in-css-flexbox-why-are-there-no-justify-items-and-justify-self-properties>
+
+`____A___B`
+
+Ici pour centrer A et mettre B à droite
+
+```css
+.A {
+  margin-left: auto;
+}
+.B {
+  margin-left: auto;
+}
+````
+
+- Pour aligner les éléments flexibles le long de l'axe principal, il existe une propriété :`justify-content`
+
+- Pour aligner les éléments flexibles le long de l'axe transversal, il existe trois propriétés : `align-content`, `align-items` et`align-self`.
+
+## align-self
+
+Cette propriété permet de changer l'alignement d'un seul élément surl'axe transversal
+
+````css
+align-self: auto | flex-start | flex-end | center | baseline | stretch
+````
+
 ## justify-content
 
 La propriété `justify-content` aligne les élément le long de la ligne de l'axe principal (axe horizontal)
@@ -84,14 +113,6 @@ Cette propriété modifie l'ordre d'affichage des éléments. Par defaut l'ordre
 .element_1 {
     order: -1;
 }
-````
-
-## align-self
-
-Cette propriété permet de changer l'alignement d'un seul élément
-
-````css
-align-self: auto | flex-start | flex-end | center | baseline | stretch
 ````
 
 ## flex-grow
