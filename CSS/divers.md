@@ -358,3 +358,19 @@ body {
     }
 }
 ````
+
+Triangle css
+
+```css
+#triangle-code{
+  display : inline-block;
+  height : 0;
+  width : 0;
+  /* border-right : 77px solid transparent;
+  border-bottom : 150px solid red;
+  border-left : 73px solid transparent; */
+  border-left: 0.3125rem solid #0000;
+  border-right: 0.3125rem solid #0000;
+  border-bottom: 0.3125rem solid #ff5252;
+ }
+````

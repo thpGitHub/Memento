@@ -2687,6 +2687,124 @@ export default function Form() {
 }
 ```
 
+Exemple :
+
+```javascript
+import React, {useState} from 'react'
+import HeaderModal from './HeaderModal'
+
+export default function SignIn({
+  onHandleOpenModalIdentify,
+  onHandleDisplaymodal,
+}) {
+  const [form, setForm] = useState({
+    email: {value: '', empty: false},
+    psw: {value: '', empty: false},
+  })
+
+  const handleSubmit = e => {
+    e.preventDefault()
+
+    let formTemp = {...form}
+
+    if (form.email.value === '') {
+      formTemp = {...formTemp, email: {empty: true}}
+    }
+    if (form.psw.value === '') {
+      formTemp = {...formTemp, psw: {empty: true}}
+    }
+    setForm(formTemp)
+  }
+  /** 
+   * [e.target.name] can be "email" or "psw"
+   */
+  const handlerInputChange = e => {
+    setForm({...form, [e.target.name]: {value: e.target.value}})
+  }
+
+  return (
+    <>
+      <div className="signIn">
+        <HeaderModal
+          title={"S'identifier"}
+          onHandleOpenModalIdentify={onHandleOpenModalIdentify}
+        />
+
+        <section className="signIn__form">
+          <article>
+            <form onSubmit={e => handleSubmit(e)}>
+              <div>
+                <label htmlFor="email">* E-mail</label>
+                <input
+                  id="email"
+                  name="email"
+                  type="text"
+                  value={form.email.value}
+                  onChange={e => handlerInputChange(e)}
+                  // className="email"
+                />
+              </div>
+              {/* {email.empty && ( */}
+              {form.email.empty && (
+                <div className="signIn__form_error">
+                  <div className="signIn__form_error--triangle"></div>
+                  Ce champ est requis.
+                </div>
+              )}
+              <div>
+                <label htmlFor="psw">* Mot de passe</label>
+                <input
+                  id="psw"
+                  name="psw"
+                  type="password"
+                  value={form.psw.value}
+                  onChange={e => handlerInputChange(e)}
+                />
+              </div>
+              {/* {psw && ( */}
+              {form.psw.empty && (
+                <div className="signIn__form_error">
+                  <div className="signIn__form_error--triangle"></div>
+                  Ce champ est requis.
+                </div>
+              )}
+              <article>
+                <button
+                  className="signIn__form__btn__blue-green--big"
+                  type="submit"
+                >
+                  S'identifier
+                </button>{' '}
+              </article>
+            </form>
+          </article>
+          <article>
+            <button
+              className="signIn__form__btn__transparent--big-psw"
+              onClick={() => onHandleDisplaymodal('ForgotPassword')}
+            >
+              Mot de passe oublié ?
+            </button>{' '}
+          </article>
+          <article className="signIn__form--btn-mdp-separation"></article>
+          <article>
+            <button
+              className="signIn__form__btn__transparent--big"
+              onClick={() => onHandleDisplaymodal('CreateAccount')}
+            >
+              Créer un compte
+            </button>{' '}
+          </article>
+        </section>
+        <div id="tria">
+          <div id="triangle-code"></div>
+        </div>
+      </div>
+    </>
+  )
+}
+```
+
 ## Requêtes HTTP <a name="requetesHTTP"></a>
 
 Nous pouvons simuler une API REST grace à la librairie json-server

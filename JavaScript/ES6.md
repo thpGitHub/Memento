@@ -73,3 +73,25 @@ const [status, setStatus] = useState({
 setStatus({...status, loading: 'Loading'})  
 setStatus({...status, loading: null, fail: null})
 ````
+
+```javascript
+const [email, setEmail] = useState({value: '', empty: false})
+
+setEmail({...email, ...{empty: true}})
+// fait la même chose !!
+setEmail({...email, empty: true})
+```
+
+```javascript
+const [form, setForm] = useState({
+    email: {value: '', empty: false},
+    psw: {value: '', empty: false},
+})
+  /** 
+  * [e.target.name] can be "email" or "psw"
+  */
+const handlerInputChange = e => {
+    setForm({...form, [e.target.name]: {value: e.target.value}})
+    // ici le [] à revoir (peut être pcq propriété objet complexe ?)
+}
+```
