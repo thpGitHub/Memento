@@ -84,14 +84,23 @@ setEmail({...email, empty: true})
 
 ```javascript
 const [form, setForm] = useState({
-    email: {value: '', empty: false},
+    email: {value: '', empty: false, valid: false},
     psw: {value: '', empty: false},
 })
-  /** 
-  * [e.target.name] can be "email" or "psw"
-  */
+ 
 const handlerInputChange = e => {
-    setForm({...form, [e.target.name]: {value: e.target.value}})
-    // ici le [] à revoir (peut être pcq propriété objet complexe ?)
+    setForm(...formTemp, ...{email: {value: '', empty: true, valid: true}},)
 }
+// ou 
+const handleSubmit = e => {
+    e.preventDefault()
+
+    let formTemp = {...form}
+
+    if (form.email.value === '') {
+      formTemp = {
+        ...formTemp,
+        ...{email: {value: '', empty: true, valid: true}},
+      }
+    }
 ```

@@ -1,4 +1,5 @@
-HTML les bases
+# HTML les bases
+
 -
 > HyperText Markup Language
 > HTML se compose d'une série d'éléments
@@ -16,22 +17,29 @@ HTML les bases
     </html>
 ````
 
-- Images 
+- Images
+
 ````html
     <img src="images/mountain.png" alt="Mountain"> 
 ````
-- Titres 
+
+- Titres
+
 ````html
      <h1>Mon titre principal</h1>
      <h2>Mon titre de section</h2>
      <h3>Mon sous-titre</h3>
      <h4>Mon sous-sous-titre</h4>
 ````
-- Paragraphes 
+
+- Paragraphes
+
 ````html
     <p>Voici un paragraphe</p>
 ````
-- Listes 
+
+- Listes
+
 ````html
     <!-- <ul> unordered list   -->
     <ul> 
@@ -47,7 +55,9 @@ HTML les bases
               <li>bâtisseurs</li>
         </ol>
 ````
+
 - Liens
+
 ````html
     <!-- href hypertext reference  -->    
     <a href="https://www.toto.fr">toto land</a>
@@ -72,16 +82,21 @@ HTML les bases
     <!-- lien bouton -->  
     <button onclick="document.location='default.asp'">HTML Tutorial</button>
 ````
+
 - Sauts de ligne
+
 ````html
     <p>This is a <br> paragraph with a line break.</p>
 ````
+
 - CSS
+
 ````html
     <h1 style="color:blue;">A Blue Heading</h1>
     
     <p style="color:red;">A red paragraph.</p>
 ````
+
 ````html
     <!DOCTYPE html>
     <html>
@@ -96,6 +111,7 @@ HTML les bases
         </body>
     </html>
 ````
+
 ````html
     <!DOCTYPE html>
     <html>
@@ -106,13 +122,17 @@ HTML les bases
         </body>
     </html>
 ````
+
 - Règles horizontales
+
 ````html
     <p>This is some text.</p>
     <hr>
     <h2>This is heading 2</h2>
 ````
+
 - texte préformaté
+
 ````html
     <pre>
       My Bonnie lies over the ocean.
@@ -120,7 +140,9 @@ HTML les bases
       My Bonnie lies over the sea.
     </pre>
 ````
+
 - Éléments de formatage
+
 ````html
     <b> - Texte en gras
     <strong> - Texte important
@@ -133,16 +155,20 @@ HTML les bases
     <sub> - Texte en indice
     <sup> - Texte en exposant
 ````
+
 - Éléments de citation
+
 ````html
-    <abbr>	Defines an abbreviation or acronym
-    <address>	Defines contact information for the author/owner of a document
-    <bdo>	Defines the text direction
-    <blockquote>	Defines a section that is quoted from another source
-    <cite>	Defines the title of a work
-    <q>	Defines a short inline quotation
+    <abbr>Defines an abbreviation or acronym
+    <address>Defines contact information for the author/owner of a document
+    <bdo>Defines the text direction
+    <blockquote>Defines a section that is quoted from another source
+    <cite>Defines the title of a work
+    <q>Defines a short inline quotation
 ````
+
 - commentaires
+
 ````html
     <!-- This is a comment -->
 
