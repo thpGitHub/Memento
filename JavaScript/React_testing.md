@@ -49,7 +49,7 @@ test('multiplication de number', () => {
 `toBe` et `toEqual` sont des `matchers` fournis par `Jest`.
 La fonction `expect()` compare un élément avec les `matchers`
 
-Par convention on remplace `test()` par `it()`
+Par convention on remplace `test()` par `it()` si on commence nos tests par `should`
 
 ````javascript
 import multiplication from './multiplication'

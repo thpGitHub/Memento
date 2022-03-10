@@ -350,6 +350,7 @@ Tests :
 - <https://developers.google.com/speed/pagespeed/insights/?hl=fr> // Améliorez la vitesse de chargement de nos pages
 - <https://blog.logrocket.com/testing-the-react-router-usehistory-hook-with-react-testing-library/>
 - <https://react-hooks-testing-library.com/>
+- <https://kentcdodds.com/blog/how-to-test-custom-react-hooks> // par le créateur de React Testing Library.
 
 ---
 

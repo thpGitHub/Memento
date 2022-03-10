@@ -103,3 +103,7 @@ The second paragraph text
 ## Example2
 
 ## Third Example
+
+## Annexes
+
+-<https://mermaid-js.github.io/mermaid/#/>
