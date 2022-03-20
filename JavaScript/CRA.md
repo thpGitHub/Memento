@@ -39,6 +39,18 @@ import SignInModalsContextProvider from '@Contexts/SignInModalsContext.jsx'
 import SignInModalsContextProvider from '@Contexts'
 ```
 
+### Typescript
+
+Si utilisation de typescript dans le projet, il faut mettre à jour le fichier `tsconfig.json` pour pouvoir utiliser les alias
+
+-<https://github.com/Wavelop/cra-with-module-alias/pull/1/commits/3df8c0f572ab5beef168e1329f396718eb7b69ba>
+
+### Jest
+
+Pour pouvoir utiliser les alias avec `Jest` il faut mettre à jour le fichier `package.json
+
+-<https://github.com/Wavelop/cra-with-module-alias/pull/1/commits/e18df9efabd73eca7a16d8cdd47f836625a89773>
+
 ### VS Code
 
 Pour que VS Code reconnaisse nos alias ajouter un fichier `jsconfig.json` à la racine du projet
