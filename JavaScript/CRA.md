@@ -14,6 +14,18 @@
 
 Mise à jour du fichier de config webpack `\node_modules\react-scripts\config\webpack.config.js`
 
+---
+
+*Attention* la modification du fichier de config de webpack dans node modules n'est pas une bonne idée. Pcq node_modules est gitignore et comment faire pour partager ce fichier dans github ? A voir !
+
+A voir aussi la librairie `craco`
+
+-<https://hello-js.com/articles/path-aliases-in-react-application/>
+
+-<https://github.com/gsoft-inc/craco/blob/master/packages/craco/README.md#jest-api>
+
+---
+
 ```javascript
         }),
         ...(modules.webpackAliases || {}),
