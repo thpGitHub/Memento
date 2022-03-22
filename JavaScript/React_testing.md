@@ -286,6 +286,34 @@ describe('Search Component', () => {
 })
 ```
 
+## Tester des formulaires
+
+```javascript
+/**
+     * find the input with 'texbox' (texbox = is label of input)
+     */ 
+    const firsNameElement = screen.getByRole('textbox', {name: /\* Prénom/i} )
+    const nameElement = screen.getByRole('textbox', {name: /\* Nom de famille/i} )
+    const emailElement = screen.getByRole('textbox', {name: /\* E-mail/i} )
+    /**
+     * https://github.com/testing-library/dom-testing-library/issues/567
+     * for input type password use : getByLabelText
+     */
+    const pswElement = screen.getByLabelText(/\* Mot de passe/i)
+    const repeatPswElement = screen.getByLabelText(/\* Répéter mot de passe/i)
+
+    const submitedButtonElement = screen.getByRole('button', {name: /Soumettre/i})
+
+    fireEvent.change(firsNameElement, {target: {firsName}})
+    fireEvent.change(nameElement, {target: {name}})
+    fireEvent.change(emailElement, {target: {email}})
+    fireEvent.change(pswElement, {target: {psw}})
+    fireEvent.change(repeatPswElement, {target: {repeatPsw}})
+
+    fireEvent.click(submitedButtonElement)
+
+```
+
 ## Annexes
 
 ```shell script
