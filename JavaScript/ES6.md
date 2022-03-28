@@ -104,3 +104,52 @@ const handleSubmit = e => {
       }
     }
 ```
+
+## Optional chaining
+
+L'opérateur `?.` permet de ne pas causer d'erreur si une référence est `null` ou `undefined`, l"expression s'arrête et retourne la valeur `undefined`. Quand il est utilisé avec des appels de fonctions, il retourne undefined si la fonction donnée n'existe pas.
+
+L'`Optional chaining` ne peut pas être utilisé sur un objet initialement inexistant.
+
+```javascript
+const adventurer = {
+  name: 'Alice',
+  cat: {
+    name: 'Dinah'
+  }
+};
+
+const dogName = adventurer.dog?.name;
+console.log(dogName);
+// expected output: undefined
+
+console.log(adventurer.someNonExistentMethod?.());
+// expected output: undefined
+```
+
+Combinaison avec `Nullish coalescing operator`
+
+```javascript
+let customer = {
+  name: "Carl",
+  details: { age: 82 }
+};
+const customerCity = customer?.city ?? "Unknown city";
+console.log(customerCity); // Unknown city
+```
+
+## Nullish coalescing operator
+
+L'opérateur `??` est un opérateur logique qui renvoie la valeur de droite si la valeur de gauche est `null` ou `undefined`
+
+La difference avec l'oprateur `||`, est que `||` renvoie la valeur de droite si la valeur de gauche est fausse, pas seulement `null` ou `undefined` mais aussi par exemple `''` ou `0`
+
+```javascript
+const foo = null ?? 'default string';
+console.log(foo);
+// expected output: "default string"
+
+const baz = 0 ?? 42;
+console.log(baz);
+// expected output: 0
+```
