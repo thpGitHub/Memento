@@ -71,7 +71,7 @@ Color css :
 Color Themes :
 
 - Sublime Material Theme - Dark
-- OperatorMonoDarkTheme
+- OperatorMonoDarkTheme // 1- install extension VSC 2- telechargement font operator mono puis install 3- modifier les settings VSC : "editor.fontFamily": "Operator Mono, Consolas, 'Courier New', monospace"
 
 ---
 
