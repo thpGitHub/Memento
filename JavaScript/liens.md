@@ -71,6 +71,7 @@ Color css :
 Color Themes :
 
 - Sublime Material Theme - Dark
+- OperatorMonoDarkTheme
 
 ---
 
