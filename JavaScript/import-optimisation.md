@@ -1,5 +1,7 @@
 # import
 
+*Attention* l'instruction `import` est utilisée pour importer des liens qui sont exportés par un autre module.
+
 ## Optimisation avec `Create React App`
 
 ```javascript
@@ -56,3 +58,53 @@ Etant donné que `Footer/` est un répertoire et que nous essayons de l'importer
 ```javascript
 import Footer from 'components/Footer'
 ```
+
+## *Attention* ceci ne marchera pas avec les img
+
+```text
+    .
+    ├── src
+        ├── assets/ 
+            ├── img/
+                ├── logo.svg 
+        ├── components/
+            ├── header/
+                ├── Header.jsx
+                
+```
+
+Dans `Header.jsx`
+
+````javascript
+//ceci ne fonctionne pas !
+import logo from 'assets/img/logo.svg'
+//ceci fonctionnait
+// import logo from '../../assets/img/logo.svg'
+````
+
+il faut rajouter un fichier js qui exportera le svg
+
+```text
+    .
+    ├── src
+        ├── assets/ 
+            ├── img/
+                ├── logo.js
+                ├── logo.svg 
+        ├── components/
+            ├── header/
+                ├── Header.jsx
+                
+```
+
+Dans `logo.js`
+
+````javascript
+export {default} from '../img/logo.svg'
+````
+
+Dans `Header.jsx`
+
+````javascript
+import logo from 'assets/img/logo'
+````
