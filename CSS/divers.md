@@ -82,6 +82,24 @@ visibility: hidden;
 
 > Cacher un élément avec les @media query : Attention `display: none` ne fonctionne que sur les `id` et non avec  les `class` (A Voir !!!)
 
+Masquer une barre de défilement sans empêcher de scroller
+
+````css
+.carousel {
+  overflow: hidden;
+  overflow-x: scroll;
+  /* Pour chacher la scrollbar sur IE et Edge  */
+  -ms-overflow-style: none;
+  /* Pour chacher la scrollbar sur Firefox */
+  scrollbar-width: none;
+}
+
+/* Pour chacher la scrollbar sur google chrome */
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+````
+
 ---
 
 Fusion des marges
