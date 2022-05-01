@@ -157,3 +157,23 @@ Cette propriété définit le facteur de réduction d'un élément par rapport a
 ````
 
 ## flex
+
+## coller footer bas de page
+
+````text
+Container
+  Header
+  Main
+  Footer
+````
+
+````css
+.container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  margin-top: auto;
+}
+````
