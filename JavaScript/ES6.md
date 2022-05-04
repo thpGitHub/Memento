@@ -140,6 +140,25 @@ console.log(newObj)  // { a: 1, b: [ 2, 3 ] }
 
 Ici `b` est bien copie car c'est un `array` !!
 
+### Pour copier en profondeur
+
+````javascript
+const myObject = {
+    a: "Le Reacteur",
+    b: {
+        value: "Bootcamp"
+    }
+}
+const clonedObject = structuredClone(myObject);
+console.log(clonedObject === myObject)              // false
+console.log(clonedObject.b === myObject.b)          // false
+
+const myArray = ["Le Reacteur", { value: "Bootcamp" }];
+const clonedArray = structuredClone(myArray);
+console.log(clonedArray === myArray)                // false
+console.log(clonedArray.at(-1) === myArray.at(-1))  // false
+````
+
 ## Optional chaining
 
 L'opérateur `?.` permet de ne pas causer d'erreur si une référence est `null` ou `undefined`, l"expression s'arrête et retourne la valeur `undefined`. Quand il est utilisé avec des appels de fonctions, il retourne undefined si la fonction donnée n'existe pas.
