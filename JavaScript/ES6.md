@@ -105,6 +105,41 @@ const handleSubmit = e => {
     }
 ```
 
+## Copie en surface (shallow copy) vs copie en pronfondeur (deep copy) d'un objet ou d'un array
+
+Le `spread operator` permet de faire une copie en surface, cad une copie de premier niveau :
+copie les primitives telles que les nombres, les valeurs booléennes, les chaînes et les arrays !!!, mais ne copie aucune référence aux objets !
+
+````javascript
+const myObject = {
+    a: "un",
+    b: {
+        value: "Deux"
+    }
+}
+constnewObject = { ...myObject };
+console.log(newObject === myObject)              // false
+console.log(newObject.b === myObject.b)          // true 
+````
+
+Ici le `spread operator` fait une copie de `a` mais pas de `b`. `b` est une copie par référence de `myObjet` pcq b est un objet !
+
+````javascript
+const obj = {
+    a: 1,
+    b: [2,3]
+}
+
+const newObj = {...obj}
+
+obj.b = [99,99]
+
+console.log(obj)     // { a: 1, b: [ 99, 99 ] }
+console.log(newObj)  // { a: 1, b: [ 2, 3 ] }
+````
+
+Ici `b` est bien copie car c'est un `array` !!
+
 ## Optional chaining
 
 L'opérateur `?.` permet de ne pas causer d'erreur si une référence est `null` ou `undefined`, l"expression s'arrête et retourne la valeur `undefined`. Quand il est utilisé avec des appels de fonctions, il retourne undefined si la fonction donnée n'existe pas.
