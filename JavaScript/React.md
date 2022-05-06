@@ -1420,6 +1420,47 @@ return (
 );
 ```
 
+### *Attention* ci dessous cela fait la même chose !
+
+````javascript
+ <ul>
+     {data.product_details.map(detail => (
+             <li>
+                 {Object.keys(detail)} :{' '}
+                 {detail[Object.keys(detail)]}
+             </li>
+     ))}
+ </ul>
+
+// ou
+
+ <ul>
+     {data.product_details.map(detail => {
+         return (
+             <li>
+                 {Object.keys(detail)} :{' '}
+                 {detail[Object.keys(detail)]}
+             </li>
+         )
+     })}
+ </ul>   
+````
+
+Pour utiliser une variable dans un point map il faut utiliser les accolade et un return explicite !
+
+````javascript
+<ul>
+    {data.product_details.map(detail => {
+        const key = Object.keys(detail) // ne fonctionne qu'avec {}
+        return (
+            <li>
+                {key} : {detail[key]}
+            </li>
+        )
+    })}
+</ul>
+````
+
 ---
 
 ## Les props <a name="props"></a>
