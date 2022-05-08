@@ -105,6 +105,23 @@ const handleSubmit = e => {
     }
 ```
 
+Autre exemple 
+
+````javascript
+const [dataForm, setDataForm] = useState({
+        username: '',
+        email: '',
+        password: '',
+        newsletter: false,
+    })
+
+    const handleInputChange = e => {
+        e.target.name === 'newsletter'
+            ? setDataForm({...dataForm, [e.target.name]: e.target.checked})
+            : setDataForm({...dataForm, [e.target.name]: e.target.value})
+    }
+````
+
 ## Copie en surface (shallow copy) vs copie en pronfondeur (deep copy) d'un objet ou d'un array
 
 Le `spread operator` permet de faire une copie en surface, cad une copie de premier niveau :
