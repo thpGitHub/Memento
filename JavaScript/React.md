@@ -179,6 +179,10 @@ export default class App extends React.Component {
 
 ## Les Hooks <a name="hooks"></a>
 
+*A voir* : When to use useCallback, useMemo and useEffect ?
+
+-<https://www.geeksforgeeks.org/when-to-use-usecallback-usememo-and-useeffect/#:~:text=Conclusion%3A,effects%20to%20some%20state%20changes.>
+
 > Les Hooks permettent de rajouter un `state` à un composant de fonction et se nomme `useState`.
 > Les Hooks sont des fonctions javaScript.
 
