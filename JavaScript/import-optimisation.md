@@ -107,4 +107,6 @@ Dans `Header.jsx`
 
 ````javascript
 import logo from 'assets/img/logo'
+
+<img src={logo} alt="logo" />
 ````
