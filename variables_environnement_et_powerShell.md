@@ -32,3 +32,12 @@ set couleur=noir^&blanc # utiliser des caractères spéciaux (<, >, |, & ou ^)
 # ou
 set varname="new&name"
 ```
+
+Les applications windows stockent souvent leurs données et paramètres dans un dossier `AppData`, chaque compte d'utilisateur Windows a son propre compte. C'est un dossier caché, il faut afficher les fichiers cachés dans l'explorateur de fichiers.
+`AppData` contient 3 dossiers :
+
+- `Roaming`. Dossier Itinérance contient des données qui «se déplacent» avec un compte d'utilisateur d'ordinateur à ordinateur si votre ordinateur était connecté à un domaine avec un profil itinérant. Ceci est souvent utilisé pour les paramètres importants. Par exemple, Firefox stocke ici ses profils d'utilisateurs, ce qui permet à vos signets et autres données de navigation de vous suivre d'un PC à l'autre.
+
+- `Local` contient des données spécifiques à un seul ordinateur. Il n'est jamais synchronisé d'un ordinateur à l'autre, même si vous vous connectez à un domaine. Ces données sont généralement spécifiques à un ordinateur.
+
+- `LocalLow` est identique au dossier Local, mais il est conçu pour les applications "à faible intégrité" avec des paramètres de sécurité plus restreints. Par exemple, Internet Explorer en mode protégé a uniquement accès au dossier LocalLow.
