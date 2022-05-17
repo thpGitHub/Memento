@@ -23,8 +23,8 @@ Sous Windows, les variables d'environnement sont entourées du caractère « % �
 
 ```shell script
 echo %NOM_DE_LA_VARIABLE%
-
 echo %APPDATA% # C:\Users\thier\AppData\Roaming
+
 set NomVariable # afficher une variable
 set NomVariable=valeur # créer une variable
 set NomVariable= # supprimer une variable
@@ -41,3 +41,5 @@ Les applications windows stockent souvent leurs données et paramètres dans un 
 - `Local` contient des données spécifiques à un seul ordinateur. Il n'est jamais synchronisé d'un ordinateur à l'autre, même si vous vous connectez à un domaine. Ces données sont généralement spécifiques à un ordinateur.
 
 - `LocalLow` est identique au dossier Local, mais il est conçu pour les applications "à faible intégrité" avec des paramètres de sécurité plus restreints. Par exemple, Internet Explorer en mode protégé a uniquement accès au dossier LocalLow.
+
+`windows 10` saisir variable dans rechercher
