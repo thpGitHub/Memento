@@ -1,25 +1,36 @@
 # React Native
 
+## Démarage avec `Expo`
+
+```shell
+npm install -g expo-cli
+
+expo init AwesomeProject
+
+cd AwesomeProject
+npm start 
+or
+expo start
+```
+
 ## Correspondances
 
 ```html
-// React Navigation vs react router dom
-<NavigationContainer></NavigationContainer> || <BrowserRouter></BrowserRouter>
-<Stack.Navigator></Stack.Navigator> || <Routes></Routes>
-<Stack.Screen name="Home" component={HomeScreen} /> || <Route path="home" element={<Home />}>
-    
+// React Navigation vs react router dom v6
+<NavigationContainer></NavigationContainer> vs <BrowserRouter></BrowserRouter>
+<Stack.Navigator></Stack.Navigator> vs <Routes></Routes>
+<Stack.Screen name="Home" component={HomeScreen} /> vs <Route path="home" element={<Home />}>
 ```
 
 ```html
 <!--HTML et JS -->
-<View> || <div>
-<Text> || <p> 
-<Image> || <img />
-<TextInput> || <input />
-<FlatList> || .map()
-OnPress || onClick
-StyleSheet.create || fichier css
-AsyncStorage || localStorage
+<View> vs <div>
+<Text> vs <p> 
+<Image> vs <img />
+<TextInput> vs <input />
+<FlatList> vs .map()vsnPress vs onClick
+StyleSheet.create vs fichier css
+AsyncStorage vs localStorage
 ```
 
 ### Style
@@ -289,7 +300,6 @@ const stored = await AsyncStorage.getItem("user");
 const user = JSON.parse(stored);
 
 ```
-
 
 ---
 
@@ -575,6 +585,29 @@ export default function App() {
         <Stack.Screen name="CreatePost" component={CreatePostScreen} />
       </Stack.Navigator>
     </NavigationContainer>
+  );
+}
+```
+
+### Bottom Tabs Navigator
+
+Barre d'onglets en bas de l'écran qui nous permet de basculer entre différents itinéraires.
+
+```script shell
+npm install @react-navigation/bottom-tabs
+```
+
+```javascript
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Settings" component={SettingsScreen} />
+    </Tab.Navigator>
   );
 }
 ```
