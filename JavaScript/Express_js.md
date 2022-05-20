@@ -29,12 +29,18 @@ Par convention l'objet ``app`` désigne une application ``express`` et possède 
     const app = express();
     // const port = process.env.PORT || 8000;
 
-    // ou const app = require('express') ();
-    // app.get(path, callback [, callback ...])
-    // requête GET vers le chemin demandé
+    // req = requete client, res = response du serveur
     app.get('/', function (req, res) {
       res.send('hello world');
     })
+
+    app.all("*", function(req, res) {
+      res.json({message: "Page not found"});
+    });
+    // app.all("*", (req, res) => {
+    //   res.status(404).send("Page introuvable");
+    // });
+
     app.listen(3000);
 /*
     http.listen(port, () => {
@@ -159,28 +165,84 @@ usage simple :
 
 ---
 
-### Les routes POST (***attention*** voir plus bas pour modifier ``Récupérer les données d'une requête post``)
+### Paramètres dans les routes
 
-> Un package utile quand on veut gérer des demandes POST est : ``body-parser``
+- `query` => `req.query`
+- `body`  => `req.fields`
+- `params`=> `req.params`
 
-````shell script
-    npm i body-parser
-````
+Par convention on passe des paramètres de type `query` avec les routes `GET` et des paramètres de type `body` avec les routes `POST`. Il est
+tout à fait possible de passer des paramètres `body` avec une route `GET`.
 
-Analysez les corps des requêtes entrantes dans un middleware avant vos gestionnaires,
- disponibles sous la req.bodypropriété.
+#### Routes avec des paramètres de type `query`
 
- ````javascript
-    const bodyParser = require('body-parser');
-    app.use(body_parser.urlencoded({ extended: false }));
-    //....
-    //app.use(bodyParser.json());
-    
-    app.post('/', (req, res, next) => {
-       console.log(req.body);
-    });
+Les paramètres de type `query` sont des chaines de caractères et sont séparés des route par un `?`
 
-````
+```url
+http://localhost:3000?name=thierry&city=paris
+```
+
+```javascript
+app.get("/", (req, res) => {
+  console.log(req.query); // { name: 'thierry', city: 'paris' }
+  res.send("Data received");
+});
+```
+
+#### Routes avec des paramètres de type `body`
+
+Les paramètres de type `body` sont passés via une route `POST`.
+Pour que le serveur `express` puisse traiter les requêtes utilisant la méthode HTTP POST,
+on doit installer `express-formidable`.
+
+```shell
+    npm install express-formidable
+```
+
+```javascript
+const express = require("express");
+// Pour que express puisse nous permettre d'exploiter les paramètres de type Body :
+const formidableMiddleware = require("express-formidable");
+const app = express();
+// Active la possibilité de récupérer les paramètres transmis avec la méthode HTTP POST :
+app.use(formidableMiddleware()); 
+
+const students = [];
+
+app.post("/add-student", (req, res) => {
+  // Pour afficher les données reçues :
+  console.log(req.fields); // { name : 'Farid' }
+
+  // Pour ajouter un student
+  const newStudent = req.fields.name;
+  students.push(newStudent);
+  res.json(students);
+});
+
+app.listen(3000, () => {
+  console.log("Server started");
+});
+```
+
+#### Routes avec des paramètres de type `params`
+
+Les paramètres de type `params` sont passés via une route `GET` et sont toujours de type chaine de caractères.
+L'ordre des params dans l'URL est important.
+
+Ici il y a deux paramètres `thierry` et `71`
+
+```shell
+http://localhost:3000/thierry/71
+```
+
+```javascript
+app.get("/:user/:age", (req, res) => {
+  console.log(req.params); // { user: 'thierry', age: '71' }
+  res.send("Data received");
+});
+```
+
+---
 
 > Voici un petit exemple de redirection qui fonctionne avec tous les types de route
 > ``res.render()``
@@ -679,6 +741,12 @@ app.use(express.urlencoded({
 ````
 
 > L'un des avantages que nous avons à utiliser Mongoose pour gérer notre base de données MongoDB est que nous pouvons implémenter des schémas de données stricts
+
+A développer :
+
+- Models avec mongoose
+- CRUD avec mongoose
+- Méthodes mongoose
 
 ---
 
