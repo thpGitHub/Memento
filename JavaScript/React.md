@@ -1813,6 +1813,44 @@ function App() {
 export default App;
 ```
 
+Autre approche pour pouvoir récupérer correctement la largeur ou la hauteur du screen de l'utilisateur.
+Pcq sur mobile les dimensions peuvent être plus importantes que sur un desktop.
+
+```javascript
+import {useState, useEffect} from "react";
+
+export default function useDimension() {
+  const [dimension, setDimension] = useState();
+
+  useEffect(() => {
+    window.onresize = resizeFunc;
+
+    function resizeFunc() {
+      /**
+       * "window.screen.width" because "window.innerWidth" on mobile device
+       *  can return a width more great of destop
+       */
+      setDimension(window.screen.width);
+    }
+
+    resizeFunc();
+
+    /**
+     * Clean up function
+     */
+    return () => {
+      window.onresize = resizeFunc;
+      /**
+       * Another way we can use
+       * window.addEventListener("resize", resizeFunc);
+       */
+    };
+  }, []);
+
+  return dimension;
+}
+```
+
 ---
 
 ## Les routes <a name="routes"></a>
