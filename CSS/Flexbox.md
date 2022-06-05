@@ -1,5 +1,7 @@
 # Flexbox
 
+-<https://css-tricks.com/snippets/css/a-guide-to-flexbox/>
+
 > les blocs suivants s'affichent les uns au dessous des autres
 
 ````html
