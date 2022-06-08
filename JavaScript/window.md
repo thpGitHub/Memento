@@ -35,6 +35,41 @@ useEffect(()=> {
     }, [])
 ```
 
+### scroll avec effet sur navbar
+
+```javascript
+const NetflixApp = () => {
+    const [appBarStyle, setAppBarStyle] = useState({
+        background: 'transparent',
+        boxShadow: 'none',
+    })
+
+    useEffect(() => {
+        const onScroll = e => {
+            console.log(e.target.documentElement.scrollTop)
+            if (e.target.documentElement.scrollTop > 100) {
+                setAppBarStyle({
+                    boxShadow: 'none',
+                    background: '#111',
+                    transition: 'background 5s ease-out',
+                })
+            } else {
+                setAppBarStyle({
+                    boxShadow: 'none',
+                    background: 'transparent',
+                    transition: 'background 5s ease-out',
+                })
+            }
+        }
+        window.addEventListener('scroll', onScroll)
+
+        return () => window.removeEventListener('scroll', onScroll)
+    }, [])
+
+    // <AppBar style={appBarStyle}>
+    // ....
+```
+
 ## screen
 
 ```javascript
