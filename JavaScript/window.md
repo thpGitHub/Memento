@@ -1,5 +1,5 @@
-L'objet window
--
+# L'objet window
+
 > L'objet window représente une fenêtre contenant un document DOM ; la propriété document pointe vers le document DOM chargé dans cette fenêtre.
 
 ````html
@@ -21,5 +21,53 @@ L'objet window
     </body>
 </html>
 ````
-           
 
+## scroll
+
+```javascript
+useEffect(()=> {
+        const onScroll = (e) => {
+            console.log(e.target.documentElement.scrollTop);
+        }
+        window.addEventListener("scroll", onScroll)
+
+        return () => window.removeEventListener("scroll", onScroll)
+    }, [])
+```
+
+## screen
+
+```javascript
+import {useState, useEffect} from "react";
+
+export default function useDimension() {
+  const [dimension, setDimension] = useState();
+
+  useEffect(() => {
+    window.onresize = resizeFunc;
+
+    function resizeFunc() {
+      /**
+       * "window.screen.width" because "window.innerWidth" on mobile device
+       *  can return a width more great of destop
+       */
+      setDimension(window.screen.width);
+    }
+
+    resizeFunc();
+
+    /**
+     * Clean up function
+     */
+    return () => {
+      window.onresize = resizeFunc;
+      /**
+       * Another way we can use
+       * window.addEventListener("resize", resizeFunc);
+       */
+    };
+  }, []);
+
+  return dimension;
+}
+```
