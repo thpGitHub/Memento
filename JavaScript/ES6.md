@@ -209,6 +209,10 @@ const customerCity = customer?.city ?? "Unknown city";
 console.log(customerCity); // Unknown city
 ```
 
+```javascript
+<h1> {movie?.title ?? '...'} </h1>
+```
+
 ## Nullish coalescing operator
 
 L'opérateur `??` est un opérateur logique qui renvoie la valeur de droite si la valeur de gauche est `null` ou `undefined`
