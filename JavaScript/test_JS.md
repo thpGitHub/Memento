@@ -368,7 +368,9 @@ test('test de promise', () => {
 
 ---
 
-### Jest Mock
+### Jest Mock function
+
+Permet de simuler une fonction
 
 ````javascript
 // Mock
@@ -384,12 +386,48 @@ test('test de la fonction forEach avec mock', () => {
     forEach(['toto', 'titi'], mockCallBack);
 
     expect(mockCallBack.mock.calls.length).toBe(2),
+    // or with matcher .toHaveBeenCalledTimes
+    expect(mockDouble).toHaveBeenCalledTimes(2)
+
     expect(mockCallBack.mock.calls[0][0]).toBe('toto'),
     expect(mockCallBack.mock.calls[1][0]).toBe('titi'),
     expect(mockCallBack.mock.results[0].value).toBe('salut toto'),
     expect(mockCallBack.mock.results[1].value).toBe('salut titi')
 })
+
+// console.log('mockCallBack mock', mockCallBack.mock)
+
+//  mockCallBack {
+//         calls: [ [ 'toto' ], [ 'titi' ] ],
+//         contexts: [ undefined, undefined ],
+//         instances: [ undefined, undefined ],
+//         invocationCallOrder: [ 1, 2 ],
+//         results: [
+//           { type: 'return', value: 'salut toto' },
+//           { type: 'return', value: 'salut titi' }
+//         ],
+//         lastCall: [ 'titi' ]
+//       }
+
 ````
+
+Déterminer la valeur de retour
+
+```javascript
+const filterMockTest = jest.fn();
+// filterMockTest = () => { }
+
+// Return `true` pour le premier appel
+// et `false` pour le second appel
+filterMockTest.mockReturnValueOnce(true).mockReturnValueOnce(false);
+
+const result = [11, 12].filter(filterMockTest);
+
+console.log(result);
+// [11]
+console.log(filterMockTest.mock.calls);
+// [ [11], [12] ]
+```
 
 ---
 

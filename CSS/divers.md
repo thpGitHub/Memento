@@ -229,6 +229,22 @@ Images adaptatives directement dans le html :
     >
 ````
 
+Images adaptatives avec  : `background-image` :
+
+```css
+body {
+  background-repeat: no-repeat;
+  background-image: url('img_smallflower.jpg'); 
+}
+
+/* For device width 400px and larger: */
+@media only screen and (min-device-width: 400px) {
+  body { 
+     background-image: url('img_flowers.jpg'); 
+  }
+}
+```
+
 sans media queries avec la création d'un interval avec max-width et min-width :
 
 ````css
