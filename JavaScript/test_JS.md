@@ -324,6 +324,30 @@ describe('test sur de array de roles ', () => {
 
 ---
 
+### `skip` et `only`
+
+`skip` va ignorer le test et `only` executera seulement ce test
+
+```javascript
+describe('test instance de class ', () => {
+    test('tester instance de User', () => {
+        expect(new User()).toBeInstanceOf(User);
+    })
+    test.skip('tester instance de User', () => {
+        expect(auth('titi')).toBeInstanceOf(User);
+    })
+    test.only('tester instance de User', () => {
+        // pour les erreurs il faut cather l'erreur dans une fonction intermédiaire
+        function callAuth() {
+            auth();
+        }
+        expect(callAuth).toThrowError('le nom doit être defini');
+    })
+})   
+```
+
+---
+
 ### Les tests Asynchrones
 
 ````javascript
@@ -364,6 +388,15 @@ test('test de promise', () => {
         expect(data).toBe("{api:ok}");
     })
 })
+
+// avec async await
+
+test('test de promise', async () => {
+   await fetchApiPromise()
+   expect(data).toBe("{api:ok}");
+    
+})
+
 ````
 
 ---
