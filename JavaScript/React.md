@@ -347,6 +347,48 @@ export default App;
 - On appel les hooks uniquement depuis des composants de fonction ! Exception : on peut appeler un hook depuis un autre composant que l'on a créé (hooks personnalisé).
 - Quand on utilise la méthode du hook (ex. setName...) la valeur du state est remplacée complètement et non fusionnée !
 
+## useEffect cleanup function
+
+### AbortController
+
+L'interface `AbortController` permet d'interrompre une ou plusieurs requêtes Web.
+
+On peut donc s'en servir pour une clean up fonction lorsque l'on utilise `fetch` ou `axios`
+
+```javascript
+useEffect(() => {
+    //création du controller
+    const controller = new AbortController();
+    const offset = (page - 1) * 20;
+    fetch(`https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=20`, {
+      signal: controller.signal, 
+      // ajout d'une option "signal" à la requête fetch
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+      })
+      .catch((err) => {
+      });
+    // fonction clean up pour abort la requête
+    return () => {
+      controller.abort();
+    };
+  }, [page]);
+```
+
+```javascript
+const controller = new AbortController();
+
+axios.get('/foo/bar', {
+   signal: controller.signal
+}).then(function(response) {
+   //...
+});
+// cancel the request
+controller.abort()
+```
+
 ## `useRef`
 
 La différence entre `useState` et `useRef` est que `useState` provoque un nouveau rendu, `useRef` ne le fait pas.
