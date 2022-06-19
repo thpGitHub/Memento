@@ -114,6 +114,68 @@ test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
 
 `userEvent` vs `fireEvent` A voir !
 
+```javascript
+import MenuItem from "./MenuItem";
+import {render, screen} from '@testing-library/react' 
+import userEvent from '@testing-library/user-event'
+
+const item = {    
+          "id": "1519055545-88",
+          "title": "Brunch authentique 1 personne",
+          "description": "Assiette de jambon cuit",
+          "price": "25.00",
+          "picture": "https://f.roocdn.com/images/menu_items/1583350/item-image.jpg",
+          "popular": true,      
+}
+// mock function
+const onClick = jest.fn()
+
+test('should render without error', ()=> {
+    const renderMenuItem = () => {
+        render(<MenuItem item={item} onClick={onClick()}/>)
+    }
+    expect(renderMenuItem).not.toThrow()
+})
+
+test('should to have display h3', ()=> {
+    render(<MenuItem item={item} onClick={onClick}/>)
+    
+    expect(onClick).not.toHaveBeenCalled()
+
+    const titleElem = screen.getByText('Brunch authentique 1 personne')
+    expect(titleElem).toBeInTheDocument()
+    // or same
+    const headingH3 = screen.getByRole('heading', {level: 3})
+    expect(headingH3).toHaveTextContent('Brunch authentique 1 personne')
+
+    userEvent.click(headingH3)
+    expect(onClick).toHaveBeenCalled()
+})
+
+test('should img with its alt', ()=> {
+    render(<MenuItem item={item} onClick={onClick}/>)
+
+    // <img src={item.picture} alt={item.title}
+    const imgElem = screen.getByAltText('Brunch authentique 1 personne')
+    expect(imgElem).toBeInTheDocument()
+})
+
+test('should not display image if picture is not defined', () => {
+    const itemWithPictureNotDefined = {    
+        "id": "1519055545-88",
+        "title": "Brunch authentique 1 personne",
+        "description": "Assiette de jambon cuit",
+        "price": "25.00",
+        // "picture": "https://f.roocdn.com/images/menu_items/1583350/item-image.jpg",
+        "popular": true,      
+}
+    render(<MenuItem item={itemWithPictureNotDefined} onClick={onClick}/>)
+    
+    const imgElem = screen.queryByAltText('Brunch authentique 1 personne')
+    expect(imgElem).toBeNull()
+})
+```
+
 ## testing-library/jest-dom
 
 `Matchers` Jest personnalisés pour tester l'état du DOM.
