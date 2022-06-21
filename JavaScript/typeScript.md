@@ -1,5 +1,7 @@
 # TypeScript
 
+TS PlayGround : <https://www.typescriptlang.org/play>
+
 > Typescript a pour but d'améliorer et de sécuriser la production de code JavaScript. Il s'agit d'un sur-ensemble typé strict de JavaScript.
 > TypeScript est un vérificateur de type statique : il détecte les erreurs de code sans executer le programme.  
 > Le code TypeScript est transcompilé en JavaScript.
