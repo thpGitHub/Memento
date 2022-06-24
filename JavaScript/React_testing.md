@@ -378,6 +378,49 @@ describe('Search Component', () => {
 
 ```
 
+## Mock avec `MSW`
+
+Mock Service Worker (MSW) est une bibliothèque de simulation d'API pour le navigateur et Node.js et utilise l'API Service Worker pour intercepter les demandes réelles.
+
+```shell script
+npm install --save-dev msw
+```
+
+```javascript
+import { rest } from 'msw';
+import { setupServer } from 'msw/node'
+import axios from 'axios';
+
+const server = setupServer(
+  // on mock la requete GET https://api.example.com/users/:userId
+  rest.get("https://api.example.com/users/:userId", (req, res, ctx) => {
+    const { userId } = req.params;
+    return res(
+      ctx.json({
+        id: userId,
+        firstName: "John",
+        lastName: "Maverick",
+      })
+    );
+  })
+);
+
+beforeAll(() => server.listen());
+
+afterEach(() => server.resetHandlers());
+
+afterAll(() => server.close());
+
+test("api should respond", async () => {
+  const response = await axios.get("https://api.example.com/users/john");
+  expect(response.data).toEqual({
+    firstName: "John",
+    id: "john",
+    lastName: "Maverick",
+  });
+});
+```
+
 ## Annexes
 
 ```shell script
