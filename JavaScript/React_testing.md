@@ -421,6 +421,205 @@ test("api should respond", async () => {
 });
 ```
 
+Avec plusieurs fichiers
+
+`server.js`
+
+```javascript
+import {rest} from 'msw'
+import {setupServer} from 'msw/node'
+
+const server = setupServer(
+  // on mock la requete GET https://api.example.com/users/:userId
+  rest.get(
+    'https://lereacteur-deliveroo-api.herokuapp.com',
+    (req, res, ctx) => {
+      return res(
+        ctx.json({
+          restaurant: {
+            path: 'Le Pain Quotidien',
+            name: 'Le Pain Quotidien - Montorgueil',
+            categories: ['Petit Déjeuner', 'Salade', 'Brunch', 'Boulangerie'],
+            price: '€€',
+            phone: '+33144780895',
+            percentage: 87,
+            ratings: '50+',
+            address: '8 Rue de Bretagne, 75003 Paris',
+            delay: '10 - 20 Mins (Au plus tôt)',
+            description:
+              'Profitez de chaque plaisir de la vie quotidienne. Le Pain Quotidien propose des ingrédients simples et sains, du bon pain, des fruits et des légumes frais et de saison issus de l’agriculture biologique.',
+            picture: 'https://f.roocdn.com/images/menus/17697/header-image.jpg',
+            client_address: {
+              coordinates: [2.36051359999999, 48.8737157],
+              locality: 'Paris',
+              country: 'FR',
+              formatted_address: '25 Passage Dubail, 75010 Paris, France',
+              post_code: '75010',
+              route: 'Passage Dubail',
+              street_number: '25',
+              city: 'Paris',
+            },
+          },
+          categories: [
+            {
+              name: 'Brunchs',
+              meals: [
+                {
+                  id: '1519055545-88',
+                  title: 'Brunch authentique 1 personne',
+                  description:
+                    'Assiette de jambon cuit, jambon fumeì, terrine, comté bio & camembert bio, salade jeunes pousses, oeuf poché bio, pain bio & confiture, 1 viennoiserie bio au choix, granola parfait bio, jus de fruits 33cl au choix',
+                  price: '25.00',
+                  picture:
+                    'https://f.roocdn.com/images/menu_items/1583350/item-image.jpg',
+                  popular: true,
+                },
+                {
+                  id: '1519055545-89',
+                  title: 'Brunch vegan',
+                  description:
+                    'Falafels bio, houmous bio, avocat aux super graines bio, lentilles au paprika, herbes fraîches, houmous de carotte et légumes de saison, soupe du jour bio, pain bio & confiture, crunola parfait aux fruits de saison, flûte aux raisins et noisettes, jus de fruits 33cl au choix',
+                  price: '25.00',
+                  picture:
+                    'https://f.roocdn.com/images/menu_items/3905693/item-image.jpg',
+                },
+              ],
+            },
+            {
+              name: 'Petit déjeuner',
+              meals: [
+                {
+                  id: '1519055545-90',
+                  title: 'Petit-déjeuner 1 personne',
+                  description:
+                    'Assortiment de pains bio, beurre & confitures bio + 1 viennoiserie bio au choix + 1 boisson fraîche au choix',
+                  price: '10.40',
+                },
+                {
+                  id: '1519055545-91',
+                  title: 'Fromage blanc bio au miel',
+                  description: '',
+                  price: '10.40',
+                },
+                {
+                  id: '1519055545-92',
+                  title: 'Granola parfait bio',
+                  description: 'Yaourt, granola, et fruits frais de saison',
+                  price: '6.60',
+                  picture:
+                    'https://f.roocdn.com/images/menu_items/1323271/item-image.jpg',
+                  popular: true,
+                },
+                {
+                  id: '1519055545-93',
+                  'web-scraper-start-url':
+                    'https://deliveroo.fr/fr/menu/paris/3eme-temple/le-pain-quotidien-bretagne',
+                  title: 'Crunola parfait bio (100% végétalien)',
+                  description:
+                    '100% végétalien - granola cru, banane, lait de coco et beurre de noix de cajou',
+                  price: '6.60',
+                },
+                {
+                  id: '1519055545-137',
+                  'web-scraper-start-url':
+                    'https://deliveroo.fr/fr/menu/paris/3eme-temple/le-pain-quotidien-bretagne',
+                  title: 'Salade de fruits bio de saison',
+                  description:
+                    'Pomme, ananas, kiwi, orange, grenade, myrtilles',
+                  price: '6.90',
+                  picture:
+                    'https://f.roocdn.com/images/menu_items/2549378/item-image.jpg',
+                },
+                {
+                  id: '1519055545-95',
+                  'web-scraper-start-url':
+                    'https://deliveroo.fr/fr/menu/paris/3eme-temple/le-pain-quotidien-bretagne',
+                  title: 'Omelette au four de saison',
+                  description:
+                    'Courge butternut, chèvre & thym, avec une salade de jeunes pousses',
+                  price: '6.60',
+                },
+                {
+                  id: '1519055545-96',
+                  'web-scraper-start-url':
+                    'https://deliveroo.fr/fr/menu/paris/3eme-temple/le-pain-quotidien-bretagne',
+                  title: 'Chia bowl',
+                  description:
+                    'Graines de chia bio, myrtilles, grenades, crunola bio',
+                  price: '6.60',
+                  popular: true,
+                },
+                {
+                  id: '1519055545-97',
+                  'web-scraper-start-url':
+                    'https://deliveroo.fr/fr/menu/paris/3eme-temple/le-pain-quotidien-bretagne',
+                  title: 'Bircher Muesli',
+                  description:
+                    'Muesli maison bio, boisson à l’amande bio, fruits de saison et super graines bio (VEGAN)',
+                  price: '6.60',
+                  picture:
+                    'https://f.roocdn.com/images/menu_items/5250391/item-image.jpg',
+                },
+              ],
+            },
+
+            {
+              name: 'Desserts',
+              meals: [],
+            },
+          ],
+        }),
+      )
+    },
+  ),
+)
+
+export default server
+
+```
+
+`App.test.js`
+
+```javascript
+import server from './tests/utils/server'
+import {getByText, render, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import App from './App'
+
+beforeAll(() => server.listen())
+
+afterEach(() => server.resetHandlers())
+
+afterAll(() => server.close())
+
+test('should display data from API', async () => {
+  render(<App />)
+
+  const loaderElem = screen.getByText('En cours de chargement...')
+  expect(loaderElem).toBeInTheDocument()
+
+  const titleElem = await screen.findByText('Le Pain Quotidien - Montorgueil')
+  expect(titleElem).toBeInTheDocument()
+})
+
+test('should add item to card', async () => {
+  render(<App />)
+
+  await screen.findByText('Le Pain Quotidien - Montorgueil')
+
+  const emptyCarElem = screen.getByText('Votre panier est vide')
+  expect(emptyCarElem).toBeInTheDocument()
+
+  const brunchElem = screen.getByText('Brunch authentique 1 personne')
+  expect(brunchElem).toBeInTheDocument()
+  userEvent.click(brunchElem)
+  expect(emptyCarElem).not.toBeInTheDocument()  
+
+})
+
+```
+
+
 ## Annexes
 
 ```shell script
