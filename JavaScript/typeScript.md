@@ -387,3 +387,14 @@ employeDuMois.domaine; // private, n'est accessible qu'à l'intérieur de la cla
 employeDuMois.nom; // protected, n'est accessible que dans sa classe et les classes dérivées
 
 ````
+
+## `Axios`
+
+`A voir !!!` si cela peut remplcer la validations des types sur la réponse de axios
+
+```javascript
+import axios, {AxiosResponse} from 'axios'
+
+const [headerMovie, setHeaderMovie] = useState<AxiosResponse>()
+// const [headerMovie, setHeaderMovie] = useState<AxiosResponse | null | void>(null)
+```
