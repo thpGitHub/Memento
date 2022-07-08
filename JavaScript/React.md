@@ -1924,200 +1924,84 @@ export default function useDimension() {
 ## Les routes <a name="routes"></a>
 
 > il faut installer la librairie `react-router-dom` pour ajouter la navigation dans le DOM du navigateur, car React ne possède pas de système de navigation par defaut
-> Le Router depuis App :
 
-```typescript
-import React, { FunctionComponent } from 'react';
-import PokemonList from './pages/pokemon-list';
-import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
-import PokemonDetail from './pages/pokemon-detail';
+`<Link>` : un clic = une redirection
 
-const App: FunctionComponent = () => {
+`useNavigate()` : un clic = du code à exécuter PUIS une redirection
 
-     return (
-       { /*<Router basename={ process.env.PUBLIC_URL }> */ }
-         <Router>
-              <div>
-                    { /*La barre de navigation commun a toutes les pages*/ }
-                    <nav>
-                         <div className="nav-wrapper teal">
-                              <Link to="/" className="brand-logo center">Pokédex</Link>
-                         </div>
-                    </nav>
-                    { /*Le système de gestion des routes de notre application*/ }
-                    <Switch>
-                         <Route exact path="/" component={ PokemonList }/>
-                         <Route exact path="/pokemons" component={ PokemonList }/>
-                         <Route exact path="/pokemon/:id" component={ PokemonDetail }/>
-                         <Route component={ PageNotFound }/>
-                    </Switch>
-              </div>
-         </Router>
-     )
-};
+`<Navigate>` : redirection automatique (sans clic)
 
-export default App;
+```shell script
+npm install react-router-dom --save
 ```
 
-> route dans le composant PokemonDetail
+```javascript
+import React from 'react'
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
 
-```typescript
-import React, { FunctionComponent, useState, useEffect } from "react";
-import { RouteComponentProps, Link } from "react-router-dom";
-import Pokemon from "../models/pokemon";
-import POKEMONS from "../models/mock-pokemon";
-import formatDate from "../helpers/format-date";
-import formatType from "../helpers/format-type";
+function App() {
+  return (
+    <Router>
+      <div>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/about">About</Link>
+          </li>
+          <li>
+            <Link to="/dashboard">Dashboard</Link>
+          </li>
+        </ul>
 
-interface Params {
-  id: string;
+        <hr />
+
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="*" element={<Page404 />} />
+        </Routes>
+      </div>
+    </Router>
+  )
 }
 
-const PokemonsDetail: FunctionComponent<RouteComponentProps<Params>> = ({
-  match,
-}) => {
-  const [pokemon, setPokemon] = useState<Pokemon | null>(null);
-
-  useEffect(() => {
-    POKEMONS.forEach((pokemon) => {
-      if (match.params.id === pokemon.id.toString()) {
-        setPokemon(pokemon);
-      }
-    });
-  }, [match.params.id]);
-
+//Composants dans l'aplication
+function Home() {
   return (
     <div>
-      {pokemon ? (
-        <div className="container_wrapper">
-          <div className="wrapper">
-            <div id="aspicot">{pokemon.name}</div>
-            <div id="image">
-              <img src={pokemon.picture} alt="" />
-            </div>
-            <div id="name">Nom</div>
-            <div id="name-pokemon">{pokemon.name}</div>
-            <div id="pdv">Point de vie</div>
-            <div id="pdv-pokemon">{pokemon.hp}</div>
-            <div id="typeP">Types</div>
-            <div id="type-pokemon">
-              {pokemon.types.map((type) => (
-                <span
-                  key={type}
-                  style={{
-                    backgroundColor: formatType(type),
-                    borderRadius: "20px",
-                    padding: "0.5em",
-                  }}
-                >
-                  {type}
-                </span>
-              ))}
-            </div>
-            <div id="date">Date de création</div>
-            <div id="date-pokemon">{formatDate(pokemon.created)}</div>
-            <div id="retour">
-              <Link to="/">Retour</Link>
-            </div>
-          </div>
-        </div>
-      ) : (
-        <h1>Le pokémon demandé nexiste pas !</h1>
-      )}
+      <h2>Home</h2>
     </div>
-  );
-};
-```
+  )
+}
 
-Utilisation du Hook `useHistory` pour faire les redirections. Il nous donne accès à l'objet représentant l'historique du navigateur. L'autre possibilité est d'utilser `Link` (useHistory et Link font la même chose à savoir rediriger, mais l'objet de useHistory offre plus de possiblilité en terme de méthode comme par exemple goback). A voir aussi `navlinks`
-
-```typescript
-import React, { FunctionComponent, useState } from "react";
-import Pokemon from "../models/pokemon";
-import "./pokemon-card.css";
-import formatDate from "../helpers/format-date";
-import formatType from "../helpers/format-type";
-import { useHistory } from "react-router-dom";
-
-type Props = {
-  pokemon: Pokemon;
-  borderColor?: string;
-};
-
-const PokemonCard: FunctionComponent<Props> = ({
-  pokemon,
-  borderColor = "#009688",
-}) => {
-  const [color, setColor] = useState<string>();
-  const history = useHistory();
-
-  const showBorder = () => {
-    setColor(borderColor);
-  };
-
-  const hideBorder = () => {
-    setColor("#f5f5f5"); // on remet la bordure en gris.s
-  };
-
-  const goToPokemon = (id: number) => {
-    history.push(`/pokemon/${id}`);
-  };
-
+function About() {
   return (
-    <div
-      className="col s6 m4"
-      onClick={() => goToPokemon(pokemon.id)}
-      onMouseEnter={showBorder}
-      onMouseLeave={hideBorder}
-    >
-      <div className="card horizontal" style={{ borderColor: color }}>
-        <div className="card-image">
-          <img src={pokemon.picture} alt={pokemon.name} />
-        </div>
-        <div className="card-stacked">
-          <div className="card-content">
-            <p>{pokemon.name}</p>
-            <p>
-              <small>{formatDate(pokemon.created)}</small>
-            </p>
-            {pokemon.types.map((type) => (
-              <span key={type} className={formatType(type)}>
-                {type}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
+    <div>
+      <h2>About</h2>
     </div>
-  );
-};
+  )
+}
 
-export default PokemonCard;
-```
-
-gérer les erreurs 404
-
-```typescript
-import React, { FunctionComponent } from "react";
-import { Link } from "react-router-dom";
-
-const PageNotFound: FunctionComponent = () => {
+function Dashboard() {
   return (
-    <div className="center">
-      <img
-        src="http://assets.pokemon.com/assets/cms2/img/pokedex/full/035.png"
-        alt="Page non trouvée"
-      />
-      <h1>Hey, cette page n'existe pas !</h1>
-      <Link to="/" className="waves-effect waves-teal btn-flat">
-        Retourner à l'accueil
-      </Link>
+    <div>
+      <h2>Dashboard</h2>
     </div>
-  );
-};
+  )
+}
 
-export default PageNotFound;
+function Page404() {
+  return (
+    <div>
+      <h2>Perdu ?</h2>
+    </div>
+  )
+}
 ```
+
 
 ## Routes Privées <a name="privatesRoutes"></a>
 
@@ -3218,6 +3102,10 @@ Le concept autour des Error Boundaries est de permettre d’intercepter les erre
 Une nouvelle méthode du cycle de vie de React : `componentDidCatch` :
 
 C’est cette méthode qui va catch les erreurs levée par les composants enfants et agir en conséquence. S’il n’y a pas d’erreur, on se contente de retourner le composant children.
+
+```shell script
+npm install --save react-error-boundary
+```
 
 ````javascript
 import * as React from 'react'
