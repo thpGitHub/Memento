@@ -2002,6 +2002,17 @@ function Page404() {
 }
 ```
 
+`<Link>`
+
+```javascript
+  <div className="banner__buttons">
+    <Link to="/">
+      <button className="banner__button banner__buttonplay">
+        Accueil
+      </button>
+    </Link>
+  </div>
+```
 
 ## Routes Privées <a name="privatesRoutes"></a>
 
