@@ -2014,6 +2014,167 @@ function Page404() {
   </div>
 ```
 
+## Les hooks "useLocation" et "useParams" <a name="useLocation"></a>
+
+Ces hooks ont été créés par l'équipe de React router
+
+### `useParam()`
+
+useParams va récupérer les paramètres passés à la route. Un paramètre dynamique commence par `:`
+
+`App.js`
+
+```javascript
+import "./App.css";
+import Accueil from "./Components/Accueil";
+import Projets from "./Components/Projets";
+import Contacts from "./Components/Contacts";
+import Nav from "./Components/Nav/Nav";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+function App() {
+  return (
+    <>
+      {/* <Accueil/> */}
+      <Router>
+        <Nav />
+        <Switch>
+          <Route exact path="/" component={Accueil} />
+          <Route exact path="/Projets" component={Projets} />
+          <Route exact path="/Projets/:slug" component={Projets} />
+          <Route exact path="/Contacts" component={Contacts} />
+          <Route component={() => <div>ERREUR 404 :(</div>} />
+        </Switch>
+      </Router>
+    </>
+  );
+}
+
+export default App;
+```
+
+`Projets.js`
+
+```javascript
+import React from "react";
+import { useParams } from "react-router-dom";
+
+export default function Projets() {
+  //http://localhost:3000/Projets/toto ici le slug c'est toto
+  const { slug } = useParams();
+  console.log(slug); // toto
+
+  return (
+    <>
+      <h1>Section PROJETS</h1>
+      <p>{slug}</p>
+    </>
+  );
+}
+```
+
+
+Autre Exemple :
+
+`app.js`
+
+```javascript
+ <Router>
+     <ThemeProvider theme={theme}>
+         <Routes>
+             <Route exact path="/" element={<NetflixApp />} />
+             <Route path="/tv/:tvId" element={<NetflixById />}></Route>
+             <Route
+                 path="/movie/:movieId"
+                 element={<NetflixById />}
+             ></Route>
+             <Route exact path="/series" element={<NetflixSeries />} />
+             <Route exact path="/movies" element={<NetflixMovies />} />
+             <Route exact path="/news" element={<NetflixNews />} />
+             <Route path="*" element={<Page404 />} />
+         </Routes>
+         {/* <NetflixApp /> */}
+     </ThemeProvider>
+ </Router>
+```
+
+`NetflixById.js`
+
+```javascript
+ const {tvID, movieId} = useParams()
+    
+ console.log('params tvID', tvID) // id or undefined
+ console.log('params movieId', movieId) // // id or undefined
+
+```
+
+### `useLocation()`
+
+`Accueil.js`
+
+```javascript
+import React from "react";
+import { Link } from "react-router-dom";
+
+export default function Accueil() {
+  return (
+    <>
+      <h1>Bienvenue ACCUEIL</h1>
+      <Link
+        to={{
+          pathname: "/Contacts",
+          state: {
+            txt: "voilà des données",
+          },
+        }}
+      >
+        Aller à la section Contacts
+      </Link>
+    </>
+  );
+}
+```
+
+`Contacts.js`
+
+```javascript
+import React from "react";
+import { useLocation } from "react-router-dom";
+
+export default function Contacts() {
+  const location = useLocation();
+  console.log(location);
+  // renvoi un objet contenant un "state" nous permettant de passer des données
+  // lorque l'on navigue dans notre application
+  console.log(location.state.txt); // voilà des données
+  return <h1>Section CONTACTS</h1>;
+}
+```
+
+L'objet `location` à plusieurs propriétés :
+
+```javascript
+//exemple simple :
+{
+    "pathname": "/movie/560057",
+    "search": "",
+    "hash": "",
+    "state": null,
+    "key": "gcihov9s"
+}
+```
+
+```javascript
+const location = useLocation()
+    
+console.log('location', location)
+const [type] = useState(
+    location.pathname.includes(TYPE_TV) ? TYPE_TV : TYPE_MOVIE,
+)
+```
+
+---
+
 ## Routes Privées <a name="privatesRoutes"></a>
 
 Avant:
@@ -2116,106 +2277,6 @@ const PrivateRoute = ({ component: Component, ...rest }: any) => (
 );
 
 export default PrivateRoute;
-```
-
----
-
-## Les hooks "useLocation" et "useParams" <a name="useLocation"></a>
-
-C'est hooks ont été créés par l'équipe de React router
-
-`App.js`
-
-```javascript
-import "./App.css";
-import Accueil from "./Components/Accueil";
-import Projets from "./Components/Projets";
-import Contacts from "./Components/Contacts";
-import Nav from "./Components/Nav/Nav";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-function App() {
-  return (
-    <>
-      {/* <Accueil/> */}
-      <Router>
-        <Nav />
-        <Switch>
-          <Route exact path="/" component={Accueil} />
-          <Route exact path="/Projets" component={Projets} />
-          <Route exact path="/Projets/:slug" component={Projets} />
-          <Route exact path="/Contacts" component={Contacts} />
-          <Route component={() => <div>ERREUR 404 :(</div>} />
-        </Switch>
-      </Router>
-    </>
-  );
-}
-
-export default App;
-```
-
-`Projets.js`
-
-```javascript
-import React from "react";
-import { useParams } from "react-router-dom";
-
-export default function Projets() {
-  //http://localhost:3000/Projets/toto ici le slug c'est toto
-  const { slug } = useParams();
-  console.log(slug); // toto
-
-  return (
-    <>
-      <h1>Section PROJETS</h1>
-      <p>{slug}</p>
-    </>
-  );
-}
-```
-
-useLocation
-
-`Accueil.js`
-
-```javascript
-import React from "react";
-import { Link } from "react-router-dom";
-
-export default function Accueil() {
-  return (
-    <>
-      <h1>Bienvenue ACCUEIL</h1>
-      <Link
-        to={{
-          pathname: "/Contacts",
-          state: {
-            txt: "voilà des données",
-          },
-        }}
-      >
-        Aller à la section Contacts
-      </Link>
-    </>
-  );
-}
-```
-
-`Contacts.js`
-
-```javascript
-import React from "react";
-import { useLocation } from "react-router-dom";
-
-export default function Contacts() {
-  const location = useLocation();
-  console.log(location);
-  // renvoi un objet contenant un "state" nous permettant de passer des données
-  // lorque l'on navigue dans notre application
-  console.log(location.state.txt); // voilà des données
-  return <h1>Section CONTACTS</h1>;
-}
 ```
 
 ---
