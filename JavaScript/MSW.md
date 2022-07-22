@@ -9,4 +9,101 @@ npm install msw --save-dev
 Bonne pratique commencer par :
 
 - créér un répertoire `src/mocks`
-- créée un fichier `src/mocks/handlers.js` qui sera le gestionnaire de toutes les requêtes
+- créér un fichier `src/mocks/handlers.js` qui sera le gestionnaire de toutes les requêtes
+
+MSW peut mocker une `REST API` ou une `GRAPHQL API`
+
+## Mock d'une REST API
+
+```javascript
+// src/mocks/handlers.js
+import { rest } from 'msw'
+```
+
+Les gestionnaires de requêtes contiennent un tableau de requêtes. Pour gérer une requête REST API il faut la méthode (POST, GET ...), le chemin et une fonction qui renvoie la réponse mock.
+
+```javascript
+// src/mocks/handlers.js
+import { rest } from 'msw'
+
+export const handlers = [
+  // Handles a POST /login request
+  rest.post('/login', null),
+  
+  // Handles a GET /user request
+  rest.get('/user', null),
+]
+```
+
+La fonction de réponse possède 3 arguments :
+
+- `req`, une information sur une requête correspondante ;
+- `res`, un utilitaire fonctionnel pour créer la réponse simulée ;
+- `ctx`, un groupe de fonctions qui aident à définir un code d'état, des en-têtes, un body, un delai, etc. de la réponse simulée.
+
+```javascript
+// src/mocks/handlers.js
+import { rest } from 'msw'
+export const handlers = [
+  rest.post('/login', (req, res, ctx) => {
+    // Persist user's authentication in the session
+    sessionStorage.setItem('is-authenticated', 'true')
+    return res(
+      // Respond with a 200 status code
+      ctx.status(200),
+    )
+  }),
+  rest.get('/user', (req, res, ctx) => {
+    // Check if the user is authenticated in this session
+    const isAuthenticated = sessionStorage.getItem('is-authenticated')
+    if (!isAuthenticated) {
+      // If not authenticated, respond with a 403 error
+      return res(
+        ctx.status(403),
+        ctx.json({
+          errorMessage: 'Not authorized',
+        }),
+      )
+    }
+    // If authenticated, return a mocked user details
+    return res(
+      ctx.status(200),
+      ctx.json({
+        username: 'admin',
+      }),
+    )
+  }),
+]
+```
+
+## Il est possible d'exécuter les mocks dans le navigateur ou dans Node
+
+### Dans le navigateur
+
+- il faut initialiser MSW
+
+```shell script
+npx msw init <PUBLIC_DIR> --save
+#Exemple avec Create React App
+npx msw init public/ --save
+```
+
+Cela va  créer le fichier `public\mockServiceWorker.js` et ajouter au `package.json` les lignes suivantes :
+
+```json
+"msw": {
+    "workerDirectory": "public"
+  }
+```
+
+### Dans Node
+
+- créer un fichier `src/mocks/server.js`
+
+```javascript
+// src/mocks/server.js
+import { setupServer } from 'msw/node'
+import { handlers } from './handlers'
+// This configures a request mocking server with the given request handlers.
+export const server = setupServer(...handlers)
+```
