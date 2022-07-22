@@ -1,4 +1,4 @@
-# Mock Service Worker
+# Mock Service Worker (MSW)
 
 Intercepte les requêtes réseau, utile pour les tests, le développement et le débogage.
 
@@ -94,6 +94,54 @@ Cela va  créer le fichier `public\mockServiceWorker.js` et ajouter au `package.
 "msw": {
     "workerDirectory": "public"
   }
+```
+
+- créer un fichier `src/mocks/browser.js`
+
+```javascript
+// src/mocks/browser.js
+import { setupWorker } from 'msw'
+import { handlers } from './handlers'
+// This configures a Service Worker with the given request handlers.
+export const worker = setupWorker(...handlers)
+```
+
+- démarrer le `worker`
+
+⚠ Il n'est pas recommandé d'utiliser MSW en production ! il faut importez le fichier `src/mocks/browser.js` de manière conditionnelle :
+
+```javascript
+// src/index.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+
+if (process.env.NODE_ENV === 'development') {
+  const { worker } = require('./mocks/browser')
+  worker.start()
+}
+ReactDOM.render(<App />, document.getElementById('root'))
+```
+
+`worker.start()` est une promise il est donc possible de retarder le rendu :
+
+```javascript
+// src/index.js
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+
+function prepare() {
+  if (process.env.NODE_ENV === 'development') {
+    const { worker } = require('./mocks/browser')
+    return worker.start()
+  }
+  return Promise.resolve()
+}
+
+prepare().then(() => {
+  ReactDOM.render(<App />, document.getElementById('root'))
+})
 ```
 
 ### Dans Node
