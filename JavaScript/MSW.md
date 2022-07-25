@@ -144,6 +144,59 @@ prepare().then(() => {
 })
 ```
 
+#### Exemple simple d'une structure du dossier `mocks/`
+
+````text
+    .
+    ├── browser.js
+    ├── handlers.js
+    └── index.js
+````
+
+```javascript
+// index.js
+if (process.env.NODE_ENV === 'development') {
+    module.exports = require('./browser')
+}
+```
+
+```javascript
+// browser.js
+import { setupWorker } from 'msw'
+import { handlers } from './handlers'
+
+export const worker = setupWorker(...handlers)
+
+worker.start()
+```
+
+```javascript
+// handlers.js
+import {rest} from 'msw'
+
+export const handlers = [
+    // Handles a POST /login request
+    rest.post('/login', null),
+
+    // Handles a GET /user request
+    rest.get('https://example.com/api/login', (req, res, ctx) => {
+        return res(
+            // ctx.delay(1500),
+            ctx.status(202, 'Mocked status'),
+            ctx.json({
+                message: 'Mocked response JSON body',
+            }),
+        )
+    }),
+]
+```
+
+```javascript
+// app.js
+import * as React from 'react'
+import './mocks'
+```
+
 ### Dans Node
 
 - créer un fichier `src/mocks/server.js`
