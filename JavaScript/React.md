@@ -415,6 +415,30 @@ useEffect(() => {
     }, [])
 ```
 
+### `useEffect` avec des fonctions asynchrones
+
+- <https://devtrium.com/posts/async-functions-useeffect>
+
+```javascript
+useEffect(() => {
+  // declare the async data fetching function
+  const fetchData = async () => {
+    // get the data from the api
+    const data = await fetch('https://yourapi.com');
+    // convert the data to json
+    const json = await response.json();
+
+    // set state with the result
+    setData(json);
+  }
+
+  // call the function
+  fetchData()
+    // make sure to catch any error
+    .catch(console.error);;
+}, [])
+```
+
 ## `useRef`
 
 La différence entre `useState` et `useRef` est que `useState` provoque un nouveau rendu, `useRef` ne le fait pas.
