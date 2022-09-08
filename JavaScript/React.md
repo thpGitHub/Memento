@@ -439,6 +439,16 @@ useEffect(() => {
 }, [])
 ```
 
+```javascript
+useEffect(() => {
+        const fetchData = async () => {
+            const user = await getUserByToken()
+            setAuthUser(user)
+        }
+        fetchData()
+    }, [])
+```
+
 ## `useRef`
 
 La différence entre `useState` et `useRef` est que `useState` provoque un nouveau rendu, `useRef` ne le fait pas.
