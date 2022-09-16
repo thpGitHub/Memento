@@ -208,3 +208,26 @@ import { handlers } from './handlers'
 // This configures a request mocking server with the given request handlers.
 export const server = setupServer(...handlers)
 ```
+
+## `json()`
+
+Transforme le `body` de la réponse en JSON et ajoute `Content-Type: application/json` au `header` de la réponse.
+
+Signature
+
+````javascript
+function json(data: Record<string, any>): MockedResponse
+````
+
+Exemple
+
+````javascript
+rest.get('/user', (req, res, ctx) => {
+  return res(
+    ctx.json({
+      firstName: 'John',
+      age: 32,
+    }),
+  )
+})
+````
