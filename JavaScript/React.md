@@ -4751,6 +4751,8 @@ import { ReactComponent as SunDark } from '../Assets/sun-warm.svg';
 
 ## Performances <a name="performances"></a>
 
+-<https://create-react-app.dev/docs/deployment/>
+
 ---
 
 ## Annexes
