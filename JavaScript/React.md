@@ -15,6 +15,7 @@
 11. [Requêtes HTTP](#requetesHTTP)
 12. [API de Context](#context)
 13. [Redux](#redux)
+0. [Performances](#performances)
 14. [Annexes](#annexes)
 
 Création d'une app React sans `create react app` ni de `CDN` (voir en annexe pour plus de détails).
@@ -4745,6 +4746,10 @@ import { ReactComponent as SunDark } from '../Assets/sun-warm.svg';
 
 <SunDark />
 ````
+
+---
+
+## Performances <a name="performances"></a>
 
 ---
 
