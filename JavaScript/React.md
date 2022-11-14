@@ -4753,7 +4753,7 @@ import { ReactComponent as SunDark } from '../Assets/sun-warm.svg';
 
 - <https://create-react-app.dev/docs/deployment/>
 
-### Découpage dynamique de code
+### Découpage dynamique du code
 
 #### import dynamique
 
@@ -4774,12 +4774,32 @@ const UnauthApp = lazy(() => import('./UnauthApp'))
 const AppConsumer = () => {
     const {authUser} = useAuthContext()
     return (
-        <Suspense fallback={<div>Chargement...</div>}>
-            authUser ? <AuthApp /> : <UnauthApp />
+        <Suspense fallback={<div>Chargement...</div>} >
+            {authUser ? <AuthApp /> : <UnauthApp />}
         </Suspense>
     )
 }
+````
 
+### Pré-chargement de composants
+
+- <https://developer.mozilla.org/fr/docs/Web/HTTP/Link_prefetching_FAQ>
+
+WebPack permet de pré-charger des ressources grace au `magic comment`
+
+- <https://webpack.js.org/api/module-methods/#magic-comments>
+
+````javascript
+// Quand on sera sur le component UnauthApp le component AuthApp sera Prefetch
+// grace au magic comment : /* webpackPrefetch: true */
+
+const AuthApp = lazy(() => import(/* webpackPrefetch: true */'./AuthApp'))
+const UnauthApp = lazy(() => import('./UnauthApp'))
+````
+
+````HTML
+<!--dans le <head> de la page HTML AuthApp est prefetch -->
+<link rel="prefetch" as="script" href="/static/js/src_AuthApp_tsx.chunk.js">
 ````
 
 ---
