@@ -4753,6 +4753,35 @@ import { ReactComponent as SunDark } from '../Assets/sun-warm.svg';
 
 - <https://create-react-app.dev/docs/deployment/>
 
+### Découpage dynamique de code
+
+#### import dynamique
+
+````javascript
+// Avant
+import AuthApp from './AuthApp'
+import UnauthApp from './UnauthApp'
+
+const AppConsumer = () => {
+    const {authUser} = useAuthContext()
+    return authUser ? <AuthApp /> : <UnauthApp />
+}
+
+// Après
+const AuthApp = lazy(() => import('./AuthApp'))
+const UnauthApp = lazy(() => import('./UnauthApp'))
+
+const AppConsumer = () => {
+    const {authUser} = useAuthContext()
+    return (
+        <Suspense fallback={<div>Chargement...</div>}>
+            authUser ? <AuthApp /> : <UnauthApp />
+        </Suspense>
+    )
+}
+
+````
+
 ---
 
 ## Annexes
