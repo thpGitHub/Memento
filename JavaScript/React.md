@@ -4802,6 +4802,16 @@ const UnauthApp = lazy(() => import('./UnauthApp'))
 <link rel="prefetch" as="script" href="/static/js/src_AuthApp_tsx.chunk.js">
 ````
 
+### Mémoîser un context
+
+Attention : quand des fonctions sont des dépendances de `useMemo` il faut que ces fonctions utilisent `useCallback`
+
+>The 'login' function makes the dependencies of useMemo Hook (at line 95) change on every render. Move it inside >the useMemo callback. Alternatively, wrap the definition of 'login' in its own useCallback() Hook.>eslintreact-hooks/exhaustive-deps.
+
+````javascript
+
+````
+
 ---
 
 ## Annexes
