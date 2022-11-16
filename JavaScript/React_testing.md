@@ -619,9 +619,13 @@ test('should add item to card', async () => {
 
 ```
 
-
 ## Annexes
 
 ```shell script
 npm test -- --coverage
 ```
+
+````javascript
+// si aucun test dans le fichier .todo permet de ne pas générer une erreur en attendant de dev le test
+test.todo('Retourne une nombre entier alétoire')
+````
