@@ -718,8 +718,6 @@ test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
 
 ````javascript
 // 🚀 Utilisation de @testing-library/jest-dom
-
-
 import * as React from 'react'
 import Hello from '../../components/hello'
 import {render, fireEvent} from '@testing-library/react'
@@ -733,6 +731,32 @@ test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
   fireEvent.click(envoyer)
   expect(label).toHaveTextContent(`Merci`)
 ````
+
+## Test en `boite noire`
+
+>Le test de la boîte noire, ou test de la boîte opaque, est utilisé en programmation informatique et en génie logiciel pour tester un programme en vérifiant que les sorties obtenues sont bien celles prévues pour des entrées données.
+
+````HTML
+
+ <!-- exemple ici avec un input de type button -->
+<input type="button" value="envoyer" onClick={e => setLabel(`Merci`)} />
+ <!-- mais si on change l'input par un button les tests seront en erreur -->
+<button />
+
+ <!-- Autre exemple avec une div et on récupère le premier enfant -->
+ <div> 
+  <div></div>
+ </div>
+ <!-- si on rajouter une div les tests seront en erreur -->
+ <div> 
+  <div></div>
+  <div></div>
+ </div>
+````
+
+React testing library nous fournit des fonctionnalités intérressantes pour tester le plus possible en boite noire et ne plus s'occuper des détails d'implémentation du code.
+
+Exemple : `getByRole` va récupérer un élément en fonction de son rôle définit dans l'arbre d'accessibilité
 
 ## Annexes
 
