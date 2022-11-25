@@ -70,6 +70,27 @@ Pour mesurer la couverture de tests (code coverage) :
 npm test -- --coverage
 ````
 
+### Jest met à disposition des hooks pour la préparation et le nettoyage
+
+````javascript
+// sera appelé avant chaque test
+beforeEach(() => {
+});
+
+// sera appelé après chaque test
+afterEach(() => {
+});
+
+// sera appelé une seul fois avant tous les tests
+beforeAll(() => {
+});
+
+// sera appelé une seul fois après tous les tests
+afterAll(() => {
+});
+
+````
+
 ## React Testing Library
 
 Avec `create-react-app` `React Testing Library` est déjà installé.
@@ -619,6 +640,62 @@ test('should add item to card', async () => {
 
 ```
 
+## Test componsant avec Jest sans React Testing Library
+
+````javascript
+import * as React from 'react'
+import ReactDOM from 'react-dom'
+import Hello from '../../components/hello'
+
+  test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
+    const div = document.createElement('div')
+    div.classList.add("foo", "bar", "baz")
+    document.body.append(div)
+  
+    ReactDOM.render(<Hello name="John" />, div)
+  
+    const envoyer = div.querySelector('input')
+    const label = div.firstChild.querySelector('div')
+  
+    expect(label.textContent).toBe(`Bonjour John`)
+    envoyer.click()
+    expect(label.textContent).toBe(`Merci`)
+  })
+
+//<Hello />
+// import * as React from 'react'
+
+// function Hello({name}) {
+//   const [label, setLabel] = React.useState(`Bonjour ${name}`)
+//   return (
+//     <div>
+//       <div>
+//         <div role="status">{label}</div>
+//       </div>
+//       <input type="button" value="envoyer" onClick={e => setLabel(`Merci`)} />
+//     </div>
+//   )
+// }
+// export default Hello
+````
+
+Même chose que dessus mais on remplave le `.click()` par un `dispatchEvent`
+
+````javascript
+.
+.
+.
+expect(label.textContent).toBe(`Bonjour John`)
+  const envoyerClickEvent = new MouseEvent('click', {
+    bubbles: true,
+    cancelable: true,
+    button: 0,
+  })
+  envoyer.dispatchEvent(envoyerClickEvent)
+  expect(label.textContent).toBe(`Merci`)
+})
+````
+
 ## Annexes
 
 ```shell script
@@ -628,4 +705,10 @@ npm test -- --coverage
 ````javascript
 // si aucun test dans le fichier .todo permet de ne pas générer une erreur en attendant de dev le test
 test.todo('Retourne une nombre entier alétoire')
+````
+
+````javascript
+// A voir ! dans React testing library
+// https://subscription.packtpub.com/book/web-development/9781800564459/2/ch02lvl1sec14/using-the-debug-method
+screen.debug()
 ````
