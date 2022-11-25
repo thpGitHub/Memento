@@ -758,6 +758,70 @@ React testing library nous fournit des fonctionnalités intérressantes pour tes
 
 Exemple : `getByRole` va récupérer un élément en fonction de son rôle définit dans l'arbre d'accessibilité
 
+````javascript
+import * as React from 'react'
+import Hello from '../../components/helloreset'
+import {render, screen, fireEvent} from '@testing-library/react'
+
+test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
+  render(<Hello name="John" />)
+
+  const envoyer = screen.getByRole('button', {name: /envoyer/i})
+  const reset = screen.getByRole('button', {name: /reset/i})
+  const label = screen.getByRole('status')
+
+  expect(label).toHaveTextContent(`Bonjour John`)
+  fireEvent.click(envoyer)
+  expect(label).toHaveTextContent(`Merci`)
+  fireEvent.click(reset)
+  expect(label).toHaveTextContent(`Bonjour John`)
+})
+
+// helloreset
+import * as React from 'react'
+
+function HelloReset({name}) {
+  const [label, setLabel] = React.useState(`Bonjour ${name}`)
+  return (
+    <div>
+      <div>
+        <div role="status">{label}</div>
+      </div>
+      <input type="button" value="envoyer" onClick={e => setLabel(`Merci`)} />
+      <input
+        type="button"
+        value="reset"
+        onClick={e => setLabel(`Bonjour ${name}`)}
+      />
+    </div>
+  )
+}
+export default HelloReset
+````
+
+## `userEvent` de testing library
+
+````javascript
+import * as React from 'react'
+import Hello from '../../components/helloreset'
+import {render, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
+test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
+  render(<Hello name="John" />)
+
+  const envoyer = screen.getByRole('button', {name: /envoyer/i})
+  const reset = screen.getByRole('button', {name: /reset/i})
+  const label = screen.getByRole('status')
+
+  expect(label).toHaveTextContent(`Bonjour John`)
+  userEvent.click(envoyer)
+  expect(label).toHaveTextContent(`Merci`)
+  userEvent.click(reset)
+  expect(label).toHaveTextContent(`Bonjour John`)
+})
+````
+
 ## Annexes
 
 ```shell script
