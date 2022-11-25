@@ -696,6 +696,44 @@ expect(label.textContent).toBe(`Bonjour John`)
 })
 ````
 
+## Test componsant avec Jest ET React Testing Library
+
+````javascript
+import * as React from 'react'
+import {render, fireEvent} from '@testing-library/react'
+import Hello from '../../components/hello'
+
+test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
+  const {container} = render(<Hello name="John" />)
+  const envoyer = container.querySelector('input')
+  const label = container.firstChild.querySelector('div')
+
+  expect(label.textContent).toBe(`Bonjour John`)
+  fireEvent.click(envoyer)
+  expect(label.textContent).toBe(`Merci`)
+})
+````
+
+## Test componsant avec Jest ET React Testing Library et l'extension `jest-dom`
+
+````javascript
+// 🚀 Utilisation de @testing-library/jest-dom
+
+
+import * as React from 'react'
+import Hello from '../../components/hello'
+import {render, fireEvent} from '@testing-library/react'
+
+test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
+  const {container} = render(<Hello name="John" />)
+  const envoyer = container.querySelector('input')
+  const label = container.firstChild.querySelector('div')
+
+  expect(label).toHaveTextContent(`Bonjour John`)
+  fireEvent.click(envoyer)
+  expect(label).toHaveTextContent(`Merci`)
+````
+
 ## Annexes
 
 ```shell script
