@@ -1,6 +1,9 @@
 # React Testing
 
-## `Jest`
+1. [Jest](#jest)
+0. [React Testing Library](#rtl)
+
+## `Jest` <a name="jest"></a>
 
 Avec `create-react-app` `Jest` est déjà installé.
 
@@ -91,7 +94,7 @@ afterAll(() => {
 
 ````
 
-## React Testing Library
+## React Testing Library <a name="rtl">
 
 Avec `create-react-app` `React Testing Library` est déjà installé.
 
@@ -554,13 +557,148 @@ test('formulaire de login avec username et password" ', () => {
 })
 ````
 
-## Mock avec `MSW`
+## Mocker les requêtes HTTP avec `MSW`
 
 Mock Service Worker (MSW) est une bibliothèque de simulation d'API pour le navigateur et Node.js et utilise l'API Service Worker pour intercepter les demandes réelles.
 
 ```shell script
 npm install --save-dev msw
 ```
+
+````javascript
+// LoginSubmit
+import * as React from 'react'
+import LoginForm from './loginForm'
+
+function LoginSubmit() {
+  const [dataToSubmit, setDataToSubmit] = React.useState(null)
+  const [fetchStatus, setFetchStatus] = React.useState({
+    status: 'idle',
+    payload: '',
+  })
+
+  const endpoint = 'https://example.com/api/login'
+  const body = dataToSubmit ? JSON.stringify(dataToSubmit) : null
+  React.useEffect(() => {
+    if (body) {
+      setFetchStatus({status: 'feching', payload: ''})
+      fetch(endpoint, {
+        method: 'POST',
+        body: body,
+        headers: {
+          'content-type': 'application/json',
+        },
+      }).then(async response => {
+        const data = await response.json()
+        if (response.ok) {
+          setFetchStatus({status: 'done', payload: data})
+        } else {
+          setFetchStatus({status: 'error', payload: data})
+        }
+      })
+    }
+  }, [dataToSubmit, body])
+  return (
+    <div>
+      {fetchStatus.status === 'feching' ? 'chargement...' : null}
+
+      {fetchStatus.status === 'error' ? (
+        <div role="alert" style={{color: 'red'}}>
+          {fetchStatus.payload.errorMessage}
+        </div>
+      ) : null}
+      {fetchStatus.status === 'done' ? (
+        <div>
+          Bonjour <strong>{fetchStatus.payload.username}</strong>
+        </div>
+      ) : (
+        <LoginForm onSubmit={formData => setDataToSubmit(formData)} />
+      )}
+    </div>
+  )
+}
+
+export default LoginSubmit
+````
+
+````javascript
+//LoginSubmit.test
+import * as React from 'react'
+import LoginSubmit from '../../components/loginSubmit'
+import {render, screen, waitFor} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import faker from 'faker'
+import {rest} from 'msw'
+import {setupServer} from 'msw/node'
+
+const sleep = t => new Promise(resolve => setTimeout(resolve, t))
+const DELAY = 100
+
+const server = setupServer(
+  rest.post('https://example.com/api/login', (req, res, ctx) => {
+    if (!req.body.password) {
+      return res(
+        ctx.status(400),
+        ctx.json({errorMessage: 'le password est obligatoire !'}),
+        ctx.delay(DELAY)
+      )
+    }
+    if (!req.body.username) {
+      return res(
+        ctx.status(400),
+        ctx.json({errorMessage: 'username est obligatoire !'}),
+        ctx.delay(DELAY)
+      )
+    }
+    return res(ctx.delay(DELAY), ctx.json({username: req.body.username}))
+  }),
+)
+
+beforeAll(() => server.listen())
+afterAll(() => server.close())
+
+test('login api affiche le nom de l\'utilisateur connecté" ', async () => {
+  render(<LoginSubmit />)
+
+  const username = faker.internet.userName()
+  const password = faker.internet.password()
+
+  const usernameElement = screen.getByText(/Nom d'utilisateur :/i)
+  const passwordElement = screen.getByText(/Mot de passe :/i)
+  const submitbuttonElement = screen.getByRole('button', {name: /Connexion/i})
+
+  userEvent.type(usernameElement, username)
+  userEvent.type(passwordElement, password)
+  userEvent.click(submitbuttonElement)
+
+  await waitFor(() => sleep(150))
+  expect(screen.getByText(username)).toBeInTheDocument()
+})
+````
+
+`waitFor` c'est bien mais il faut calculer le temps à attendre (150 car il y avait un delay de 100) on peut utiliser à la place `waitForElementToBeRemoved`
+
+````javascript
+test('login api affiche le nom de l\'utilisateur connecté" ', async () => {
+  render(<LoginSubmit />)
+
+  const username = faker.internet.userName()
+  const password = faker.internet.password()
+
+  const usernameElement = screen.getByText(/Nom d'utilisateur :/i)
+  const passwordElement = screen.getByText(/Mot de passe :/i)
+  const submitbuttonElement = screen.getByRole('button', {name: /Connexion/i})
+
+  userEvent.type(usernameElement, username)
+  userEvent.type(passwordElement, password)
+  userEvent.click(submitbuttonElement)
+
+  await waitForElementToBeRemoved(() => screen.getByText(/chargement.../))
+  expect(screen.getByText(username)).toBeInTheDocument()
+})
+````
+
+Autre exemple
 
 ```javascript
 import { rest } from 'msw';
