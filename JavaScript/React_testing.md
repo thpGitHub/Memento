@@ -375,7 +375,7 @@ describe('Search Component', () => {
 
 ```javascript
 /**
-     * find the input with 'texbox' (texbox = is label of input)
+     * find the input with 'textbox' (textbox = is label of input)
      */ 
     const firsNameElement = screen.getByRole('textbox', {name: /\* Prénom/i} )
     const nameElement = screen.getByRole('textbox', {name: /\* Nom de famille/i} )
@@ -396,8 +396,163 @@ describe('Search Component', () => {
     fireEvent.change(repeatPswElement, {target: {repeatPsw}})
 
     fireEvent.click(submitedButtonElement)
-
 ```
+
+Exemple
+
+````javascript
+//LoginForm
+import * as React from 'react'
+
+function LoginForm({onSubmit}) {
+  const [username, setUsername] = React.useState('')
+  const [password, setPassword] = React.useState('')
+  const handleSubmit = e => {
+    e.preventDefault()
+    console.log(`handleSubmit avec ${username}, ${password}`)
+    onSubmit({username, password})
+  }
+  return (
+    <form onSubmit={handleSubmit}>
+      <label htmlFor="username">Nom d'utilisateur :</label>
+      <input
+        id="username"
+        type="text"
+        value={username}
+        onChange={e => setUsername(e.target.value)}
+      />
+
+      <label htmlFor="password">Mot de passe :</label>
+      <input
+        id="password"
+        type="text"
+        value={password}
+        onChange={e => setPassword(e.target.value)}
+      />
+
+      <div>
+        <input type="submit" value={'Connexion'} />
+      </div>
+    </form>
+  )
+}
+
+export default LoginForm
+````
+
+````javascript
+import * as React from 'react'
+import LoginForm from '../../components/loginForm'
+import {render, screen, fireEvent} from '@testing-library/react'
+
+test('formulaire de login avec username et password" ', () => {
+  let submittedUsername
+  let submittedPassword
+
+  const handleSubmit = ({username, password}) => {
+    submittedUsername = username
+    submittedPassword = password
+  }
+
+  render(<LoginForm onSubmit={handleSubmit} />)
+  const username = 'toto'
+  const password = 'toto2'
+
+  const usernameElement = screen.getByRole('textbox', {
+    name: /Nom d'utilisateur :/i,
+  })
+  const passwordElement = screen.getByRole('textbox', {
+    name: /Mot de passe :/i,
+  })
+  const submitButtonElement = screen.getByRole('button', {
+    name: /Connexion/i,
+  })
+  // modification de la valeur des 2 champs input avec fireEvent.change
+  fireEvent.change(usernameElement, {target: { value: username }});
+  fireEvent.change(passwordElement, {target: { value: password }});
+  //simulation d'un click sur le button connexion
+  fireEvent.click(submitButtonElement)
+
+  expect(submittedUsername).toBe(username)
+  expect(submittedPassword).toBe(password)
+})
+````
+
+Même chose en remplacant `fireEvent` vs `userEvent` et `getByRole` vs `getByText`
+
+````javascript
+  const usernameElement = screen.getByText(/Nom d'utilisateur :/i)
+  const passwordElement = screen.getByText(/Mot de passe :/i)
+  const submitButtonElement = screen.getByRole('button', {
+    name: /Connexion/i,
+  })
+  userEvent.type(usernameElement, username)
+  userEvent.type(passwordElement, password)
+  userEvent.click(submitButtonElement)
+
+  expect(submittedUsername).toBe(username)
+  expect(submittedPassword).toBe(password)
+````
+
+Même chose en mockant la fonction `handleSubmit` que l'on ne souhaite plus implémenter pour nos tests
+
+````javascript
+import * as React from 'react'
+import LoginForm from '../../components/loginForm'
+import {render, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+
+test('formulaire de login avec username et password" ', () => {
+  const handleSubmit = jest.fn()
+
+  render(<LoginForm onSubmit={handleSubmit} />)
+  const username = 'toto'
+  const password = 'toto2'
+
+  const usernameElement = screen.getByText(/Nom d'utilisateur :/i)
+  const passwordElement = screen.getByText(/Mot de passe :/i)
+  const submitButtonElement = screen.getByRole('button', {
+    name: /Connexion/i,
+  })
+  userEvent.type(usernameElement, username)
+  userEvent.type(passwordElement, password)
+  userEvent.click(submitButtonElement)
+  expect(handleSubmit).toHaveBeenCalled()
+  expect(handleSubmit).toHaveBeenCalledWith({username, password})
+  expect(handleSubmit).toHaveBeenCalledTimes(1)
+})
+````
+
+Même chose en utilisant la librairie `faker`
+
+````javascript
+import * as React from 'react'
+import LoginForm from '../../components/loginForm'
+import {render, screen} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import faker from 'faker'
+
+test('formulaire de login avec username et password" ', () => {
+  const handleSubmit = jest.fn()
+
+  render(<LoginForm onSubmit={handleSubmit} />)
+  const username = faker.internet.userName()
+  const password = faker.internet.password()
+
+  const usernameElement = screen.getByText(/Nom d'utilisateur :/i)
+  const passwordElement = screen.getByText(/Mot de passe :/i)
+  const submitButtonElement = screen.getByRole('button', {
+    name: /Connexion/i,
+  })
+  userEvent.type(usernameElement, username)
+  userEvent.type(passwordElement, password)
+  userEvent.click(submitButtonElement)
+
+  expect(handleSubmit).toHaveBeenCalled()
+  expect(handleSubmit).toHaveBeenCalledWith({username, password})
+  expect(handleSubmit).toHaveBeenCalledTimes(1)
+})
+````
 
 ## Mock avec `MSW`
 
