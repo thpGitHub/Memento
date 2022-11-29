@@ -6,6 +6,7 @@
 1. [Tester des formulaires](#form)
 1. [Mocker les requêtes HTTP avec `MSW`](#msw)
 1. [Mocker l'API du navigateur](#api)
+1. [Mocker un module](#module)
 1. [Test componsant avec Jest sans React Testing Library](#onlyjest)
 1. [Test componsant avec Jest ET React Testing Library](#jestrtl)
 1. [Test componsant avec Jest ET React Testing Library et l'extension `jest-dom`](#jestrtldom)
@@ -1101,6 +1102,147 @@ window.navigator.geolocation.getCurrentPosition.mockImplementation(() => {
   }
 })
 ````
+
+Exemple
+
+````javascript
+// LoginSubmit
+import * as React from 'react'
+
+import LoginForm from './loginForm'
+function LoginSubmit() {
+  const [dataToSubmit, setDataToSubmit] = React.useState(null)
+  const [fetchStatus, setFetchStatus] = React.useState({
+    status: 'idle',
+    payload: '',
+  })
+  const [permission, setPermission] = React.useState(null)
+
+  const askPerm = async () => {
+    let perm = await window.Notification.requestPermission()
+    setPermission(perm)
+  }
+
+  // eslint-disable-next-line
+  const notifyUser = name => {
+    // Vérifions si les autorisations de notification ont déjà été accordées
+    if (window.Notification.permission === 'granted') {
+      // Si tout va bien, créons une notification
+      console.log('indow.Notification.permissio grantedp', askPerm())
+      new Notification(`bonjour ${name}`)
+    }
+  }
+
+  const endpoint = 'https://example.com/api/login'
+  const body = dataToSubmit ? JSON.stringify(dataToSubmit) : null
+  React.useEffect(() => {
+    if (body) {
+      askPerm()
+      setFetchStatus({status: 'feching', payload: ''})
+      fetch(endpoint, {
+        method: 'POST',
+        body: body,
+        headers: {
+          'content-type': 'application/json',
+        },
+      }).then(async response => {
+        const data = await response.json()
+        if (response.ok) {
+          setFetchStatus({status: 'done', payload: data})
+          notifyUser(data.username)
+        } else {
+          setFetchStatus({status: 'error', payload: data})
+        }
+      })
+      // .catch(err => {
+      //   setFetchStatus({status: 'done', payload: {username: 'mike'}})
+      //   notifyUser("mike")
+      // })
+      //.catch(err => setFetchStatus({status: 'error', payload: {errorMessage :err.message}}))
+      //  .catch(err => setFetchStatus({status: 'error', payload: {errorMessage :"le username est obligatoire"}}))
+    }
+    // eslint-disable-next-line
+  }, [dataToSubmit, body])
+  return (
+    <div>
+      <div>
+        {permission === 'granted'
+          ? 'Les notifications sont autorisés'
+          : 'veuillez autoriser les notifications'}
+      </div>
+      {fetchStatus.status === 'feching' ? 'chargement...' : null}
+
+      {fetchStatus.status === 'error' ? (
+        <div role="alert" style={{color: 'red'}}>
+          {fetchStatus.payload.errorMessage}
+        </div>
+      ) : null}
+      {fetchStatus.status === 'done' ? (
+        <div>
+          Bonjour <strong>{fetchStatus.payload.username}</strong>
+        </div>
+      ) : (
+        <LoginForm onSubmit={formData => setDataToSubmit(formData)} />
+      )}
+    </div>
+  )
+}
+
+export default LoginSubmit
+````
+
+````javascript
+/* eslint-disable no-unused-vars */
+import * as React from 'react'
+import LoginSubmitNotification from '../../components/loginSubmitNotification'
+import {render, screen, waitForElementToBeRemoved} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import faker from 'faker'
+import mockHandlers from '../../test/mock-handlers'
+import {setupServer} from 'msw/node'
+
+const server = setupServer(...mockHandlers)
+
+beforeAll(() => {
+  server.listen(
+    (window.Notification = {
+      requestPermission: jest.fn(),
+    }),
+  )
+})
+afterAll(() => server.close())
+afterEach(() => server.resetHandlers())
+
+test('affiche un message de permission `granted` de notification" ', async () => {
+  const fakePermission = 'granted'
+
+  window.Notification.requestPermission.mockImplementation(() => {
+    return fakePermission
+  })
+
+  render(<LoginSubmitNotification />)
+
+  const username = faker.internet.userName()
+  const password = faker.internet.password()
+
+  const usernameElement = screen.getByText(/Nom d'utilisateur :/i)
+  const passwordElement = screen.getByText(/Mot de passe :/i)
+  const submitbuttonElement = screen.getByRole('button', {name: /Connexion/i})
+
+  userEvent.type(usernameElement, username)
+  userEvent.type(passwordElement, password)
+  userEvent.click(submitbuttonElement)
+
+  await waitForElementToBeRemoved(() => screen.getByText(/chargement.../i))
+  expect(
+    screen.getByText(/Les notifications sont autorisés/i),
+  ).toBeInTheDocument()
+})
+````
+
+---
+
+## Mocker un module <a name="module">
 
 ---
 

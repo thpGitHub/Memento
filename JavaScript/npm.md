@@ -1,6 +1,10 @@
 # npm
 
 ````shell script
+npm outdated # liste les versions des packages installés et les dernières versions disponibles !
+````
+
+````shell script
     npm init
     npm init --yes
 ````
