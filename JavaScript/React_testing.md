@@ -756,6 +756,84 @@ test('login api erreur : manque password" ', async () => {
 })
 ````
 
+Gerer erreur serveur : exemple 503
+
+````javascript
+// afterEach(() => server.resetHandlers)
+// server.use() 
+import * as React from 'react'
+import LoginSubmit from '../../components/loginSubmit'
+import {
+  render,
+  screen,
+  waitForElementToBeRemoved,
+  waitFor,
+} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import faker from 'faker'
+import {rest} from 'msw'
+import {setupServer} from 'msw/node'
+
+const sleep = t => new Promise(resolve => setTimeout(resolve, t))
+const DELAY = 100
+
+const server = setupServer(
+  rest.post('https://example.com/api/login', (req, res, ctx) => {
+    if (!req.body.password) {
+      return res(
+        ctx.status(400),
+        ctx.json({errorMessage: 'le password est obligatoire !!'}),
+        ctx.delay(DELAY),
+      )
+    }
+    if (!req.body.username) {
+      return res(
+        ctx.status(400),
+        ctx.json({errorMessage: 'username est obligatoire !'}),
+        ctx.delay(DELAY),
+      )
+    }
+    // return res(ctx.delay(DELAY), ctx.json({username: req.body.username}))
+    return res(ctx.json({username: req.body.username}))
+  }),
+)
+
+beforeAll(() => server.listen())
+afterAll(() => server.close())
+afterEach(() => server.resetHandlers)
+// .
+// .
+// .
+test('erreur 503', async () => {
+  server.use(
+    rest.post('https://example.com/api/login', (req, res, ctx) => {
+      return res(
+        ctx.status(503),
+        ctx.json({errorMessage: 'service indisponible'}),
+      )
+    }),
+  )
+
+  render(<LoginSubmit />)
+
+  const username = faker.internet.userName()
+  const password = faker.internet.password()
+
+  const usernameElement = screen.getByText(/Nom d'utilisateur :/i)
+  const passwordElement = screen.getByText(/Mot de passe :/i)
+  const submitbuttonElement = screen.getByRole('button', {name: /Connexion/i})
+
+  userEvent.type(usernameElement, username)
+  // userEvent.type(passwordElement, password)
+  userEvent.click(submitbuttonElement)
+
+  await waitFor(() => sleep(150))
+  expect(screen.getByRole('alert').textContent).toMatchInlineSnapshot(
+    `"service indisponible"`,
+  )
+})
+````
+
 Autre exemple
 
 ```javascript
