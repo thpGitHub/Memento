@@ -698,6 +698,64 @@ test('login api affiche le nom de l\'utilisateur connecté" ', async () => {
 })
 ````
 
+Gérer les erreurs
+
+````javascript
+test('login api erreur : manque password" ', async () => {
+  render(<LoginSubmit />)
+
+  const username = faker.internet.userName()
+  const password = faker.internet.password()
+
+  const usernameElement = screen.getByText(/Nom d'utilisateur :/i)
+  const passwordElement = screen.getByText(/Mot de passe :/i)
+  const submitbuttonElement = screen.getByRole('button', {name: /Connexion/i})
+
+  userEvent.type(usernameElement, username)
+  // userEvent.type(passwordElement, password)
+  userEvent.click(submitbuttonElement)
+
+  await waitFor(() => sleep(150))
+  expect(screen.getByRole('alert')).toHaveTextContent('le password est obligatoire !')
+})
+````
+
+Gérer les erreurs avec `Snapshot` de `Jest` afin de regénérer le code des messages (ici d'erreur). `toMatchInlineSnapshot`
+
+````javascript
+test('login api erreur : manque password" ', async () => {
+  render(<LoginSubmit />)
+
+  const username = faker.internet.userName()
+  const password = faker.internet.password()
+
+  const usernameElement = screen.getByText(/Nom d'utilisateur :/i)
+  const passwordElement = screen.getByText(/Mot de passe :/i)
+  const submitbuttonElement = screen.getByRole('button', {name: /Connexion/i})
+
+  userEvent.type(usernameElement, username)
+  // userEvent.type(passwordElement, password)
+  userEvent.click(submitbuttonElement)
+
+  await waitFor(() => sleep(150))
+  expect(screen.getByRole('alert').textContent).toMatchInlineSnapshot()
+  
+  // Après l'exécution du test le code sera automatiquement écrit avec
+  expect(screen.getByRole('alert').textContent).toMatchInlineSnapshot(
+    `"le password est obligatoire !"`,
+  )
+
+  // Si le message change il faudra mettre à jour le Snapshot soit manuellement dans le test soit dans le terminal.
+
+  // message erreur dans terminal
+   Snapshot: "le password est obligatoire !"
+   Received: "le password est obligatoire !!"
+
+   // dans le terminal :
+    › Press i to update failing snapshots interactively.
+})
+````
+
 Autre exemple
 
 ```javascript
