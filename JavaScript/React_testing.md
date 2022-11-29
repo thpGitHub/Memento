@@ -1,7 +1,17 @@
 # React Testing
 
 1. [Jest](#jest)
-0. [React Testing Library](#rtl)
+1. [React Testing Library](#rtl)
+1. [React Testing Library/jest-dom](#rtl/jd)
+1. [Tester des formulaires](#form)
+1. [Mocker les requêtes HTTP avec `MSW`](#msw)
+1. [Mocker l'API du navigateur](#api)
+1. [Test componsant avec Jest sans React Testing Library](#onlyjest)
+1. [Test componsant avec Jest ET React Testing Library](#jestrtl)
+1. [Test componsant avec Jest ET React Testing Library et l'extension `jest-dom`](#jestrtldom)
+1. [Test en `boite noire`](#boite)
+1. [`userEvent` de testing library](#userevent)
+1. [Annexes](#annexes)
 
 ## `Jest` <a name="jest"></a>
 
@@ -200,7 +210,7 @@ test('should not display image if picture is not defined', () => {
 })
 ```
 
-## testing-library/jest-dom
+## testing-library/jest-dom <a name="rtl/jd">
 
 `Matchers` Jest personnalisés pour tester l'état du DOM.
 Cette librairie propose des assertions supplémentaires aux assertions de Jest (qui sont plus génériques). Par exemple si nous voulons savoir si un élément contient un classe css nous pourrions utiliser :
@@ -374,7 +384,7 @@ describe('Search Component', () => {
 })
 ```
 
-## Tester des formulaires
+## Tester des formulaires <a name="form">
 
 ```javascript
 /**
@@ -557,7 +567,7 @@ test('formulaire de login avec username et password" ', () => {
 })
 ````
 
-## Mocker les requêtes HTTP avec `MSW`
+## Mocker les requêtes HTTP avec `MSW` <a name="msw">
 
 Mock Service Worker (MSW) est une bibliothèque de simulation d'API pour le navigateur et Node.js et utilise l'API Service Worker pour intercepter les demandes réelles.
 
@@ -1066,10 +1076,35 @@ test('should add item to card', async () => {
   expect(emptyCarElem).not.toBeInTheDocument()  
 
 })
-
 ```
 
-## Test componsant avec Jest sans React Testing Library
+---
+
+## Mocker l'API du navigateur <a name="api">
+
+Les navigateurs on des fonctionnalités intérressantes comme : localStorage, cookies, géolocalisation, notifications ....
+> Mais lorsque nous exécution nos tests avec jest il sont executer dans Node (avec une simulation du navigateur [JSDOM](https://github.com/jsdom/jsdom)) et malheureusement tout n'est pas pris en charge. c'est écris dans la page de JSDOM. heureusement nous pouvons `mocker` ces implémentations manquantes avec `jest.fn()` et `mockImplementation`. Par exemple pour la géolocalisation.
+
+````javascript
+beforeAll(() => {
+  window.navigator.geolocation = {
+    getCurrentPosition: jest.fn(),
+  }
+})
+
+window.navigator.geolocation.getCurrentPosition.mockImplementation(() => {
+  return {
+    coords: {
+      latitude: 10,
+      longitude: 235,
+    },
+  }
+})
+````
+
+---
+
+## Test componsant avec Jest sans React Testing Library <a name="onlyjest">
 
 ````javascript
 import * as React from 'react'
@@ -1125,7 +1160,9 @@ expect(label.textContent).toBe(`Bonjour John`)
 })
 ````
 
-## Test componsant avec Jest ET React Testing Library
+---
+
+## Test componsant avec Jest ET React Testing Library <a name="jestrtl">
 
 ````javascript
 import * as React from 'react'
@@ -1143,7 +1180,7 @@ test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
 })
 ````
 
-## Test componsant avec Jest ET React Testing Library et l'extension `jest-dom`
+## Test componsant avec Jest ET React Testing Library et l'extension `jest-dom` <a name="jestrtldom">
 
 ````javascript
 // 🚀 Utilisation de @testing-library/jest-dom
@@ -1161,7 +1198,7 @@ test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
   expect(label).toHaveTextContent(`Merci`)
 ````
 
-## Test en `boite noire`
+## Test en `boite noire` <a name="boite">
 
 >Le test de la boîte noire, ou test de la boîte opaque, est utilisé en programmation informatique et en génie logiciel pour tester un programme en vérifiant que les sorties obtenues sont bien celles prévues pour des entrées données.
 
@@ -1228,7 +1265,7 @@ function HelloReset({name}) {
 export default HelloReset
 ````
 
-## `userEvent` de testing library
+## `userEvent` de testing library <a name="userevent">
 
 ````javascript
 import * as React from 'react'
@@ -1251,7 +1288,7 @@ test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
 })
 ````
 
-## Annexes
+## Annexes <a name="annexes">
 
 ```shell script
 npm test -- --coverage
