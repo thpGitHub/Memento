@@ -1,4 +1,4 @@
-# React Testing
+# <span style='color: blue'>React Testing</span>
 
 1. [Jest](#jest)
 1. [React Testing Library](#rtl)
@@ -7,11 +7,12 @@
 1. [Mocker les requêtes HTTP avec `MSW`](#msw)
 1. [Mocker l'API du navigateur](#api)
 1. [Mocker un module](#module)
-1. [Test componsant avec Jest sans React Testing Library](#onlyjest)
-1. [Test componsant avec Jest ET React Testing Library](#jestrtl)
-1. [Test componsant avec Jest ET React Testing Library et l'extension `jest-dom`](#jestrtldom)
+1. [Test componsant avec `Jest` sans React Testing Library](#onlyjest)
+1. [Test componsant avec `Jest` et `React Testing Library`](#jestrtl)
+1. [Test componsant avec `Jest` et `React Testing Library` et l'extension `jest-dom`](#jestrtldom)
 1. [Test en `boite noire`](#boite)
-1. [`userEvent` de testing library](#userevent)
+1. [Test composant avec `Context API`](#context)
+1. [`userEvent` de `React Testing Library`](#userevent)
 1. [Annexes](#annexes)
 
 ## `Jest` <a name="jest"></a>
@@ -104,6 +105,8 @@ afterAll(() => {
 });
 
 ````
+
+---
 
 ## React Testing Library <a name="rtl">
 
@@ -210,6 +213,8 @@ test('should not display image if picture is not defined', () => {
     expect(imgElem).toBeNull()
 })
 ```
+
+---
 
 ## testing-library/jest-dom <a name="rtl/jd">
 
@@ -384,6 +389,8 @@ describe('Search Component', () => {
   })
 })
 ```
+
+---
 
 ## Tester des formulaires <a name="form">
 
@@ -567,6 +574,8 @@ test('formulaire de login avec username et password" ', () => {
   expect(handleSubmit).toHaveBeenCalledTimes(1)
 })
 ````
+
+---
 
 ## Mocker les requêtes HTTP avec `MSW` <a name="msw">
 
@@ -1514,6 +1523,156 @@ test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
   expect(label).toHaveTextContent(`Merci`)
 ````
 
+---
+
+## Test composant avec Context API <a name="context">
+
+`Wrapper` de `React Testing Library`
+
+[option de render](https://testing-library.com/docs/react-testing-library/api/#wrapper)
+
+````javascript
+// Welcome
+import * as React from 'react'
+import {useLang} from '../components/lang'
+
+const messages = {
+  fr: {
+    welcome: 'Bonjour et bienvenue',
+    bye: 'aurevoir !',
+  },
+  en: {
+    welcome: 'Hello and welcome',
+    bye: 'Good bye !',
+  },
+}
+
+function Welcome({children, bye = false}) {
+  const [lang] = useLang()
+  return (
+    <div>
+      {bye ? (
+        <div>
+          {messages[lang].bye} {children}
+        </div>
+      ) : (
+        <div>
+          {messages[lang].welcome} {children}
+        </div>
+      )}
+    </div>
+  )
+}
+
+export default Welcome
+````
+
+````javascript
+// LangContext
+import * as React from 'react'
+
+const LangContext = React.createContext()
+
+function useLang() {
+  const context = React.useContext(LangContext)
+  if (!context) {
+    throw new Error('useLang doit etre utilisé dans un LangProvider ')
+  }
+  return context
+}
+
+function LangProvider({initialLang = 'fr', ...props}) {
+  const [lang, setLang] = React.useState(initialLang)
+  return <LangContext.Provider value={[lang, setLang]} {...props} />
+}
+
+export {useLang, LangProvider}
+````
+
+````javascript
+// Welcome.test
+import * as React from 'react'
+import {render, screen} from '@testing-library/react'
+import {LangProvider} from '../../components/lang'
+import Welcome from '../../components/welcome'
+
+test('rendu du composent Welcome avec la langue fr', () => {
+  const Wrapper = ({children}) => (
+    <LangProvider initialLang="fr">{children}</LangProvider>
+  )
+  render(<Welcome>John</Welcome>, {wrapper: Wrapper})
+  expect(screen.queryByText(/Bonjour et bienvenue/i)).toBeInTheDocument()
+})
+````
+
+Création d'une fonction pour ne pas répéter le `wrapper`
+
+````javascript
+import * as React from 'react'
+import {render, screen} from '@testing-library/react'
+import {LangProvider} from '../../components/lang'
+import Welcome from '../../components/welcome'
+
+function renderWithProviders(ui, {lang = 'fr', ...options} = {}) {
+  const Wrapper = ({children}) => (
+    <LangProvider initialLang={lang}>{children}</LangProvider>
+  )
+  return render(ui, {wrapper: Wrapper, ...options})
+}
+
+test('rendu du composent Welcome avec la langue fr', () => {
+  renderWithProviders(<Welcome>John</Welcome>)
+  expect(screen.queryByText(/Bonjour et bienvenue/i)).toBeInTheDocument()
+})
+
+test('rendu du composent Welcome avec la langue en', () => {
+  renderWithProviders(<Welcome>John</Welcome>, {lang: 'en'})
+  expect(screen.queryByText(/Hello and welcome/i)).toBeInTheDocument()
+})
+````
+
+fichier `test-utils` pour les `custom-render`
+
+  [doc test-util](https://testing-library.com/docs/react-testing-library/setup#custom-render)
+
+````javascript
+import * as React from 'react'
+// notre propre render mais le screen de testing library :)
+import {render, screen} from '../../test/test-utils'
+import Welcome from '../../components/welcome'
+
+test('rendu du composent Welcome avec la langue fr', () => {
+  render(<Welcome>John</Welcome>)
+  expect(screen.queryByText(/Bonjour et bienvenue/i)).toBeInTheDocument()
+})
+
+test('rendu du composent Welcome avec la langue en', () => {
+  render(<Welcome>John</Welcome>, {lang: 'en'})
+  expect(screen.queryByText(/Hello and welcome/i)).toBeInTheDocument()
+})
+````
+
+````javascript
+// test-utils
+import * as React from 'react'
+import {render as renderReactTestingLib} from '@testing-library/react'
+import {LangProvider} from '../components/lang'
+
+function render(ui, {lang = 'fr', ...options} = {}) {
+  const Wrapper = ({children}) => (
+    <LangProvider initialLang={lang}>{children}</LangProvider>
+  )
+  return renderReactTestingLib(ui, {wrapper: Wrapper, ...options})
+}
+
+// exporte tout testing library y compris son render
+export * from '@testing-library/react'
+// surcharge de render pour exporter notre render :)
+export {render}
+````
+
+---
+
 ## Test en `boite noire` <a name="boite">
 
 >Le test de la boîte noire, ou test de la boîte opaque, est utilisé en programmation informatique et en génie logiciel pour tester un programme en vérifiant que les sorties obtenues sont bien celles prévues pour des entrées données.
@@ -1581,6 +1740,8 @@ function HelloReset({name}) {
 export default HelloReset
 ````
 
+---
+
 ## `userEvent` de testing library <a name="userevent">
 
 ````javascript
@@ -1603,6 +1764,8 @@ test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
   expect(label).toHaveTextContent(`Bonjour John`)
 })
 ````
+
+---
 
 ## Annexes <a name="annexes">
 
