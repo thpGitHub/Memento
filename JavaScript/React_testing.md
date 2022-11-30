@@ -816,6 +816,8 @@ afterEach(() => server.resetHandlers)
 // .
 // .
 test('erreur 503', async () => {
+  render(<LoginSubmit />)
+
   server.use(
     rest.post('https://example.com/api/login', (req, res, ctx) => {
       return res(
@@ -824,8 +826,6 @@ test('erreur 503', async () => {
       )
     }),
   )
-
-  render(<LoginSubmit />)
 
   const username = faker.internet.userName()
   const password = faker.internet.password()
@@ -1195,11 +1195,13 @@ export default LoginSubmit
 /* eslint-disable no-unused-vars */
 import * as React from 'react'
 import LoginSubmitNotification from '../../components/loginSubmitNotification'
+import LoginSubmit from '../../components/loginSubmit'
 import {render, screen, waitForElementToBeRemoved} from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import faker from 'faker'
 import mockHandlers from '../../test/mock-handlers'
 import {setupServer} from 'msw/node'
+import {act} from 'react-dom/test-utils'
 
 const server = setupServer(...mockHandlers)
 
@@ -1214,29 +1216,35 @@ afterAll(() => server.close())
 afterEach(() => server.resetHandlers())
 
 test('affiche un message de permission `granted` de notification" ', async () => {
+  act(() => {
+    render(<LoginSubmitNotification />)
+  })
+
   const fakePermission = 'granted'
 
   window.Notification.requestPermission.mockImplementation(() => {
     return fakePermission
   })
 
-  render(<LoginSubmitNotification />)
-
   const username = faker.internet.userName()
   const password = faker.internet.password()
 
-  const usernameElement = screen.getByText(/Nom d'utilisateur :/i)
-  const passwordElement = screen.getByText(/Mot de passe :/i)
-  const submitbuttonElement = screen.getByRole('button', {name: /Connexion/i})
+  const usernameElement = screen.queryByLabelText(/Nom d'utilisateur :/i)
+  const passwordElement = screen.queryByLabelText(/Mot de passe :/i)
+  const submitbuttonElement = screen.queryByLabelText('button', {name: /Connexion/i})
 
   userEvent.type(usernameElement, username)
   userEvent.type(passwordElement, password)
-  userEvent.click(submitbuttonElement)
 
-  await waitForElementToBeRemoved(() => screen.getByText(/chargement.../i))
-  expect(
-    screen.getByText(/Les notifications sont autorisés/i),
-  ).toBeInTheDocument()
+  await act(async () => {
+    userEvent.click(await screen.queryByRole("button", { name: "Connexion" }));
+  })
+    await waitForElementToBeRemoved(() =>
+      screen.queryByText(/chargement.../i),
+    )
+    expect(
+      screen.getByText(/Les notifications sont autorisés/i),
+    ).toBeInTheDocument()
 })
 ````
 
@@ -1445,4 +1453,15 @@ test.todo('Retourne une nombre entier alétoire')
 // A voir ! dans React testing library
 // https://subscription.packtpub.com/book/web-development/9781800564459/2/ch02lvl1sec14/using-the-debug-method
 screen.debug()
+````
+
+````javascript
+// erreur typique
+
+ //TestingLibraryElementError: Unable to find an element with the text: /chargement.../i. This could be because the text is broken up by multiple elements. In this case, you can provide a function for your text matcher to make your matcher more flexible.
+
+const usernameElement = screen.getByText(/Nom d'utilisateur :/i)
+//remplacer
+const usernameElement = screen.queryByLabelText(/Nom d'utilisateur :/i)
+
 ````
