@@ -1252,6 +1252,172 @@ test('affiche un message de permission `granted` de notification" ', async () =>
 
 ## Mocker un module <a name="module">
 
+Exemple : Mock du module `use-local-storage`
+
+````javascript
+import useLocalStorage from 'use-local-storage'
+jest.mock('use-local-storage')
+
+function useLocalStorageMock() {
+  const state = React.useState([])
+  return state
+}
+useLocalStorage.mockImplementation(useLocalStorageMock)
+````
+
+Exemple : Mock du module `react-use-geolocation`
+
+````javascript
+// GeoLoc
+import * as React from 'react'
+import {useCurrentPosition} from 'react-use-geolocation'
+
+function GeoLoc() {
+  const [position, error] = useCurrentPosition()
+
+  if (!position && !error) {
+    return 'chargement'
+  }
+
+  if (error) {
+    return <div role="alert">{error.message}</div>
+  }
+
+  return (
+    <div>
+      <div>La latitude est de : {position.coords.latitude}</div>
+      <div>La longitude est de : {position.coords.longitude}</div>
+    </div>
+  )
+}
+
+export default GeoLoc
+````
+
+````javascript
+//Geoloc.test
+import * as React from 'react'
+import {render, screen, act} from '@testing-library/react'
+import {useCurrentPosition} from 'react-use-geolocation'
+import GeoLoc from '../../components/geoloc'
+
+jest.mock('react-use-geolocation')
+
+test("affiche la géolocalisation de l'utilisateur", async () => {
+  const fakePosition = {
+    coords: {
+      latitude: 52,
+      longitude: 96,
+    },
+  }
+
+  let setValue
+  function useMock() {
+    const state = React.useState([])
+    setValue = state[1]
+    return state[0]
+  }
+  useCurrentPosition.mockImplementation(useMock)
+
+  render(<GeoLoc />)
+  expect(screen.getByText(/chargement/i)).toBeInTheDocument()
+
+  act(() => {
+    setValue([fakePosition])
+  })
+
+  expect(screen.queryByLabelText(/chargement/i)).not.toBeInTheDocument()
+  expect(screen.getByText(/latitude/i)).toHaveTextContent(
+    `La latitude est de : ${fakePosition.coords.latitude}`,
+  )
+  expect(screen.getByText(/longitude/i)).toHaveTextContent(
+    `La longitude est de : ${fakePosition.coords.longitude}`,
+  )
+})
+````
+
+Exemple : Mock du module `axios` (ont peut le faire aussi avec `MSW`)
+
+````javascript
+//LoginSubmit
+import * as React from 'react'
+import LoginForm from './loginForm'
+import axios from 'axios'
+
+function LoginSubmit() {
+  const [dataToSubmit, setDataToSubmit] = React.useState(null)
+  const [fetchStatus, setFetchStatus] = React.useState({
+    status: 'idle',
+    payload: '',
+  })
+
+  const endpoint = 'https://exampleaxios.com/api/login'
+  const body = dataToSubmit ? JSON.stringify(dataToSubmit) : null
+  React.useEffect(() => {
+    if (body) {
+      setFetchStatus({status: 'feching', payload: ''})
+      axios
+        .post(endpoint, body)
+        .then(data => {
+          setFetchStatus({status: 'done', payload: data})
+        })
+        .catch(err => setFetchStatus({status: 'error', payload: 'erreur'}))
+    }
+  }, [dataToSubmit, body])
+  return (
+    <div>
+      {fetchStatus.status === 'feching' ? 'chargement...' : null}
+
+      {fetchStatus.status === 'error' ? (
+        <div role="alert" style={{color: 'red'}}>
+          {fetchStatus.payload.errorMessage}
+        </div>
+      ) : null}
+      {fetchStatus.status === 'done' ? (
+        <div>
+          Bonjour <strong>{fetchStatus.payload.username}</strong>
+        </div>
+      ) : (
+        <LoginForm onSubmit={formData => setDataToSubmit(formData)} />
+      )}
+    </div>
+  )
+}
+
+export default LoginSubmit
+````
+
+````javascript
+// LoginSubmit.test
+import * as React from 'react'
+import LoginSubmit from '../../components/loginSubmitAxios'
+import {render, screen, waitForElementToBeRemoved} from '@testing-library/react'
+import userEvent from '@testing-library/user-event'
+import faker from 'faker'
+import axios from 'axios'
+jest.mock('axios')
+
+test('login api affiche le nom de l\'utilisateur connecté avec Axios" ', async () => {
+  const username = faker.internet.userName()
+  const password = faker.internet.password()
+  const resp = {username}
+  axios.post.mockResolvedValue(resp)
+
+  render(<LoginSubmit />)
+
+  const usernameElement = screen.getByText(/Nom d'utilisateur :/i)
+  const passwordElement = screen.getByText(/Mot de passe :/i)
+  const submitbuttonElement = screen.getByRole('button', {name: /Connexion/i})
+
+  userEvent.type(usernameElement, username)
+  userEvent.type(passwordElement, password)
+  userEvent.click(submitbuttonElement)
+
+  await waitForElementToBeRemoved(() => screen.getByText(/chargement.../i))
+  expect(screen.getByText(username)).toBeInTheDocument()
+})
+````
+
 ---
 
 ## Test componsant avec Jest sans React Testing Library <a name="onlyjest">
