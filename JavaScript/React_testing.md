@@ -1,4 +1,4 @@
-# <span style='color: blue'>React Testing</span>
+# React Testing
 
 1. [Jest](#jest)
 1. [React Testing Library](#rtl)
@@ -12,6 +12,7 @@
 1. [Test componsant avec `Jest` et `React Testing Library` et l'extension `jest-dom`](#jestrtldom)
 1. [Test en `boite noire`](#boite)
 1. [Test composant avec `Context API`](#context)
+1. [Test `Hooks` personalisés](#hooks)
 1. [`userEvent` de `React Testing Library`](#userevent)
 1. [Annexes](#annexes)
 
@@ -1738,6 +1739,133 @@ function HelloReset({name}) {
   )
 }
 export default HelloReset
+````
+
+---
+
+## Test `Hooks` personalisés <a name="hooks">
+
+La difficulté avec les `hooks` personnalisés est qu'ils sont utilisés par plusieurs composants.
+
+Création ici d'un composant de test `UseCapitalizeHook` pour pouvoir tester le `hook` `useCapitalize`, pratique lorsque le `hooks` à tester est simple.
+
+````javascript
+// useCapitalize
+import * as React from 'react'
+
+function useCapitalize(initialValue) {
+  const [text, setText] = React.useState(initialValue)
+  const capitalize = () => setText(name => name.toUpperCase())
+  const uncapitalize = () => setText(name => name.toLowerCase())
+  return {text, capitalize, uncapitalize}
+}
+
+export default useCapitalize
+````
+
+````javascript
+// useCapitalize.test
+import * as React from 'react'
+import {render, screen} from '@testing-library/react'
+import useCapitalize from '../../components/useCapitalize'
+import userEvent from '@testing-library/user-event'
+
+function UseCapitalizeHook({children}) {
+  const {text, capitalize, uncapitalize} = useCapitalize(children)
+  return (
+    <div>
+      <div>texte transformé: {text}</div>
+      <button onClick={capitalize}>capitalize</button>
+      <button onClick={uncapitalize}>uncapitalize</button>
+    </div>
+  )
+}
+
+test('rendu du hook useCapitalize est des fonctions capitalize/uncapitalize', () => {
+  const texte = 'Ceci Est Un Test'
+  render(<UseCapitalizeHook>{texte}</UseCapitalizeHook>)
+  const capitalize = screen.getByRole('button', {name: 'capitalize'})
+  const uncapitalize = screen.getByRole('button', {name: 'uncapitalize'})
+
+  expect(screen.getByText(/texte transformé/i)).toHaveTextContent(texte)
+  userEvent.click(capitalize)
+  expect(screen.getByText(/texte transformé/i)).toHaveTextContent(
+    texte.toUpperCase(),
+  )
+  userEvent.click(uncapitalize)
+  expect(screen.getByText(/texte transformé/i)).toHaveTextContent(
+    texte.toLowerCase(),
+  )
+})
+````
+
+Création d'un faux composant pour tester le `hooks`
+
+````javascript
+import * as React from 'react'
+import {render, act} from '@testing-library/react'
+import useCapitalize from '../../components/useCapitalize'
+
+test('rendu du hook useCapitalize est des fonctions capitalize/uncapitalize', () => {
+  const texte = 'Ceci Est Un Test'
+  let result
+  function FakeComponent() {
+    result = useCapitalize(texte)
+    return null
+  }
+  render(<FakeComponent />)
+  expect(result.text).toBe(texte)
+  act(() => result.capitalize())
+  expect(result.text).toBe(texte.toUpperCase())
+  act(() => result.uncapitalize())
+  expect(result.text).toBe(texte.toLowerCase())
+})
+````
+
+Création d'une fonction `setup` afin de l'utiliser dans plusieurs tests.
+
+````javascript
+import * as React from 'react'
+import {render, act} from '@testing-library/react'
+import useCapitalize from '../../components/useCapitalize'
+
+function setup({initialProps} = {}) {
+  const result = {}
+  function FakeComponent(props) {
+    result.current = useCapitalize(props.text)
+    return null
+  }
+  render(<FakeComponent {...initialProps} />)
+  return result
+}
+
+test('rendu du hook useCapitalize est des fonctions capitalize/uncapitalize', () => {
+  const text = 'Ceci Est Un Test'
+  const result = setup({initialProps: {text}})
+  expect(result.current.text).toBe(text)
+  act(() => result.current.capitalize())
+  expect(result.current.text).toBe(text.toUpperCase())
+  act(() => result.current.uncapitalize())
+  expect(result.current.text).toBe(text.toLowerCase())
+})
+````
+
+### Faire la même chose avec `@testing-library/react-hooks`
+
+````javascript
+import * as React from 'react'
+import {renderHook, act} from '@testing-library/react-hooks'
+import useCapitalize from '../../components/useCapitalize'
+
+test('rendu du hook useCapitalize est des fonctions capitalize/uncapitalize', () => {
+  const text = 'Ceci Est Un Test'
+  const {result} = renderHook(useCapitalize, {initialProps: text})
+  expect(result.current.text).toBe(text)
+  act(() => result.current.capitalize())
+  expect(result.current.text).toBe(text.toUpperCase())
+  act(() => result.current.uncapitalize())
+  expect(result.current.text).toBe(text.toLowerCase())
+})
 ````
 
 ---
