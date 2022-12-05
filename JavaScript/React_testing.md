@@ -12,6 +12,9 @@
 1. [Test componsant avec `Jest` et `React Testing Library` et l'extension `jest-dom`](#jestrtldom)
 1. [Test en `boite noire`](#boite)
 1. [Test composant avec `Context API`](#context)
+   - [`Wrapper` de `React Testing Library`](#wrapper)
+   - [fonction pour ne pas répéter le `wrapper`](#fonctionwrapper)
+   - [fichier `src/test/test-utils.js`](#utils)
 1. [Test `Hooks` personalisés](#hooks)
 1. [`userEvent` de `React Testing Library`](#userevent)
 1. [Annexes](#annexes)
@@ -1528,7 +1531,7 @@ test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
 
 ## Test composant avec Context API <a name="context">
 
-`Wrapper` de `React Testing Library`
+`Wrapper` de `React Testing Library` <a name="wrapper">
 
 [option de render](https://testing-library.com/docs/react-testing-library/api/#wrapper)
 
@@ -1606,7 +1609,7 @@ test('rendu du composent Welcome avec la langue fr', () => {
 })
 ````
 
-Création d'une fonction pour ne pas répéter le `wrapper`
+Création d'une fonction pour ne pas répéter le `wrapper` <a name="fonctionwrapper">
 
 ````javascript
 import * as React from 'react'
@@ -1632,7 +1635,7 @@ test('rendu du composent Welcome avec la langue en', () => {
 })
 ````
 
-fichier `test-utils` pour les `custom-render`
+fichier `src/test/test-utils.js` pour les `custom-render` <a name="utils">
 
   [doc test-util](https://testing-library.com/docs/react-testing-library/setup#custom-render)
 
