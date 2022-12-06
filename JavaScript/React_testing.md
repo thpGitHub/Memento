@@ -1913,6 +1913,7 @@ test.todo('Retourne une nombre entier alétoire')
 // A voir ! dans React testing library
 // https://subscription.packtpub.com/book/web-development/9781800564459/2/ch02lvl1sec14/using-the-debug-method
 screen.debug()
+screen.logTestingPlaygroundURL()
 ````
 
 ````javascript
