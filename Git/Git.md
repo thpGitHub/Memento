@@ -316,7 +316,8 @@ rebaser des branches
     git commit --amend # puis on commit. ammend modifie le dernier commit
     git commit --amend --no-edit # permet de modifier le commit sans changer le message
 
-    git commit --amend -m "nouveau message de commit" # modifie le message du dernier commit
+    git commit --amend -m "nouveau message de commit" # modifie le message du dernier commit puis push :
+    git push --force-with-lease repository-name branch-name
 
     git reset HEAD fichier # désindexera le fichier
 
