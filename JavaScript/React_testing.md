@@ -17,6 +17,7 @@
    - [fichier `src/test/test-utils.js`](#utils)
 1. [Test `Hooks` personalisés](#hooks)
 1. [`userEvent` de `React Testing Library`](#userevent)
+1. [`Cypress` e2e test](#cypress)
 1. [Annexes](#annexes)
 
 ## `Jest` <a name="jest"></a>
@@ -1895,6 +1896,39 @@ test('Affiche "Bonjour John" et "Merci" lors d\'un click" ', () => {
   expect(label).toHaveTextContent(`Bonjour John`)
 })
 ````
+
+---
+
+## Cypress e2e test <a name="cypress">
+
+````sheel script
+npm install --save-dev cypress @testing-library/cypress
+````
+
+- <https://testing-library.com/docs/cypress-testing-library/intro/>
+
+> Cypress Testing Library extends Cypress's cy commands.
+
+Add this line to your project's `cypress/support/commands.js`:
+
+````javascript
+import '@testing-library/cypress/add-commands'
+````
+
+> We recommend creating a tsconfig.json inside your cypress folder with the following configuration:
+
+````json
+{
+    "compilerOptions": {
+      "target": "es5",
+      "lib": ["es5", "dom"],
+      "types": ["cypress", "node", "@testing-library/cypress"]
+    },
+    "include": ["**/*.ts"]
+  }
+````
+
+- <https://docs.cypress.io/guides/tooling/typescript-support#Install-TypeScript>
 
 ---
 
