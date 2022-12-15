@@ -33,12 +33,14 @@ TS PlayGround : <https://www.typescriptlang.org/play>
 
 ## Type par inférence
 
-TypeScript utilisera la valeur comme type.
+TypeScript utilisera la valeur comme type. L'inférence de type ne fonctionne que sur l'initialisation.
 
 ````typescript
-  let helloWorld = "Hello World";
+let helloWorld = "Hello World";
 //  correspond à :  let helloWorld: string
 
+let hello; //  correspond à :  let hello: any
+hello = "hello world" // correspond aussi à :  let hello: any
 ````
 
 ---
@@ -75,6 +77,7 @@ let tab: Array<number> = [1, 2, 3]; // generic array type
 - Tuple
 
 ````typescript
+// Création de la variable x avec le tuple [string, number]
 let x: [string, number];
 x = ["hello", 3]; // ok
 x = [3, "hello"]; // error
@@ -84,34 +87,105 @@ let p3d: [number, number, number] = [1, 4, 5];
 let personne: [string, string, number] = ["Capitaine", "Haddock", 40];
 ````
 
+````typescript
+// création du type Connexion avec le tuple [string, string, string, number, string, string]
+type Connexion = [string, string, string, number, string, string]
+
+const google: Connexion = ['Google', 'https', 'google.com', 80, '', '']
+const gmail: Connexion = ['Gmail', 'https', 'gmail.com', 80, '', '']
+
+//Création d'un tableau de connection
+let connexions: Connexion[] = [google, gmail]
+````
+
+Combiner avec un enum pour les valeurs des protocoles
+
+````typescript
+enum Protocol {
+  HTTP = 'http',
+  HTTPS = 'https',
+  FTP = 'ftp',
+}
+
+type Connexion = [string, Protocol, string, number, string, string]
+
+const google: Connexion = ['Google', Protocol.HTTP, 'google.com', 80, '', '']
+const gmail: Connexion = ['Gmail', Protocol.HTTPS, 'gmail.com', 80, '', '']
+
+//Création d'un tableau de connection
+let connexions: Connexion[] = [google, gmail]
+````
+
+Destructuration du tuple
+
+````typescript
+// ici on ne récupère pas la première valeur
+let [, gmailProtocol, gmailHostname] = gmail
+````
+
 - Enum
 
 > Les Enum sont un moyen de donner des noms plus conviviaux à des ensembles de valeurs numériques.
 
 ````typescript
-enum Color {
-  Red,
-  Green,
-  Blue,
+enum Direction {
+  Up = 1,
+  Down = 2,
+  Left = 3,
+  Right = 4,
 }
-let c: Color = Color.Green;
-console.log(c); // 1
+let direction: Direction
+direction = Direction.Left // 3
+````
 
-enum Color {
-  Red = 1,
-  Green,
-  Blue,
+````typescript
+enum HttpStatusCode {
+  CONTINUE = 100,
+  OK = 200,
+  MOVED_PERMANENTLY = 301,
+  BAD_REQUEST = 400,
+  UNAUTHORIZED = 401,
+  FORBIDDEN = 403,
+  NOT_FOUND = 404,
+  INTERNAL_SERVER_ERROR = 500,
 }
-let c: Color = Color.Green;
-console.log(c); // 2
+let httpResponse: HttpStatusCode = HttpStatusCode.BAD_REQUEST
 
-enum Color {
-  Red = 1,
-  Green,
-  Blue,
+enum TransfertMessage {
+  OK = 'Transfert avec succès',
+  KO = 'Erreur durant le transfert',
+  RETRY = 'Recommencez le transfert',
 }
-let colorName: string = Color[2];
-console.log(colorName); // 'Green'
+let message: TransfertMessage = TransfertMessage.OK
+````
+
+Incrémentation automatique avec les Enums
+
+````typescript
+enum Note {
+  STAR1 = 1,
+  STAR2,
+  STAR3,
+  STAR4,
+  STAR5,
+}
+let review: Note
+review = Note.STAR3 // 3 car en mettant = 1 à STAR1 typescript incrémente automatiquement la suite
+````
+
+On peut aussi mixer les types 
+
+````typescript
+enum Note {
+  STAR1 = 1,
+  STAR2,
+  STAR3,
+  STAR4,
+  STAR5,
+  NSP = 'Ne se prononce pas'
+}
+let review: Note
+review = Note.NSP //  Ne se pronnoce pas
 ````
 
 - Unknown
@@ -204,6 +278,43 @@ conditionOuNombre = 5; // error
 let nombreOuCondition: number | boolean | string = true; // TypeScript a inféré (deviné) le type boolean
 nombreOuCondition = 5;
 nombreOuCondition = "un texte";
+````
+
+- types alias
+
+On peut définir nos propres types :
+
+````typescript
+type Person = {
+  name: string
+  age: number
+}
+let person: Person
+let person2: Person
+````
+
+```typescript
+type number_str = number | string
+```
+
+- types litteral
+
+````typescript
+type yesNoType = 'yes' | 'no'
+let variable: yesNoType
+
+variable = 'yes' // ok
+variable = 'blabla' // error
+````
+
+````typescript
+type Civility = 'Mr' | 'Mme' | 'Mlle'
+let civility: Civility
+civility = 'Mr'
+
+type maxUploadSize = 2048 | 4096
+let uploadSize: maxUploadSize
+uploadSize = 2048
 ````
 
 ---
