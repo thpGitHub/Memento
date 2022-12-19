@@ -475,6 +475,133 @@ const fullStackDev: FullStackDev = {
 type StudentDev = FrontEndDev | BackEndDev | FullStackDev
 ````
 
+- Unknown props
+
+````typescript
+interface Club {
+  // Unknown props
+  [key: string]: object
+}
+const machesterUnited: Club = {
+  cristianoRonaldo: {id: '342', stats: '50buts'},
+  paulPogba: {id: '234', stats: '34buts'},
+}
+
+const psg: Club = {
+  messi: {id: '123', stats: '53buts'},
+  mbappe: {id: '545', stats: '76buts'},
+}
+console.log(Object.keys(machesterUnited).length)
+console.log(Object.keys(psg).length)
+````
+
+````typescript
+type Player = {
+  id: string
+  stats: string
+}
+interface Club {
+  [key: string]: Player
+}
+const machesterUnited: Club = {
+  cristianoRonaldo: {id: '342', stats: '50buts'},
+  paulPogba: {id: '234', stats: '34buts'},
+}
+
+const psg: Club = {
+  messi: {id: '123', stats: '53buts'},
+  mbappe: {id: '545', stats: '76buts'},
+}
+
+console.log(machesterUnited.cristianoRonaldo.stats)
+console.log(psg.mbappe.stats)
+````
+
+- Overloads (Surcharge de fonctions)
+
+````typescript
+function printBirthDay(inputDate: Date): string
+function printBirthDay(inputDate: string): string
+function printBirthDay(inputDate: string | Date): string {
+  if (inputDate instanceof Date) {
+    return inputDate.toLocaleDateString()
+  } else if (typeof inputDate === 'string') {
+    return new Date(inputDate).toLocaleDateString()
+  } else {
+    return 'Non défini'
+  }
+}
+
+printBirthDay('October 13, 2014')
+printBirthDay(new Date(2014, 9, 13))
+````
+
+- Overloads avec des paramètres variables
+
+````typescript
+type InputDate = string | number | Date
+
+function printBirthDay(year: number, month: number, day: number): string
+function printBirthDay(year: number, month: number): string
+function printBirthDay(year: number): string
+function printBirthDay(inputDate: Date): string
+function printBirthDay(inputDate: string): string
+function printBirthDay(inputDate: InputDate, m?: number, d?: number): string {
+  if (inputDate instanceof Date) {
+    return inputDate.toLocaleDateString()
+  } else if (typeof inputDate === 'string') {
+    return new Date(inputDate).toLocaleDateString()
+  } else if (d !== undefined && m !== undefined) {
+    return new Date(inputDate, m, d).toLocaleDateString()
+  } else if (m !== undefined) {
+    return new Date(inputDate, m, 1).toLocaleDateString()
+  } else if (typeof inputDate === 'number') {
+    return new Date(inputDate, 0, 1).toLocaleDateString()
+  } else {
+    return 'Non définie'
+  }
+}
+
+printBirthDay('October 13, 2014')
+printBirthDay(new Date(2014, 9, 13))
+printBirthDay(2014, 9, 13)
+printBirthDay(2014, 9)
+printBirthDay(2014)
+````
+
+- Overloads avec un type de retour différent
+
+````typescript
+type InputDate = string | number | Date
+
+function printBirthDay(year: number, month: number, day: number): string
+function printBirthDay(year: number, month: number): string
+function printBirthDay(year: number): string
+function printBirthDay(inputDate: Date): Date
+function printBirthDay(inputDate: string): string
+function printBirthDay(inputDate: InputDate, m?: number, d?: number) {
+  if (inputDate instanceof Date) {
+    return inputDate
+  } else if (typeof inputDate === 'string') {
+    return new Date(inputDate).toLocaleDateString()
+  } else if (d !== undefined && m !== undefined) {
+    return new Date(inputDate, m, d).toLocaleDateString()
+  } else if (m !== undefined) {
+    return new Date(inputDate, m, 1).toLocaleDateString()
+  } else if (typeof inputDate === 'number') {
+    return new Date(inputDate, 0, 1).toLocaleDateString()
+  } else {
+    return 'Non définie'
+  }
+}
+
+printBirthDay('October 13, 2014')
+printBirthDay(new Date(2014, 9, 13)).toLocaleDateString()
+printBirthDay(2014, 9, 13)
+printBirthDay(2014, 9)
+printBirthDay(2014)
+````
+
 ---
 
 ## Interface
