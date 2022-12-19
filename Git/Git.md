@@ -252,6 +252,7 @@ effacer
     git branch -vv # affichera la liste des derniers commits sur chaque branche
     # et entre [] les branches en amont (upstream) liées à nos branches locales
     git branch -avv
+    git branch -r # même chose que 'git remote show origin' avec moins d'informations
     git branch --merged # affichera quelles branches ont déjà été fusionnées dans votre branche courante (*)
     git branch --no-merged # affichera les branches qui ne sont pas fusionnées (merge)
     git diff branch1..branch2 # affichera la différence entre les deux branches

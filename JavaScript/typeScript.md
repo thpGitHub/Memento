@@ -11,7 +11,10 @@ TS PlayGround : <https://www.typescriptlang.org/play>
     tsc nomFichier.ts // cela va créer un fichier .js transpilé en ES5
     tsc --watch nomFichier.ts // surveillera le fichier .ts et mettra à jour le .js
     tsc -w nomFichier.ts
+    tsc -w
     tsc --version
+
+    tsc --init // cela va créer un fichier tsconfig.json
 ````
 
 >TypeScript considère chaque fichier .ts soit :
@@ -173,7 +176,7 @@ let review: Note
 review = Note.STAR3 // 3 car en mettant = 1 à STAR1 typescript incrémente automatiquement la suite
 ````
 
-On peut aussi mixer les types 
+On peut aussi mixer les types
 
 ````typescript
 enum Note {
@@ -280,6 +283,124 @@ nombreOuCondition = 5;
 nombreOuCondition = "un texte";
 ````
 
+- Discriminated union
+
+````typescript
+type JavaDev = {
+  langage: 'JAVA'
+  framework: string[]
+  javaTools: string
+}
+
+type JSDev = {
+  langage: 'JAVASCRIPT'
+  framework: string[]
+  jsTools: string
+}
+
+type PHPDev = {
+  langage: 'PHP'
+  framework: string[]
+  phpTools: string
+}
+
+type Developper = JavaDev | JSDev | PHPDev
+
+function helloDeveloppeur(dev: Developper) {
+  // Discriminated
+  if (dev.langage === 'JAVA') {
+    return `Hello developpeur Java ${dev.javaTools}`
+  } else if (dev.langage === 'JAVASCRIPT') {
+    return `Hello developpeur JavaScript ${dev.jsTools}`
+  } else if (dev.langage === 'PHP') {
+    return `Hello developpeur PHP ${dev.phpTools}`
+  }
+}
+const devJava: JavaDev = {
+  langage: 'JAVA',
+  framework: ['spring', 'spring boot'],
+  javaTools: 'JDK',
+}
+const devJs: JSDev = {
+  langage: 'JAVASCRIPT',
+  framework: ['React', 'Vue'],
+  jsTools: 'Postman',
+}
+const devPHP: PHPDev = {
+  langage: 'PHP',
+  framework: ['React', 'Vue'],
+  phpTools: 'PHPdebug',
+}
+````
+
+- Narrowing
+
+````typescript
+type JavaDev = {
+  langage: 'JAVA'
+  framework: string[]
+  javaTools: string
+}
+
+type JSDev = {
+  langage: 'JAVASCRIPT'
+  framework: string[]
+  jsTools: string
+}
+
+type PHPDev = {
+  langage: 'PHP'
+  framework: string[]
+  phpTools: string
+}
+
+  type BlockChainDev = {
+    langage: string
+    framework: string[]
+    cryptoBlockChain: string
+  }
+
+function helloDeveloppeur(dev: Developper) {
+  //Narrowing
+  if ('cryptoBlockChain' in dev) {
+    return `Hello developpeur Blockchain ${dev.cryptoBlockChain}`
+  } else {
+    if (dev.langage === 'JAVA') {
+      return `Hello developpeur Java ${dev.javaTools}`
+    } else if (dev.langage === 'JAVASCRIPT') {
+      return `Hello developpeur JavaScript ${dev.jsTools}`
+    } else if (dev.langage === 'PHP') {
+      return `Hello developpeur PHP ${dev.phpTools}`
+    }
+  }
+}
+const devJava: JavaDev = {
+  langage: 'JAVA',
+  framework: ['spring', 'spring boot'],
+  javaTools: 'JDK',
+}
+const devJs: JSDev = {
+  langage: 'JAVASCRIPT',
+  framework: ['React', 'Vue'],
+  jsTools: 'Postman',
+}
+const devPHP: PHPDev = {
+  langage: 'PHP',
+  framework: ['React', 'Vue'],
+  phpTools: 'PHPdebug',
+}
+
+const ethDev: BlockChainDev = {
+  langage: 'JAVASCRIPT',
+  framework: ['React', 'Solidity'],
+  cryptoBlockChain: 'ETH',
+}
+
+type Developper = JavaDev | JSDev | PHPDev | BlockChainDev
+````
+
+- exhaustive checks
+
 - types alias
 
 On peut définir nos propres types :
@@ -317,6 +438,43 @@ let uploadSize: maxUploadSize
 uploadSize = 2048
 ````
 
+- types avec intersections (&)
+
+````typescript
+type Developper = {
+  name: string
+}
+type FrontEndDev = Developper & {
+  frontEndFramework: string
+}
+
+type BackEndDev = Developper & {
+  backEndFramework: string
+}
+
+type FullStackDev = FrontEndDev & BackEndDev
+
+const frontDev: FrontEndDev = {
+  name: 'paul',
+  frontEndFramework: 'React',
+}
+
+const backDev: BackEndDev = {
+  name: 'thierry',
+  backEndFramework: 'Spring',
+}
+
+const fullStackDev: FullStackDev = {
+  name: 'steeve',
+  backEndFramework: 'Spring',
+  frontEndFramework: 'React',
+}
+
+// avec les Unions
+
+type StudentDev = FrontEndDev | BackEndDev | FullStackDev
+````
+
 ---
 
 ## Interface
@@ -329,6 +487,7 @@ interface Identite {
   age: number;
 }
 
+// extends c'est comme les intersections avec les Types
 interface IdentiteAvecNationaliteX extends Identite {
   nationalité: string;
   x?: any;
