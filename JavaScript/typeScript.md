@@ -703,6 +703,60 @@ const alerterEncore = (message: string): void => {
 
 ---
 
+## Générics
+
+On utilise les chevrons `<T>` pour définir un génerics afin de construire du code plus flexible.
+
+```typescript
+function make<T>(arg: T): T {
+  return arg
+}
+const a = make<string>('hello') //'Hello'
+const b = make<[]>([]) //[]
+const c = make<number>(2) //2
+const d = make<User>(user) //a user
+```
+
+Cela fonctionne également avec les `types` et `interfaces`
+
+```typescript
+//TYPES
+type User<T> = {
+  username: string
+  personnalData: T
+}
+const user: User<object> = {
+  username: 'Mike',
+  personnalData: {settings: {color: 'blue'}},
+}
+```
+
+- avec les interfaces
+
+```typescript
+//INTERFACES
+interface User<T> {
+  username: string
+  personnalData: T
+}
+const user: User<object> = {
+  username: 'Mike',
+  personnalData: {settings: {color: 'blue'}},
+}
+```
+
+Fabriquer une paire
+
+````typescript
+function makePair<T>(arg: T): [T, T] {
+  return [arg, arg]
+}
+const p = makePair('mike') //p de type [string, string]
+const p2 = makePair(2) //p de type [number, number]
+````
+
+---
+
 ## Class
 
 ````typescript
@@ -782,8 +836,47 @@ const employeDuMois = new Employe("Jean-Luc", "comptabilité");
 employeDuMois.sePresenter(); // public par défaut -> OK
 employeDuMois.domaine; // private, n'est accessible qu'à l'intérieur de la classe
 employeDuMois.nom; // protected, n'est accessible que dans sa classe et les classes dérivées
-
 ````
+
+---
+
+## React
+
+- props children (children: ReactNode)
+
+````typescript
+// App
+function App() {
+  return (
+    <MainContainer>
+      <Search></Search>
+      <CardContainer>
+        <Card />
+      </CardContainer>
+      <Footer></Footer>
+    </MainContainer>
+  );
+}
+````
+
+````typescript
+// MainContainer
+import React, { ReactNode } from 'react'
+
+type MainContainerProps = {
+    children: ReactNode
+}
+
+function MainContainer({children}: MainContainerProps) {
+  return (
+    <main className="container">{children}</main>
+  )
+}
+
+export default MainContainer
+````
+
+---
 
 ## `Axios`
 
