@@ -38,6 +38,13 @@ babel :
 
 ---
 
+Badge :
+
+- <https://forthebadge.com/>
+- <https://shields.io/category/size>
+
+---
+
 bootstrap :
 
 - <https://bootsnipp.com/snippets/92e5X>

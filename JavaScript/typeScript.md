@@ -888,3 +888,24 @@ import axios, {AxiosResponse} from 'axios'
 const [headerMovie, setHeaderMovie] = useState<AxiosResponse>()
 // const [headerMovie, setHeaderMovie] = useState<AxiosResponse | null | void>(null)
 ```
+
+## `Event` on `scroll`
+
+````typescript
+useEffect(() => {
+        const onScroll = (e: Event) => {
+            const window = e.currentTarget as Window
+            let currentPosition = window.scrollY
+            console.log({currentPosition: currentPosition})
+
+            if (currentPosition > 100) {
+                setBackgroundStyle('#111')
+            } else {
+                setBackgroundStyle('transparent')
+            }
+        }
+        window.addEventListener('scroll', e => onScroll(e))
+
+        return () => window.removeEventListener('scroll', onScroll)
+    }, [])
+````
