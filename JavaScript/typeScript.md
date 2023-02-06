@@ -880,14 +880,99 @@ export default MainContainer
 
 ## `Axios`
 
-`A voir !!!` si cela peut remplcer la validations des types sur la réponse de axios
+Dans TypeScript, vous pouvez spécifier le type de la réponse d'Axios en utilisant le AxiosResponsetype de la axiosbibliothèque. Si la réponse est un tableau d'objets, vous pouvez déclarer le type en tant que tableau d'une interface spécifique qui représente la structure de chaque objet du tableau.
 
-```javascript
-import axios, {AxiosResponse} from 'axios'
+````typescript
+import axios, { AxiosResponse } from 'axios';
 
-const [headerMovie, setHeaderMovie] = useState<AxiosResponse>()
-// const [headerMovie, setHeaderMovie] = useState<AxiosResponse | null | void>(null)
-```
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+async function getUsers(): Promise<AxiosResponse<User[]>> {
+  return axios.get<User[]>('https://jsonplaceholder.typicode.com/users');
+}
+
+getUsers()
+  .then(response => {
+    const users = response.data;
+    console.log(users);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+````
+
+Dans cet exemple, l' Userinterface définit la structure de chaque objet du tableau et la getUsersfonction renvoie un Promisede AxiosResponse<User[]>, indiquant que les données de réponse sont un tableau d' Userobjets.
+
+Dans TypeScript, vous pouvez gérer une réponse avec plusieurs interfaces en définissant des interfaces distinctes pour chaque type de réponse, puis en utilisant une union discriminée. Une union discriminée est un type qui représente un ensemble de types, où chaque type a une valeur ou une propriété spécifique qui le distingue des autres.
+
+````typescript
+import axios, { AxiosResponse } from 'axios';
+
+interface User {
+  id: number;
+  name: string;
+  email: string;
+}
+
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+}
+
+type ResponseData = User | Post;
+
+async function getData(type: 'users' | 'posts'): Promise<AxiosResponse<ResponseData[]>> {
+  return axios.get<ResponseData[]>(`https://jsonplaceholder.typicode.com/${type}`);
+}
+
+getData('users')
+  .then(response => {
+    const data = response.data;
+    data.forEach(item => {
+      if ('email' in item) {
+        console.log(`User: ${item.name} (${item.email})`);
+      } else {
+        console.log(`Post: ${item.title}`);
+      }
+    });
+  })
+  .catch(error => {
+    console.error(error);
+  });
+````
+
+Dans cet exemple, le ResponseDatatype est une union discriminée qui représente soit un Userobjet, soit un Postobjet. La getDatafonction renvoie un Promisede AxiosResponse<ResponseData[]>, indiquant que les données de réponse sont un tableau d' ResponseDataobjets. Pour déterminer le type de chaque objet du tableau, vous pouvez utiliser l' inopérateur dans une protection de type.
+
+Dans TypeScript, Promise<AxiosResponse<any, any>>est un type qui représente une promesse qui se résout en un objet de type AxiosResponse<any, any>.
+
+Le AxiosResponsetype est défini dans la axiosbibliothèque et il a deux paramètres de type :
+
+data: représente le type des données de réponse
+config: représente le type de l'objet de configuration utilisé pour effectuer la requête
+Lorsque les deux paramètres de type sont définis sur any, cela signifie que les données de réponse et l'objet de configuration peuvent être de n'importe quel type. Ceci est généralement utilisé lorsque la structure exacte de la réponse et de la configuration est inconnue ou lorsque vous souhaitez permettre une flexibilité maximale.
+
+````typescript
+import axios from 'axios';
+
+async function getData(): Promise<axios.AxiosResponse<any, any>> {
+  return axios.get('https://jsonplaceholder.typicode.com/posts');
+}
+
+getData()
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.error(error);
+  });
+````
+
+Dans cet exemple, la getDatafonction renvoie un Promisede AxiosResponse<any, any>, indiquant que les données de réponse et l'objet de configuration peuvent être de n'importe quel type.
 
 ## `Event` on `scroll`
 
