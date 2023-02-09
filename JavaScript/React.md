@@ -184,28 +184,62 @@ export default class App extends React.Component {
 
 -<https://www.geeksforgeeks.org/when-to-use-usecallback-usememo-and-useeffect/#:~:text=Conclusion%3A,effects%20to%20some%20state%20changes.>
 
-> Les Hooks permettent de rajouter un `state` à un composant de fonction et se nomme `useState`.
-> Les Hooks sont des fonctions javaScript.
+### `useState()`
 
-```typescript
-import React, { FunctionComponent, useState } from "react";
+Dans React, l'état d'un composant ne change que lorsqu'il est rendu à nouveau. Un nouveau rendu se produit lorsque le state ou props du composant change. Lorsqu'un changement se produit, React met à jour le DOM virtuel du composant, puis le compare au DOM virtuel précédent pour déterminer le nombre minimum de modifications à apporter au DOM réel.
 
-const App: FunctionComponent = () => {
-  const [name, setName] = useState<string>("React");
+Lors du nouveau rendu, React appelle la render méthode du composant pour générer une nouvelle arborescence DOM virtuelle. Si le stateou propsont changé, la nouvelle arborescence DOM virtuelle reflétera ces changements. Ensuite, React met à jour le DOM réel pour correspondre au nouveau DOM virtuel.
 
-  return <h1>Hello, {name} !</h1>;
-};
+Il est important de noter que React ne met à jour que les composants qui ont changé. Cela signifie que React ne mettra à jour que la partie du DOM réel qui doit changer, plutôt que de restituer l'intégralité de l'arborescence des composants. Cette optimisation rend React très rapide et efficace pour la création d'interfaces utilisateur.
 
-export default App;
+```javascript
+import React, { useState } from 'react';
 
-/*
-const [name, setName] = useState ('React'); 
-===
-let nameStateVariable = useState('React');
-let name = nameStateVariable[0];
-let setName = nameStateVariable[1];
-*/
+function Example() {
+  const [count, setCount] = useState(0);
+
+  const handleClick = () => {
+    setCount(count + 1);
+  };
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={handleClick}>Increment</button>
+    </div>
+  );
+}
 ```
+
+***Astuces**
+
+Ici le faite d'appeler 3 fois setCount n'aura aucun effet !
+Car la mise à jour du state count se fait au re render et count sera incrémenté que de 1, le re render sera fait a la fin de la function handleClick !
+
+````javascript
+const handleClick = () => {
+    setCount(count + 1);
+    setCount(count + 1);
+    setCount(count + 1);
+  };
+````
+
+Si on veut avoir la "vraie" valeur de count il faut passer un callback a setCount, et avec le code en dessous count sera incrémenté de 4 au prochain re render !
+
+````javascript
+const handleClick = () => {
+    setCount((current)=>current + 1);
+    setCount((current)=>current + 1);
+    setCount((current)=>current + 1);
+    setCount((current)=>current + 1);
+  };
+````
+
+Si le state n'est pas initialisé il est : undefined
+
+````javascript
+const [count, setCount] = useState(); // count === undefined
+````
 
 ### Lazy Lazy initialisation
 

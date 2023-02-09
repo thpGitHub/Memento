@@ -92,3 +92,10 @@ npx creat-react-app
 
 npx exécute des paquets exécutables. Cela signifie que vous allez exécuter le code Create React App sans télécharger le projet au préalable.
 Le package exécutable exécutera l'installation de create-react-app dans le répertoire que vous spécifiez.
+
+## Annexes
+
+````shell
+npm ls react
+npm ls react-dom
+````
