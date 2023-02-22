@@ -241,6 +241,8 @@ Si le state n'est pas initialisé il est : undefined
 const [count, setCount] = useState(); // count === undefined
 ````
 
+`setCount est asynchrone !`
+
 ### Lazy Lazy initialisation
 
 > Si l’on a besoin d'une valeur qu’une seul fois il est possible de passer une fonction fléchée à React.useState(() => fonctionLongue()). La fonction longue ne sera alors appelé qu’une seule fois ce qui améliorera les performances.
