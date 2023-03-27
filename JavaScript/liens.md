@@ -355,6 +355,7 @@ Sprites :
 
 Tests :
 
+- <https://fast.com/fr/#> // Rapidité connection
 - <https://developers.google.com/speed/pagespeed/insights/?hl=fr> // Améliorez la vitesse de chargement de nos pages
 - <https://blog.logrocket.com/testing-the-react-router-usehistory-hook-with-react-testing-library/>
 - <https://react-hooks-testing-library.com/>
