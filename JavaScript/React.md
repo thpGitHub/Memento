@@ -389,6 +389,7 @@ export default App;
 ### AbortController
 
 L'interface `AbortController` permet d'interrompre une ou plusieurs requêtes Web.
+Un abort controller annule la requête si l'utilisateur quitte la page.
 
 On peut donc s'en servir pour une clean up fonction lorsque l'on utilise `fetch` ou `axios`
 
