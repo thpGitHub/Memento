@@ -15,7 +15,8 @@
 11. [Requêtes HTTP](#requetesHTTP)
 12. [API de Context](#context)
 13. [Redux](#redux)
-0. [Performances](#performances)
+14. [Redux](#redux)
+0. [UseQuery](#usequery)
 14. [Annexes](#annexes)
 
 Création d'une app React sans `create react app` ni de `CDN` (voir en annexe pour plus de détails).
@@ -4748,6 +4749,66 @@ export default function Counter() {
 ```
 
 ---
+
+## `useQuery`
+
+Librairie crée avec l'arrivé des hooks afin de gérer les fetch d'une application. Le but est d'avoir une app réactive et synchronisée avec la database.
+Le hook useQuery va faire la requête HTTP, et retourner les résultats, les erreurs et son état (loading, error, success).
+
+````typescript
+export const Todos = () => {
+  const { data, isLoading } = useQuery({
+    queryKey: ['todos'],
+    queryFn: fetchTodos,
+  });
+````
+
+`useQuery` prend en premier paramètre une ou plusieurs clés afin de gérer pour nous la mise en cache des requêtes en fonction de ces clés. Les clés de requête doivent être un tableau avec une chaine de caractère simple ou plus compliqué avec des variables ou des objets d'options.
+
+````typescript
+queryKey: ['todos'], // simple
+queryKey: ['something', 'special'], 
+queryKey: ['todo', 5], // avec une variable 5
+queryKey: ['todo', 5, { preview: true }], // avec objet
+queryKey: ['todos', { type: 'done' }],
+````
+
+En deuxième paramètre `useQuery` prend une fonction qui va retourner une promesse qui sera executée, cachée et gérée par react-query.
+
+````typescript
+function Todos({ todoId }) {
+  const result = useQuery({
+    queryKey: ['todos', todoId],
+    queryFn: () => fetchTodoById(todoId),
+  })
+}
+````
+
+`useQuery` peut prendre des paramètres de configurations
+
+````typescript
+const { data, isLoading, isFetching, error, isError } = useQuery({ 
+  queryKey: ['todos'], // une clé simple car on récupère tous les todos
+  queryFn: getTodos, // la fonction qui va retourner les données
+  refetchOnWindowFocus: false, // ne pas rafraîchir la requête quand on focus la fenêtre
+  retry: false, // ne pas réessayer la requête en cas d'erreur
+  staleTime: 1000 * 60 * 5, // la requête est considérée comme périmée après 5 minutes
+  // etc...
+})
+````
+
+`useQuery` peut aussiprendre des fonctions en paramètre qui vont permettre d'effectuer des actions lorsque la requête change d'état
+
+````typescript
+const { data, isLoading, isFetching, error, isError } = useQuery({ 
+  queryKey: ['todos'], // une clé simple car on récupère tous les todos
+  queryFn: getTodos, // la fonction qui va retourner les données
+  onSuccess: (data) => console.log("La requête a réussi !", data),
+  onError: (error) => console.log("La requête a échoué !", error),
+  onSettled: (data, error) => console.log("La requête est terminée !", data, error),
+  // etc...
+})
+````
 
 ## Les images locales avec React<a name="img"></a>
 
