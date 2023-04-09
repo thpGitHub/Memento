@@ -2,6 +2,16 @@
 
 ---
 
+Débugg CSS
+
+````css
+* {
+  box-shadow: 0 0 0 3px red inset;
+}
+````
+
+---
+
 Possibilité d'utiliser la fonction css `clam()` pour resizer les fonts et de ne pas utiliser les medias queries
 
 ````css

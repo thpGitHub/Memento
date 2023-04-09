@@ -1,7 +1,9 @@
 # L'API Fetch
 
 > interface JavaScript pour l'accès et la manipulation des parties de la pipeline HTTP, comme les requêtes et les réponses. Cela fournit aussi une méthode globale ``fetch()`` qui procure un moyen facile et logique de récupérer des ressources à travers le réseau de manière asynchrone.
-> Ce genre de fonctionnalité était auparavant réalisé avec XMLHttpRequest. 
+> Ce genre de fonctionnalité était auparavant réalisé avec XMLHttpRequest.
+
+<https://www.pierre-giraud.com/javascript-apprendre-coder-cours/api-fetch/>
 
 ````javascript
     fetch(url)
