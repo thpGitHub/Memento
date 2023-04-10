@@ -15,9 +15,8 @@
 11. [Requêtes HTTP](#requetesHTTP)
 12. [API de Context](#context)
 13. [Redux](#redux)
-14. [Redux](#redux)
-0. [UseQuery](#usequery)
-14. [Annexes](#annexes)
+14. [React Query](#usequery)
+15. [Annexes](#annexes)
 
 Création d'une app React sans `create react app` ni de `CDN` (voir en annexe pour plus de détails).
 
@@ -4750,7 +4749,7 @@ export default function Counter() {
 
 ---
 
-## `useQuery`
+## `React Query`<a name="usequery"></a>
 
 Librairie crée avec l'arrivé des hooks afin de gérer les fetch d'une application. Le but est d'avoir une app réactive et synchronisée avec la database.
 Le hook useQuery va faire la requête HTTP, et retourner les résultats, les erreurs et son état (loading, error, success).
@@ -4809,6 +4808,86 @@ const { data, isLoading, isFetching, error, isError } = useQuery({
   // etc...
 })
 ````
+
+### `queryClient`
+
+````typescript
+const queryClient = new QueryClient()
+````
+
+Le `queryClient` représente l'instance de react-query dans l'application. Il permet d'interagir avec le cache et les queries.
+On peut le récupérer avec le hook `useQueryClient` et il retourne un objet avec toutes les méthodes que l'on peux utiliser, comme par exemple :
+
+- `prefetchQuery` : précharger des données
+- `invalidateQueries` : invalider des données et les refetch
+- `setQueriesData` : modifier des données
+
+### `QueryClientProvider`
+
+le `QueryClientProvider` prend en paramètre, une instance du `queryClient`.
+
+````typescript
+import { QueryClient, QueryClientProvider } from 'react-query'
+
+const queryClient = new QueryClient()
+
+const App = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <div>
+        <h1>My App</h1>
+        <Todos />
+      </div>
+    </QueryClientProvider>
+  )
+}
+````
+
+dans composant :
+
+````typescript
+import {useQuery} from '@tanstack/react-query'
+
+function Todos() {
+  
+  // Queries
+  const query = useQuery({ queryKey: ['todos'], queryFn: getTodos })
+
+//...
+````
+
+### Paramètres `queryClient`
+
+ Le `queryClient` a de nombreux paramètres que l'on peut définir par défaut pour toutes les queries, ou individuellement :
+
+ ````typescript
+// Pour toutes tes queries
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      retry: 4
+    },
+  },
+})
+// Individuellement
+const { data } = useQuery({
+  queryKey: 'todos',
+  queryFn: fetchTodos,
+  refetchOnWindowFocus: false,
+  retry: 4
+})
+ ````
+
+### Pas besoin `abortController` avec `React Query`
+
+### `persistQueryClient`
+
+Quand on refresh la page, toutes les données du cache sont supprimées !
+
+On peut faire persister le cache dans le local storage avec `persistQueryClient`.
+
+---
 
 ## Les images locales avec React<a name="img"></a>
 
