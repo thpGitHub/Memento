@@ -4887,6 +4887,12 @@ Quand on refresh la page, toutes les données du cache sont supprimées !
 
 On peut faire persister le cache dans le local storage avec `persistQueryClient`.
 
+### Les mutations
+
+<https://tkdodo.eu/blog/mastering-mutations-in-react-query>
+
+On utilise les mutations pour créer, mettre à jour ou supprimer des données, grace au hook `useMutation`.
+
 ---
 
 ## Les images locales avec React<a name="img"></a>
