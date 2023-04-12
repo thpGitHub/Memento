@@ -4758,7 +4758,7 @@ Le hook useQuery va faire la requête HTTP, et retourner les résultats, les err
 export const Todos = () => {
   const { data, isLoading } = useQuery({
     queryKey: ['todos'],
-    queryFn: fetchTodos,
+    queryFn: () => fetchTodos(),
   });
 ````
 
