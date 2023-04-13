@@ -34,6 +34,8 @@ TS PlayGround : <https://www.typescriptlang.org/play>
   
   à la fin du fichier
 
+---
+
 ## Type par inférence
 
 TypeScript utilisera la valeur comme type. L'inférence de type ne fonctionne que sur l'initialisation.
@@ -285,10 +287,31 @@ review = Note.NSP //  Ne se pronnoce pas
 
 > Si nous ne connaissons pas le type de la variables lorsque nous écrivons le code. Le type unknown indique au compilateur et aux futurs lecteurs que cette variable pourrait être n'importe quoi.
 
+Comparé à any, unknown est plus strict, car il oblige à vérifier le type avant de manipuler les données.
+
 ````typescript
 let notSure: unknown = 4;
 notSure = "maybe a string instead";
 notSure = false;
+````
+
+````typescript
+const add = (a: number, b: number) => a + b;
+
+const catName: unknown = "Mittens";
+const catAge: unknown = 7;
+
+// Erreur : Type 'unknown' is not assignable to type 'number'.
+add(catName, catAge);
+````
+
+vérifie le type de catName et catAge avant de les passer à la fonction add :
+
+````typescript
+if (typeof catName === 'number' && typeof catAge === 'number') {
+  // OK pour TypeScript, mais ce code ne sera jamais appelé
+  add(catName, catAge);
+}
 ````
 
 - Any
@@ -324,6 +347,16 @@ let n: null = null;
 ````
 
 - Never
+
+Le type never est très particulier, car il permet de représenter un type qui ne devrait jamais se produire. Si une fonction retourne never, cela signifie qu'elle ne renverra jamais aucune valeur :
+
+````typescript
+const throwError = (message: string): never => {
+  throw new Error(message);
+};
+````
+
+Comme il y a un throw, cette fonction ne retourne aucune valeur et ne termine jamais son exécution.
 
 - Object
 
@@ -696,6 +729,50 @@ printBirthDay(2014)
 
 ---
 
+## Le mot-clé `keyof`
+
+keyof permet de récupérer les clés d'un type "object", que ce soit un objet ou un tableau.
+
+````typescript
+type User = {
+  name: string;
+  age: number;
+}
+
+type UserKeys = keyof User; // 'name' | 'age'
+
+const Numbers = [1, 2, 3] as const;
+
+// Les clés d'un tableau sont des nombres
+type NumbersKeys = keyof typeof Numbers; // 0 | 1 | 2
+
+````
+
+---
+
+## Récupérer la valeur d'un type
+
+Il est possible de récupérer la valeur d'un élément dans un type avec la syntaxe Type["name"], qui est équivalente à Object.name en JavaScript simple.
+
+````typescript
+type User = {
+  name: string;
+  age: number;
+}
+
+type UserName = User["name"]; // string
+
+// Equivalent en JavaScript
+const UserObject = {
+  name: 'John',
+  age: 20,
+}
+const UserObjectName = UserObject.name; // "John"
+
+````
+
+---
+
 ## Interface
 
 ````typescript
@@ -846,6 +923,53 @@ function makePair<T>(arg: T): [T, T] {
 const p = makePair('mike') //p de type [string, string]
 const p2 = makePair(2) //p de type [number, number]
 ````
+
+### Recodage de `useState`
+
+````typescript
+function useState<T>(initialValue: T): [T, (value: T) => void] {
+  let value = initialValue;
+  const setValue = (newValue: T) => {
+    value = newValue;
+  };
+  return [value, setValue];
+}
+
+const [myName, setMyName] = useState('Toto');
+// const myName: string
+// const setMyName: (value: string) => void
+
+const [height, setHeight] = useState(100);
+// const height: number
+// const setHeight: (value: number) => void
+````
+
+### Types génériques populaire
+
+#### Les utility types
+
+Exemple pour enlever `id` d'un type `User`
+
+````typescript
+type User = {
+  id: number;
+  name: string;
+  email: string;
+}
+
+type UserWithoutId = Omit<User, "id">
+
+// Ce qui éviter de dupliquer le code :
+
+type UserWithoutId = {
+  name: string;
+  email: string;
+}
+````
+
+#### Les types des librairies
+
+ React et d'autres librairies proposent des types génériques pour faciliter l'utilisation de leurs API.
 
 ---
 
