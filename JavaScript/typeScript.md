@@ -1092,6 +1092,42 @@ function MainContainer({children}: MainContainerProps) {
 export default MainContainer
 ````
 
+Détail de `ReactNode`
+
+````typescript
+type ReactNode = ReactElement | string | number | ReactFragment
+                | ReactPortal | boolean | null | undefined;
+````
+
+- props children (PropsWithChildren)
+
+ la Team React est sympa, elle nous a donné un petit utilitaire générique pour ajouter des childrens à nos composants : `PropsWithChildren`.
+
+ Ce type permet d'ajouter le type children à ton composant sans avoir besoin de le définir dans le type. On l'utilise tellement souvent qu'il nous permet d'éviter de nous répéter.
+
+ ````typescript
+import { PropsWithChildren } from 'react';
+
+type AvatarProps = {
+  username: string;
+  avatarUrl: string;
+};
+
+const Avatar = ({
+  username,
+  avatarUrl,
+  children,
+}: PropsWithChildren<AvatarProps>) => {
+  return (
+    <div className="avatar">
+      <img src={avatarUrl} alt={username} />
+      <span>{children}</span>
+    </div>
+  );
+};
+
+ ````
+
 - ComponentPropsWithoutRef
 
 ````typescript
