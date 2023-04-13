@@ -40,10 +40,100 @@ TypeScript utilisera la valeur comme type. L'inférence de type ne fonctionne qu
 
 ````typescript
 let helloWorld = "Hello World";
-//  correspond à :  let helloWorld: string
+//  correspond à :  let helloWorld: string et donc de type primitif string
 
 let hello; //  correspond à :  let hello: any
-hello = "hello world" // correspond aussi à :  let hello: any
+hello = "hello world"; // correspond aussi à :  let hello: any
+````
+
+⚠️ avec `const`, car les constantes vont prendre un type `littéral` et TypeScript les rend "Readonly".
+
+````typescript
+const name = 'John Doe';
+//  name est de type "John Doe" et donc de type litéral
+````
+
+### `as const`
+
+ `as` permet de "cast" et d'indiquer au transpileur que le type est différent de celui qu'il a déduit.
+
+````typescript
+type DogName = "rex" | "rexy";
+
+let dogName = "rex" as DogName;
+
+dogName = "rexy";
+dogName = "rex";
+
+dogName = "rex2"; // Erreur typescript
+
+````
+
+`as const` transforme les types primitifs en littéraux.
+
+````typescript
+let dogName = "rex" as const; // dogName est de type "rex"
+
+// c'est la même chose que :
+const dogName = "rex"; // dogName est de type "rex"
+ ````
+
+### `typeof`
+
+ Permet de récupérer le type d'une variable JavaScript pour l'inclure dans un type TypeScript.
+
+````typescript
+const dog = {
+  name: 'Rex',
+  age: 3
+}
+
+const DogType = typeof dog; // DogType est de type : { name: string; age: number }
+````
+
+````typescript
+const dog = {
+  name: 'Rex',
+  age: 3
+} as const;
+
+const DogType = typeof dog; // DogType est de type : { name: 'Rex', age: 3 }
+````
+
+exemple
+
+````typescript
+// const variants = ['primary', 'secondary', 'ternary'];
+// ici const variants: string[] 
+
+const variants = ['primary', 'secondary', 'ternary'] as const;
+// ici const variants: readonly ["primary", "secondary", "ternary"]
+
+type Variant = typeof variants[number];
+// pourquoi [number] ? car number représente l'index car variants est un array !
+// variants[1] === 'secondary'
+// ici type Variant = "primary" | "secondary" | "ternary"
+
+const getColor = (variant: Variant) => {
+  if (variant === 'primary') {
+    return 'blue';
+  }
+  if (variant === 'secondary') {
+    return 'red';
+  }
+  if (variant === 'ternary') {
+    return 'yellow';
+  }
+
+  return 'ERROR';
+};
+
+getColor('primary');
+
+getColor('secondary');
+
+getColor('wwwwwww'); // error
+
 ````
 
 ---
@@ -418,7 +508,9 @@ let person2: Person
 type number_str = number | string
 ```
 
-- types litteral
+- types littéraux
+
+Les types littéraux représentent un ensemble de valeurs limité.
 
 ````typescript
 type yesNoType = 'yes' | 'no'
