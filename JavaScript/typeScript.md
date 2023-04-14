@@ -1058,7 +1058,7 @@ employeDuMois.nom; // protected, n'est accessible que dans sa classe et les clas
 
 ## React
 
-- props children (children: ReactNode)
+- props children (children: `ReactNode`)
 
 ````typescript
 // App
@@ -1099,7 +1099,7 @@ type ReactNode = ReactElement | string | number | ReactFragment
                 | ReactPortal | boolean | null | undefined;
 ````
 
-- props children (PropsWithChildren)
+- props children (`PropsWithChildren`)
 
  la Team React est sympa, elle nous a donné un petit utilitaire générique pour ajouter des childrens à nos composants : `PropsWithChildren`.
 
@@ -1128,7 +1128,67 @@ const Avatar = ({
 
  ````
 
-- ComponentPropsWithoutRef
+- `ComponentPropsWithoutRef`
+
+Permet d'ajouter les mêmes props à tes composants que ce que les éléments du DOM peuvent prendre (onClick, ...).
+
+Dans l'exemple ci-dessous sans `ComponentPropsWithoutRef` on aurait l'erreur suivante sur le `onClick`:
+
+````text
+Dans l'exemple ci dessous sans ``
+Type '{ username: string; avatarUrl: string; className: string; onClick: () => void; }' is not assignable to type 'IntrinsicAttributes & AvatarProps'.
+  Property 'onClick' does not exist on type 'IntrinsicAttributes & AvatarProps'.(2322)
+(property) onClick: () => void
+````
+
+On aurait la possibilité aussi de l'ajouter au type :
+
+````typescript
+type ButtonProps = {
+  disabled?: boolean;
+  className?: string;
+  onClick?: (event: MouseEvent) => void;
+  // ... les 300 autres propriétés
+}
+````
+
+Le plus simple est de d'ajouter `ComponentPropsWithoutRef` au type des props :
+
+````typescript
+import { ComponentPropsWithoutRef } from "react";
+
+type AvatarProps = {
+  username: string;
+  avatarUrl: string;
+  className?: string;
+} & ComponentPropsWithoutRef<"div">;
+
+const Avatar = ({ username, avatarUrl, className, ...props }: AvatarProps) => {
+  return (
+    <div
+      className={`p-4 bg-blue-100 shadow-md flex flex-col gap-1 items-center w-fit ${className}`} {...props}
+    >
+      <img className="w-16 h-16 rounded-full" src={avatarUrl} alt={username} />
+      <span className="text-base font-bold">{username}</span>
+    </div>
+  );
+};
+
+export default function App() {
+  return (
+    <div className="m-8">
+      <Avatar
+        username="Dan"
+        avatarUrl="https://casoar.org/wp-content/uploads/2020/10/Bob-leponge.png"
+        className="rounded"
+        onClick={() => console.log('click')}
+      />
+    </div>
+  );
+}
+````  
+
+autre exemple :
 
 ````typescript
 import clsx from 'clsx'
