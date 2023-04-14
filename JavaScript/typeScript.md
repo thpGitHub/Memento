@@ -1,6 +1,10 @@
 # TypeScript
 
+Type challenges : <https://github.com/type-challenges/type-challenges>
+
 TS PlayGround : <https://www.typescriptlang.org/play>
+
+Utility-types : <https://www.typescriptlang.org/docs/handbook/utility-types.html>
 
 > Typescript a pour but d'améliorer et de sécuriser la production de code JavaScript. Il s'agit d'un sur-ensemble typé strict de JavaScript.
 > TypeScript est un vérificateur de type statique : il détecte les erreurs de code sans executer le programme.  
@@ -1189,6 +1193,10 @@ export default function App() {
 ````  
 
 autre exemple :
+
+`ComponentPropsWithoutRef<"button">` va aussi contenir le children !
+
+Car il possède toutes les propriétés d'un button, dont le children.
 
 ````typescript
 import clsx from 'clsx'
