@@ -127,6 +127,63 @@ export default Home;
 
 ---
 
+## Le `SSR` avec `NextJS`
+
+On utilise la fonction `getServerSideProps` pour récupérer des props côté serveur qu'on va ensuite passer à notre composant.
+
+````typescript
+type PageProps = {
+  text: string
+}
+
+// Notre page React envoyée à l'utilisateur
+export default function Page({ text }: PageProps) {
+  return <div>{text}</div>
+}
+
+// On récupère les props côté serveur
+// Ce code n'est jamais envoyé au client !
+// Il est exécuté côté serveur et les props sont envoyés au composant (donc au client)
+export const getServerSideProps: GetServerSideProps<
+  ComponentProps
+> = async (context) => {
+  // Récupérer les posts et les passer en props
+  return {
+    props: {
+      text: "Some text from the server"
+    },
+  };
+};
+````
+
+`getServerSideProps` helper :
+
+- `notFound` : Si l'utilisateur n'existe pas, on renvoie une 404
+- `redirect` : Si l'utilisateur n'existe pas, on redirige vers une autre page
+
+````typescript
+export const getServerSideProps: GetServerSideProps<
+  ComponentProps,
+  { postId: string }
+> = async (context) => {
+  const user = await getUser(context.params.userId);
+
+  if (!user) {
+    return {
+      notFound: true,
+    };
+  }
+
+  return {
+    props: {
+      user
+    },
+  };
+};
+````
+
+---
+
 ## Quelque définitions
 
 - `TTFB`: Temps pour le premier octet (Time To First Byte) (TTFB) - Le temps qu'il faut pour que le client reçoive le premier octet de contenu.
