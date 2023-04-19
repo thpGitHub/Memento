@@ -20,11 +20,110 @@ Génération de toutes les pages HTML lors du build de l'application et on va to
 
 Quand l'utilisateur va venir sur le site, il va avoir le temps de chargement d'une application CSR et les avantages d'une application SSR.
 
-Le SSG est idéal les sites qui ont des données statiques, comme un blog, un portfolio ou autre.
+Le `SSG` est idéal les sites qui ont des données statiques, comme un blog, un portfolio ou autre.
 
 ### `ISR` : Incremental Static Regeneration
 
-C'est un mix entre le SSR et le SSG. Toutes les pages HTML seront gégérés lors du build de l'application et on va tout stocker dans un dossier, avec un temps d'expiration pour chaque page. Quand le temps d'expiration est atteint, la page va être regénérée et le nouveau contenu sera affiché.
+C'est un mix entre le `SSR` et le `SSG`. Toutes les pages HTML seront gégérés lors du build de l'application et on va tout stocker dans un dossier, avec un temps d'expiration pour chaque page. Quand le temps d'expiration est atteint, la page va être regénérée et le nouveau contenu sera affiché.
+
+---
+
+## L'Hydratation
+
+L'hydratation avec le SSR, va venir rendre notre application dans une "string" avec la méthode `renderToString` de React. Cette fonction va retourner le HTML au client. Pour hydrater le componsant et lui donner de "l'interactivité" il faut utiliser la methode de React `hydrateRoot`, cette methode va "relier" notre HTML du DOM à notre composant React.
+
+---
+
+## Le Routing
+
+Il faut créer un fichier dans le dossier pages. Si ont créé `pages/users.tsx` la route sera `localhost:3000/users`
+
+### `Link`
+
+Le composent `<Link></Link>` importé de `next/link` permet de gérer la navigation entre les pages.
+
+````typescript
+import Link from 'next/link';
+
+export default function User() {
+  return (
+    <div className="p-4">
+      <Link href="/" passHref>
+        <a>{'<-'} Back</a>
+      </Link>
+      <h1>User page !</h1>
+    </div>
+  );
+}
+````
+
+### Routing dynamique
+
+Toujours dans le dossier pages avec cette syntaxe : `[nom].tsx`.
+
+exemple : `pages/users/[id].tsx` la route sera : `localhost:3000/users/1`
+
+`useRouter` (version 12, version 13 c'est différent)
+
+````typescript
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+
+export default function User() {
+  const router = useRouter();
+  const { username } = router.query;
+
+  return (
+    <div className="p-4">
+      <Link href="/" passHref>
+        <a>{'<-'} Back</a>
+      </Link>
+      <h1>Hello {username}</h1>
+    </div>
+  );
+}
+````
+
+`router.push('/users/1')` : Permet de naviguer vers la page /users/1
+
+`router.back()` : Permet de revenir en arrière
+
+`router.query` : Permet de récupérer les paramètres de la route
+
+````typescript
+import type { NextPage } from 'next';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { FormEvent } from 'react';
+
+const Home: NextPage = () => {
+  const router = useRouter();
+
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const formData = new FormData(e.currentTarget);
+
+    const username = String(formData.get('username')) ?? '';
+
+    router.push(`/users/${username}`);
+  };
+
+  return (
+    <div className="flex flex-col items-center gap-4 m-4">
+      <h1 className="text-4xl">NextReact</h1>
+      <p>Template</p>
+      <form onSubmit={handleSubmit}>
+        <input name="username" placeholder="Username" />
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
+};
+
+export default Home;
+
+````
 
 ---
 
