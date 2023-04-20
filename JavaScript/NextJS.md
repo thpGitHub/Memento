@@ -205,6 +205,10 @@ export const getServerSideProps: GetServerSideProps<
 
 ---
 
+## Annexes
+
+---
+
 ## Quelques définitions
 
 - `TTFB`: Temps pour le premier octet (Time To First Byte) (TTFB) - Le temps qu'il faut pour que le client reçoive le premier octet de contenu.
@@ -212,3 +216,36 @@ export const getServerSideProps: GetServerSideProps<
 - `FCP` : Première peinture de contenu (First Contentful Paint) (FCP) - Le temps qu'il faut pour que la première partie de contenu soit visible.
 - `LCP` : Plus grande peinture de contenu (Largest Contentful Paint) (LCP) - Le temps qu'il faut pour que le contenu principal de la page soit chargé.
 - `TTI` : Temps pour l'interactivité (Time To Interactive) (TTI) - Le moment où la page devient interactive et répond de manière fiable aux événements de l'utilisateur.
+
+---
+
+## bibliothèque `clsx` pour basculer les classes CSS
+
+````CSS
+/* alert.module.css */
+
+.success {
+  color: green;
+}
+.error {
+  color: red;
+}
+````
+
+````typescript
+import styles from './alert.module.css';
+import { clsx } from 'clsx';
+
+export default function Alert({ children, type }) {
+  return (
+    <div
+      className={clsx({
+        [styles.success]: type === 'success',
+        [styles.error]: type === 'error',
+      })}
+    >
+      {children}
+    </div>
+  );
+}
+````
