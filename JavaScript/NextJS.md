@@ -36,11 +36,15 @@ L'hydratation avec le SSR, va venir rendre notre application dans une "string" a
 
 ## Le Routing
 
-Il faut créer un fichier dans le dossier pages. Si ont créé `pages/users.tsx` la route sera `localhost:3000/users`
+Il faut créer un fichier dans le dossier pages.
+
+Si ont créé `pages/users.tsx` la route sera `localhost:3000/users`
+
+`pages/index.js` la route sera `/`
 
 ### `Link`
 
-Le composent `<Link></Link>` importé de `next/link` permet de gérer la navigation entre les pages.
+Le composent `<Link></Link>` importé de `next/link` permet de gérer la navigation entre les pages côté client.
 
 ````typescript
 import Link from 'next/link';
@@ -53,6 +57,23 @@ export default function User() {
       </Link>
       <h1>User page !</h1>
     </div>
+  );
+}
+````
+
+Avec les versions 12.2 et supérieures il n'est plus obligatoire d'encapsuler `<a></a>`
+
+````typescript
+import Link from 'next/link';
+
+export default function FirstPost() {
+  return (
+    <>
+      <h1>First Post</h1>
+      <h2>
+        <Link href="/">Back to home</Link>
+      </h2>
+    </>
   );
 }
 ````
@@ -184,7 +205,7 @@ export const getServerSideProps: GetServerSideProps<
 
 ---
 
-## Quelque définitions
+## Quelques définitions
 
 - `TTFB`: Temps pour le premier octet (Time To First Byte) (TTFB) - Le temps qu'il faut pour que le client reçoive le premier octet de contenu.
 - `FP` : Première peinture (First Paint) (FP) - Le moment où le premier pixel devient visible pour l'utilisateur.
