@@ -32,6 +32,54 @@ C'est un mix entre le `SSR` et le `SSG`. Toutes les pages HTML seront gégérés
 
 L'hydratation avec le SSR, va venir rendre notre application dans une "string" avec la méthode `renderToString` de React. Cette fonction va retourner le HTML au client. Pour hydrater le componsant et lui donner de "l'interactivité" il faut utiliser la methode de React `hydrateRoot`, cette methode va "relier" notre HTML du DOM à notre composant React.
 
+Par défaut, Next.js pré-rend chaque page. Cela signifie que Next.js génère du HTML pour chaque page à l'avance , au lieu de tout faire par JavaScript côté client. Le pré-rendu peut améliorer les performances et le référencement .
+
+Chaque code HTML généré est associé à un minimum de code JavaScript nécessaire pour cette page. Lorsqu'une page est chargée par le navigateur, son code JavaScript s'exécute et rend la page entièrement interactive. (Ce processus est appelé hydratation.)
+
+---
+
+## Deux formes de pré-rendu
+
+Next.js a deux formes de pré-rendu : la génération statique et le rendu côté serveur . La différence réside dans le moment où il génère le code HTML d'une page.
+
+- La génération statique est la méthode de pré-rendu qui génère le code HTML au moment de la construction . Le code HTML pré-rendu est ensuite réutilisé à chaque requête.
+
+  La génération statique peut être effectuée avec et sans données.La génération statique avec données utilise la méthode `getStaticProps`
+
+  `getStaticProps` s'exécute au moment de la construction en production, et en mode développement, getStaticProps s'exécute à chaque requête.
+  À l'intérieur de la fonction, vous pouvez récupérer des données externes et les envoyer en tant qu'accessoires à la page.
+
+  ````typescript
+  export default function Home(props) { ... }
+
+  export async function getStaticProps() {
+    // Get external data from the file system, API, DB, etc.
+    const data = ...
+
+    // The value of the `props` key will be
+    //  passed to the `Home` component
+    return {
+      props: ...
+    }
+  }
+  ````
+
+- Le rendu côté serveur est la méthode de pré-rendu qui génère le code HTML à chaque requête. utilisation de la requête `getServerSideProps`
+
+````typescript
+export async function getServerSideProps(context) {
+  return {
+    props: {
+      // props for your component
+    },
+  };
+}
+````
+
+`getServerSideProps` est appelé au moment de la demande, son paramètre ( context) contient des paramètres spécifiques à la demande.
+
+L'équipe derrière Next.js a créé un hook React pour la récupération de données appelé `SWR` . Nous le recommandons vivement si vous récupérez des données côté client. Il gère la mise en cache, la revalidation, le suivi de la mise au point, la récupération à intervalle, etc.
+
 ---
 
 ## Le Routing
