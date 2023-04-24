@@ -4809,6 +4809,16 @@ const { data, isLoading, isFetching, error, isError } = useQuery({
 })
 ````
 
+`initialData` cela peut être intéressant notamment avec NextJS (A VOIR !!)
+
+````typescript
+const result = useQuery({
+  queryKey: ['todos'],
+  queryFn: () => fetch('/todos'),
+  initialData: initialTodos,
+})
+````
+
 ### `queryClient`
 
 ````typescript

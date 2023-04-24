@@ -76,7 +76,11 @@ export async function getServerSideProps(context) {
 }
 ````
 
-`getServerSideProps` est appelé au moment de la demande, son paramètre ( context) contient des paramètres spécifiques à la demande.
+`getServerSideProps` est appelé au moment de la demande, son paramètre ( context) contient des paramètres spécifiques à la demande (params, req, res, query ...).
+
+- `params` : Si cette page utilise une route dynamique , params contient les paramètres de la route. Si le nom de la page est [id].js, alors params ressemblera à { id: ... }.
+
+`getServerSideProps` doit renvoyer un objet avec l'une de ces propriétés : `props`, `notFound`, `redirect`
 
 L'équipe derrière Next.js a créé un hook React pour la récupération de données appelé `SWR` . Nous le recommandons vivement si vous récupérez des données côté client. Il gère la mise en cache, la revalidation, le suivi de la mise au point, la récupération à intervalle, etc.
 
@@ -253,9 +257,28 @@ export const getServerSideProps: GetServerSideProps<
 
 ---
 
-## Annexes
+## API Routes
+
+Il faut créer une fonction dans `pages/api`
+
+````typescript
+// pages/api/hello.js
+export default function handler(req, res) {
+  res.status(200).json({ text: 'Hello' });
+}
+````
+
+`http://localhost:3000/api/hello`
+
+````typescript
+{
+  "text": "Hello"
+}
+````
 
 ---
+
+## Annexes
 
 ## Quelques définitions
 
