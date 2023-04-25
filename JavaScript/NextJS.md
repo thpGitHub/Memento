@@ -12,7 +12,7 @@ Le `CSR` est utilisé par `create-react-app` et `viteJS`.
 
 Le fichier HTML sera généré par le serveur avec toutes les données déjà fetch. Le fichier HTML va prendre plus de temps à être reçu par le client, mais il sera déjà prêt.
 
-Le `CSR` est utilisé par NexJS.
+Le `SSR` est utilisé par NexJS.
 
 ### `SSG` : Static Site Generation
 
@@ -21,6 +21,32 @@ Génération de toutes les pages HTML lors du build de l'application et on va to
 Quand l'utilisateur va venir sur le site, il va avoir le temps de chargement d'une application CSR et les avantages d'une application SSR.
 
 Le `SSG` est idéal les sites qui ont des données statiques, comme un blog, un portfolio ou autre.
+
+Pour utiliser le `SSG` avec des routes statiques il faut utiliser la fonction `getStaticProps` à partir d'une page. Lorsque les routes sont dynamiques il faut en plus de `getStaticProps` utiliser la fonction `getStaticPaths` pour définir une liste de tous les chemins à générer statiquement.
+
+````typescript
+// pages/posts/[id].js
+
+// Generates `/posts/1` and `/posts/2`
+export async function getStaticPaths() {
+  return {
+    paths: [{ params: { id: '1' } }, { params: { id: '2' } }],
+    fallback: false, // can also be true or 'blocking'
+  }
+}
+
+// `getStaticPaths` requires using `getStaticProps`
+export async function getStaticProps(context) {
+  return {
+    // Passed to the page component as props
+    props: { post: {} },
+  }
+}
+
+export default function Post({ post }) {
+  // Render post...
+}
+````
 
 ### `ISR` : Incremental Static Regeneration
 
@@ -273,6 +299,30 @@ export default function handler(req, res) {
 ````typescript
 {
   "text": "Hello"
+}
+````
+
+---
+
+## `Lazy loading`
+
+La fonction `lazy` de react ne permet pas de pre-render les componsants côté serveur.
+
+````typescript
+const LazyComponent = lazy(() => import('./LazyComponent'))
+````
+
+NextJS a créé un wrapper de `lazy` : `next/dynamic`  qui permet de pre-render le composant côté serveur.
+
+````typescript
+import dynamic from 'next/dynamic'
+
+const DynamicHeader = dynamic(() => import('../components/header'), {
+  loading: () => <p>Loading...</p>,
+})
+
+export default function Home() {
+  return <DynamicHeader />
 }
 ````
 
