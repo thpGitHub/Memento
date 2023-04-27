@@ -328,6 +328,28 @@ export default function Home() {
 
 ---
 
+## Server Components
+
+Nouveauté NextJS en 2023. `Les Server Components` sont entièrement run côté serveur et le code ne sera jamais `intéractif` côté client. On ne peux pas utiliser les events, window, location etc... avec les `Server Components` il faut utiliser les `Client Components`.
+
+Pour mettre à jour un `Server Components` on peut utiliser la fonction `refresh` de `next/navigation` :
+
+## Client Components
+
+Les `Client Components` sont des composants React, mais ils n'ont pas accès directement aux datas de la base de données, c'est le role des `Server Components. ils peuvent utiliser les events, window, location etc...  
+
+Pour différencier un `client component` et un `server component`, il faut utiliser la directe `"use client";` au début du fichier !
+
+````typescript
+"use client";
+````
+
+---
+
+## Routing NextJS 13
+
+---
+
 ## Annexes
 
 ## Quelques définitions
