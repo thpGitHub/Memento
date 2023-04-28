@@ -348,6 +348,16 @@ Pour différencier un `client component` et un `server component`, il faut utili
 
 ## Routing NextJS 13
 
+Le nouveau router fonctionne dans un répertoire `app`
+
+Next.js fournit un ensemble de fichiers spéciaux (page.js, layout.js, loading.js, error.js ...)
+
+`app/page.js` => `/`
+
+`app/dashboard/page.js` => `/dashboard`
+
+Les pages sont des composants serveur par défaut mais peuvent être définies sur un composant client.
+
 ---
 
 ## Annexes
