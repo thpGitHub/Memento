@@ -358,6 +358,29 @@ Next.js fournit un ensemble de fichiers spéciaux (page.js, layout.js, loading.j
 
 Les pages sont des composants serveur par défaut mais peuvent être définies sur un composant client.
 
+### `page`
+
+### `loading`
+
+La création d'un fichier `loading` va automatiquement créer un `<Suspense />`
+
+````typescript
+// loading.tsx
+
+export default function Loading() {
+  // You can add any UI inside Loading, including a Skeleton.
+  return <LoadingSkeleton />
+}
+````
+
+````jsx
+<Suspense fallback={<Loading />}>
+  <Page />
+</Suspense>  
+````
+
+### `layout`
+
 ---
 
 ## Annexes
