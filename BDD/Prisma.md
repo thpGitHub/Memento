@@ -88,6 +88,7 @@ npm install @prisma/client
 ```typescript
 // \libs\prismadb.ts
 
+// PrismaClient is the main class provided by Prisma for interacting with the database.
 import { PrismaClient } from "@prisma/client"
 
 /**
@@ -95,6 +96,7 @@ import { PrismaClient } from "@prisma/client"
  * needing to import or pass it explicitly to every function or module that requires database access.
  */
 declare global {
+  // prisma is a type TS can hold an instance of PrismaClient or undefined if it has not been initialized. 
     var prisma: PrismaClient | undefined
 }
 
