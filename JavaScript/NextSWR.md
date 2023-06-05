@@ -25,6 +25,14 @@ const useCurrentUser = () => {
 }
 
 export default useCurrentUser
+
+/*
+ on error SWR retry the request, we can add an option to stop retrying with onErrorRetry or shouldRetryOnError
+
+ const { data, error, isLoading, mutate } = useSWR("/api/current", fetcher, {
+        shouldRetryOnError: false
+ })
+*/
 ````
 
 ````typescript
