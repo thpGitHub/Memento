@@ -2008,6 +2008,38 @@ npm install react-router-dom --save
 ```
 
 ```javascript
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+
+const MyComponent = () => {
+  const navigate = useNavigate();
+
+  const handleResponse = (indexResponse: number) => {
+    const isGood = isGoodResponse(indexResponse);
+    const isLast = isLastQuestion();
+
+    if (isGood) {
+      console.log('good');
+      if (isLast) {
+        console.log('last question');
+        navigate('/');
+      } else {
+        setCurrentQuestion((prevQuestion) => prevQuestion + 1);
+      }
+    } else {
+      console.log('not good');
+    }
+  };
+
+  // Rest of your component code
+
+  return <div>{/* Component JSX */}</div>;
+};
+
+export default MyComponent;
+```
+
+```javascript
 import React from 'react'
 import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
 
