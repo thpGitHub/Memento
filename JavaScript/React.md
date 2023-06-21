@@ -386,12 +386,12 @@ export default App;
 
 ## useEffect cleanup function
 
-### AbortController
+### AbortController avec Fetch
 
-L'interface `AbortController` permet d'interrompre une ou plusieurs requêtes Web.
+L'interface `AbortController` fourni par l'API `fetch`permet d'interrompre une ou plusieurs requêtes Web.
 Un abort controller annule la requête si l'utilisateur quitte la page.
 
-On peut donc s'en servir pour une clean up fonction lorsque l'on utilise `fetch` ou `axios`
+On peut donc s'en servir pour une clean up fonction lorsque l'on utilise `fetch`. Il n'y a pas d'équivalent dans `axios` mais on peut utiliser `cancelToken` (voir plus bas)
 
 ```javascript
 useEffect(() => {
@@ -426,6 +426,33 @@ axios.get('/foo/bar', {
 // cancel the request
 controller.abort()
 ```
+
+### cancelToken avec Axios
+
+````javascript
+import axios from 'axios';
+
+useEffect(() => {
+  const source = axios.CancelToken.source();
+
+  axios.get('http://localhost:3000/quiz', { cancelToken: source.token })
+    .then(response => setData(response.data))
+    .catch(error => {
+      if (axios.isCancel(error)) {
+        console.log('Request canceled');
+      } else {
+        console.log(error);
+      }
+    });
+
+  return () => {
+    source.cancel('Request canceled');
+  };
+}, []);
+````
+
+Création d'un jeton d'annulation avec `axios.CancelToken.source()`. Ce jeton d'annulation est ensuite transmis comme cancelTokenoption dans la requête Axios.
+Pour annuler la requête : `source.cancel('Request canceled')`à l'intérieur la fonction de nettoyage renvoyée par useEffect.
 
 ### Avec event scroll
 
