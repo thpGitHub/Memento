@@ -44,7 +44,29 @@ const app = new Vue({
     })
 ````
 
+## `methods`
+
+````javascript
+<div id="example-3">
+  <button v-on:click="say('hi')">Say hi</button>
+  <button v-on:click="say('what')">Say what</button>
+</div>
+````
+
+````javascript
+new Vue({
+  el: '#example-3',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
+  }
+})
+````
+
 ## `directives`
+
+`v-if` `v-else-if` `v-else` `v-show` `v-for` `v-bind` `v-on` `v-model` ...
 
 Les directives sont des attributs spéciaux afin d'appliquer de manière réactive des effets secondaires au DOM lorsque la valeur de son expression change.
 
