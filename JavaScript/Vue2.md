@@ -26,7 +26,9 @@
 
 ## `computed property`
 
-Une `computed property` doit être une fonction qui retourne une valeur en fonction d'autres propriétés contenue dans `data`.
+Une `computed property` doit être une fonction qui retourne une valeur en fonction d'autres propriétés contenue dans `data`. Les propriétés calculées sont mises en cache en fonction de leurs dépendances réactives. Ci-dessous `totalAmount` est recalculé uniquement si `costOfApples`, `costOfBananas` ou `costOfCoconuts` change.
+
+````javascript
 
 ````javascript
 const app = new Vue({
@@ -62,6 +64,60 @@ new Vue({
     }
   }
 })
+````
+
+## `watch`
+
+Permet de surveiller les modifications apportées à une propriété de `data`, puis d'exécuter une fonction lorsque cette propriété change.
+
+````javascript
+const app = new Vue({
+      el: '#app',
+      data: {
+        costOfApples: 6,
+        costOfBananas: 2,
+        costOfCoconuts: 8
+      },
+      computed: {
+        totalAmount() {
+          return this.costOfApples + this.costOfBananas + this.costOfCoconuts
+        }
+      },
+      watch: {
+        totalAmount() {
+          console.log('totalAmount changed')
+        }
+      }
+    })
+````
+
+## `v-model`
+
+````HTML
+<div id="app">
+  <p>{{ message }}</p>
+  <input v-model="message" />
+</div>
+````
+
+````javascript
+const app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!'
+  }
+})
+````
+
+## `v-bind`
+
+````HTML
+<div id="app">
+  <span v-bind:title="message">
+    Hover your mouse over me for a few seconds
+    to see my dynamically bound title!
+  </span>
+</div>
 ````
 
 ## `directives`
