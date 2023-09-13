@@ -120,6 +120,15 @@ const app = new Vue({
 </div>
 ````
 
+````javascript
+const app = new Vue({
+  el: '#app',
+  data: {
+    message: 'You loaded this page on ' + new Date().toLocaleString()
+  }
+})
+````
+
 ## `directives`
 
 `v-if` `v-else-if` `v-else` `v-show` `v-for` `v-bind` `v-on` `v-model` ...
@@ -128,6 +137,38 @@ Les directives sont des attributs spéciaux afin d'appliquer de manière réacti
 
 ````HTML
 <p v-if="seen">Now you see me</p>
+````
+
+````javascript
+const app = new Vue({
+  el: '#app',
+  data: {
+    seen: true
+  }
+})
+````
+
+````HTML
+<div id="app">
+        <ul>
+            <li v-for="item in items" :key="item.id">
+                {{ item.name }}
+            </li>
+        </ul>
+    </div>
+````
+
+````javascript
+const app = new Vue({
+  el: '#app',
+  data: {
+    items: [
+      { id: 0, name: 'Apple' },
+      { id: 1, name: 'Banana' },
+      { id: 2, name: 'Coconut' }
+    ]
+  }
+})
 ````
 
 Certaine directive peuvent prendre un argument, indiqué par un deux-points `:`.
