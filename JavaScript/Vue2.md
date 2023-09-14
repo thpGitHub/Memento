@@ -354,3 +354,47 @@ export default {
   },
 }
 ````
+
+valeurs primitives vs références
+
+````javascript
+export default {
+  props: {
+    // This prop must be passed in
+    propA: {
+      type: String,
+      required: true,
+    },
+    // This prop has a default value
+    propB: {
+      type: Number,
+      default: 100,
+    },
+    // Objects as defaults must be returned from a
+    // factory function
+    propC: {
+      type: Object,
+      default: function() {
+        return { message: 'hello' };
+      },
+    },
+    // Array defaults must be returned from a factory
+    // function
+    propD: {
+      type: Array,
+      default: function() {
+        return ['Hello'];
+      },
+    },
+    // Custom validator function
+    propE: {
+      validator: function(value) {
+        // The value must match one of these strings
+        return ['success', 'warning', 'danger'].indexOf(value) !== -1;
+      },
+    },
+  },
+}
+````
+
+
