@@ -215,5 +215,142 @@ racourcis pour `v-bind` et `v-on`
 
 <!-- shorthand with dynamic argument (2.6.0+) -->
 <a @[event]="doSomething"> ... </a>
+````
 
+## créer un composent
+
+Un composent Vue comprend généralement trois sections : `<template>`, `<script>` et `<style>`. Le `<template>` contient le HTML, le `<script>` contient le JavaScript et le `<style>` contient le CSS.
+
+````HTML
+<template>
+  <div>
+    <h1>{{ message }}</h1>
+    <button v-on:click="reverseMessage">Reverse Message</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'HelloWorld',
+  data() {
+    return {
+      message: 'Hello Vue!',
+    };
+  },
+  methods: {
+    reverseMessage() {
+      this.message = this.message.split('').reverse().join('');
+    },
+  },
+}
+</script>
+
+<style scoped>
+h1 {
+  font-weight: normal;
+}
+</style>
+````
+
+importer un composent
+
+````javascript
+import HelloWorld from './components/HelloWorld.vue';
+
+export default {
+  name: 'App',
+  components: {
+    HelloWorld,
+  },
+}
+````
+
+## css dans un fichier séparé
+
+````javascript
+<style src="./style.css" scoped>
+</style>
+````
+
+## `props`
+
+````javascript
+export default {
+  name: 'HelloWorld',
+  props: {
+    msg: String,
+  },
+}
+````
+
+````HTML
+<template>
+  <div>
+    <h1>{{ msg }}</h1>
+    <button v-on:click="reverseMessage">Reverse Message</button>
+  </div>
+</template>
+````
+
+````javascript
+import HelloWorld from './components/HelloWorld.vue';
+
+export default {
+  name: 'App',
+  components: {
+    HelloWorld,
+  },
+  data() {
+    return {
+      message: 'Hello Vue!',
+    };
+  },
+}
+````
+
+````HTML
+<template>
+  <div id="app">
+    <HelloWorld :msg="message" />
+  </div>
+</template>
+````
+
+validation des props
+
+````javascript
+export default {
+  props: {
+    // Basic type check (`null` matches any type)
+    propA: Number,
+    // Multiple possible types
+    propB: [String, Number],
+    // Required string
+    propC: {
+      type: String,
+      required: true,
+    },
+    // Number with a default value
+    propD: {
+      type: Number,
+      default: 100,
+    },
+    // Object with a default value
+    propE: {
+      type: Object,
+      // Object or array defaults must be returned from
+      // a factory function
+      default: function() {
+        return { message: 'hello' };
+      },
+    },
+    // Custom validator function
+    propF: {
+      validator: function(value) {
+        // The value must match one of these strings
+        return ['success', 'warning', 'danger'].indexOf(value) !== -1;
+      },
+    },
+  },
+}
 ````
