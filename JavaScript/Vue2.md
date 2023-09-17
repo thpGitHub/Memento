@@ -355,8 +355,6 @@ export default {
 }
 ````
 
-valeurs primitives vs références
-
 ````javascript
 export default {
   props: {
@@ -397,4 +395,150 @@ export default {
 }
 ````
 
+## `emit`
 
+La methode `emit` est utilisée pour envoyer des événements personnalisés d'un composant enfant à son composant parent. Cela permet aux composants enfants de communiquer avec leurs composants parents
+
+composant parent :
+
+````HTML
+<template>
+  <div>
+    <child-component @custom-event="handleCustomEvent"></child-component>
+    <p>Parent received: {{ message }}</p>
+  </div>
+</template>
+
+<script>
+import ChildComponent from './ChildComponent.vue';
+
+export default {
+  components: {
+    ChildComponent
+  },
+  data() {
+    return {
+      message: ''
+    };
+  },
+  methods: {
+    handleCustomEvent(data) {
+      this.message = data;
+    }
+  }
+};
+</script>
+````
+
+composant enfant :
+
+````HTML
+<template>
+  <button @click="emitCustomEvent">Send Custom Event</button>
+</template>
+
+<script>
+export default {
+  methods: {
+    emitCustomEvent() {
+      this.$emit('custom-event', 'Hello from child component!');
+    }
+  }
+};
+</script>
+````
+
+## `event bus`
+
+permet de communiquer entre des composants qui peuvent ne pas avoir de relation parent-enfant directe.
+Le bus d'événements est généralement implémenté en tant qu'instance Vue, qui agit comme un bus d'événements global partagé. Les composants peuvent émettre des événements et écouter des événements émis par d'autres composants.
+
+````javascript
+// Create a new Vue instance as an event bus
+const EventBus = new Vue();
+
+// Export the event bus so that it can be imported and used across your components
+export default EventBus;
+````
+
+Émettre des événements :
+Dans n'importe quel composant où vous souhaitez envoyer un événement, vous pouvez utiliser le bus d'événements pour émettre l'événement :
+
+````HTML
+<script>
+import EventBus from './EventBus'; // Import the event bus
+
+export default {
+  methods: {
+    sendDataToOtherComponent() {
+      // Emit a custom event with data
+      EventBus.$emit('custom-event-name', { someData: 'Hello from Component A' });
+    }
+  }
+};
+</script>
+````
+
+Écoutez les événements :
+Dans un autre composant, vous pouvez écouter l'événement émis et y réagir :
+
+````HTML
+<script>
+import EventBus from './EventBus'; // Import the event bus
+
+export default {
+  data() {
+    return {
+      receivedData: ''
+    };
+  },
+  created() {
+    // Listen for the custom event
+    EventBus.$on('custom-event-name', (data) => {
+      this.receivedData = data.someData;
+    });
+  }
+};
+</script>
+````
+
+Désormais, lorsque l'événement "custom-event-name" est émis dans le premier composant, le deuxième composant recevra les données et mettra à jour son état en conséquence.
+
+Veuillez noter que même si le modèle de bus d'événements peut être utile pour gérer la communication entre les composants, il peut également rendre plus difficile le suivi du flux de données et la compréhension des relations entre les composants dans des applications plus vastes. Par conséquent, il est généralement recommandé d'utiliser Vuex pour la gestion d'état dans des scénarios plus complexes ou d'envisager d'autres formes de communication entre composants, telles que des accessoires et des événements personnalisés, lorsque vous travaillez avec des relations parent-enfant.
+
+## life cycle hooks
+
+````javascript
+export default {
+  name: 'HelloWorld',
+  data() {
+    return {
+      message: 'Hello Vue!',
+    };
+  },
+  beforeCreate() {
+    console.log('beforeCreate');
+  },
+  created() {
+    console.log('created');
+  },
+  beforeMount() {
+    console.log('beforeMount');
+  },
+  mounted() {
+    console.log('mounted');
+  },
+  beforeUpdate() {
+    console.log('beforeUpdate');
+  },
+  updated() {
+    console.log('updated');
+  },
+  beforeDestroy() {
+    console.log('beforeDestroy');
+  },
+  destroyed() {
+    console.log('destroyed');
+  },
+}
+````
