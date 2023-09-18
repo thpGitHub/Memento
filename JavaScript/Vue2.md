@@ -542,3 +542,63 @@ export default {
   },
 }
 ````
+
+## `slot`
+
+Un `slot` est un template qui permet à partir d'un composant parent de passer du contenu.
+Il y a deux style de `slot` : par defaut et nommé.
+
+- `slot` par defaut
+
+````HTML
+<!-- ChildComponent.vue -->
+<template>
+  <div>
+    <h2>Child Component</h2>
+    <slot></slot>
+  </div>
+</template>
+````
+
+````HTML
+<!-- ParentComponent.vue -->
+<template>
+  <div>
+    <h1>Parent Component</h1>
+    <child-component>
+      <p>This content goes into the default slot.</p>
+    </child-component>
+  </div>
+</template>
+````
+
+- `slot` nommé
+
+````HTML
+<!-- ChildComponent.vue -->
+<template>
+  <div>
+    <h2>Child Component</h2>
+    <slot name="header"></slot>
+    <slot name="content"></slot>
+  </div>
+</template>
+
+````
+
+````HTML
+<!-- ParentComponent.vue -->
+<template>
+  <div>
+    <h1>Parent Component</h1>
+    <child-component>
+      <template v-slot:header>
+        <h3>Header Slot Content</h3>
+      </template>
+      <template v-slot:content>
+        <p>Content Slot Content</p>
+      </template>
+    </child-component>
+  </div>
+</template>
+````
