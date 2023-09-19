@@ -639,3 +639,41 @@ export default {
 };
 </script>
 ````
+
+## Call API
+
+````HTML
+<template>
+  <div>
+    <img :src="catImage" alt="cat image" />
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+
+export default {
+  name: "CallApi",
+
+  data() {
+    return {
+      catImage: null,
+    };
+  },
+
+  mounted() {
+    axios
+      .get("https://api.thecatapi.com/v1/images/search")
+      .then((response) => {
+        console.log(response);
+        this.catImage = response.data[0].url;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+
+  methods: {},
+};
+</script>
+````
