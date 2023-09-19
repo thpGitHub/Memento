@@ -602,3 +602,40 @@ Il y a deux style de `slot` : par defaut et nommé.
   </div>
 </template>
 ````
+
+## Dynamic Components
+
+Fonctionnalité qui permet de basculer dynamiquement entre différents composants. Ceci est utile lorsque l'on souhaite  restituer de manière conditionnelle différents composants en fonction de certains critères, tels que les interactions utilisateur ou la logique basée sur les données.
+Ils sont particulièrement utiles dans les scénarios dans lesquels vous devez créer des interfaces complexes avec différents composants ou lorsque vous souhaitez créer des formulaires ou des assistants dynamiques, entre autres cas d'utilisation.
+
+````HTML
+<template>
+  <div>
+    <button @click="toggleComponent">Toggle Component</button>
+    <component :is="currentComponent"></component>
+  </div>
+</template>
+
+<script>
+import ComponentA from './ComponentA.vue'; // Import ComponentA.vue
+import ComponentB from './ComponentB.vue'; // Import ComponentB.vue
+
+export default {
+  data() {
+    return {
+      currentComponent: 'ComponentA',
+    };
+  },
+  components: {
+    ComponentA, // Register ComponentA
+    ComponentB, // Register ComponentB
+  },
+  methods: {
+    toggleComponent() {
+      // Toggle between ComponentA and ComponentB
+      this.currentComponent = this.currentComponent === 'ComponentA' ? 'ComponentB' : 'ComponentA';
+    },
+  },
+};
+</script>
+````
