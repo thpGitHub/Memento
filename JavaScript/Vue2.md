@@ -677,3 +677,93 @@ export default {
 };
 </script>
 ````
+
+## Form
+
+````HTML
+<template>
+  <div class="container">
+    <form>
+      <div class="form-group">
+        <label for="firstname">Prénom</label>
+        <input
+          type="text"
+          class="form-control"
+          id="firstname"
+          placeholder="Prénom"
+          v-model="formDatas.firstname"
+        />
+      </div>
+      <div class="form-group">
+        <label for="text">Ton texte</label>
+        <textarea
+          class="form-control"
+          id="text"
+          v-model="formDatas.text"
+        ></textarea>
+      </div>
+
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value="fraise"
+          id="fraise"
+          v-model="formDatas.checkFruits"
+        />
+        <label class="form-check-label" for="fraise"> Fraise </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value="pomme"
+          id="pomme"
+          v-model="formDatas.checkFruits"
+        />
+        <label class="form-check-label" for="pomme"> Pomme </label>
+      </div>
+      <div class="form-check">
+        <input
+          class="form-check-input"
+          type="checkbox"
+          value="banane"
+          id="banane"
+          v-model="formDatas.checkFruits"
+        />
+        <label class="form-check-label" for="banane"> Banane </label>
+      </div>
+
+      <div class="card p-3">
+        <h2>Résultat</h2>
+        <p>Prénom : {{ formDatas.firstname }}</p>
+        <p style="white-space: pre">Texte : {{ formDatas.text }}</p>
+        <p>Fruits :</p>
+        <li v-bind:key="index" v-for="(fruit, index) in formDatas.checkFruits">
+          {{ fruit }}
+        </li>
+      </div>
+    </form>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "MyForm",
+
+  data() {
+    return {
+      formDatas: {
+        firstname: "",
+        text: "",
+        checkFruits: [],
+      },
+    };
+  },
+
+  mounted() {},
+
+  methods: {},
+};
+</script>
+````
