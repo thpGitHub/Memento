@@ -28,6 +28,9 @@
 
 Une `computed property` doit être une fonction qui retourne une valeur en fonction d'autres propriétés contenue dans `data`. Les propriétés calculées sont mises en cache en fonction de leurs dépendances réactives. Ci-dessous `totalAmount` est recalculé uniquement si `costOfApples`, `costOfBananas` ou `costOfCoconuts` change.
 
+`computed property` sont généralement utilisés pour les transformations, le filtrage ou le formatage des données avant de les afficher dans le modèle.
+Les propriétés calculées sont plus performantes que les `watch` dans les cas où le résultat dépend d'autres données réactives, car elles ne sont recalculées que lorsque cela est nécessaire.
+
 ````javascript
 
 ````javascript
@@ -70,6 +73,9 @@ new Vue({
 
 Permet de surveiller les modifications apportées à une propriété de `data`, puis d'exécuter une fonction lorsque cette propriété change.
 
+Les `watch` sont utilisés pour exécuter une logique personnalisée lorsque les données changent, par exemple en effectuant une requête API ou en déclenchant des effets secondaires.
+Ils sont souvent utilisés lorsque l'on réagir à des modifications de données qui ne sont pas directement liées au rendu, comme l'enregistrement de données sur un serveur ou lorsqu'un champ spécifique change.
+
 ````javascript
 const app = new Vue({
       el: '#app',
@@ -90,6 +96,10 @@ const app = new Vue({
       }
     })
 ````
+
+## `v-model` vs `v-bind`
+
+v-bind is primarily used for one-way data binding, while v-model is used for two-way data binding, making it a more convenient choice when dealing with form inputs or other interactive elements where you want changes in the template to update the data property and vice versa.
 
 ## `v-model`
 
@@ -703,6 +713,8 @@ export default {
         ></textarea>
       </div>
 
+      <h3>checkbox</h3>
+
       <div class="form-check">
         <input
           class="form-check-input"
@@ -734,16 +746,31 @@ export default {
         <label class="form-check-label" for="banane"> Banane </label>
       </div>
 
+      <h3>Select Box</h3>
+
       <div class="card p-3">
-        <h2>Résultat</h2>
-        <p>Prénom : {{ formDatas.firstname }}</p>
-        <p style="white-space: pre">Texte : {{ formDatas.text }}</p>
-        <p>Fruits :</p>
-        <li v-bind:key="index" v-for="(fruit, index) in formDatas.checkFruits">
-          {{ fruit }}
-        </li>
+        <select v-model="formDatas.select">
+          <option v-for="(pays, index) in formDatas.listPays" :key="index">
+            {{ pays }}
+          </option>
+        </select>
       </div>
+
+      <button @click.prevent="submitForm" class="btn btn-primary mt-3">Submit</button>
     </form>
+
+    <br />
+
+    <div class="card p-3" v-if="infosSubmit">
+      <h2>Résultat</h2>
+      <p>Prénom : {{ formDatas.firstname }}</p>
+      <p style="white-space: pre">Texte : {{ formDatas.text }}</p>
+      <p>Fruits :</p>
+      <li v-bind:key="index" v-for="(fruit, index) in formDatas.checkFruits">
+        {{ fruit }}
+      </li>
+      <p>Pays : {{ formDatas.select }}</p>
+    </div>
   </div>
 </template>
 
@@ -757,13 +784,27 @@ export default {
         firstname: "",
         text: "",
         checkFruits: [],
+        select: "",
+        listPays: [
+          "France",
+          "Espagne",
+          "Italie",
+          "Allemagne",
+          "Portugal",
+          "Angleterre",
+        ],
       },
+      infosSubmit: false,
     };
   },
 
   mounted() {},
 
-  methods: {},
+  methods: {
+    submitForm() {
+      this.infosSubmit = true;
+    },
+  },
 };
 </script>
 ````
