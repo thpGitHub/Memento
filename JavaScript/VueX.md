@@ -171,44 +171,6 @@ this.$store.dispatch('setDate', {
 })
 ````
 
-## Modules
-
-Les modules sont des sous-ensembles de Vuex qui peuvent être utilisés pour organiser le code.
-
-````javascript
-export default new Vuex.Store({
-    modules: {
-        date: {
-            state: {
-                month: 8,
-                day: 12,
-                year: 2008
-            },
-            mutations: {
-                setDate (state, payload) {
-                    state.month = payload.month
-                    state.day = payload.day
-                    state.year = payload.year
-                }
-            },
-            actions: {
-                setDate (context, payload) {
-                    context.commit('setDate', payload)
-                }
-            }
-        }
-    }
-})
-````
-
-````javascript
-this.$store.dispatch('date/setDate', {
-    month: 8,
-    day: 12,
-    year: 2008
-})
-````
-
 ## Getters
 
 Les getters sont des fonctions qui peuvent être utilisées pour obtenir des données de l'état.
@@ -320,3 +282,22 @@ export default {
 </template>
 ````
 
+## mapActions
+
+````javascript
+import { mapActions } from 'vuex'
+
+export default {
+    methods: {
+        ...mapActions([
+            'date/setDate'
+        ])
+    }
+}
+````
+
+````HTML
+<template>
+    <button @click="setDate">Set date</button>
+</template>
+````
