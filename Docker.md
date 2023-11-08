@@ -8,6 +8,11 @@ docker ps
 docker ps -a
 
 docker images
+# Supprimera l'image Docker avec le nom
+docker rmi my-node-image
+# Supprimera l'image Docker avec l'ID
+docker rmi abcdef123456
+
 
 # Télécharge l'image Docker officielle Node.js
 docker pull node
@@ -17,6 +22,8 @@ docker pull node:14
 docker run -it node
 # Exécutera l'image Node.js en mode détaché c'est à dire en arrière plan
 docker run -d node
+
+docker logs 637e25947005
 
 # Arrêtera le container avec l'ID 637e25947005
 docker stop 637e25947005
@@ -31,6 +38,10 @@ docker exec -ti 637e25947005 bash
 
 
 docker system prune
+
+docker volume create mongodb_data
+docker volume ls
+docker volume inspect mongodb_data
 ````
 
 ## Dockerfile
@@ -92,6 +103,59 @@ npm-debug.log
 ````
 
 ````shell
+# A partir du Dockerfile "."  -t permet de nommer l'image
 docker build -t ocr-docker-build .
 docker run -d -p 2368:2368 ocr-docker-build
+````
+
+---
+
+## Docker compose
+
+````yaml
+# docker-compose.yml
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - ./mysql:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: somewordpress
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    ports:
+      - "8000:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+
+volumes:
+  mysql: {}
+````
+
+````shell
+# Démarrer les conteneurs Docker en arrière-plan 
+docker-compose up -d
+# Arrêter les conteneurs Docker
+docker-compose stop
+# Afficher les conteneurs Docker
+docker-compose ps
+# Afficher les logs des conteneurs Docker
+docker-compose logs
+# Détruire les conteneurs Docker
+docker-compose down
+# Poue valider la configuration de votre fichier docker-compose.yml
+docker-compose config
 ````
