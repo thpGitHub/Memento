@@ -12,6 +12,7 @@ docker images
 docker rmi my-node-image
 # Supprimera l'image Docker avec l'ID
 docker rmi abcdef123456
+docker rmi -f c74c862bce75
 
 
 # Télécharge l'image Docker officielle Node.js
@@ -94,18 +95,32 @@ EXPOSE 2368
 CMD npm run start
 ````
 
+````shell
+# A partir du répertoire ou se trouve le Dockerfile "."  -t permet de nommer l'image
+docker build -t ocr-docker-build .
+docker run -d -p 2368:2368 ocr-docker-build
+
+# Exécutera un shell Bash dans un conteneur Docker existant avec l'ID de conteneur spécifié
+docker exec -ti 637e25947005 bash
+# exemple avec mongoDB
+# une fois connecté au container mongoDB on peut lancer la commande mongoh pour se connecter à la base de données
+> mongosh
+> show dbs
+> use mydb
+> show collections
+> db.users.find()
+> db.myCollection.insertOne( { x: 1 } )
+
+
+
+````
+
 ## .dockerignore
 
 ````dockerignore
 node_modules
 npm-debug.log
 .git
-````
-
-````shell
-# A partir du Dockerfile "."  -t permet de nommer l'image
-docker build -t ocr-docker-build .
-docker run -d -p 2368:2368 ocr-docker-build
 ````
 
 ---
