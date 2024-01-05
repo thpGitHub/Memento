@@ -37,12 +37,16 @@ docker run -d -p 8080:80 nginx
 # Exécutera un shell Bash dans un conteneur Docker existant avec l'ID de conteneur spécifié
 docker exec -ti 637e25947005 bash
 
-
 docker system prune
+docker system prune -a
 
 docker volume create mongodb_data
 docker volume ls
 docker volume inspect mongodb_data
+
+docker inspect <container-id-or-name> | grep IPAddress
+docker inspect <container-id-or-name> | Select-String -Pattern 'IPAddress'
+
 ````
 
 ## Dockerfile
@@ -99,6 +103,12 @@ CMD npm run start
 # A partir du répertoire ou se trouve le Dockerfile "."  -t permet de nommer l'image
 docker build -t ocr-docker-build .
 docker run -d -p 2368:2368 ocr-docker-build
+
+# Exemple react
+docker build -t my-app .
+# On mappe le port 3000 du conteneur sur le port 3001 de la machine hôte.
+# car le port par default pour un application react est le port 3000.
+docker run -p 3001:3000 my-app
 
 # Exécutera un shell Bash dans un conteneur Docker existant avec l'ID de conteneur spécifié
 docker exec -ti 637e25947005 bash
