@@ -377,3 +377,31 @@ db.quizzes.insertMany([
       }
 ]);
 ````
+
+## Annexes
+
+### Dockerfile mysql
+
+````dockerfile
+# use mysql:latest as base image
+FROM mysql:latest
+
+#set env variables
+ENV MYSQL_DATABASE=ynov_app
+ENV MYSQL_ROOT_PASSWORD=root
+
+#copy sql script to docker-entrypoint-initdb.d
+COPY ./sql-scripts/ /docker-entrypoint-initdb.d/
+
+#build an image on docker 
+#docker build /dossier_source -t nom_image
+#run an image on docker
+#docker run -d -p 3306:3306 --name nom_container nom_image
+
+# Dans le container MySQL de docker Desktop, on peut se connecter à la base de données.On peut accéder au bash du container MySQL dans l'onglet "Exec" de docker Desktop.
+# On peut se connecter à la base de données avec la commande mysql -u root -p
+# On peut voir les bases de données avec la commande show databases;
+# On peut sélectionner une base de données avec la commande use ynov_app;
+# On peut voir les tables de la base de données avec la commande show tables;
+# On peut voir le contenu d'une table avec la commande select * from users;
+````

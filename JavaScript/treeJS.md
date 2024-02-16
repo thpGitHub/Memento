@@ -57,6 +57,30 @@ Les paramètres du cube sont:
 - La largeur
 - La hauteur
 
+## Un Mesh
+
+Dans Three.js, un `Mesh` est un objet qui combine une `Geometry` et un `Material` pour créer une forme visible dans notre scène 3D.
+
+La `Geometry` représente la forme de l'objet (par exemple, un cube, une sphère, etc.) et le `Material` définit l'apparence de la surface de l'objet (par exemple, sa couleur, comment il réfléchit la lumière, etc.).
+
+Voici un exemple de création d'un `Mesh` dans Three.js :
+
+```javascript
+// Créer une géométrie de cube
+const geometry = new THREE.BoxGeometry(1, 1, 1);
+
+// Créer un matériau de couleur rouge
+const material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+
+// Créer un Mesh à partir de la géométrie et du matériau
+const cube = new THREE.Mesh(geometry, material);
+
+// Ajouter le cube à la scène
+scene.add(cube);
+```
+
+Dans cet exemple, nous créons un cube rouge et l'ajoutons à la scène.
+
 ## La boucle de rendu
 
 La boucle de rendu est une fonction qui permet de mettre à jour la scène à chaque frame.
