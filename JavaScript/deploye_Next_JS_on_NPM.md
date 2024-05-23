@@ -201,3 +201,61 @@ Incrémentez la version et publiez le package :
 npm version patch
 npm publish
 ```
+
+---
+
+## Automatiser le nettoyage avant chaque build
+
+### 1. Créer un script de nettoyage
+
+```json
+{
+  "scripts": {
+    "clean": "node scripts/clean.js",
+    "build:components": "npm run clean && swc src/components --out-dir dist/components && node scripts/reorganize.js",
+    "build:types": "tsc"
+  }
+}
+```
+
+```javascript
+// scripts/clean.js
+const fs = require('fs-extra');
+const path = require('path');
+
+async function clean() {
+  const distDir = path.join(__dirname, '../dist');
+  try {
+    await fs.remove(distDir);
+    console.log('Cleaned dist directory');
+  } catch (err) {
+    console.error('Error while cleaning dist directory:', err);
+  }
+}
+
+clean();
+```
+
+### 2.  Modifier les scripts
+
+```json
+{
+  "scripts": {
+    "clean": "node scripts/clean.js",
+    "build:components": "npm run clean && swc src/components --out-dir dist/components && node scripts/reorganize.js",
+    "build:types": "tsc",
+    "build:beforeNpmPublish": "npm run build:types && npm run build:components"
+  }
+}
+```
+
+```bash
+npm run build:beforeNpmPublish
+```
+
+Cela va :
+
+- Nettoyer le répertoire dist en supprimant les anciennes compilations.
+- Compiler les types TypeScript.
+- Compiler les composants avec SWC.
+- Réorganiser les fichiers compilés dans la structure correcte.
