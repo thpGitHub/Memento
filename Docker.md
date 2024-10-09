@@ -29,6 +29,9 @@ docker logs 637e25947005
 # Arrêtera le container avec l'ID 637e25947005
 docker stop 637e25947005
 
+# Sortir du container sans l'arrêter
+CTRL + p suivi de CTRL + q
+
 # Supprimera le container avec l'ID 637e25947005
 docker rm 637e25947005
 
